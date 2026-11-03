@@ -268,12 +268,13 @@
     genesis: [
       'genesis',
       [
-        ['g70.png', 400, 225, 'G70'],
-        ['g80.png', 400, 225, 'G80'],
-        ['g90.png', 400, 225, 'G90'],
-        ['gv60.png', 640, 360, 'GV60'],
-        ['gv70.png', 400, 225, 'GV70'],
-        ['gv80.png', 400, 225, 'GV80'],
+        // Tagged with genesisdemo1's panes (2026-11-03).
+        ['g70.png', 400, 225, 'G70', 'Sedan'],
+        ['g80.png', 400, 225, 'G80', 'Sedan'],
+        ['g90.png', 400, 225, 'G90', 'Sedan'],
+        ['gv60.png', 640, 360, 'GV60', 'SUV | Electric'],
+        ['gv70.png', 400, 225, 'GV70', 'SUV'],
+        ['gv80.png', 400, 225, 'GV80', 'SUV'],
       ],
     ],
     lincoln: [
@@ -1181,6 +1182,76 @@
       ],
       demos: 3,
       note: 'Ships an inventory count under each name. The newest sites show fewer across and hide the arrows when every model already fits.',
+      // What genesisdemo1 draws, measured with headless Chromium at
+      // 1366/800/390 on 2026-11-03 - the `genesis-model-bar-tabbed` code. Three
+      // panes (SUV, Sedan, Electric), a slick bar in each, all on one config:
+      // 4, 1200:3, 992:2, 540:1, the ladder above.
+      //
+      // The body is GenesisSansText, 14px at 992 and up, 13px below; every em
+      // is against the 14. The heading, tabs and names are GenesisSansHead:
+      // - "The Genesis Collection" in h1 (36px, uppercase, 1px tracking), 14px
+      //   over the tabs; no lead, no button, no band;
+      // - three 18px uppercase tabs in #000, butted, padded 18px 16px, not
+      //   dimmed, no dividers; a 3px #000 line under the picked one and on
+      //   hover, fading in over 0.2s; a 1px #f1f1f1 rule under the row;
+      // - the art flush, 20px between cards, no hover;
+      // - the name 22px, uppercase, 1px tracking, on a 1.1 line, 20px under
+      //   the art, with an "N Available" count under it - no knob for the
+      //   count's size or colour, so a measured brand's rows carry none.
+      // Kept on purpose: the row gap's 1em (live butts the pictures against
+      // the rule) and our 44px chevron (live: a 20px black glyph). The name
+      // renders about 20.4px below 992 where the live one holds 22; the tab
+      // holds its 18px there through --tab-size-narrow.
+      // Roster: the live panes carry Electrified GV70, GV80 Coupe, GV90 and
+      // Electrified G80 as well, which this repo has no cutouts for.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#000',
+            '--name-size': '1.5714em',
+            '--name-weight': '400',
+            '--name-case': 'uppercase',
+            // 1px of the 22px name.
+            '--name-tracking': '0.0455em',
+            '--name-leading': '1.1',
+            // 20px in the name's own em.
+            '--name-gap': '0.909em',
+            '--plate-pad': '0.1px',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '1.43em',
+              '--tab-size': '1.2857em',
+              // 18px of the 13px body below 992: the live tab does not shrink.
+              '--tab-size-narrow': '1.3846em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.1',
+              '--tab-case': 'uppercase',
+              '--tab-color': '#000',
+              '--tab-selected': '#000',
+              '--tab-dim': '1',
+              '--tab-line': '#000',
+              '--tab-line-size': '3px',
+              '--tab-rule': '#f1f1f1',
+              '--tab-gap': '0.1px',
+              // 18px / 16px in the 18px tab's em.
+              '--tab-pad': '1em 0.889em',
+              '--tab-fade': '0.15s',
+              // 14px in the 36px heading's em.
+              '--title-gap': '0.39em',
+            },
+            panes: ['SUV', 'Sedan', 'Electric'],
+            words: { title: 'The Genesis Collection', titleClass: 'h1 text-uppercase', lead: '', moreText: '' },
+          },
+        },
+      },
+      // PREVIEW ONLY: the body face, and genesisdemo1's h1 rule for the
+      // heading. GenesisSansHead, the tabs' and names' face, has no knob.
+      font: { family: 'GenesisSansText', css: 'https://cdn.dealeron.com/assets/fonts/genesis/fonts.min.css' },
+      theme: { css: '.h1{font-family:GenesisSansHead,Arial,Helvetica,sans-serif;font-size:36px;font-weight:400;line-height:1.1;letter-spacing:1px;color:#333}' },
+      source: 'genesisdemo1.dealeron.com, 2026-11-03',
     },
     honda: {
       label: 'Honda',
