@@ -13,12 +13,12 @@ which is a thing to raise with whoever owns it rather than to paper over.
 The article lists 56 codes. Seven of them are GM multi-make combinations, which **the team no longer
 does** (Steven, 2026-09-15) — they are listed at the bottom and counted nowhere.
 
-**49 codes in scope. 12 built.** The other 37 are the work.
+**49 codes in scope. 13 built.** The other 36 are the work.
 
 | Status                             |  N  | What it means                                                                                         |
 | ---------------------------------- | :-: | ----------------------------------------------------------------------------------------------------- |
-| **Replacement built**              | 12  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                     |
-| **Pattern ready, not measured**    | 21  | The builder already has the right pattern; nobody has measured this OEM's version of it yet.          |
+| **Replacement built**              | 13  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                     |
+| **Pattern ready, not measured**    | 20  | The builder already has the right pattern; nobody has measured this OEM's version of it yet.          |
 | **Needs a pattern we do not have** |  1  | The live code is a carousel, but a shape this builder cannot draw yet.                                |
 | **Not a carousel**                 | 10  | The live code is a static grid or a tabbed list, not a slider. Replacing it is a decision, not a job. |
 | **Example is dead**                |  3  | The article's example link 404s, so there is nothing left to measure from.                            |
@@ -72,8 +72,8 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | Buick      | Slick                                 | `buick-model-bar-slick`                             | buickdemo1                     | `modelbar`  | Replacement built              | `brands.js` buick, measured 2026-11-03 from buickdemo1; the four live models are the roster                                                                |
 | Mitsubishi | Slick                                 | `mitsubishi-model-bar-slick`                        | mitsubishidemo1                | `modelbar`  | Replacement built              | `brands.js` mitsubishi, measured 2026-11-03 from mitsubishidemo1; ladder corrected to 5@992. Live has 5 models, we have 1                                  |
 | Acura      | Slick                                 | `acura-model-bar-slick`                             | acurademo1                     | `modelbar`  | Replacement built              | `brands.js` acura, measured 2026-11-03 from acurademo1. The live page hides the bar below 768                                                              |
+| Audi       | Slick                                 | `audi-model-bar-slick`                              | audidemo1                      | `modelbar`  | Replacement built              | `brands.js` audi, measured 2026-11-03 from audidemo1. Live runs 16 models; this repo has 6                                                                 |
 | Alfa Romeo | Slick                                 | `alfa-romeo-model-bar-cards`                        | alfaromeo3                     | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 6 slides, 4@1800:4,1200:3,992:2,540:1                                                                                                         |
-| Audi       | Slick                                 | `audi-model-bar-slick`                              | audidemo1                      | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 6@1200:4,992:3,768:2,360:1                                                                                                                    |
 | CDJR       | Tabs                                  | `cdjr-model-bar`                                    | cdjrdemo2                      | `tabs`      | Pattern ready, not measured    | 4 slick bars behind a tab row, 6@991:3,460:2                                                                                                               |
 | CDJR       | Tabs                                  | `cdjr-fiat-model-bar`                               | cdjrdemo1                      | `tabs`      | Pattern ready, not measured    | 5 slick bars behind a tab row, 6@991:3,460:2                                                                                                               |
 | CDJR       | Tabs (no colour background)           | `cdjr-model-bar-no-back`                            | cdjrdemo4                      | `tabs`      | Pattern ready, not measured    | 5 slick bars, 6@991:3,460:2                                                                                                                                |

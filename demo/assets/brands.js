@@ -551,6 +551,49 @@
       ],
       demos: 1,
       note: 'Steps the count five times as the screen grows — more steps than any other brand, and the clearest case for snapping to the platform’s own four widths.',
+      // What audidemo1 draws, measured with headless Chromium at
+      // 1366/800/768/390 on 2026-11-03 - the `audi-model-bar-slick` code.
+      // Slick 6, 1200:4, 992:3, 768:2, 360:1, the ladder above; not infinite.
+      //
+      // The body is AudiType-Normal, 14px at 992 and up, 13px below; every em
+      // is against the 14. Sixteen 7:3 cutouts on the page's white:
+      // - slides butting in a 35px arrow channel, the art at scale(0.9) going
+      //   to 0.95 (not 1) on hover over 0.1s;
+      // - the name 14px, 700, #282828, on a 1.4286 line, 5px under the art -
+      //   AudiType-Normal has no bold face, so the live 700 is synthesised.
+      // Kept on purpose: the engine's #262626 chevron (the live #6c6c6c at 0.75
+      // is 3.16:1 on white, and has no focus ring) and one card per view on a
+      // phone, where the live bar squeezes two 135px cards and a 121px car.
+      // Roster: the live bar runs sixteen models, each named "Audi …"; this
+      // repo has six of them, the same six in the same order.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#282828',
+            '--name-size': '1em',
+            '--name-weight': '700',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.36em',
+            // scale(0.9) as padding: 5% a side and 2.143% (5% x 3/7) top and
+            // bottom on the 7:3 art.
+            '--plate-pad': '2.143% 5%',
+            // 0.9 -> 0.95.
+            '--img-hover-scale': '1.0556',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '0.1px',
+            },
+          },
+        },
+      },
+      // PREVIEW ONLY.
+      font: { family: 'AudiType-Normal', css: 'https://cdn.dealeron.com/assets/fonts/audi/fonts.min.css' },
+      source: 'audidemo1.dealeron.com, 2026-11-03',
     },
     bmw: { label: 'BMW', look: 'tile', ladder: null, demos: 3 },
     buick: {
