@@ -482,6 +482,49 @@
         [768, 5],
       ],
       demos: 3,
+      // What acurademo1 draws, measured with headless Chromium at
+      // 1366/800/768/390 on 2026-11-03 - the `acura-model-bar-slick` code.
+      // Slick 5, 768:3, 460:2, the ladder above.
+      //
+      // The body is avenir-lt-pro (Adobe Typekit), 14px at 992 and up, 13px
+      // below; every em is against the 14. Buick's card, nearly to the pixel:
+      // - Integra, ADX, RDX and MDX butting, the art at scale(0.95) going to
+      //   full size over 0.1s on hover;
+      // - the name 16.38px, 400, #333, on a 1.4286 line, pulled 10px up over
+      //   the cutout's foot.
+      // Four models in a 5-up bar, so the live page draws no arrows and has a
+      // hole at the end, and BELOW 768 IT HIDES THE WHOLE SECTION - the 390
+      // numbers were read by unhiding it. Ours shows the bar on a phone, one
+      // card per view under 460, and keeps the engine's #262626 chevron over
+      // the live 3.16:1 grey. The roster's TLX and ZDX are not on the live bar.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.17em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            // -10px of the 16.38px name.
+            '--name-gap': '-0.6em',
+            // scale(0.95) as padding on the 4:3 card.
+            '--plate-pad': '1.875% 2.5%',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '0.1px',
+            },
+          },
+        },
+      },
+      // PREVIEW ONLY: AcuraBespoke is the headings' face on the CDN; the body's
+      // Typekit kit is locked to Acura's domains.
+      font: { family: 'AcuraBespoke-Regular', css: 'https://cdn.dealeron.com/assets/fonts/acurabespoke/fonts.min.css', headings: true },
+      source: 'acurademo1.dealeron.com, 2026-11-03',
     },
     alfaromeo: {
       label: 'Alfa Romeo',
