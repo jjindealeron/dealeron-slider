@@ -210,17 +210,19 @@
     nissan: [
       'nissan',
       [
-        ['rogue.png', 320, 240, 'Rogue'],
-        ['rogue-phev.png', 320, 240, 'Rogue PHEV'],
-        ['kicks.png', 320, 240, 'Kicks'],
-        ['murano.png', 320, 240, 'Murano'],
-        ['pathfinder.png', 320, 240, 'Pathfinder'],
-        ['armada.png', 320, 240, 'Armada'],
-        ['sentra.png', 320, 240, 'Sentra'],
-        ['altima.png', 320, 240, 'Altima'],
-        ['versa.png', 320, 240, 'Versa'],
-        ['frontier.png', 320, 240, 'Frontier'],
-        ['z.png', 320, 240, 'Z'],
+        // Tagged with nissandemo5's panes (2026-11-03). Versa is on none of
+        // them; it is filed under Cars so it does not land in every pane.
+        ['rogue.png', 320, 240, 'Rogue', 'Popular | SUVs'],
+        ['rogue-phev.png', 320, 240, 'Rogue PHEV', 'SUVs'],
+        ['kicks.png', 320, 240, 'Kicks', 'SUVs'],
+        ['murano.png', 320, 240, 'Murano', 'Popular | SUVs'],
+        ['pathfinder.png', 320, 240, 'Pathfinder', 'Popular | SUVs'],
+        ['armada.png', 320, 240, 'Armada', 'SUVs'],
+        ['sentra.png', 320, 240, 'Sentra', 'Cars'],
+        ['altima.png', 320, 240, 'Altima', 'Popular | Cars'],
+        ['versa.png', 320, 240, 'Versa', 'Cars'],
+        ['frontier.png', 320, 240, 'Frontier', 'Popular | Trucks'],
+        ['z.png', 320, 240, 'Z', 'Cars'],
       ],
     ],
     acura: [
@@ -1845,6 +1847,81 @@
         [992, 5],
       ],
       demos: 3,
+      // What nissandemo5 draws, measured with headless Chromium at 1366/800
+      // on 2026-11-03 - the `nissan-model-bar-bodystyle` code. Four panes
+      // (Popular, Cars, SUVs, Trucks), each a slick bar on 5, 991:3, 600:2,
+      // 400:1 - the ladder above, 992 kept over 991 because at 991 live
+      // squeezes five 130px cards under the tile's 150px floor.
+      //
+      // The body is Helvetica, 14px at 992 and up, 13px below; every em is
+      // against the 14. The bar sits on the site's own #f5f5f5 section:
+      // - "Choose From Our Inventory" in h2.h1 (36px, NissanBrand, uppercase),
+      //   28px over the tabs; no lead, no button;
+      // - 14px tabs in #222, padded 7px 15px, a grey | between them; the
+      //   picked one #c11428 with a 3px #c11428 line (a literal in the site
+      //   CSS - the theme token is #C3002F); hover recolours, no line; no rule;
+      // - cutouts butting at scale(0.95), full size on hover over 0.1s;
+      // - the name 14px, 400, #333, on a 20px line, straight under the art.
+      // BELOW 768 THE LIVE PAGE HIDES THE WHOLE SECTION, as nissandemo2, 3 and
+      // 6 do, so the phone tab padding and gap here are a designer's, sized so
+      // the four tabs and three dividers fit a 320 screen.
+      // No knob yet: the tab's #777 hover colour, the name's hover underline.
+      // Kept on purpose: the engine's #262626 chevron over the live 3.01:1
+      // grey on the band.
+      // Roster: Leaf is on the live SUVs tab and has no cutout here.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            // scale(0.95) as padding on the 4:3 card.
+            '--plate-pad': '1.875% 2.5%',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--tab-size': '1em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-color': '#222',
+              '--tab-selected': '#c11428',
+              '--tab-dim': '1',
+              '--tab-line': '#c11428',
+              '--tab-line-hover': 'transparent',
+              '--tab-line-size': '3px',
+              // 7px over the label, 7px plus the 3px line under it, 15px a
+              // side, in the 14px tab's em.
+              '--tab-pad': '0.5em 1.07em 0.71em',
+              // 31.4px box to box, the divider's own li included.
+              '--tab-gap': '2.24em',
+              '--tab-divider': "'|'",
+              '--tab-divider-color': '#333',
+              '--tab-divider-size': '1',
+              '--tab-rule': 'transparent',
+              '--tab-row-gap': '3.07em',
+              '--tab-fade': '0.15s',
+              // 28px in the 36px heading's em.
+              '--title-gap': '0.78em',
+              '--tab-pad-phone': '0.5em 0.71em 0.71em',
+              '--tab-gap-phone': '1.43em',
+            },
+            panes: ['Popular', 'Cars', 'SUVs', 'Trucks'],
+            words: { title: 'Choose From Our Inventory', titleClass: 'h1', lead: '', moreText: '' },
+          },
+        },
+      },
+      // PREVIEW ONLY: NissanBrand is the headings' face on the CDN, and
+      // nissandemo5's h1 rule draws the heading.
+      font: { family: 'NissanBrandW01-Regular', css: 'https://cdn.dealeron.com/assets/fonts/nissanbrandW01/fonts.min.css', headings: true },
+      theme: { css: '.h1{font-family:NissanBrandW01-Regular,Arial,Helvetica,sans-serif;font-size:36px;font-weight:500;text-transform:uppercase}' },
+      source: 'nissandemo5.dealeron.com, 2026-11-03',
     },
     porsche: { label: 'Porsche', look: 'tile', ladder: null, demos: 3 },
     ram: {
