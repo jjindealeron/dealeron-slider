@@ -43,6 +43,7 @@ npm run lint:css:fix   # stylelint --fix on src/**/*.css and demo/assets/*.css
 npm run lint:js:fix    # eslint --fix on src/**/*.js, demo/assets/*.js and scripts/
 npm run format         # prettier --write .
 npm run serve          # esbuild static server on http://127.0.0.1:8137 (for Lighthouse/demo)
+npm run export:lovable -- <dir>  # after build: writes <dir>/public/{demo,dist} for the Lovable copy, plus demo/coverage.html, the checklist generated from docs/coverage.md
 ```
 
 Run `validate` and `test` before committing; the browser sweep is the README "Verification

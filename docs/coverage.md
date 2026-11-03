@@ -139,13 +139,13 @@ A row moves to **Replacement built** when a preset in `brands.js` gains a `style
 `source` naming the page and date it was measured from — the same rule the presets already follow.
 The state lives in `brands.js`; this file is the readable view of it.
 
-That means this file can drift, and the only cheap guard is the one the repo already has a place
-for: `scripts/check-looks.mjs` runs inside `npm run validate` and already fails on a brand preset
-that names a knob which does not exist. Adding an assertion there — every brand carrying a `styles`
-block and a `source` must appear in this file with status **Replacement built** — would make a
-measurement that skips the ledger fail the build. It is a dozen lines and it only catches the
-direction that matters, since a row cannot claim "built" without a preset behind it either. Not done
-yet; it is a decision, not an oversight.
+`scripts/check-looks.mjs`, inside `npm run validate`, holds the two together both ways: a preset
+carrying measured `styles` and a `source` with no **Replacement built** row naming it as
+`` `brands.js` <id> `` fails the build, and so does a **Replacement built** row whose preset has no
+measured values behind it.
+
+The checklist page on the Lovable copy is generated from this file by `scripts/export-lovable.mjs`,
+which also fails when the summary table's counts disagree with the rows under it.
 
 ## Out of scope: the GM multi-make codes
 

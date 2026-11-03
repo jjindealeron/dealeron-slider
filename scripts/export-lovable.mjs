@@ -1,0 +1,301 @@
+// The static copy the Lovable project serves (Steven, 2026-11-03; see
+// docs/specs/2026-11-03-coverage-push-and-lovable.md). Lovable hosts the demo
+// pages and dist/ exactly as built - this repo, its tests and the size gate
+// stay the source - plus one page the repo does not have: the replacement-code
+// checklist, generated from docs/coverage.md so it can never disagree with the
+// ledger (and check-looks already holds the ledger to brands.js).
+//
+//   npm run build && node scripts/export-lovable.mjs <out-dir>
+//
+// writes <out-dir>/public/demo/ (with demo/coverage.html added) and
+// <out-dir>/public/dist/, replacing whatever an earlier export left there.
+// A Lovable project serves public/ from its root, so the pages keep the same
+// relative paths they have on GitHub Pages.
+
+import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { join, resolve, sep } from 'node:path';
+
+const outArg = process.argv[2];
+if (!outArg) {
+  console.error('usage: node scripts/export-lovable.mjs <out-dir>');
+  process.exit(1);
+}
+const repo = resolve('.');
+const out = resolve(outArg);
+if (out === repo || out.startsWith(repo + sep)) {
+  console.error(`export-lovable: ${out} is inside this repo - export somewhere outside it`);
+  process.exit(1);
+}
+for (const f of ['dist/dealeron-slider.min.js', 'dist/dealeron-slider.min.css', 'demo/index.html', 'docs/coverage.md']) {
+  if (!existsSync(f)) {
+    console.error(`export-lovable: ${f} is missing - run this from the repo root after npm run build`);
+    process.exit(1);
+  }
+}
+
+// ---- the ledger ----------------------------------------------------------
+
+const md = readFileSync('docs/coverage.md', 'utf8');
+const lines = md.split(/\r?\n/);
+
+/** @param {string} line */
+const cells = (line) =>
+  line
+    .trim()
+    .replace(/^\||\|$/g, '')
+    .split(/(?<!\\)\|/)
+    .map((c) => c.trim().replace(/\\\|/g, '|'));
+
+// The first table at or after the line that starts with `after`, as rows of
+// cells keyed by its header. Fails loudly: a ledger reshaped so this cannot
+// find its table must stop the export, not publish an empty checklist.
+/** @param {string} after */
+const tableAfter = (after) => {
+  const start = lines.findIndex((l) => l.startsWith(after));
+  if (start < 0) throw new Error(`docs/coverage.md has no line starting "${after}"`);
+  let i = start;
+  while (i < lines.length && !lines[i].startsWith('|')) i++;
+  const block = [];
+  while (i < lines.length && lines[i].startsWith('|')) block.push(lines[i++]);
+  if (block.length < 3) throw new Error(`docs/coverage.md: no table after "${after}"`);
+  const head = cells(block[0]);
+  return block.slice(2).map((l) => {
+    const c = cells(l);
+    return Object.fromEntries(head.map((h, k) => [h, c[k] ?? '']));
+  });
+};
+
+const unbold = (/** @type {string} */ s) => s.replace(/\*\*/g, '').trim();
+const summary = tableAfter('| Status').map((r) => ({ status: unbold(r.Status), n: Number(r.N), means: r['What it means'] }));
+const codes = tableAfter('## The codes');
+const outOfScope = tableAfter('## Out of scope');
+
+// The ledger's own counts against its own rows: the summary table is typed by
+// hand, and a checklist whose headline disagrees with its list is worse than
+// none.
+const known = new Set(summary.map((s) => s.status));
+for (const r of codes) {
+  if (!known.has(r.Status)) throw new Error(`docs/coverage.md: ${r['Replacement code']} has status "${r.Status}", which the summary table does not list`);
+}
+for (const s of summary) {
+  const n = codes.filter((r) => r.Status === s.status).length;
+  if (n !== s.n) throw new Error(`docs/coverage.md: the summary says ${s.n} "${s.status}", the table has ${n}`);
+}
+
+// ---- the page ------------------------------------------------------------
+
+const esc = (/** @type {string} */ s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+// The ledger's cells are Markdown: code spans, bold, italics. Code spans are
+// cut out first so an underscore or asterisk inside one is left alone.
+/** @param {string} s */
+const inline = (s) =>
+  s
+    .split(/(`[^`]+`)/)
+    .map((part) =>
+      part.length > 1 && part.startsWith('`') && part.endsWith('`')
+        ? `<code>${esc(part.slice(1, -1))}</code>`
+        : esc(part)
+            .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+            .replace(/(^|[^\w])_([^_]+)_(?=[^\w]|$)/g, '$1<em>$2</em>'),
+    )
+    .join('');
+
+// `acurademo1` is a DealerOn demo host; a cell with a dot is a dealer's own
+// domain. A dead example is shown, not linked.
+/** @param {string} cell @param {boolean} dead */
+const example = (cell, dead) => {
+  if (!/^[a-z0-9.-]+$/i.test(cell) || dead) return inline(cell);
+  const url = cell.includes('.') ? `https://${cell}/` : `https://${cell}.dealeron.com/`;
+  return `<a href="${esc(url)}" rel="noopener">${esc(cell)}</a>`;
+};
+
+const SECTIONS = [
+  {
+    id: 'todo',
+    title: 'To build',
+    statuses: ['Pattern ready, not measured', 'Needs a pattern we do not have'],
+    done: false,
+    blurb: 'Carousels on the live sites that the slider does not yet reproduce. Measuring one means reading its demo page and adding its values to a brand preset.',
+  },
+  { id: 'built', title: 'Built', statuses: ['Replacement built'], done: true, blurb: 'A measured preset draws this bar. Ready to hand a designer.' },
+  {
+    id: 'decide',
+    title: 'Waiting on the article',
+    statuses: ['Example is dead', 'Article looks wrong'],
+    done: null,
+    blurb: 'The Knowledge article’s example for these does not show the bar it describes, so there is nothing to measure until whoever owns the article fixes the link.',
+  },
+  {
+    id: 'not',
+    title: 'Not slider work',
+    statuses: ['Not a carousel', 'Retired'],
+    done: null,
+    blurb: 'Static grids, tabbed lists and a retired code. Turning a static grid into a carousel is a design decision, not a like-for-like swap, so these are not counted as gaps.',
+  },
+];
+
+const mark = (/** @type {boolean | null} */ done) =>
+  done === true
+    ? '<span class="cl-mark cl-done" aria-hidden="true">✓</span><span class="cl-sr">Done</span>'
+    : done === false
+      ? '<span class="cl-mark" aria-hidden="true"></span><span class="cl-sr">Not done</span>'
+      : '<span class="cl-mark cl-na" aria-hidden="true">–</span><span class="cl-sr">Not counted</span>';
+
+const section = (/** @type {(typeof SECTIONS)[number]} */ s) => {
+  const rows = codes.filter((r) => s.statuses.includes(r.Status));
+  const body = rows
+    .map(
+      (r) => `<tr>
+<td>${mark(s.done)}</td>
+<td>${inline(r.OEM)}</td>
+<td>${inline(r['Replacement code'])}</td>
+<td>${example(r['Example link'], r.Status === 'Example is dead')}</td>
+<td>${inline(r['Our pattern'])}</td>
+<td>${inline(r.Status)}</td>
+<td>${inline(r.Evidence)}</td>
+</tr>`,
+    )
+    .join('\n');
+  return `<section id="cl-${s.id}" aria-labelledby="cl-${s.id}-h">
+<h3 id="cl-${s.id}-h">${s.title} <span class="cl-count">${rows.length}</span></h3>
+<p>${s.blurb}</p>
+<div class="g-scroll" role="region" aria-label="${s.title}: table" tabindex="0"><table>
+<thead><tr><th scope="col"><span class="cl-sr">Done</span></th><th scope="col">OEM</th><th scope="col">Replacement code</th><th scope="col">Example</th><th scope="col">Our pattern</th><th scope="col">Status</th><th scope="col">Evidence</th></tr></thead>
+<tbody>
+${body}
+</tbody>
+</table></div>
+</section>`;
+};
+
+const count = (/** @type {string[]} */ statuses) => codes.filter((r) => statuses.includes(r.Status)).length;
+const inScope = codes.length;
+const built = count(['Replacement built']);
+const todo = count(SECTIONS[0].statuses);
+const blocked = count([...SECTIONS[2].statuses, ...SECTIONS[3].statuses]);
+
+let stamp = 'an uncommitted working copy';
+try {
+  const log = execFileSync('git', ['log', '-1', '--format=%h %cs', '--', 'docs/coverage.md', 'demo/assets/brands.js'], { encoding: 'utf8' }).trim();
+  if (log) {
+    const [hash, date] = log.split(' ');
+    stamp = `commit <code>${esc(hash)}</code> of ${esc(date)}`;
+  }
+} catch {
+  /* no git on PATH: say so rather than invent a commit */
+}
+
+const html = `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DealerOn Slider — replacement-code checklist</title>
+    <meta name="description" content="Every model-bar replacement code DealerOn ships, and which of them the slider can replace today." />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%2310151c'/><rect x='5' y='11' width='14' height='10' rx='2' fill='%23fff'/><rect x='21' y='13' width='6' height='6' rx='2' fill='%23e8a317'/></svg>"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/ui.css" />
+    <script>
+      try {
+        const t = localStorage.getItem('dos-theme');
+        if (t) document.documentElement.dataset.theme = t;
+      } catch {
+        /* private mode: fall through to the system preference */
+      }
+    </script>
+    <script src="assets/theme.js" defer></script>
+    <style>
+      .cl-sr { position: absolute; inline-size: 1px; block-size: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+      .cl-mark { display: inline-grid; place-items: center; inline-size: 1.15rem; block-size: 1.15rem; font-size: 0.8rem; font-weight: 700; color: var(--on-signal); border: 1.5px solid var(--ink-soft); border-radius: 4px; }
+      .cl-done { background: var(--signal); border-color: var(--signal); }
+      .cl-na { color: var(--ink-soft); border-style: dashed; }
+      .cl-count { padding: 0.1rem 0.55rem; margin-inline-start: 0.35rem; font-family: var(--mono); font-size: 0.8rem; font-weight: 500; vertical-align: middle; background: var(--sunken); border-radius: 999px; }
+      .cl-stats { display: flex; flex-wrap: wrap; gap: 0.75rem; padding: 0; margin: 1.25rem 0 0; list-style: none; }
+      .cl-stats li { padding: 0.7rem 1rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
+      .cl-stats strong { display: block; font-size: 1.6rem; font-stretch: 112%; }
+      .cl-stats span { font-size: 0.85rem; color: var(--ink-soft); }
+      /* Seven columns of codes and evidence need more than the reference page's 62rem. */
+      .cl-doc { max-inline-size: 90rem; }
+      .g-scroll td:nth-child(3), .g-scroll td:nth-child(5), .g-scroll td:nth-child(6) { white-space: nowrap; }
+      .g-scroll td:last-child { min-inline-size: 18rem; }
+      .g-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+    </style>
+  </head>
+  <body>
+    <header class="ui-head">
+      <div class="ui-head-in">
+        <h1 class="ui-brand"><a href="index.html">DealerOn Slider</a> <span id="ui-size">no dependencies</span></h1>
+        <nav class="ui-tabs" aria-label="Sections">
+          <a href="index.html">Build</a>
+          <a href="patterns.html">Patterns</a>
+          <a href="brands.html">Brands</a>
+          <a href="reference.html">Reference</a>
+          <a href="coverage.html" aria-current="page">Checklist</a>
+        </nav>
+        <button type="button" class="ui-theme" id="ui-theme" aria-label="Switch to dark theme" title="Switch theme">◐</button>
+      </div>
+    </header>
+
+    <main class="ui-doc cl-doc">
+      <h2 class="ui-title">Replacement-code checklist</h2>
+      <p class="ui-blurb">
+        Every model-bar replacement code in the Salesforce Knowledge article “Model Bar Replacement Codes” (000001851), and whether DealerOn Slider can replace it yet. One row per code, not per
+        brand: one brand ships several codes, and one code can span several brands.
+      </p>
+
+      <ul class="cl-stats">
+        <li><strong>${built} of ${inScope}</strong><span>codes in scope built</span></li>
+        <li><strong>${todo}</strong><span>to build</span></li>
+        <li><strong>${blocked}</strong><span>not slider work, or waiting on the article</span></li>
+        <li><strong>${outOfScope.length}</strong><span>GM multi-make codes, out of scope</span></li>
+      </ul>
+
+      <nav class="ui-toc" aria-label="On this page">
+${SECTIONS.map((s) => `        <a href="#cl-${s.id}">${s.title}</a>`).join('\n')}
+        <a href="#cl-out">Out of scope</a>
+      </nav>
+
+${SECTIONS.map(section).join('\n\n')}
+
+      <section id="cl-out" aria-labelledby="cl-out-h">
+        <h3 id="cl-out-h">Out of scope <span class="cl-count">${outOfScope.length}</span></h3>
+        <p>The GM multi-make combinations. The team no longer builds multi-make bars, so these are listed because the article still ships them, and counted nowhere.</p>
+        <div class="g-scroll" role="region" aria-label="Out of scope: table" tabindex="0"><table>
+          <thead><tr><th scope="col">Replacement code</th><th scope="col">Type</th><th scope="col">Example</th></tr></thead>
+          <tbody>
+${outOfScope.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inline(r.Type)}</td><td>${inline(r['Example link'])}</td></tr>`).join('\n')}
+          </tbody>
+        </table></div>
+      </section>
+
+      <section aria-labelledby="cl-src-h">
+        <h3 id="cl-src-h">Where this comes from</h3>
+        <p>
+          Generated from <code>docs/coverage.md</code> in the dealeron-slider repo at ${stamp}. A code moves to <strong>Built</strong> when a preset in <code>brands.js</code> gains measured values
+          and the page they were measured on; <code>npm run check:looks</code> fails the build when the ledger and the presets disagree, so this page is only ever as stale as its last export.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
+`;
+
+// ---- write ---------------------------------------------------------------
+
+const pub = join(out, 'public');
+mkdirSync(pub, { recursive: true });
+for (const dir of ['demo', 'dist']) {
+  rmSync(join(pub, dir), { recursive: true, force: true });
+  cpSync(dir, join(pub, dir), { recursive: true });
+}
+writeFileSync(join(pub, 'demo', 'coverage.html'), html);
+
+console.log(`export-lovable: ${join(pub, 'demo')} and ${join(pub, 'dist')} written`);
+console.log(`  checklist: ${built} of ${inScope} built, ${todo} to build, ${blocked} not counted, ${outOfScope.length} out of scope`);

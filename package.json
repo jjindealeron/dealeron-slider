@@ -24,6 +24,7 @@
     "test:sr": "playwright test -c playwright.sr.config.mjs",
     "test:ui": "playwright test --ui",
     "a11y": "node scripts/a11y.mjs",
+    "export:lovable": "node scripts/export-lovable.mjs",
     "validate": "npm run lint:css && npm run lint:css:generated && npm run lint:js && npm run lint:md && npm run format:check && npm run check:looks && npm run check:vendor && npm run typecheck"
   },
   "devDependencies": {
