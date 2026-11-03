@@ -1366,12 +1366,65 @@
     mitsubishi: {
       label: 'Mitsubishi',
       look: 'tile',
+      // Read off mitsubishidemo1's slick instance on 2026-11-03: 5 across, 3
+      // below 992, 2 below 460. The 768 rung that stood here was the census's
+      // quick pass, and nothing on the live page steps there.
       ladder: [
         [0, 2],
         [460, 3],
-        [768, 5],
+        [992, 5],
       ],
       demos: 3,
+      // What mitsubishidemo1 draws, measured with headless Chromium at
+      // 1366/800/390 on 2026-11-03 - the `mitsubishi-model-bar-slick` code.
+      //
+      // The body is MMC-Office, 14px at 992 and up, 13px below; every em is
+      // against the 14. The bar sits in a #000 section with white text under
+      // an "Our Vehicles" h2 and a lead - the PAGE's band and words, not the
+      // bar's:
+      // - five models, slides butting, each cutout drawn at scale(0.85) and
+      //   0.9 on hover over 0.1s;
+      // - the name 16.8px, 400, on a 24px line, straight under the art;
+      // - slick's 35px arrows in a 35px channel, drawn only at 800 here.
+      // NO COLOUR (Steven, 2026-09-15, written up on the GMC entry): the
+      // white name and the black come from the dealer's section class, so
+      // nothing here assumes a dark band; the pattern's #262626 arrow reads
+      // on the page's own ground.
+      // Not carried, no knob: the live card crops each cutout to a 55% box
+      // (cover), which puts the name about 21px closer to the car than ours.
+      // Departures: below 768 the live page hides the whole section
+      // (display: none), so the phone has nothing to measure - ours shows the
+      // bar, one card per view under 460. The live arrow is 2.65:1 on its
+      // black. Roster: the live bar runs Eclipse Cross, Eclipse Sportback,
+      // Outlander, Outlander Plug-in Hybrid and Outlander Sport; this repo has
+      // the Outlander cutout only.
+      styles: {
+        looks: {
+          tile: {
+            '--name-size': '1.2em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            // scale(0.85) as padding on the 4:3 card: 7.5% a side, 5.625%
+            // (7.5% x 0.75) top and bottom.
+            '--plate-pad': '5.625% 7.5%',
+            // 0.85 -> 0.9.
+            '--img-hover-scale': '1.0588',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '0.1px',
+            },
+          },
+        },
+      },
+      // PREVIEW ONLY.
+      font: { family: 'MMC-Office', css: 'https://cdn.dealeron.com/assets/fonts/mmc-office/fonts.min.css' },
+      source: 'mitsubishidemo1.dealeron.com, 2026-11-03',
     },
     nissan: {
       label: 'Nissan',
