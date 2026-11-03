@@ -51,9 +51,14 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
   per-pattern, or the name colour moves onto the tabbed pattern. Measured on `brands.html` at 1366.
 - **Acura's ZDX name rides 27px higher than the rest** at any preset: `zdx.png` is 480x300 (16:10)
   among 320x240 cutouts, so its card is shorter. Fix the art, not the preset.
-- **Unverified, raised by a measuring agent:** GMC's preset comment says the name "inherits" the
-  page's colour, but the tile's `--name-color` defaults to `#222`. Check what a GMC bar draws on a
-  dark section before trusting the comment.
+- **GMC's and Mitsubishi's names go dark on their own dark sections.** Both live bars sit on black
+  (gmcdemo1's page, mitsubishidemo1's #000 section), and both presets set no colour under the
+  2026-09-15 rule. But the tile writes `color: var(--name-color)` on `.cargo-name` itself
+  (`looks.js`), defaulting to `#222`, so a section's white text never reaches the name, and the
+  `#262626` arrow is near-invisible there too. GMC's comment that the name "inherits" is wrong in
+  the code. Paste either onto a dark section before handing it out; the fix is one decision for both
+  (the name inheriting by default, or the band rule bending for these two). Steven, 2026-11-03: to
+  be addressed in the next round of edits.
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
