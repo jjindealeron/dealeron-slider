@@ -64,8 +64,10 @@ Kept on purpose:
 - [x] Commit, push, CI green (8cf45d7: validate, browsers, a11y gate, Pages build)
 - [x] Rename the GitHub repo and its homepage field; Pages answers at `/dealeron-slider/` with
       `dist/` byte-identical, and `/custom-slider/` is a 404 as expected
-- [ ] Rename the local folder `~/Dev/custom-slider` → `~/Dev/dealeron-slider`
-- [ ] Steven: rename `custom-slider` → `dealeron-slider` in `~/.claude` (`settings.json` ×5,
+- [x] Rename the local folder `~/Dev/custom-slider` → `~/Dev/dealeron-slider` (checked 2026-11-03:
+      the old path is gone)
+- [x] Steven: rename `custom-slider` → `dealeron-slider` in `~/.claude` (`settings.json` ×5,
       `scripts/add-branch-rulesets.mjs`, `scripts/check-branch-protection.mjs`,
-      `hooks/tool-rules.mjs` comment) — auto mode refused Claude editing its own config
+      `hooks/tool-rules.mjs` comment) — checked 2026-11-03: none of the four names `custom-slider`,
+      and `settings.json` names `dealeron-slider` 5 times
 - [ ] Steven: upload the four `dealeron-slider` files into `…/Apps/dealeronSlider/`
