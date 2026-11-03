@@ -18,7 +18,9 @@
 // coverage.html, a file under public/demo/assets/ or public/dist/ - by
 // attaching them in the project chat and asking for a byte-for-byte replace
 // (what worked on 2026-11-03), then publish and compare the live files'
-// SHA-256 with this export's; a new ZIP import makes a new project at a new
+// SHA-256 with this export's - a minute after publishing, since the edge
+// serves the old file for a while even though Lovable already says "up to
+// date"; a new ZIP import makes a new project at a new
 // address. Two
 // traps found on the first import: Lovable's template .gitignore has a bare
 // `dist`, which swallows public/dist (the project's now reads `/dist` plus
