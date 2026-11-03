@@ -16,6 +16,8 @@ accessibility behaviors, verification checklist) — read it before changing any
 Design rationale lives in `docs/specs/` (start with `2026-07-13-custom-slider-design.md`). Work
 agreed but not started is `docs/roadmap.md`; findings triaged as non-blocking and left for a
 decision are `docs/backlog.md`; the dated evidence behind the rules here is `docs/history.md`.
+`docs/handoff.md` (2026-11-03) is the map for whoever runs this after Steven: where each copy lives
+(repo, FTP, Lovable, GitHub Pages) and the workflows between them.
 
 **What this repo can actually replace is `docs/coverage.md`** — one row per replacement code, not
 per brand (one brand ships several codes, and one code can span several presets). The list of codes

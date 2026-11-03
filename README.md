@@ -25,6 +25,9 @@ is live at **<https://stevenpelletier90.github.io/dealeron-slider/demo/>** (the 
 run and `dist/` is committed and pushed. The repo keeps the name `dealeron-slider` on purpose: the
 2026-08-31 rename left it alone so this link survives. Never rename the repo.
 
+**Taking this over?** Start with [docs/handoff.md](docs/handoff.md): where every copy lives, how a
+model bar becomes a replacement code, how the Brands page is updated, and what is still open.
+
 ## Quick start (CMS / classic script)
 
 ```html
