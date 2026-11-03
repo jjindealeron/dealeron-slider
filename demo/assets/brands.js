@@ -519,6 +519,51 @@
         [768, 4],
       ],
       demos: 2,
+      // What buickdemo1 draws, measured with headless Chromium at 1366/800/390
+      // on 2026-11-03 - the `buick-model-bar-slick` code. Slick 4, 768:3,
+      // 460:2, the ladder above.
+      //
+      // The body is Buick-Text-Regular, 14px at 992 and up, 13px below; every
+      // em is against the 14. Four cutouts on the page's white:
+      // - slides butting, the art at scale(0.95) going to full size over 0.1s
+      //   on hover - GMC's and Honda's card, the same numbers;
+      // - the name in the platform's `.larger` (16.8px), 400, #333, on a 24px
+      //   line, pulled 10px up over the transparent foot of the cutout;
+      // - slick's 35px arrows in a 35px channel, drawn only when the cards
+      //   overflow (390 here).
+      // Kept on purpose: the engine's #262626 chevron (the live #6c6c6c at
+      // 0.75 is 3.16:1 on white), and one card per view below 460, where the
+      // live bar squeezes two 145px cards under the tile's 150px floor.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.2em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            // -10px of the 16.8px name. With the 1.875% of padding under the
+            // art this puts the name 5px inside the picture box, as live.
+            '--name-gap': '-0.595em',
+            // scale(0.95) as padding on a border-box image: 2.5% a side, and
+            // 1.875% (2.5% x 0.75) top and bottom on the 4:3 card.
+            '--plate-pad': '1.875% 2.5%',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            // The live channel is exactly the arrow's width.
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '0.1px',
+            },
+          },
+        },
+      },
+      // PREVIEW ONLY.
+      font: { family: 'Buick-Text-Regular', css: 'https://cdn.dealeron.com/assets/fonts/buick/fonts.min.css' },
+      source: 'buickdemo1.dealeron.com, 2026-11-03',
     },
     cadillac: {
       label: 'Cadillac',
