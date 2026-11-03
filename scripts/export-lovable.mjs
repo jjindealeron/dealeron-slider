@@ -200,16 +200,20 @@ const blocked = count([...SECTIONS[2].statuses, ...SECTIONS[3].statuses]);
 // says where the hosted files stand - probed now, at export, against a demo
 // host and compared to this build's bytes, so it cannot go stale the way a
 // typed status would (README "Deployment status" is the written record).
+// The platform re-minifies the CSS it is given (that section again), so a
+// current dealeron-slider.min.css never matches dist/ byte for byte and only
+// has to be there; the other three files must match exactly.
 const SHARED = 'https://cadillacdemo1.dealeron.com/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/';
 const today = new Date().toISOString().slice(0, 10);
 let hosted;
 try {
-  const files = ['dealeron-slider.min.js', 'dealeron-slider.min.css'];
-  const res = await Promise.all(files.map((f) => fetch(SHARED + f + '?v=' + Date.now(), { cache: 'no-store' })));
-  if (res.some((r) => r.status === 404)) hosted = 'missing';
-  else if (res.every((r) => r.ok)) {
-    const bodies = await Promise.all(res.map((r) => r.arrayBuffer()));
-    hosted = bodies.every((b, i) => Buffer.from(b).equals(readFileSync(join('dist', files[i])))) ? 'current' : 'behind';
+  const exact = ['dealeron-slider.min.js', 'dealeron-slider.js', 'dealeron-slider.css'];
+  const res = await Promise.all([...exact, 'dealeron-slider.min.css'].map((f) => fetch(SHARED + f + '?v=' + Date.now(), { cache: 'no-store' })));
+  const [minJs, , , minCss] = res;
+  if (minJs.status === 404 || minCss.status === 404) hosted = 'missing';
+  else if (minJs.ok && minCss.ok) {
+    const same = await Promise.all(exact.map(async (f, i) => res[i].ok && Buffer.from(await res[i].arrayBuffer()).equals(readFileSync(join('dist', f)))));
+    hosted = same.every(Boolean) ? 'current' : 'behind';
   } else hosted = 'unknown';
 } catch {
   hosted = 'unknown';
