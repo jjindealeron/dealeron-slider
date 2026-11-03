@@ -1484,6 +1484,53 @@
         [768, 4],
       ],
       demos: 3,
+      // What landroverdemo3 draws, measured with headless Chromium at
+      // 1600/1366/1100/800/390 on 2026-11-03 - the `land-rover-model-bar-slick`
+      // code. Slick 4, 768:3, 460:2, the ladder above.
+      //
+      // The body is avenir-lt-pro (Adobe Typekit), 14px at 992 and up, 13px
+      // below; every em is against the 14. Seven PHOTOS (680x383) on the
+      // page's white, the JLR photo card Jaguar wears too:
+      // - each photo edge to edge, no scale, slides padded 10px a side so
+      //   20px between photos;
+      // - the name 18px (14px at 768 and below), 500, uppercase, #000, on a
+      //   1.1 line, 18px under the photo, left-aligned, in lr_ot4;
+      // - a tagline under it at the body size, #767676, and a hover that fades
+      //   the photo to 0.5 over 1s - neither has a knob (nor does the left
+      //   alignment), so a measured brand's rows carry no tagline and the
+      //   tile's zoom stays off.
+      // Kept on purpose: the engine's #262626 chevron (the live #6c6c6c round
+      // glyph at 0.75 is 3.15:1 on white). Uppercase 16.7px names wrap to two
+      // lines on a phone card where the live name drops to 14px.
+      // Roster: the live bar runs Range Rover, Range Rover Sport, Velar,
+      // Evoque, Discovery, Discovery Sport and Defender as photos; this repo
+      // has Defender and Range Rover as 4:3 cutouts.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#000',
+            '--name-size': '1.2857em',
+            '--name-weight': '500',
+            '--name-case': 'uppercase',
+            '--name-leading': '1.1',
+            // 18px on the 18px name.
+            '--name-gap': '1em',
+            // A photo runs edge to edge; the tile's inset is for cutouts.
+            '--plate-pad': '0.1px',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '1.4286em',
+            },
+          },
+        },
+      },
+      // PREVIEW ONLY: lr_ot4 is the headings' face on the CDN; the body's
+      // Typekit kit is locked to the brand's domains.
+      font: { family: 'lr_ot4', css: 'https://cdn.dealeron.com/assets/fonts/landroverweb/fonts.min.css', headings: true },
+      source: 'landroverdemo3.dealeron.com, 2026-11-03',
     },
     lexus: {
       label: 'Lexus',
