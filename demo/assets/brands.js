@@ -1141,6 +1141,56 @@
         [768, 4],
       ],
       demos: 1,
+      // What jaguardemo3 draws (it redirects to dealer19076.dealeron.com),
+      // measured with headless Chromium at 1366/800/390 on 2026-11-03 - the
+      // `jaguar-model-bar-slick` code. Slick 4, 768:3, 460:2, which is the
+      // ladder above to the pixel.
+      //
+      // The body is proxima-nova from Adobe Fonts, 14px at 992 and up, 13px
+      // below; every em is against the 14. The live bar draws PHOTOS, 640x360
+      // and full-bleed, under the name in JaguarModernRegular:
+      // - the name 18px (14px below 768), uppercase, #333, on a 19.8px line,
+      //   18px under the photo;
+      // - slides padded 10px a side, so 20px between photos;
+      // - a 14px #767676 blurb under the name, hidden below 992 - no knob for
+      //   its size or its hiding, so a measured brand's rows carry none;
+      // - hover fades the photo to 0.5 over 1s - no knob for an opacity
+      //   hover, and the tile's zoom stays off.
+      // Kept on purpose: the engine's #262626 chevron (the live grey circle
+      // glyph is 3.15:1 on white) and the link round the whole card where the
+      // live one wraps only the photo.
+      // The name renders 16.8px on a phone where the live one drops to 14: our
+      // type follows the host's body, theirs is pinned per tier.
+      // Roster: the live bar runs F-PACE, E-PACE, I-PACE, F-TYPE and XF; this
+      // repo has cutouts for F-PACE and F-TYPE only.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.29em',
+            // JaguarModernRegular has a Regular and a Bold face only; 500
+            // draws the Regular, which is what the live name shows.
+            '--name-weight': '500',
+            '--name-case': 'uppercase',
+            '--name-leading': '1.1',
+            // 18px on the 18px name: 1em of the name itself.
+            '--name-gap': '1em',
+            // The live art is a photo flush with the card's edge.
+            '--plate-pad': '0.1px',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '1.43em',
+            },
+          },
+        },
+      },
+      // No font entry: the body is an Adobe Fonts kit DealerOn's CDN does not
+      // serve, and JaguarModernRegular (cdn.dealeron.com/assets/fonts/jaguar)
+      // is the name's face only - set on the body it would redraw every word.
+      source: 'jaguardemo3.dealeron.com (redirects to dealer19076.dealeron.com), 2026-11-03',
     },
     jeep: {
       label: 'Jeep',
