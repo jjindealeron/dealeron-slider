@@ -13,7 +13,10 @@
 // relative paths they have on GitHub Pages.
 //
 // The live copy is https://dealeron-slider.lovable.app (DealerOn's Lovable
-// workspace, imported from a ZIP on 2026-11-03, no Git sync). To refresh it,
+// workspace, imported from a ZIP on 2026-11-03, no Git sync). Every exported
+// page also loads assets/gate.js, a password gate (see "the password gate"
+// below); that one script line is the only change to the demo's own pages.
+// To refresh it,
 // replace the changed files IN PLACE in that project - public/demo/
 // coverage.html, a file under public/demo/assets/ or public/dist/ - by
 // attaching them in the project chat and asking for a byte-for-byte replace
@@ -27,7 +30,7 @@
 // `!public/dist/`, and must keep doing so), and the id-preview address serves
 // a stale build - check the PUBLISHED site, byte for byte, after publishing.
 
-import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
 import { join, resolve, sep } from 'node:path';
 
@@ -334,6 +337,88 @@ ${outOfScope.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inli
 </html>
 `;
 
+// ---- the password gate ---------------------------------------------------
+
+// A password on the Lovable copy was asked for (Steven, 2026-11-03). On this
+// workspace's Pro plan Lovable's own access control is a Lovable sign-in per
+// invited person, so this is a page-side gate instead: every exported page
+// loads assets/gate.js first, and it covers the page until the password is
+// typed, once per browser. It keeps a casual visitor out and nothing more - the
+// page source, this repo and GitHub Pages (which has no gate) all show the same
+// content. Only the password's SHA-256 is here and in gate.js; Steven holds the
+// password. To change it, put the new hash here, export, and replace
+// public/demo/assets/gate.js on Lovable (the pages only point at it):
+//   node -e "console.log(require('crypto').createHash('sha256').update(process.argv[1]).digest('hex'))" "<new password>"
+const GATE_SHA256 = '22da806304c04f55f7584b6466a74d1a8a4da398329387d146b9373414aa363e';
+
+const gate = `// Written by scripts/export-lovable.mjs (dealeron-slider repo). Covers the
+// page until the password is typed; a gate for casual visitors, not access
+// control - see that script for why.
+(() => {
+  const HASH = '${GATE_SHA256}';
+  const KEY = 'dos-gate';
+  try {
+    if (localStorage.getItem(KEY) === HASH) return;
+  } catch {
+    /* storage blocked: ask on every page */
+  }
+  const root = document.documentElement;
+  root.classList.add('dos-locked');
+  const css = document.createElement('style');
+  css.textContent = [
+    'html.dos-locked, html.dos-locked body { overflow: hidden; }',
+    'html.dos-locked body > :not(#dos-gate) { visibility: hidden !important; }',
+    '#dos-gate { position: fixed; inset: 0; z-index: 2147483647; display: grid; place-items: center; padding: 1rem; font: 16px/1.4 system-ui, sans-serif; color: #10151c; background: #10151c; }',
+    '#dos-gate form { display: grid; gap: 0.6rem; inline-size: min(100%, 20rem); padding: 1.5rem; background: #fff; border-radius: 12px; }',
+    '#dos-gate h1 { margin: 0 0 0.4rem; font-size: 1.25rem; }',
+    '#dos-gate input { padding: 0.55rem 0.7rem; font: inherit; color: inherit; background: #fff; border: 1px solid #5b6573; border-radius: 6px; }',
+    '#dos-gate button { padding: 0.6rem; font: inherit; font-weight: 600; color: #fff; cursor: pointer; background: #10151c; border: 0; border-radius: 6px; }',
+    '#dos-gate :focus-visible { outline: 2px solid #10151c; outline-offset: 2px; }',
+    '#dos-gate p { min-block-size: 1.4em; margin: 0; font-size: 0.9rem; color: #b3261e; }',
+  ].join('\\n');
+  document.head.append(css);
+  const show = () => {
+    const box = document.createElement('div');
+    box.id = 'dos-gate';
+    box.setAttribute('role', 'dialog');
+    box.setAttribute('aria-modal', 'true');
+    box.setAttribute('aria-labelledby', 'dos-gate-h');
+    box.innerHTML =
+      '<form><h1 id="dos-gate-h">DealerOn Slider</h1><label for="dos-gate-pw">Password</label>' +
+      '<input id="dos-gate-pw" type="password" autocomplete="current-password" required />' +
+      '<p id="dos-gate-msg" role="alert"></p><button type="submit">Open</button></form>';
+    document.body.append(box);
+    const input = box.querySelector('input');
+    const msg = box.querySelector('p');
+    box.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!window.crypto?.subtle) {
+        msg.textContent = 'Open this page over https to enter the password.';
+        return;
+      }
+      const sum = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(input.value));
+      const hex = Array.from(new Uint8Array(sum), (b) => b.toString(16).padStart(2, '0')).join('');
+      if (hex !== HASH) {
+        msg.textContent = 'That password is not right.';
+        input.select();
+        return;
+      }
+      try {
+        localStorage.setItem(KEY, HASH);
+      } catch {
+        /* this page only */
+      }
+      box.remove();
+      css.remove();
+      root.classList.remove('dos-locked');
+    });
+    input.focus();
+  };
+  if (document.body) show();
+  else document.addEventListener('DOMContentLoaded', show, { once: true });
+})();
+`;
+
 // ---- write ---------------------------------------------------------------
 
 const pub = join(out, 'public');
@@ -343,6 +428,20 @@ for (const dir of ['demo', 'dist']) {
   cpSync(dir, join(pub, dir), { recursive: true });
 }
 writeFileSync(join(pub, 'demo', 'coverage.html'), html);
+
+// The gate's tag goes straight after the charset line, ahead of every
+// stylesheet and script, so the page is covered before it paints. A page
+// without that line stops the export rather than shipping ungated.
+const CHARSET = '<meta charset="utf-8" />';
+writeFileSync(join(pub, 'demo', 'assets', 'gate.js'), gate);
+for (const name of readdirSync(join(pub, 'demo')).filter((n) => n.endsWith('.html'))) {
+  const file = join(pub, 'demo', name);
+  const page = readFileSync(file, 'utf8');
+  const at = page.indexOf(CHARSET);
+  if (at < 0) throw new Error(`export-lovable: demo/${name} has no ${CHARSET} line to put the password gate after`);
+  const cut = at + CHARSET.length;
+  writeFileSync(file, `${page.slice(0, cut)}\n    <script src="assets/gate.js"></script>${page.slice(cut)}`);
+}
 
 console.log(`export-lovable: ${join(pub, 'demo')} and ${join(pub, 'dist')} written`);
 console.log(`  checklist: ${built} of ${inScope} built, ${todo} to build, ${blocked} not counted, ${outOfScope.length} out of scope`);
