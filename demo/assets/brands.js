@@ -1436,6 +1436,51 @@
       ],
       demos: 3,
       note: 'A flat light-gray band. Some client builds switch to four across one pixel earlier than the demo sites do — same counts either way.',
+      // What lincolndemo2 draws, measured with headless Chromium at
+      // 1366/800/390 on 2026-11-03 - the `lincoln-model-bar-slick` code.
+      // Slick 4, 992:3, 460:2, the ladder above. lincolndemo2's section is
+      // transparent on white: the gray band in the note is another demo's.
+      //
+      // The body is proxima-nova (Adobe Typekit), 14px; every em is against
+      // it. Navigator, Aviator, Nautilus and Corsair, this roster exactly:
+      // - slides butting; the art padded 0 10px inside its box and drawn at
+      //   scale(0.95), full size on hover over 0.1s;
+      // - the name 16.8px, uppercase, #333, on a 24px line, pulled up over the
+      //   cutout's foot (-10px from 1200, -5px below). Declared 300, but the
+      //   kit loads 400 and 700 only, so the live name renders 400.
+      // Kept on purpose: the engine's #262626 chevron (the live #6c6c6c at
+      // 0.75 is 3.16:1 on white); the name's pull at its desktop value, since
+      // a knob cannot step it per tier.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.2em',
+            '--name-weight': '400',
+            '--name-case': 'uppercase',
+            '--name-leading': '1.4286',
+            '--name-gap': '-0.32em',
+            // The live 10px of padding is FIXED and the scale(0.95) is a
+            // percentage, so neither a plain percent nor a plain em follows
+            // both: 1.02em/0.68em is the 10px (x0.95, in the 14px card) and
+            // 3.75%/2.5% the scale's inset, which lands on the live art at all
+            // three measured widths.
+            '--plate-pad': 'calc(3.75% + 1.02em) calc(2.5% + 0.68em) 0',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '0.1px',
+            },
+          },
+        },
+      },
+      // No font entry: the body is a Typekit kit DealerOn's CDN does not serve.
+      source: 'lincolndemo2.dealeron.com, 2026-11-03',
     },
     mini: { label: 'MINI', look: 'tile', ladder: null, demos: 3 },
     mazda: {
