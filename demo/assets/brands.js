@@ -327,12 +327,13 @@
     mazda: [
       'mazda',
       [
-        ['cx-30.png', 480, 209, 'CX-30'],
-        ['cx-5.png', 480, 209, 'CX-5'],
-        ['cx-50.png', 480, 209, 'CX-50'],
-        ['cx-90.png', 480, 209, 'CX-90'],
-        ['mazda3-sedan.png', 480, 209, 'Mazda3 Sedan'],
-        ['mx-5-miata.png', 480, 209, 'MX-5 Miata'],
+        // Tagged with mazdademo1's filters (2026-11-03); All lists every model.
+        ['cx-30.png', 480, 209, 'CX-30', 'All | Crossovers & SUVs'],
+        ['cx-5.png', 480, 209, 'CX-5', 'All | Crossovers & SUVs'],
+        ['cx-50.png', 480, 209, 'CX-50', 'All | Crossovers & SUVs'],
+        ['cx-90.png', 480, 209, 'CX-90', 'All | Crossovers & SUVs'],
+        ['mazda3-sedan.png', 480, 209, 'Mazda3 Sedan', 'All | Sedans & Hatchbacks'],
+        ['mx-5-miata.png', 480, 209, 'MX-5 Miata', 'All | Sports Cars'],
       ],
     ],
     // Cutouts from the folders toyotademo1's own model bar reads
@@ -1773,6 +1774,87 @@
       ],
       demos: 2,
       note: 'Name above the car, inventory chip below — and the only bar we surveyed that keeps its dots.',
+      // What mazdadesign1 draws (it redirects to mazdademo1.dealeron.com),
+      // measured with headless Chromium at 1366/800/390 on 2026-11-03 - the
+      // `mazda-model-bar-slick-tabbed` code. Slick 3, 991:2, 768:1, the ladder
+      // above.
+      //
+      // The live tabs are FILTERS on one 12-slide bar (slickFilter by class,
+      // a model in two tabs at once), not panes - a shopper sees the same
+      // thing as the `tabs` pattern, which is what this is built on. "All"
+      // lists every model, so every roster row is tagged All too.
+      //
+      // The body is MazdaType-Regular, 14px at 992 and up, 13px below; every
+      // em is against the 14. A white section padded 3em, no heading, lead or
+      // button:
+      // - five uppercase tabs, 16.8px, 400, #767676, the picked one and hover
+      //   #101010 in the Medium face, padded 10px 15px, about 14.4px apart, no
+      //   line, no rule, no dividers;
+      // - slides butting, the picture drawn at 85%, the name ABOVE it: 14px,
+      //   500, uppercase, 2px tracking, on a 1.1 line, 28px over the picture;
+      // - a #d5d5d5 chip under the picture ("22 Available"), which only draws
+      //   on a row that carries one.
+      // Departures: the pattern's underline stays under the picked tab (live
+      // marks it by colour alone, which fails WCAG 1.4.1); the live bar's
+      // sibling dim on hover (0.5, about 3.5:1) and its twelve dots are not
+      // copied; on a phone ours scrolls one row of tabs where live stacks
+      // five 350px bars.
+      // No knob yet: the name's and picked tab's Medium face, the tab hover
+      // colour, the chip's radius and size.
+      // Roster: the live Electrified tab (CX-50 Hybrid, CX-70 PHEV, CX-90
+      // PHEV) has no cutouts here, and a pane no row reaches fails
+      // lint:css:generated, so it is left out; the live bar's twelve models
+      // are "Mazda …" where this roster's six are bare names.
+      styles: {
+        looks: {
+          tile: {
+            // The name above the picture.
+            '--name-order': '-1',
+            '--name-color': '#101010',
+            '--name-size': '1em',
+            '--name-weight': '500',
+            '--name-case': 'uppercase',
+            // 2px of the 14px name.
+            '--name-tracking': '0.143em',
+            '--name-leading': '1.1',
+            '--name-gap': '0.1px',
+            // The 28px between name and picture as the image's top padding
+            // (28px of a 337px card), and 7.5% a side for the 85% picture.
+            '--plate-pad': '8.3% 7.5% 0',
+            '--cta-bg': '#d5d5d5',
+            '--cta-fg': '#101010',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--tab-size': '1.2em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-case': 'uppercase',
+              // 4.54:1 on white.
+              '--tab-color': '#767676',
+              '--tab-selected': '#101010',
+              '--tab-dim': '1',
+              '--tab-rule': 'transparent',
+              // 16px by 15px in the 16.8px tab's em, then 16px by 10px in the
+              // 15.6px tab's.
+              '--tab-pad': '0.952em 0.893em',
+              '--tab-pad-narrow': '1.026em 0.641em',
+              '--tab-gap': '0.86em',
+              '--tab-gap-narrow': '0.9em',
+              '--tab-row-gap': '3em',
+              '--bar-pad': '3em',
+            },
+            panes: ['All', '[Crossovers & ]SUVs', 'Sedans [& Hatchbacks]', 'Sports [Cars]'],
+            words: { title: '', lead: '', moreText: '' },
+          },
+        },
+      },
+      // PREVIEW ONLY.
+      font: { family: 'MazdaType-Regular', css: 'https://cdn.dealeron.com/assets/fonts/mazdatype/fonts.min.css' },
+      source: 'mazdadesign1.dealeron.com (redirects to mazdademo1.dealeron.com), 2026-11-03',
     },
     mitsubishi: {
       label: 'Mitsubishi',
