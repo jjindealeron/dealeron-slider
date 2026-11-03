@@ -11,6 +11,16 @@
 // <out-dir>/public/dist/, replacing whatever an earlier export left there.
 // A Lovable project serves public/ from its root, so the pages keep the same
 // relative paths they have on GitHub Pages.
+//
+// The live copy is https://dealeron-slider.lovable.app (DealerOn's Lovable
+// workspace, imported from a ZIP on 2026-11-03, no Git sync). To refresh it,
+// replace the changed files IN PLACE in that project's code editor -
+// public/demo/coverage.html, a file under public/demo/assets/ or public/dist/
+// - and publish; a new ZIP import makes a new project at a new address. Two
+// traps found on the first import: Lovable's template .gitignore has a bare
+// `dist`, which swallows public/dist (the project's now reads `/dist` plus
+// `!public/dist/`, and must keep doing so), and the id-preview address serves
+// a stale build - check the PUBLISHED site, byte for byte, after publishing.
 
 import { cpSync, existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';

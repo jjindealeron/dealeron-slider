@@ -44,13 +44,20 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
 - [x] Checklist page: `scripts/export-lovable.mjs` writes `demo/coverage.html` from
       `docs/coverage.md` into the export; axe clean, no sideways scroll, light and dark, 1366 and
       390
-- [ ] Lovable: Git sync is blocked — the DealerOn workspace's only GitHub connection is
+- [x] Lovable: Git sync is blocked — the DealerOn workspace's only GitHub connection is
       `jjindealeron`, and adding one needs workspace Git access Steven's account does not have.
-      Steven chose a ZIP import for today ("DealerOn Slider Hub", created first with the plain link
-      page, is left for Steven to keep or delete). Import the export as a ZIP, check it, publish
+      Steven chose a ZIP import ("DealerOn Slider Hub", created first with the plain link page, is
+      left for Steven to keep or delete). Imported by Steven (the 19 MB ZIP is over the browser
+      tool's 10 MB upload cap) and published as **<https://dealeron-slider.lovable.app>**. The
+      import dropped the engine: Lovable's template `.gitignore` has a bare `dist`, which swallowed
+      `public/dist`, so no slider started; fixed in the project (`/dist` plus `!public/dist/`, the
+      four files re-attached). Checked on the published site: 29 files byte-identical to the export,
+      the engine up and every slider started on patterns (28) and brands (101), the demo's Build tab
+      loads `/demo/index.html`, the checklist reads 20 of 49 at commit 4d8f124
 - [ ] ~~Git sync for the Lovable copy~~ — not coming: Steven is leaving DealerOn and does not expect
       workspace Git access. After today's import, a refresh edits the project's files in place in
       Lovable's code editor (same project, same address); a new ZIP import would make a new project
       at a new address
-- [ ] Variant presets for the 11
-- [ ] Handover ZIP
+- [ ] Variant presets for the 11 (not started; in `docs/backlog.md`)
+- [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,
+      `dealeron-slider-repo-2026-11-03.zip` (421 files, tracked only)
