@@ -1566,9 +1566,10 @@
       // Departures: the phone tab padding and gap are tightened so the row
       // fits a 320 screen (live needs 319.5px of a 288px container), and the
       // engine's #262626 chevron replaces the live 2.67:1 grey on the band.
-      // Roster: tagged with the live panes. Sedans (IS, ES, ES Hybrid) has no
-      // cutouts in this repo, so that tab stays out of the bar until a
-      // designer adds a row tagged Sedans.
+      // Roster: tagged with the live panes. The live Sedans pane (IS, ES, ES
+      // Hybrid, between the two below) has no cutouts in this repo, and a pane
+      // no roster row reaches fails lint:css:generated, so it is left out of
+      // `panes` until those cutouts exist.
       styles: {
         looks: {
           tile: {
@@ -1613,7 +1614,7 @@
               '--tab-gap-phone': '0.55em',
               '--tab-fade': '0.15s',
             },
-            panes: ['SUVs', 'Sedans', 'Hybrids & Electric'],
+            panes: ['SUVs', 'Hybrids & Electric'],
             words: { title: '', lead: '', moreText: '' },
           },
         },
