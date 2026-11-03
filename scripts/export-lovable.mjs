@@ -14,9 +14,12 @@
 //
 // The live copy is https://dealeron-slider.lovable.app (DealerOn's Lovable
 // workspace, imported from a ZIP on 2026-11-03, no Git sync). To refresh it,
-// replace the changed files IN PLACE in that project's code editor -
-// public/demo/coverage.html, a file under public/demo/assets/ or public/dist/
-// - and publish; a new ZIP import makes a new project at a new address. Two
+// replace the changed files IN PLACE in that project - public/demo/
+// coverage.html, a file under public/demo/assets/ or public/dist/ - by
+// attaching them in the project chat and asking for a byte-for-byte replace
+// (what worked on 2026-11-03), then publish and compare the live files'
+// SHA-256 with this export's; a new ZIP import makes a new project at a new
+// address. Two
 // traps found on the first import: Lovable's template .gitignore has a bare
 // `dist`, which swallows public/dist (the project's now reads `/dist` plus
 // `!public/dist/`, and must keep doing so), and the id-preview address serves
@@ -186,6 +189,33 @@ const built = count(['Replacement built']);
 const todo = count(SECTIONS[0].statuses);
 const blocked = count([...SECTIONS[2].statuses, ...SECTIONS[3].statuses]);
 
+// "Built" means the builder generates a code's replacement; a dealer page
+// also needs the engine's two files on the platform's shared path, and a
+// snippet pasted before they are there draws an unstyled list. So the page
+// says where the hosted files stand - probed now, at export, against a demo
+// host and compared to this build's bytes, so it cannot go stale the way a
+// typed status would (README "Deployment status" is the written record).
+const SHARED = 'https://cadillacdemo1.dealeron.com/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/';
+const today = new Date().toISOString().slice(0, 10);
+let hosted;
+try {
+  const files = ['dealeron-slider.min.js', 'dealeron-slider.min.css'];
+  const res = await Promise.all(files.map((f) => fetch(SHARED + f + '?v=' + Date.now(), { cache: 'no-store' })));
+  if (res.some((r) => r.status === 404)) hosted = 'missing';
+  else if (res.every((r) => r.ok)) {
+    const bodies = await Promise.all(res.map((r) => r.arrayBuffer()));
+    hosted = bodies.every((b, i) => Buffer.from(b).equals(readFileSync(join('dist', files[i])))) ? 'current' : 'behind';
+  } else hosted = 'unknown';
+} catch {
+  hosted = 'unknown';
+}
+const HOSTED = {
+  missing: `<strong>Built means the builder generates the code &mdash; not that it works on a dealer page yet.</strong> Every snippet links the slider&rsquo;s two files from the platform&rsquo;s shared folder, <code>…/Apps/dealeronSlider/</code>, and they are <strong>not uploaded</strong> (checked ${today}): until they are, a pasted snippet draws an unstyled list.`,
+  behind: `<strong>The shared folder holds an older build of the slider</strong> (checked ${today}): <code>…/Apps/dealeronSlider/</code> answers, but not with this build&rsquo;s files. Upload <code>dist/</code> again before handing out snippets.`,
+  current: `The slider&rsquo;s two files are on the platform&rsquo;s shared folder, <code>…/Apps/dealeronSlider/</code>, and match this build (checked ${today}), so a built code&rsquo;s snippet works on a dealer page.`,
+  unknown: `The shared folder <code>…/Apps/dealeronSlider/</code> could not be checked at export (${today}); the repo README&rsquo;s &ldquo;Deployment status&rdquo; says whether the slider&rsquo;s files are uploaded. Until they are, a pasted snippet draws an unstyled list.`,
+};
+
 let stamp = 'an uncommitted working copy';
 try {
   const log = execFileSync('git', ['log', '-1', '--format=%h %cs', '--', 'docs/coverage.md', 'demo/assets/brands.js'], { encoding: 'utf8' }).trim();
@@ -231,6 +261,9 @@ const html = `<!doctype html>
       .cl-stats li { padding: 0.7rem 1rem; background: var(--surface); border: 1px solid var(--rule); border-radius: 10px; }
       .cl-stats strong { display: block; font-size: 1.6rem; font-stretch: 112%; }
       .cl-stats span { font-size: 0.85rem; color: var(--ink-soft); }
+      .ui-doc p.cl-hosted { max-inline-size: 78ch; padding: 0.8rem 1rem; margin: 1rem 0 0; color: var(--ink); background: var(--surface); border: 1px solid var(--rule); border-inline-start: 4px solid var(--ink-soft); border-radius: 10px; }
+      .ui-doc p.cl-hosted--missing, .ui-doc p.cl-hosted--behind { color: var(--signal-text); background: var(--signal-bg); border-color: var(--signal); }
+      .ui-doc p.cl-hosted--missing strong, .ui-doc p.cl-hosted--behind strong { color: inherit; }
       /* Seven columns of codes and evidence need more than the reference page's 62rem. */
       .cl-doc { max-inline-size: 90rem; }
       .g-scroll td:nth-child(3), .g-scroll td:nth-child(5), .g-scroll td:nth-child(6) { white-space: nowrap; }
@@ -266,6 +299,8 @@ const html = `<!doctype html>
         <li><strong>${blocked}</strong><span>not slider work, or waiting on the article</span></li>
         <li><strong>${outOfScope.length}</strong><span>GM multi-make codes, out of scope</span></li>
       </ul>
+
+      <p class="cl-hosted cl-hosted--${hosted}">${HOSTED[hosted]}</p>
 
       <nav class="ui-toc" aria-label="On this page">
 ${SECTIONS.map((s) => `        <a href="#cl-${s.id}">${s.title}</a>`).join('\n')}
