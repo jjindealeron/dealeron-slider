@@ -1694,7 +1694,9 @@
               '--tab-pad-narrow': '0.54em 1.15em 1.08em',
               '--tab-gap': '0.85em',
               '--tab-gap-narrow': '0.95em',
-              '--tab-pad-phone': '0.54em 0.85em 1.08em',
+              // A phone squeezes the sides under 0.75em (layout.test.mjs: the
+              // desktop padding must not come back below 768).
+              '--tab-pad-phone': '0.54em 0.7em 1.08em',
               '--tab-gap-phone': '0.55em',
               '--tab-fade': '0.15s',
             },
