@@ -313,12 +313,13 @@
     hyundai: [
       'hyundai',
       [
-        ['kona.png', 340, 213, 'Kona'],
-        ['tucson.png', 340, 213, 'Tucson'],
-        ['santa-fe.png', 340, 213, 'Santa Fe'],
-        ['palisade.png', 340, 213, 'Palisade'],
-        ['ioniq-5.png', 340, 213, 'IONIQ 5'],
-        ['elantra.png', 340, 213, 'Elantra'],
+        // Tagged with hyundaidemo1's panes (2026-11-03).
+        ['kona.png', 340, 213, 'Kona', 'SUVs'],
+        ['tucson.png', 340, 213, 'Tucson', 'SUVs'],
+        ['santa-fe.png', 340, 213, 'Santa Fe', 'SUVs'],
+        ['palisade.png', 340, 213, 'Palisade', 'SUVs'],
+        ['ioniq-5.png', 340, 213, 'IONIQ 5', 'Electrified | SUVs'],
+        ['elantra.png', 340, 213, 'Elantra', 'Sedans'],
       ],
     ],
     mazda: [
@@ -1326,13 +1327,93 @@
     hyundai: {
       label: 'Hyundai',
       look: 'tile',
+      // Read off hyundaidemo1's instances on 2026-11-03: 2 per row to 768, 3
+      // to 992, 4 to 1200, then 6 (in two rows - the builder's Rows setting,
+      // not a brand value). The 1/3/4/5 that stood here was the census's.
       ladder: [
-        [0, 1],
-        [460, 3],
+        [0, 2],
+        [768, 3],
         [992, 4],
-        [1200, 5],
+        [1200, 6],
       ],
       demos: 3,
+      // What hyundaidemo1 draws, measured with headless Chromium at five
+      // widths on 2026-11-03 - the `hyundai-model-bar-slick` code. Its three
+      // slick bars are ONE tabbed bar, #model-bar-select: a heading, a row of
+      // three tabs and a pane per tab, so this is the `tabs` pattern, not
+      // `modelbar` as the article's "Slick" suggested. hyundaidemo2-5 are 404s.
+      //
+      // The body is HyundaiSansHead-Regular, 14px at 992 and up, 13px below;
+      // every em is against the 14. The bar is a bg-main band (#1f1f21 on the
+      // demo), white text, padded 50/35px:
+      // - "Explore Hyundai Inventory" in h4, 18px, 500; no lead, no button;
+      // - three white tabs, 16px (18 at 992-1199 and from 1441, 14 on a
+      //   phone), padded 5px 3px, 30px apart; the picked one #00b8e4 with a
+      //   2px #00b8e4 line, no rule, panes fading over 0.15s;
+      // - cutouts butting, 15px in from each side, no scale;
+      // - the name 14px, 500, white, on a 1.1 line, 14px under the car;
+      // - the brand's white chevron at 0.75, full on hover.
+      // No knob yet: the left-aligned heading and row, heading and tabs on one
+      // line from 1441, the name's #00b8e4 hover, the name's own face
+      // (HyundaiSansHead-Medium is a separate family, so 500 draws Regular).
+      // Kept on purpose, as on Cadillac's band: the engine's chevron size, and
+      // a #4a90e2 focus ring (the engine's #1a5fb4 is 2.62:1 on #1f1f21).
+      // Roster: tagged with the live panes; the live bar runs seventeen models
+      // where this repo has six cutouts.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#fff',
+            '--name-size': '1em',
+            '--name-weight': '500',
+            '--name-leading': '1.1',
+            '--name-gap': '1em',
+            // 15px a side is 7.9/6.9/6.1% of the card at 1366/800/390.
+            '--plate-pad': '0.1px 7%',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--dos-arrow-fg': 'rgba(255, 255, 255, 0.75)',
+              '--dos-arrow-fg-hover': '#fff',
+              '--dos-arrow-bg-hover': 'transparent',
+              '--dos-focus': '#4a90e2',
+              '--tab-size': '1.1429em',
+              '--tab-size-narrow': '1.3846em',
+              '--tab-size-phone': '1.0769em',
+              '--tab-weight': '500',
+              '--tab-leading': '1.25',
+              '--tab-dim': '1',
+              '--tab-color': '#fff',
+              '--tab-selected': '#00b8e4',
+              '--tab-line': '#00b8e4',
+              '--tab-rule': 'transparent',
+              // 5px 3px 7px in the tab's own em at each tier.
+              '--tab-pad': '0.3125em 0.1875em 0.4375em',
+              '--tab-pad-narrow': '0.2778em 0.1667em 0.3889em',
+              '--tab-pad-phone': '0.3571em 0.2143em 0.5em',
+              '--tab-gap': '1.875em',
+              '--tab-gap-narrow': '1.667em',
+              '--tab-gap-phone': '0.714em',
+              '--tab-row-gap': '0.875em',
+              '--tab-fade': '0.15s',
+              '--title-gap': '1em',
+              // No band colour: the wrap wears bg-main and the site paints it.
+              '--bar-pad': '3.571em',
+              '--bar-pad-narrow': '2.692em',
+            },
+            panes: ['Electrified', 'SUVs', 'Sedans'],
+            words: { title: 'Explore Hyundai Inventory', titleClass: 'h4', lead: '', moreText: '', wrapClass: 'bg-main' },
+          },
+        },
+      },
+      // PREVIEW ONLY.
+      font: { family: 'HyundaiSansHead-Regular', css: 'https://cdn.dealeron.com/assets/fonts/hyundai/fonts.min.css' },
+      // PREVIEW ONLY: hyundaidemo1's bg-main, so the band draws on brands.html.
+      theme: { '--main-color': '#1f1f21' },
+      source: 'hyundaidemo1.dealeron.com, 2026-11-03',
     },
     infiniti: { label: 'Infiniti', look: 'tile', ladder: null, demos: 2 },
     jaguar: {
