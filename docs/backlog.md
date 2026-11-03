@@ -39,6 +39,29 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
 `aria-disabled`, the gallery panels' missing `"slide"` — and all three shipped; the evidence is in
 `docs/history.md`.
 
+## 2026-11-03 — found while measuring fourteen codes, not actioned
+
+The measurements are `docs/research/2026-11-03-measurements/`; the plan for the day is
+`docs/specs/2026-11-03-coverage-push-and-lovable.md`.
+
+- **A brand's white name reaches its model-bar stage, which has no band.** Cadillac (since
+  2026-09-14) and Hyundai set `--name-color: #fff` on the tile for their `bg-main` tabbed bar, and a
+  look value applies to every pattern that card is on, so `brands.html` and the builder draw white
+  names on white under "Model bar" for both. A decision, not a slip: either look values become
+  per-pattern, or the name colour moves onto the tabbed pattern. Measured on `brands.html` at 1366.
+- **Acura's ZDX name rides 27px higher than the rest** at any preset: `zdx.png` is 480x300 (16:10)
+  among 320x240 cutouts, so its card is shorter. Fix the art, not the preset.
+- **Unverified, raised by a measuring agent:** GMC's preset comment says the name "inherits" the
+  page's colour, but the tile's `--name-color` defaults to `#222`. Check what a GMC bar draws on a
+  dark section before trusting the comment.
+- **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
+  Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
+  17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
+- **The eleven codes that do not fit one preset per brand** (a second code on the same pattern, or
+  no preset at all) wait on variant presets: `lincoln-model-bar-slick2`, `lexus-model-bar-slick2`,
+  `toyota-modelbar-slick-tabbed-v3`, the four CDJR codes, `ford-model-bar-slick`,
+  `kia-model-bar-slick`, `honda-model-bar-slick-tabbed`, `maserati-modelbar-slick`.
+
 ## 2026-10-27 — heard on NVDA and VoiceOver, not actioned
 
 NVDA 2026.2 and VoiceOver, driven by guidepup over the demo's own patterns —

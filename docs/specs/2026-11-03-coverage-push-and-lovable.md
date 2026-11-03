@@ -34,9 +34,13 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
 - [ ] Re-read the Salesforce article for codes added since 2026-09-15 (needs Steven's sign-in)
 - [x] `docs/coverage.md`: the "Keeping this true" paragraph said the ledger guard was not built; it
       is (`scripts/check-looks.mjs`), and the paragraph now says so
-- [ ] Measure the 14 (parallel agents return values; each re-run before it lands)
-- [ ] Land each measured brand in `brands.js` + its ledger row, `check:looks`, browser check on
-      `brands.html`, one commit per brand
+- [x] Measure the 14 (parallel agents return values; each re-run before it lands). Every re-run
+      matched except hover and transition timing samples; the proposals are
+      `docs/research/2026-11-03-measurements/`
+- [x] Land each measured brand in `brands.js` + its ledger row, `check:looks`, browser check on
+      `brands.html`, one commit per brand: twelve built (built 8 → 20 of 49); Alfa Romeo and
+      Volkswagen need a card this builder does not have; Hyundai's bar is a tabbed bar, so it moved
+      to `tabs`
 - [x] Checklist page: `scripts/export-lovable.mjs` writes `demo/coverage.html` from
       `docs/coverage.md` into the export; axe clean, no sideways scroll, light and dark, 1366 and
       390
@@ -44,7 +48,9 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
       `jjindealeron`, and adding one needs workspace Git access Steven's account does not have.
       Steven chose a ZIP import for today ("DealerOn Slider Hub", created first with the plain link
       page, is left for Steven to keep or delete). Import the export as a ZIP, check it, publish
-- [ ] Git sync for the Lovable copy, once a workspace admin grants Git access, so a refresh is a
-      push rather than a new import
+- [ ] ~~Git sync for the Lovable copy~~ — not coming: Steven is leaving DealerOn and does not expect
+      workspace Git access. After today's import, a refresh edits the project's files in place in
+      Lovable's code editor (same project, same address); a new ZIP import would make a new project
+      at a new address
 - [ ] Variant presets for the 11
 - [ ] Handover ZIP
