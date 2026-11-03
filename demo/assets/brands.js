@@ -237,12 +237,13 @@
     lexus: [
       'lexus',
       [
-        ['ux-hybrid.png', 240, 140, 'UX Hybrid'],
-        ['nx.png', 240, 140, 'NX'],
-        ['nx-hybrid.png', 240, 140, 'NX Hybrid'],
-        ['rz.png', 240, 140, 'RZ'],
-        ['rx.png', 240, 140, 'RX'],
-        ['gx.png', 240, 140, 'GX'],
+        // Tagged with lexusdemo1's panes (2026-11-03).
+        ['ux-hybrid.png', 240, 140, 'UX Hybrid', 'SUVs | Hybrids & Electric'],
+        ['nx.png', 240, 140, 'NX', 'SUVs'],
+        ['nx-hybrid.png', 240, 140, 'NX Hybrid', 'SUVs | Hybrids & Electric'],
+        ['rz.png', 240, 140, 'RZ', 'SUVs | Hybrids & Electric'],
+        ['rx.png', 240, 140, 'RX', 'SUVs'],
+        ['gx.png', 240, 140, 'GX', 'SUVs'],
       ],
     ],
     buick: [
@@ -1543,6 +1544,83 @@
       ],
       demos: 3,
       note: 'A soft gray gradient band behind spaced capitals; a centered underlined heading above.',
+      // What lexusdemo1 draws, measured with headless Chromium at 1366/800/390
+      // on 2026-11-03 - the `lexus-modelbar-slick-tabbed` code. Three panes
+      // (SUVs, Sedans, Hybrids & Electric; the ledger's fourth bar is not on
+      // the page), each a slick bar on 5, 991:3, 600:2, 400:1 - the ladder
+      // above.
+      //
+      // The body is nobel-book, 15px at 992 and up and 13px below - every em
+      // here is against the 15. The bar sits on the site's own bg-alt1 band
+      // (#e1e1e1), outside the snippet; no heading, lead or button:
+      // - uppercase tabs in #222, 400, padded 7px 15px, 12.7px apart, not
+      //   dimmed; a 2px #000 line 5px under the picked label; no rule, no
+      //   dividers; hover recolours and draws no line;
+      // - slides butting, the art full width at scale(0.95), 1.05 on hover
+      //   over 0.25s;
+      // - the name 15px bold (synthesised on nobel-book), uppercase, #333,
+      //   10px under the art.
+      // No knob yet: the picked tab's 700, the hover's #777 (3.42:1 on the
+      // band anyway), a label-wide line (ours spans the padded tab), and the
+      // name pinned at 15px where ours follows the host's 13px below 992.
+      // Departures: the phone tab padding and gap are tightened so the row
+      // fits a 320 screen (live needs 319.5px of a 288px container), and the
+      // engine's #262626 chevron replaces the live 2.67:1 grey on the band.
+      // Roster: tagged with the live panes. Sedans (IS, ES, ES Hybrid) has no
+      // cutouts in this repo, so that tab stays out of the bar until a
+      // designer adds a row tagged Sedans.
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-weight': '700',
+            '--name-case': 'uppercase',
+            '--name-leading': '1.4286',
+            // 10px of the 15px name.
+            '--name-gap': '0.67em',
+            // scale(0.95) as padding: 2.5% a side, and 2.5% of the 240x140
+            // box's height in its width (1.46%) top and bottom.
+            '--plate-pad': '1.46% 2.5%',
+            // 0.95 -> 1.05.
+            '--img-hover-scale': '1.1053',
+            '--img-hover-speed': '0.25s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--tab-weight': '400',
+              '--tab-dim': '1',
+              '--tab-color': '#222',
+              '--tab-selected': '#222',
+              '--tab-case': 'uppercase',
+              '--tab-leading': '1.4286',
+              '--tab-rule': 'transparent',
+              '--tab-line': '#000',
+              '--tab-line-hover': 'transparent',
+              '--tab-line-size': '2px',
+              // The line 7px above the tab's foot, 5px under the label.
+              '--tab-line-inset': 'auto 0.47em',
+              // 7px / 15px / 14px in the 15px tab's em, then the same px in
+              // the 13px tab's.
+              '--tab-pad': '0.47em 1em 0.93em',
+              '--tab-pad-narrow': '0.54em 1.15em 1.08em',
+              '--tab-gap': '0.85em',
+              '--tab-gap-narrow': '0.95em',
+              '--tab-pad-phone': '0.54em 0.85em 1.08em',
+              '--tab-gap-phone': '0.55em',
+              '--tab-fade': '0.15s',
+            },
+            panes: ['SUVs', 'Sedans', 'Hybrids & Electric'],
+            words: { title: '', lead: '', moreText: '' },
+          },
+        },
+      },
+      // PREVIEW ONLY.
+      font: { family: 'nobel-book', css: 'https://cdn.dealeron.com/assets/fonts/nobel/fonts.min.css' },
+      source: 'lexusdemo1.dealeron.com, 2026-11-03',
     },
     lincoln: {
       label: 'Lincoln',
