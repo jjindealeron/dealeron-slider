@@ -119,7 +119,10 @@ The project has no Git sync, so files are replaced in place.
 
 1. `npm run build`, then `npm run export:lovable -- <a folder outside the repo>`.
 2. In the Lovable project's chat, attach the changed files from `<folder>/public/` and ask for a
-   byte-for-byte replace at their paths, touching nothing else.
+   byte-for-byte replace at their paths, touching nothing else. **A message takes at most 10
+   files**: attach more and Lovable shows "File limit reached" and attaches none, so split a bigger
+   refresh over several messages (2026-11-04: 11 files went as 4, then 7). A renamed file also needs
+   the old path deleted in the same message.
 3. **Publish** (top right, then "Publish changes").
 4. **A minute later**, compare each live file's SHA-256 with the export's; the site serves the old
    file for about a minute after Lovable says it is up to date. Check it yourself: on 2026-11-03
