@@ -18,7 +18,7 @@ your edit, and until then the builder shows something different from what the si
 | The repo                      | This folder. On GitHub at `stevenpelletier90/dealeron-slider` (Steven's personal account, public); handed to DealerOn as a ZIP for its own Git host | The source of everything below                                                                                              |
 | The builder, for the team     | <https://dealeron-slider.lovable.app>                                                                                                               | DealerOn's Lovable workspace, project "DealerOn Slider". The pages ask for a password once per browser (see "The password") |
 | The builder, on GitHub Pages  | <https://stevenpelletier90.github.io/dealeron-slider/demo/>                                                                                         | On Steven's account: it stops updating when he goes. Use the Lovable one                                                    |
-| The engine on the platform    | `/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/` (FTP)                                                                              | Four files from `dist/`. Every page with a slider links two of them. What is there now: README, "Deployment status"         |
+| The engine on the platform    | `/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/` (FTP)                                                                                    | Four files from `dist/`. Every page with a slider links two of them. What is there now: README, "Deployment status"         |
 | Which replacement codes exist | Salesforce Knowledge, "Model Bar Replacement Codes" (000001851)                                                                                     | Not ours; its owner decides what is on it                                                                                   |
 | Which codes we have replaced  | `docs/coverage.md`, shown as the Checklist page on the Lovable site                                                                                 | One row per code. The Checklist page also says, as of its last export, whether the FTP folder holds the current build       |
 | Known issues and decided no's | `docs/backlog.md`                                                                                                                                   | Read the 2026-11-03 section before handing a brand's bar to anyone                                                          |
@@ -44,9 +44,9 @@ change is an FTP upload. If it did not, only the builder changed.
 
 ## Making a model bar a replacement code
 
-A replacement code is `#LOADCUSTOMFILE|Responsive|Apps|dealeronSlider|<name>#` in a page's Custom
-HTML block. It loads `<name>.html` from the shared folder, the same one the engine lives in. So the
-order is:
+A replacement code is `#LOADCUSTOMFILE|Responsive|Apps|doSlider|<name>#` in a page's Custom HTML
+block. It loads `<name>.html` from the shared folder, the same one the engine lives in. So the order
+is:
 
 1. **Once, before any of it:** the four engine files are in the shared folder (README, "Deployment
    status", has whether they are and how to upload them), and the site links the two tags in its
@@ -104,8 +104,8 @@ Don't. There are two kinds of file in that folder:
   four (README, "Deployment status", has the steps, and the 21-day cache that means an upload can
   take three weeks to reach a browser that already has the old file). Then refresh `public/dist/` on
   Lovable, so the builder runs what the sites run. The Checklist page checks the folder at every
-  export and says whether it matches the build. Expect `dealeron-slider.min.css` to differ byte for
-  byte: the platform re-minifies CSS it is given, so the check compares the other three files.
+  export and says whether it matches the build. Expect `do-slider.min.css` to differ byte for byte:
+  the platform re-minifies CSS it is given, so the check compares the other three files.
 - **Replacement-code files (`<name>.html`)** are snippets, not engine, and the builder cannot read
   one back in. A content edit (a card, a link, a photo) can go straight into the file. A settings
   edit (how many across, the gap, colours) means rebuilding it in the builder and replacing the

@@ -9,11 +9,11 @@ paths:
 
 # Engine (`src/`, `dist/`)
 
-**`npm run build` writes four files** — `dist/dealeron-slider.{css,js}` readable,
-`dist/dealeron-slider.min.{css,js}` minified. Everything runs the `.min` pair; the readable pair is
-for reading, and `src/` keeps the comments. The install panel offers a Download per file plus
-**Download all four**; each button's `data-file` names the file, and `tests/install.test.mjs` checks
-saved name and bytes together.
+**`npm run build` writes four files** — `dist/do-slider.{css,js}` readable,
+`dist/do-slider.min.{css,js}` minified (the source keeps `src/dealeron-slider.*`). Everything runs
+the `.min` pair; the readable pair is for reading, and `src/` keeps the comments. The install panel
+offers a Download per file plus **Download all four**; each button's `data-file` names the file, and
+`tests/install.test.mjs` checks saved name and bytes together.
 
 ## Architecture
 
@@ -26,8 +26,8 @@ during the gesture and restoring it in `_commit()`.
 
 **Two entry points, one class.** `src/dealeron-slider.js` exports `DealerOnSlider`; `src/auto.js`
 (the CMS entry) assigns `window.DealerOnSlider` and auto-inits on `DOMContentLoaded`; esbuild
-bundles it to `dist/dealeron-slider.min.js` as an IIFE. One class name in source and on the page —
-no second alias.
+bundles it to `dist/do-slider.min.js` as an IIFE. One class name in source and on the page — no
+second alias.
 
 **The engine is LINKED, never pasted.** A page gets the two `.min` files from two head tags and no
 other way: a pasted engine can never be fixed, and nothing records which sites carry which build.

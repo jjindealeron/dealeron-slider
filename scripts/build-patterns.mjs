@@ -144,10 +144,10 @@ async function main() {
   // weigh the ENGINE alone against its budget.
   const strip = (text) => text.replace(/\s*\/\*! patterns \*\/[\s\S]*$/, '');
   for (const [file, half] of [
-    ['dist/dealeron-slider.css', cssPretty],
-    ['dist/dealeron-slider.min.css', cssMin],
-    ['dist/dealeron-slider.js', jsPretty],
-    ['dist/dealeron-slider.min.js', jsMin],
+    ['dist/do-slider.css', cssPretty],
+    ['dist/do-slider.min.css', cssMin],
+    ['dist/do-slider.js', jsPretty],
+    ['dist/do-slider.min.js', jsMin],
   ]) {
     const base = strip(readFileSync(file, 'utf8'));
     writeFileSync(file, `${base.trimEnd()}\n${MARK}\n${half.trimEnd()}\n`);

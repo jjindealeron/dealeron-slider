@@ -1,4 +1,4 @@
-// Builds the card-styles half of dist/dealeron-slider.css and its .min twin,
+// Builds the card-styles half of dist/do-slider.css and its .min twin,
 // and appends it to both.
 //
 // The engine styles no cards on purpose (dos-* is mechanism, cargo-* is content),
@@ -145,8 +145,8 @@ const min = (await transform(css, { loader: 'css', minify: true })).code;
 // that means "smaller than Embla's core" into one that means something else.
 mkdirSync('dist', { recursive: true });
 for (const [file, cards] of [
-  ['dist/dealeron-slider.css', pretty],
-  ['dist/dealeron-slider.min.css', min],
+  ['dist/do-slider.css', pretty],
+  ['dist/do-slider.min.css', min],
 ]) {
   // Strip any cards half a previous build appended, so this is idempotent.
   const engine = readFileSync(file, 'utf8').replace(/\s*\/\*! cards \*\/[\s\S]*$/, '');
@@ -158,4 +158,4 @@ ${cards}
 `,
   );
 }
-console.log(`dist/dealeron-slider.min.css: engine + ${Object.keys(LOOKS).length} card styles, ${TIERS.length * MAX_COLS} column classes (${min.length} B of cards)`);
+console.log(`dist/do-slider.min.css: engine + ${Object.keys(LOOKS).length} card styles, ${TIERS.length * MAX_COLS} column classes (${min.length} B of cards)`);

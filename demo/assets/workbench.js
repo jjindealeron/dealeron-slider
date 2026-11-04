@@ -373,7 +373,7 @@
     return !!(p.panes || p.filters || p.cardGrid || state.pattern === 'lightbox');
   };
 
-  // The card styles ship inside dist/dealeron-slider.min.css, which every site links,
+  // The card styles ship inside dist/do-slider.min.css, which every site links,
   // so a snippet does not repeat them - it carries only what THIS slider changed
   // from its card style's defaults. The delta is computed, never trusted: a
   // value equal to the default is dropped, so the block cannot go stale against
@@ -759,7 +759,7 @@
     //
     // The column ladder goes on EVERY pattern, not only the four with a card
     // look. dos-xs-N / dos-sm-N / dos-md-N / dos-lg-N ship unscoped in
-    // dealeron-slider.min.css and say exactly what the hand-written ladder said - a
+    // do-slider.min.css and say exactly what the hand-written ladder said - a
     // root line plus three @media blocks, ten lines of CSS a snippet, and
     // two-thirds of the rungs repeated the tier below because a min-width rule
     // already carries upward. Only `cargo-<look>` still depends on the shared
@@ -1237,7 +1237,7 @@
     // preview that stands in for a dealer page should stand in for its
     // structure too, so what the audit reports is the snippet.
     '<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Slider preview</title>' +
-    '<link rel="stylesheet" href="../dist/dealeron-slider.min.css">' +
+    '<link rel="stylesheet" href="../dist/do-slider.min.css">' +
     // overflow:hidden on the frame's own root is a CORRECTNESS rule, not
     // tidying. A classic scrollbar - which real Chrome on Windows draws, and
     // headless Chromium does not, so this is invisible to the test suite - takes
@@ -1311,7 +1311,7 @@
     // content here; inventing one above them to satisfy a rule is scaffolding
     // pretending to be a page, and it made the audit noisier, not truer.
     '<body><main aria-label="Slider preview"><div id="wb-live-root"></div></main>' +
-    '<script src="../dist/dealeron-slider.min.js"><' +
+    '<script src="../dist/do-slider.min.js"><' +
     '/script></body></html>';
 
   // Resolves when the frame has its engine. Everything that paints waits on it.
@@ -1547,7 +1547,7 @@
     // page instead of by the snippet.
     // The SAME string runs here and is printed in the code panel, so what you
     // copy is what you just watched work.
-    // The pattern scripts run from the linked dist/dealeron-slider.min.js since
+    // The pattern scripts run from the linked dist/do-slider.min.js since
     // 2026-09-14 (scripts/build-patterns.mjs appends them behind the
     // /*! patterns */ marker), the same file the frame links - so what you
     // watch work is the shipped code, not a copy. They ran once when the
@@ -1739,7 +1739,7 @@
     // An earlier "use the card-looks file" checkbox failed because it was a
     // question: greyed out on 13 of the 17 patterns, and where it did work it
     // still left 13-21 lines of CSS behind. The card styles now ship inside
-    // dealeron-slider.min.css, so using them is the default and no longer a decision
+    // do-slider.min.css, so using them is the default and no longer a decision
     // anyone has to make - the toggle survives only as an escape hatch for a
     // page that cannot link the file, and it is never greyed out.
     const lines = (t) => t.trim().split('\n').length;
@@ -1747,7 +1747,7 @@
       ['HTML', lines(html), 'a <strong>Custom HTML</strong> block'],
       ['CSS', lines(css), '<strong>Style Only</strong> — raw CSS, no <code>&lt;style&gt;</code> tags'],
     ];
-    if (shared()) parts.push(['Card style', `.cargo-${state.look}`, 'comes from <strong>dealeron-slider.min.css</strong> — nothing to paste for it']);
+    if (shared()) parts.push(['Card style', `.cargo-${state.look}`, 'comes from <strong>do-slider.min.css</strong> — nothing to paste for it']);
     // The same warning at paste time. The panel above is where the choice is
     // made; this is the last screen before the code leaves for a real page, and
     // a crop that trims a cutout renders perfectly and looks cheap.
@@ -1760,7 +1760,7 @@
     // Counted off the guarded script, which is the one that ships. "Either
     // side" is the point of the guard: the script no longer cares whether the
     // engine's line runs before or after it.
-    if (state.scriptText) parts.push(['JavaScript', lines(state.scriptText), '<strong>Body Section, Bottom</strong> — either side of the dealeron-slider.min.js line']);
+    if (state.scriptText) parts.push(['JavaScript', lines(state.scriptText), '<strong>Body Section, Bottom</strong> — either side of the do-slider.min.js line']);
     // The demo images resolve to real platform paths, which is what makes them
     // usable - and exactly why this warning belongs here: they load perfectly
     // on any dealer's site and show the wrong thing, which is worse than a
@@ -3622,8 +3622,8 @@
   // The real shared path, not a "/path/" placeholder for the designer to fill
   // in - designers do not upload the engine, and a copied tag they have to edit
   // is a tag that ships wrong. One folder, every site.
-  const ENGINE_PATH = '/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/';
-  const TAGS = [`<link rel="stylesheet" href="${ENGINE_PATH}dealeron-slider.min.css">`, `<script src="${ENGINE_PATH}dealeron-slider.min.js" defer></script>`].join('\n');
+  const ENGINE_PATH = '/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/';
+  const TAGS = [`<link rel="stylesheet" href="${ENGINE_PATH}do-slider.min.css">`, `<script src="${ENGINE_PATH}do-slider.min.js" defer></script>`].join('\n');
   $('wb-copy-tags').addEventListener('click', (e) => copyText(e.target, TAGS));
 
   // The engine files, fetched at click time from the very files this page is
@@ -3631,12 +3631,12 @@
   //
   // data-file names the FILE, never a kind. It used to say "css"/"js" against a
   // map holding only the .min pair, and the download built the name back up as
-  // `dealeron-slider.${kind}` - so Download on the dealeron-slider.min.css row
+  // `do-slider.${kind}` - so Download on the do-slider.min.css row
   // saved the MINIFIED bytes under the READABLE name. Upload that to the shared
-  // folder and dealeron-slider.css there holds minified code, with nothing on the
+  // folder and do-slider.css there holds minified code, with nothing on the
   // page or in the folder to say so. One string now picks the bytes AND names
   // the file, so the two cannot disagree again.
-  const DIST = ['dealeron-slider.css', 'dealeron-slider.js', 'dealeron-slider.min.css', 'dealeron-slider.min.js'];
+  const DIST = ['do-slider.css', 'do-slider.js', 'do-slider.min.css', 'do-slider.min.js'];
   const isJs = (name) => name.endsWith('.js');
   const wait = (ms) => new Promise((done) => setTimeout(done, ms));
 

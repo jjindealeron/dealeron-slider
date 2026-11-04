@@ -55,8 +55,8 @@ in the code preview.
 
 Today the builder only runs forwards — settings produce a snippet. This is the inverse, and it needs
 a map from replacement code to the settings it stands for. Relevant:
-`#LOADCUSTOMFILE|Responsive|Apps|dealeronSlider|<name>#` loads `…/<name>.html` from the shared
-folder, and those files may carry their own `<style>`.
+`#LOADCUSTOMFILE|Responsive|Apps|doSlider|<name>#` loads `…/<name>.html` from the shared folder, and
+those files may carry their own `<style>`.
 
 ## 3. Audit the library, and test it
 

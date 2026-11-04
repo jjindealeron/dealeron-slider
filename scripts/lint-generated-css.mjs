@@ -161,7 +161,7 @@ for (const [name, css] of sheets) {
   // Style Only takes no comments either. cssFor strips them, so a hit here
   // means a new route into the sheet that bypasses the scoping pass. The
   // shared section is a linked file, not a paste, and its section headers
-  // are for whoever reads dist/dealeron-slider.css; the minifier drops them.
+  // are for whoever reads dist/do-slider.css; the minifier drops them.
   for (const c of name === 'shared pattern section' ? [] : css.match(/\/\*[\s\S]*?\*\//g) || []) {
     problems++;
     console.error(`  ${name} [comment-in-generated-css] ${JSON.stringify(c.slice(0, 60))} - Style Only takes raw CSS with no comments`);

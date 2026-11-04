@@ -704,7 +704,7 @@ test.describe('the contract, in the last window before it froze', () => {
   // shipped stylesheet. --dos-arrow-at was such a knob. This guards the class of
   // gap, not the one instance.
   test('every --dos-* the stylesheet uses is also declared in it', async () => {
-    const css = await readFile('dist/dealeron-slider.css', 'utf8');
+    const css = await readFile('dist/do-slider.css', 'utf8');
     const declared = new Set([...css.matchAll(/(--dos-[a-z0-9-]+)\s*:/g)].map((m) => m[1]));
     const used = new Set([...css.matchAll(/var\(\s*(--dos-[a-z0-9-]+)/g)].map((m) => m[1]));
     const undeclared = [...used].filter((p) => !declared.has(p)).sort();

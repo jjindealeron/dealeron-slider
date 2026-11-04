@@ -86,7 +86,7 @@
   // without ever being defined there.
   const GLOSSARY = [
     '<b>Slider</b> — the whole thing: the row of cards, the arrows and the dots. Called a carousel in most other libraries, and the two words mean the same here.',
-    '<b>The engine</b> — the two files every site links, <code>dealeron-slider.min.css</code> and <code>dealeron-slider.min.js</code>. They are shared: added once per site, not once per slider.',
+    '<b>The engine</b> — the two files every site links, <code>do-slider.min.css</code> and <code>do-slider.min.js</code>. They are shared: added once per site, not once per slider.',
     '<b>Root</b> — the outer <code>&lt;div class="my-slider dos"&gt;</code>. Settings are written on it, and its own class is what your CSS hangs off.',
     '<b>Track</b> — the <code>&lt;ul&gt;</code> or <code>&lt;div&gt;</code> inside the root that actually scrolls. One per slider.',
     '<b>Slide</b> — one <code>&lt;li class="dos-slide"&gt;</code>: one card, one photo, one panel. One scroll stop.',
@@ -382,7 +382,7 @@
     const cards = cardRows();
     let props = [];
     try {
-      props = propsFrom(await fetch('../dist/dealeron-slider.min.css').then((r) => r.text()));
+      props = propsFrom(await fetch('../dist/do-slider.min.css').then((r) => r.text()));
     } catch {
       /* opened over file:// with fetch blocked — the rest of the guide still renders */
     }
@@ -440,7 +440,7 @@
       </section>
 
       <section id="g-props"><h3>CSS custom properties</h3>
-        <p>Every setting the engine has. ${props.length ? `Read at load time out of the shipped <code>dist/dealeron-slider.min.css</code> — fetched and parsed, not applied to this page — so the ${props.length} below are the ones a site actually gets.` : 'Open this page over HTTP to list them from the shipped stylesheet.'} Override them on the root or any wrapper.</p>
+        <p>Every setting the engine has. ${props.length ? `Read at load time out of the shipped <code>dist/do-slider.min.css</code> — fetched and parsed, not applied to this page — so the ${props.length} below are the ones a site actually gets.` : 'Open this page over HTTP to list them from the shipped stylesheet.'} Override them on the root or any wrapper.</p>
         ${props.length ? table(['Property', 'Default', 'Notes'], propRows) : ''}
       </section>
 
@@ -466,8 +466,8 @@
       <section id="g-cms"><h3>Putting it on a DealerOn site</h3>
         <p><strong>Link the two engine files. That is the only route.</strong> There is no paste-the-engine option: a pasted copy is frozen at the build it was taken from, so a fix reaches every linked page and silently misses every pasted one, with nothing anywhere saying which sites are on which. The Build page says the same, and the full instructions — the CMS fields, what the minifier does to your CSS, replacement codes and cache-busting — are in <a href="https://github.com/stevenpelletier90/dealeron-slider/blob/master/docs/cms-implementation.md">cms-implementation.md</a>.</p>
         ${list([
-          'The two engine files are linked with a <code>&lt;link&gt;</code> and a <code>&lt;script&gt;</code> in the <strong>Head Section</strong> tab — the one that takes HTML verbatim, not “Style Only, Head Section”, which takes raw CSS and would swallow a tag. They live at <code>/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/</code>, one copy per site. The <code>&lt;script&gt;</code> may sit in <strong>Body Section, Bottom</strong> instead if you prefer it there; the <code>&lt;link&gt;</code> may not.',
-          "Your slider's own CSS goes in <strong>Style Only</strong> and the markup in a <strong>Custom HTML</strong> block. The Build page has a Copy button per field, because the two cannot go in as one paste. There is no script to paste: a pattern's script rides in <code>dealeron-slider.min.js</code>, and so does its structure - the tab row, the filter bar, the lightbox, the photo captions - in <code>dealeron-slider.min.css</code>. What you paste is the values you set and the markup, nothing else.",
+          'The two engine files are linked with a <code>&lt;link&gt;</code> and a <code>&lt;script&gt;</code> in the <strong>Head Section</strong> tab — the one that takes HTML verbatim, not “Style Only, Head Section”, which takes raw CSS and would swallow a tag. They live at <code>/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/</code>, one copy per site. The <code>&lt;script&gt;</code> may sit in <strong>Body Section, Bottom</strong> instead if you prefer it there; the <code>&lt;link&gt;</code> may not.',
+          "Your slider's own CSS goes in <strong>Style Only</strong> and the markup in a <strong>Custom HTML</strong> block. The Build page has a Copy button per field, because the two cannot go in as one paste. There is no script to paste: a pattern's script rides in <code>do-slider.min.js</code>, and so does its structure - the tab row, the filter bar, the lightbox, the photo captions - in <code>do-slider.min.css</code>. What you paste is the values you set and the markup, nothing else.",
           "<strong>To change how a pattern is built on one site</strong>, write one rule in Style Only under your slider's own name - <code>.my-bar-wrap .cargo-tabs [role=\"tab\"] { padding: 1em 2em; }</code> - naming only the property you change. Your rule is one class more specific than the shared file's, so it wins whatever order the platform emits the two in. Never copy the shared file's rules wholesale into Style Only: they stop taking fixes the day you do.",
           "<strong>Every slider on a page needs its own name.</strong> The name is a class on the root — <code>my-slider</code> — and it is what the CSS hangs off. Paste two sliders sharing a name and the second block's rules win for both, silently: a pair of model bars measured the first taking the second's gap, its slides going 208.6px to 180.6px. The Build page keeps that field next to its copy buttons.",
           'Style Only takes <strong>raw CSS</strong> — no <code>&lt;style&gt;</code> tags and no comments. A tag pasted into it is read as part of the first selector, so that rule is dropped and the settings it carried go with it, silently.',

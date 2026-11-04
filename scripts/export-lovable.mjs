@@ -45,7 +45,7 @@ if (out === repo || out.startsWith(repo + sep)) {
   console.error(`export-lovable: ${out} is inside this repo - export somewhere outside it`);
   process.exit(1);
 }
-for (const f of ['dist/dealeron-slider.min.js', 'dist/dealeron-slider.min.css', 'demo/index.html', 'docs/coverage.md']) {
+for (const f of ['dist/do-slider.min.js', 'dist/do-slider.min.css', 'demo/index.html', 'docs/coverage.md']) {
   if (!existsSync(f)) {
     console.error(`export-lovable: ${f} is missing - run this from the repo root after npm run build`);
     process.exit(1);
@@ -201,14 +201,14 @@ const blocked = count([...SECTIONS[2].statuses, ...SECTIONS[3].statuses]);
 // host and compared to this build's bytes, so it cannot go stale the way a
 // typed status would (README "Deployment status" is the written record).
 // The platform re-minifies the CSS it is given (that section again), so a
-// current dealeron-slider.min.css never matches dist/ byte for byte and only
+// current do-slider.min.css never matches dist/ byte for byte and only
 // has to be there; the other three files must match exactly.
-const SHARED = 'https://cadillacdemo1.dealeron.com/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/';
+const SHARED = 'https://cadillacdemo1.dealeron.com/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/';
 const today = new Date().toISOString().slice(0, 10);
 let hosted;
 try {
-  const exact = ['dealeron-slider.min.js', 'dealeron-slider.js', 'dealeron-slider.css'];
-  const res = await Promise.all([...exact, 'dealeron-slider.min.css'].map((f) => fetch(SHARED + f + '?v=' + Date.now(), { cache: 'no-store' })));
+  const exact = ['do-slider.min.js', 'do-slider.js', 'do-slider.css'];
+  const res = await Promise.all([...exact, 'do-slider.min.css'].map((f) => fetch(SHARED + f + '?v=' + Date.now(), { cache: 'no-store' })));
   const [minJs, , , minCss] = res;
   if (minJs.status === 404 || minCss.status === 404) hosted = 'missing';
   else if (minJs.ok && minCss.ok) {
@@ -219,10 +219,10 @@ try {
   hosted = 'unknown';
 }
 const HOSTED = {
-  missing: `<strong>Built means the builder generates the code &mdash; not that it works on a dealer page yet.</strong> Every snippet links the slider&rsquo;s two files from the platform&rsquo;s shared folder, <code>…/Apps/dealeronSlider/</code>, and they are <strong>not uploaded</strong> (checked ${today}): until they are, a pasted snippet draws an unstyled list.`,
-  behind: `<strong>The shared folder holds an older build of the slider</strong> (checked ${today}): <code>…/Apps/dealeronSlider/</code> answers, but not with this build&rsquo;s files. Upload <code>dist/</code> again before handing out snippets.`,
-  current: `The slider&rsquo;s two files are on the platform&rsquo;s shared folder, <code>…/Apps/dealeronSlider/</code>, and match this build (checked ${today}), so a built code&rsquo;s snippet works on a dealer page.`,
-  unknown: `The shared folder <code>…/Apps/dealeronSlider/</code> could not be checked at export (${today}); the repo README&rsquo;s &ldquo;Deployment status&rdquo; says whether the slider&rsquo;s files are uploaded. Until they are, a pasted snippet draws an unstyled list.`,
+  missing: `<strong>Built means the builder generates the code &mdash; not that it works on a dealer page yet.</strong> Every snippet links the slider&rsquo;s two files from the platform&rsquo;s shared folder, <code>…/Apps/doSlider/</code>, and they are <strong>not uploaded</strong> (checked ${today}): until they are, a pasted snippet draws an unstyled list.`,
+  behind: `<strong>The shared folder holds an older build of the slider</strong> (checked ${today}): <code>…/Apps/doSlider/</code> answers, but not with this build&rsquo;s files. Upload <code>dist/</code> again before handing out snippets.`,
+  current: `The slider&rsquo;s two files are on the platform&rsquo;s shared folder, <code>…/Apps/doSlider/</code>, and match this build (checked ${today}), so a built code&rsquo;s snippet works on a dealer page.`,
+  unknown: `The shared folder <code>…/Apps/doSlider/</code> could not be checked at export (${today}); the repo README&rsquo;s &ldquo;Deployment status&rdquo; says whether the slider&rsquo;s files are uploaded. Until they are, a pasted snippet draws an unstyled list.`,
 };
 
 let stamp = 'an uncommitted working copy';

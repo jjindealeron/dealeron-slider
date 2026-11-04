@@ -32,7 +32,7 @@ test.describe('the column classes', () => {
   test('the stylesheet ships all six tiers, the old four under their old names and numbers', async () => {
     // The shipped file, where a media block is one run of text: a class is
     // inside its tier if it appears between that min-width and the next `@`.
-    const css = await readFile('dist/dealeron-slider.min.css', 'utf8');
+    const css = await readFile('dist/do-slider.min.css', 'utf8');
     const inTier = (bp, cls, n) => new RegExp(`min-width:\\s*${bp}px\\)\\{[^@]*\\.${cls}\\{--dos-per-view:\\s*${n}\\}`).test(css);
     // Bootstrap 3's names at Bootstrap 3's numbers, frozen.
     assert.match(css, /\.dos-xs-2\{--dos-per-view:\s*2\}/);

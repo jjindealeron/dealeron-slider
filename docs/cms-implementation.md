@@ -15,10 +15,10 @@
 
 Two files, no dependencies, no build step on the site side:
 
-| File                      | What it does                                                                                                      |
-| ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `dealeron-slider.min.css` | Layout, scroll-snap physics, control styling — **plus** the card styles, the column classes and the pattern rules |
-| `dealeron-slider.min.js`  | Wires controls, state, autoplay, fade, drag — **plus** the six shared pattern scripts                             |
+| File                | What it does                                                                                                      |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `do-slider.min.css` | Layout, scroll-snap physics, control styling — **plus** the card styles, the column classes and the pattern rules |
+| `do-slider.min.js`  | Wires controls, state, autoplay, fade, drag — **plus** the six shared pattern scripts                             |
 
 **No byte figure is written down here.** Run `npm run size` for the current pair, or read the demo
 masthead, which fetches both shipped files and gzips them in the browser. This table used to carry
@@ -28,29 +28,28 @@ gate that actually enforces one (6656 B gzip on the engine, a 16 KiB guard on th
 passing.
 
 Both come from `dist/` in this repo — never from `src/`, which is ES modules and does not run as a
-classic script. `dist/` also holds `dealeron-slider.css` and `dealeron-slider.js`, the same build
-unminified, for reading; pages link the `.min` pair.
+classic script. `dist/` also holds `do-slider.css` and `do-slider.js`, the same build unminified,
+for reading; pages link the `.min` pair.
 
 ### Where they go
 
-**Settled: the shared path**, `/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/`,
-alongside the platform's other shared slider code
-(`/assets/shared/CustomHTMLFiles/slick/slick.min.js`). One copy, every site gets fixes at once —
-which is the whole point of the frozen HTML contract: the engine can be replaced underneath every
-site without touching a single page.
+**Settled: the shared path**, `/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/`, alongside
+the platform's other shared slider code (`/assets/shared/CustomHTMLFiles/slick/slick.min.js`). One
+copy, every site gets fixes at once — which is the whole point of the frozen HTML contract: the
+engine can be replaced underneath every site without touching a single page.
 
 See "Deployment status" in [../README.md](../README.md) for what is on that folder right now and the
 steps to change it. Deliberately not repeated here.
 
-Per-dealer Media Gallery (`#MISCPATH#dealeron-slider.min.js`) remains the fallback if a shared
-location is ever unavailable, but it pins each site to whatever version it got and a fix means
-re-uploading to every one — treat it as temporary.
+Per-dealer Media Gallery (`#MISCPATH#do-slider.min.js`) remains the fallback if a shared location is
+ever unavailable, but it pins each site to whatever version it got and a fix means re-uploading to
+every one — treat it as temporary.
 
 ### How a page loads them
 
 ```html
-<link rel="stylesheet" href="/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/dealeron-slider.min.css">
-<script src="/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/dealeron-slider.min.js" defer></script>
+<link rel="stylesheet" href="/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/do-slider.min.css">
+<script src="/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/do-slider.min.js" defer></script>
 ```
 
 `defer` matters: the engine auto-initializes on `DOMContentLoaded`, and the CSS already reserves the
@@ -71,7 +70,7 @@ once into the sitewide Body Section, Bottom (or the footer include) instead of t
       if (!document.querySelector('.dos')) return;
       var css = document.createElement('link');
       css.rel = 'stylesheet';
-      css.href = '/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/dealeron-slider.min.css';
+      css.href = '/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/do-slider.min.css';
       // PREPEND, never append: the engine stylesheet carries the default
       // --dos-* values at the same specificity as your recipe CSS, so it
       // must land BEFORE the page's Style Only CSS in the cascade.
@@ -80,7 +79,7 @@ once into the sitewide Body Section, Bottom (or the footer include) instead of t
       // on the spelletier test site, 2026-08-20.
       document.head.insertBefore(css, document.head.firstChild);
       var js = document.createElement('script');
-      js.src = '/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/dealeron-slider.min.js';
+      js.src = '/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/do-slider.min.js';
       document.head.appendChild(js);
     };
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);

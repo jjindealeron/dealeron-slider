@@ -31,8 +31,8 @@ model bar becomes a replacement code, how the Brands page is updated, and what i
 ## Quick start (CMS / classic script)
 
 ```html
-<link rel="stylesheet" href="dealeron-slider.min.css">
-<script src="dealeron-slider.min.js" defer></script>
+<link rel="stylesheet" href="do-slider.min.css">
+<script src="do-slider.min.js" defer></script>
 
 <div class="dos my-slider dos-sm-2 dos-md-3" data-dos aria-label="Featured vehicles">
   <ul class="dos-track" role="list">
@@ -169,8 +169,10 @@ not**, because the sites already linking the file cannot be edited to keep up.
 That rule was always written down. With a shared copy it stops being a preference and becomes the
 only thing standing between a rename and every storefront that links it. The names have moved twice,
 each time before any page was believed to use them: `dl-carousel` → `cs` on 2026-08-31, and `cs` →
-`dos` on 2026-10-27, when the product became DealerOn Slider. They are frozen again from the first
-upload of the `dealeron-slider` files.
+`dos` on 2026-10-27, when the product became DealerOn Slider. The four files themselves were renamed
+`dealeron-slider.*` → `do-slider.*`, folder `…/Apps/doSlider/`, on 2026-11-04, the day the
+`dealeron-slider` files first went up; no class, attribute or property changed. They are frozen
+again from the first upload of the `do-slider` files.
 
 Files named `dl-carousel.*` or `custom-slider.*` are **not** older versions of these. Each is a
 different contract — `dl-carousel` had root class `dl-carousel`, `--dlc-*` properties and
@@ -181,14 +183,14 @@ today, and the rename map for moving a page across.
 
 ## Card styles come with the stylesheet
 
-`dist/dealeron-slider.min.css` is the engine **plus** a small library of card styling: the seven
-card looks and a set of column classes (`npm run size` prints the share). The engine itself styles
-no cards on purpose — `dos-*` is mechanism, `cargo-*` is content — but every site that links it gets
+`dist/do-slider.min.css` is the engine **plus** a small library of card styling: the seven card
+looks and a set of column classes (`npm run size` prints the share). The engine itself styles no
+cards on purpose — `dos-*` is mechanism, `cargo-*` is content — but every site that links it gets
 the card half too, so a slider is mostly just its markup:
 
 ```html
-<link rel="stylesheet" href="/path/dealeron-slider.min.css" />
-<script src="/path/dealeron-slider.min.js" defer></script>
+<link rel="stylesheet" href="/path/do-slider.min.css" />
+<script src="/path/do-slider.min.js" defer></script>
 
 <div class="dos cargo-tile dos-xs-2 dos-sm-3 dos-md-4 dos-lg-5" data-dos aria-label="Our models">
   <ul class="dos-track" role="list">
@@ -210,12 +212,11 @@ below — the budget's job is to show the engine undercuts Embla's core and Spli
 those ships a card library.
 
 There was a **Paste the card styles too** switch in the builder that inlined a look's rules into the
-snippet, for a page linking a `dealeron-slider.min.css` older than the card half. It went on
-2026-09-08, for the reason the paste-the-engine route went: an inlined copy can never be fixed, so
-patching a card style reaches every linked page and silently misses every inlined one, with nothing
-saying which pages are on which. The gap it covered closes with a re-upload — see "Deployment
-status". It was also a no-op on most of the patterns, where it drew a control that announced it did
-nothing.
+snippet, for a page linking a `do-slider.min.css` older than the card half. It went on 2026-09-08,
+for the reason the paste-the-engine route went: an inlined copy can never be fixed, so patching a
+card style reaches every linked page and silently misses every inlined one, with nothing saying
+which pages are on which. The gap it covered closes with a re-upload — see "Deployment status". It
+was also a no-op on most of the patterns, where it drew a control that announced it did nothing.
 
 Worth keeping in mind either way: the card CSS carries the card styling **only**, never the engine's
 layout and physics, so on a page with no stylesheet linked at all a block renders as a full-width
@@ -303,8 +304,8 @@ markup from a snapshot taken at init. The snapshot is a rebuild, not a mutation:
 back as new nodes, so listeners or state a page script attached to the original slide elements do
 not survive it. Re-attach after `dos:destroy` if you need them.
 
-`DealerOnSlider.wirePatterns()` is set by the pattern section of `dealeron-slider.min.js` (not by
-the engine, so it is absent from the ES module): it runs every pattern script again over the whole
+`DealerOnSlider.wirePatterns()` is set by the pattern section of `do-slider.min.js` (not by the
+engine, so it is absent from the ES module): it runs every pattern script again over the whole
 document. It runs once by itself on load; call it only for pattern markup added afterwards, once per
 batch — a tab row wired twice answers a key twice.
 
@@ -409,15 +410,21 @@ replacement codes, per-OEM theming, and the ladder for each brand's model bar.
 
 ### Deployment status — the one place it is written down
 
-**Since the 2026-10-27 rename to DealerOn Slider, the folder for these files is**
+**Since the 2026-11-04 file rename, the folder for these files is**
 
 ```text
-/assets/shared/CustomHTMLFiles/Responsive/Apps/dealeronSlider/
+/assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/
 ```
 
-**⚠ and nothing has been uploaded to it yet.** Until the four `dealeron-slider.*` files from `dist/`
-are there, a page pasting a snippet from the current builder links two files that do not exist and
-gets an unstyled list.
+**⚠ and nothing has been uploaded to it yet** (404, checked 2026-11-04). Until the four
+`do-slider.*` files from `dist/` are there, a page pasting a snippet from the current builder links
+two files that do not exist and gets an unstyled list.
+
+The folder before it, `…/Apps/dealeronSlider/`, holds the four `dealeron-slider.*` files uploaded on
+2026-11-04 — the same `dos` contract under the old file names. Measured that day, cache-busted
+against `cadillacdemo1.dealeron.com`: all four answered 200, `last-modified` 18:00–18:01 GMT, and
+`dealeron-slider.js`, `.min.js` and `.css` byte-identical to `dist/` at `9e3cd84`. It went up hours
+before the rename, so no page is expected to link it; delete it once Steven confirms none does.
 
 The previous folder, `…/Apps/customSlider/`, holds the four `custom-slider.*` files uploaded on
 2026-09-08 — the `cs` contract, and a build behind even on its own names. Measured that day,
@@ -431,8 +438,8 @@ a page off an older contract" below), then delete it.
 then update that date. Deliberately no byte figures: any commit touching `src/` puts the folder out
 of date, and a byte count written here goes stale the same day.
 
-**Do not expect `dealeron-slider.min.css` to match `dist/` byte for byte even when it is current** —
-the platform re-minifies CSS it is given: `:after` becomes `::after`, `.5s` becomes `500ms`, `.5`
+**Do not expect `do-slider.min.css` to match `dist/` byte for byte even when it is current** — the
+platform re-minifies CSS it is given: `:after` becomes `::after`, `.5s` becomes `500ms`, `.5`
 becomes `0.5`, `rgba(0,0,0,.8)` becomes `rgba(0,0,0,0.8)`, `background: none` becomes
 `background: 0`, and **`--dos-peek: 0px` becomes `--dos-peek: 0`**. Rendered side by side on a
 hostile host page at 1170px and four across, the two sheets resolved identically — slide 282px, flex
@@ -451,12 +458,12 @@ might do; the minifier has now been observed doing it.
 
 `npm run build` writes four files to `dist/`, each in three sections — the engine, then the card
 styles behind `/*! cards */` (CSS only), then the pattern structure and scripts behind
-`/*! patterns */`: `dealeron-slider.css` and `dealeron-slider.js` are the **readable** engine, for
-anyone opening the file to see what it does; `dealeron-slider.min.css` and `dealeron-slider.min.js`
-are the same code minified, and **the `.min` pair is what every page links** — the demo, the copy
-panel's tags and the snippet at the top of this file all name it. The readable pair goes up beside
-it so the folder holds both; no page should link it. The other two documents defer to this section;
-do not restate a status in them.
+`/*! patterns */`: `do-slider.css` and `do-slider.js` are the **readable** engine, for anyone
+opening the file to see what it does; `do-slider.min.css` and `do-slider.min.js` are the same code
+minified, and **the `.min` pair is what every page links** — the demo, the copy panel's tags and the
+snippet at the top of this file all name it. The readable pair goes up beside it so the folder holds
+both; no page should link it. The other two documents defer to this section; do not restate a status
+in them.
 
 **Uploading (do not skip the cache step).** The files are served with
 `cache-control: max-age=1814400` — 21 days — from behind Fastly. Overwriting a file does not shorten
@@ -468,11 +475,10 @@ that: a browser that already fetched the old one keeps it for up to three weeks.
    "First, get the four files up there" — the same bytes as `dist/`, saved under their own names, if
    that is easier to reach than the repo.
 3. Verify with a cache-busted request, not a browser reload:
-   `curl -s ".../dealeron-slider.min.css?cb=$RANDOM" | head -c 40` should begin
-   `.dos{--dos-per-view`. Check `last-modified` too — a 200 alone only says something is there, not
-   that yours is.
-4. Do NOT expect `dealeron-slider.min.css` to match `dist/` byte for byte; the platform re-minifies
-   it (see above). The other three do match, so compare those if you want a byte check. What matters
+   `curl -s ".../do-slider.min.css?cb=$RANDOM" | head -c 40` should begin `.dos{--dos-per-view`.
+   Check `last-modified` too — a 200 alone only says something is there, not that yours is.
+4. Do NOT expect `do-slider.min.css` to match `dist/` byte for byte; the platform re-minifies it
+   (see above). The other three do match, so compare those if you want a byte check. What matters
    for the `.min.css` is that it still renders the same — the paste-parity test in the verification
    checklist is the way to prove that.
 5. Anyone who opened a page linking the old file needs a hard refresh, or to wait out the TTL. Say
@@ -483,21 +489,24 @@ that: a browser that already fetched the old one keeps it for up to three weeks.
 The contract has had two earlier sets of names, and each is different throughout, so a page cannot
 be half-migrated. Rename map (— means the older engine had no such name on record):
 
-| `dl-carousel` (to 2026-08-31) | `cs` (2026-08-31 to 2026-10-27) | Current (`dos`)                  |
-| ----------------------------- | ------------------------------- | -------------------------------- |
-| `dl-carousel`                 | `cs`                            | `dos`                            |
-| `dl-carousel-track`           | `cs-track`                      | `dos-track`                      |
-| `dl-carousel-slide`           | `cs-slide`                      | `dos-slide`                      |
-| —                             | `cs-*` (controls, columns)      | `dos-*`                          |
-| `--dlc-*`                     | `--cs-*`                        | `--dos-*`                        |
-| `data-slider`                 | `data-cs`                       | `data-dos`                       |
-| `data-slider-*`               | `data-cs-*`                     | `data-dos-*`                     |
-| —                             | `cs:*` events                   | `dos:*` events                   |
-| —                             | `element._cs`                   | `element._dos`                   |
-| `window.DLCarousel`           | `window.CustomSlider`           | `window.DealerOnSlider`          |
-| `dl-carousel.{css,js}`        | `custom-slider.{css,js,min.*}`  | `dealeron-slider.{css,js,min.*}` |
+| `dl-carousel` (to 2026-08-31) | `cs` (2026-08-31 to 2026-10-27) | Current (`dos`)            |
+| ----------------------------- | ------------------------------- | -------------------------- |
+| `dl-carousel`                 | `cs`                            | `dos`                      |
+| `dl-carousel-track`           | `cs-track`                      | `dos-track`                |
+| `dl-carousel-slide`           | `cs-slide`                      | `dos-slide`                |
+| —                             | `cs-*` (controls, columns)      | `dos-*`                    |
+| `--dlc-*`                     | `--cs-*`                        | `--dos-*`                  |
+| `data-slider`                 | `data-cs`                       | `data-dos`                 |
+| `data-slider-*`               | `data-cs-*`                     | `data-dos-*`               |
+| —                             | `cs:*` events                   | `dos:*` events             |
+| —                             | `element._cs`                   | `element._dos`             |
+| `window.DLCarousel`           | `window.CustomSlider`           | `window.DealerOnSlider`    |
+| `dl-carousel.{css,js}`        | `custom-slider.{css,js,min.*}`  | `do-slider.{css,js,min.*}` |
 
-The card classes, `cargo-*` and `data-cargo`, did not change in the 2026-10-27 rename.
+The card classes, `cargo-*` and `data-cargo`, did not change in the 2026-10-27 rename. From
+2026-10-27 to 2026-11-04 the four files were `dealeron-slider.{css,js,min.*}` in
+`…/Apps/dealeronSlider/`; on 2026-11-04 only the file and folder names moved, so a page on them
+keeps its markup and changes just the two tags.
 
 Finding the pages that link the shared folders is Steven's, and nothing is believed to be live on
 either yet — the known consumer is a designer test page built on the `dl-carousel` classes. Migrate
@@ -517,10 +526,10 @@ there are two supported routes, and which one depends on what changed:
   no longer matches it.
 
 **A slider pasted before 2026-09-14 carries a script in Body Section, Bottom.** Since then a
-pattern's script ships inside `dealeron-slider.min.js` and its structure inside
-`dealeron-slider.min.css`, so when the shared files are re-uploaded that pasted script must come
-out, or the tabs are wired twice and a keyboard press moves two tabs. The pasted structure rules can
-stay (they say what the shared file says) or go; the values must stay.
+pattern's script ships inside `do-slider.min.js` and its structure inside `do-slider.min.css`, so
+when the shared files are re-uploaded that pasted script must come out, or the tabs are wired twice
+and a keyboard press moves two tabs. The pasted structure rules can stay (they say what the shared
+file says) or go; the values must stay.
 
 Either way **the class name must not change**. `.my-slider` is what the Style Only rules hook onto;
 rename it and every setting silently stops applying. Give a second slider on the same page a

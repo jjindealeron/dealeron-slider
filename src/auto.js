@@ -1,5 +1,5 @@
 /**
- * CMS entry point: bundled to dist/dealeron-slider.js (classic script).
+ * CMS entry point: bundled to dist/do-slider.js (classic script).
  * Auto-initializes every [data-dos] on the page; exposes the class
  * as window.DealerOnSlider for page-level scripting.
  */

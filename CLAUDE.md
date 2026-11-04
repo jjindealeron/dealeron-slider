@@ -85,8 +85,10 @@ Where it came from: James Jin (senior web dev) required the HTML contract to be 
 behaviour to ship via two centrally hosted files, and engines to be swappable behind it so dealer
 sites never need editing. The repo was renamed from custom-slider on 2026-10-27 (`cs` → `dos`, new
 folder `…/Apps/dealeronSlider/`), possible only because nothing was believed live on the hosted
-copy; the contract is frozen again from the first upload of the `dealeron-slider` files. The repo is
-public by Steven's choice, so DealerOn colleagues can see it.
+copy. On 2026-11-04 the four shipped files became `do-slider.*` in `…/Apps/doSlider/`, a less
+branded name; `src/` keeps `dealeron-slider.*` and the global stays `window.DealerOnSlider`. The
+contract is frozen again from the first upload of the `do-slider` files. The repo is public by
+Steven's choice, so DealerOn colleagues can see it.
 
 ## Conventions
 

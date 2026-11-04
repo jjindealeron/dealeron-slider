@@ -45,8 +45,8 @@ const DOWNLOAD_GUARD = 16384;
 // (scripts/build-patterns.mjs): every pattern's structural CSS, and the six
 // pattern scripts. Same rule - pattern wiring is not engine, so it is weighed
 // beside the budget, not against it.
-const cssAll = readFileSync('dist/dealeron-slider.min.css', 'utf8');
-const jsAll = readFileSync('dist/dealeron-slider.min.js', 'utf8');
+const cssAll = readFileSync('dist/do-slider.min.css', 'utf8');
+const jsAll = readFileSync('dist/do-slider.min.js', 'utf8');
 const split = (text, mark) => {
   const at = text.indexOf(mark);
   return at === -1 ? [text, ''] : [text.slice(0, at), text.slice(at)];
@@ -57,8 +57,8 @@ const [engineJs, patternsJs] = split(jsAll, '/*! patterns */');
 
 let total = 0;
 for (const [name, buf] of [
-  ['dist/dealeron-slider.min.js (engine)', Buffer.from(engineJs)],
-  ['dist/dealeron-slider.min.css (engine)', Buffer.from(engineCss)],
+  ['dist/do-slider.min.js (engine)', Buffer.from(engineJs)],
+  ['dist/do-slider.min.css (engine)', Buffer.from(engineCss)],
 ]) {
   const gz = gzipSync(buf, { level: 9 }).length;
   total += gz;

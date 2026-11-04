@@ -52,7 +52,7 @@
     const stream = new Blob([buf]).stream().pipeThrough(new CompressionStream('gzip'));
     return (await new Response(stream).blob()).size;
   };
-  Promise.all(['../dist/dealeron-slider.min.css', '../dist/dealeron-slider.min.js'].map(gz))
+  Promise.all(['../dist/do-slider.min.css', '../dist/do-slider.min.js'].map(gz))
     .then(([css, js]) => {
       size.textContent = `Two small files, ${((css + js) / 1024).toFixed(1)} KB in all — nothing else to install`;
     })

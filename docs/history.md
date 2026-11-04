@@ -755,3 +755,16 @@ B: the engine is 6649 B, 7 B under budget.
 The same day, the repo's 229 GitHub deployment records — one per push to the single `github-pages`
 environment — were pruned to the one serving the site, and the six failed workflow runs were
 deleted.
+
+## 2026-11-04 — the shipped files become `do-slider.*`
+
+A less branded file name was asked for: the four `dist/` files are `do-slider.{css,js,min.*}` and
+the shared folder is `…/Apps/doSlider/`. Only those names moved. `src/dealeron-slider.*`, the global
+`window.DealerOnSlider`, the `[dealeron-slider]` console prefix and every `dos-*` contract name are
+as they were, so a page needs only its two tags changed.
+
+The `dealeron-slider.*` files had gone up to `…/Apps/dealeronSlider/` at 18:00 GMT the same day,
+three of them byte-identical to `dist/` (cache-busted against `cadillacdemo1.dealeron.com`); that
+folder stays until Steven confirms no page links it. The script that renamed the references skipped
+paths after `src/` and `./`, which also skipped `.../dealeron-slider.min.css` in README's upload
+steps; a grep for every remaining `dealeron-slider` caught it.

@@ -154,7 +154,7 @@ export function hostHtml({ engineCss, engineJs, css = '', html = '', js = '', bo
 }
 
 export async function engineFiles() {
-  const [engineCss, engineJs] = await Promise.all([fetch(`${ORIGIN}/dist/dealeron-slider.min.css`).then((r) => r.text()), fetch(`${ORIGIN}/dist/dealeron-slider.min.js`).then((r) => r.text())]);
+  const [engineCss, engineJs] = await Promise.all([fetch(`${ORIGIN}/dist/do-slider.min.css`).then((r) => r.text()), fetch(`${ORIGIN}/dist/do-slider.min.js`).then((r) => r.text())]);
   return { engineCss, engineJs };
 }
 
