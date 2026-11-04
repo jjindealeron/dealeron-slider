@@ -764,7 +764,9 @@ the shared folder is `…/Apps/doSlider/`. Only those names moved. `src/dealeron
 as they were, so a page needs only its two tags changed.
 
 The `dealeron-slider.*` files had gone up to `…/Apps/dealeronSlider/` at 18:00 GMT the same day,
-three of them byte-identical to `dist/` (cache-busted against `cadillacdemo1.dealeron.com`); that
-folder stays until Steven confirms no page links it. The script that renamed the references skipped
-paths after `src/` and `./`, which also skipped `.../dealeron-slider.min.css` in README's upload
-steps; a grep for every remaining `dealeron-slider` caught it.
+three of them byte-identical to `dist/` (cache-busted against `cadillacdemo1.dealeron.com`). The
+`do-slider.*` files went up to `…/Apps/doSlider/` at 19:03 GMT, three of them byte-identical to
+`dist/` at `b3f745b`, and by then the four `dealeron-slider.*` files answered 404. The contract is
+frozen from that upload. The script that renamed the references skipped paths after `src/` and `./`,
+which also skipped `.../dealeron-slider.min.css` in README's upload steps; a grep for every
+remaining `dealeron-slider` caught it.

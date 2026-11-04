@@ -416,15 +416,14 @@ replacement codes, per-OEM theming, and the ladder for each brand's model bar.
 /assets/shared/CustomHTMLFiles/Responsive/Apps/doSlider/
 ```
 
-**⚠ and nothing has been uploaded to it yet** (404, checked 2026-11-04). Until the four
-`do-slider.*` files from `dist/` are there, a page pasting a snippet from the current builder links
-two files that do not exist and gets an unstyled list.
+**and it holds the four `do-slider.*` files, uploaded 2026-11-04.** Measured that day, cache-busted
+against `cadillacdemo1.dealeron.com` and `www.karlchevrolet.com`: all four answered 200,
+`last-modified` 19:03–19:04 GMT, and `do-slider.css`, `.js` and `.min.js` byte-identical to `dist/`
+at `b3f745b` (`.min.css` is re-minified by the platform, see below, and begins
+`.dos{--dos-per-view`).
 
-The folder before it, `…/Apps/dealeronSlider/`, holds the four `dealeron-slider.*` files uploaded on
-2026-11-04 — the same `dos` contract under the old file names. Measured that day, cache-busted
-against `cadillacdemo1.dealeron.com`: all four answered 200, `last-modified` 18:00–18:01 GMT, and
-`dealeron-slider.js`, `.min.js` and `.css` byte-identical to `dist/` at `9e3cd84`. It went up hours
-before the rename, so no page is expected to link it; delete it once Steven confirms none does.
+The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
+an hour on 2026-11-04; all four of its files answered 404 the same afternoon.
 
 The previous folder, `…/Apps/customSlider/`, holds the four `custom-slider.*` files uploaded on
 2026-09-08 — the `cs` contract, and a build behind even on its own names. Measured that day,
