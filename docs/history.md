@@ -894,3 +894,28 @@ failed only on `declaration-block-single-line-max-declarations: null`, a rule 18
 line only switched off. A probe with properties out of order passed, so the cost is property order
 alone. Steven had it removed ("remove recess order"): stylelint 18 and config-standard 41 went in,
 both configs extend the standard config only, and the dead line went.
+
+## 2026-11-05 — a brand's second code is a preset of its own; four built
+
+Ten codes on the Checklist were a brand's second code, and a preset holds one measurement, so
+Lincoln's Slick v2 or Toyota's Tabs v3 would have overwritten the code already built. Steven chose
+one preset per code. A second code is an entry keyed after it, with `of` naming its brand and
+`variant` naming the code; it takes the brand's roster, logo, label, ladder, font and theme unless
+it sets its own, and its brand's tab names on a pattern it carries nothing for. The built presets
+were given their own code names, so every chip says which code it is ("Kia · Tabbed", "Kia · Plain";
+Lincoln's two plain bars are "Version 1" and "Version 2"). The names describe the bar, not the code:
+slick is the old jQuery slider the live bars run, and this repo does not use it, so no chip says
+"Slick" (Steven, the same day).
+
+Seven agents measured the ten on their live pages (`docs/research/2026-11-05-measurements/`), and
+each script was re-run before its values landed. Four landed: `kia-plain`, `lincoln-v2`,
+`ford-plain` and `honda-tabbed`. Two did not: Toyota's Tabs v3 draws split photo cards behind its
+tabs, which `tabs` cannot (now "Needs a pattern we do not have"), and Maserati's bar needs cutouts
+and a logo the repo does not have. CDJR's four did not either: the demos' tabs are brand logos with
+no text, the article's example for one draws another code, and the one text-tabbed bar, on a
+dealer's own site, waits on 16 cutouts and a CDJR entry.
+
+Looking at the brands page found two faults the gates had passed. Drawing every preset on every
+pattern its card reached gave Kia four stages, two of them each code in the other's layout, and put
+one anchor id on two blocks. A brand with two codes now draws each once, on the pattern its own code
+was measured on; `tests/brands.test.mjs` holds both and failed on the version before.

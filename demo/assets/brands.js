@@ -100,11 +100,11 @@
         ['accord.png', 300, 140, 'Accord', 'Cars'],
         ['civic.png', 300, 140, 'Civic', 'Cars'],
         ['cr-v.png', 300, 140, 'CR-V', 'SUVs & Crossovers'],
-        ['cr-v-hybrid.png', 300, 140, 'CR-V Hybrid', 'SUVs & Crossovers | Electrified'],
+        ['cr-v-hybrid.png', 300, 140, 'CR-V Hybrid', 'SUVs & Crossovers | Electrified | Hybrid & Electric'],
         ['hr-v.png', 300, 140, 'HR-V', 'SUVs & Crossovers'],
         ['passport.png', 300, 140, 'Passport', 'SUVs & Crossovers'],
         ['pilot.png', 300, 140, 'Pilot', 'SUVs & Crossovers'],
-        ['prologue.png', 300, 140, 'Prologue', 'SUVs & Crossovers | Electrified'],
+        ['prologue.png', 300, 140, 'Prologue', 'SUVs & Crossovers | Electrified | Hybrid & Electric'],
         ['odyssey.png', 300, 140, 'Odyssey', 'Minivan & Truck'],
         ['ridgeline.png', 300, 140, 'Ridgeline', 'Minivan & Truck'],
       ],
@@ -800,7 +800,7 @@
         [1200, 5],
       ],
       demos: 3,
-      note: 'Since Nov 2025 the official bar is the tabbed version; the plain slick look was deprecated and its sites migrated.',
+      note: 'Since Nov 2025 the official bar is the tabbed version; the plain bar was deprecated and its sites migrated.',
       // The variant: what chevroletdemo1 draws, as knob values. Measured with
       // Playwright against the demo's own tabs pattern on 2026-09-09 and
       // again, more closely, on 2026-09-14 - every difference was a value,
@@ -956,6 +956,8 @@
     },
     ford: {
       label: 'Ford',
+      // Its own code is `ford-model-bar-slick-tabbed-panels`; a second one has its own entry below.
+      variant: 'Tabbed',
       look: 'tile',
       ladder: [
         [0, 1],
@@ -1098,6 +1100,49 @@
         css: '.h1{font-family:antennaRegular,Arial,Helvetica,sans-serif;font-weight:500}.btn{font-weight:400;border-radius:5px;transition:0.3s ease-in-out}',
       },
       source: 'forddemo1.dealeron.com, 2026-09-14',
+    },
+    // `ford-model-bar-slick` on forddemo3, measured 2026-11-05
+    // (docs/research/2026-11-05-measurements/ford-slick.md). Slick 5, 768:3,
+    // 460:2, exact to the pixel either side - not ford's tabbed ladder, so it
+    // is set here. The body is ford-f1, 14px at 992 and up, 13px below.
+    // - 12 cutouts on white, slides butting, the art padded 0 10px inside its
+    //   box and drawn at scale(0.95), full size on hover over 0.1s;
+    // - the name 16.8px (the platform's .larger), 400, #333, on a 1.4286
+    //   line, pulled 10px up over the cutout's foot. The gap is a calc(): the
+    //   live -10px hangs off a box whose foot sits 2.5% of its height below
+    //   the art, so it follows the card width (-6.1px at 230, -7.8 at 138).
+    // Drawn through the shipped CSS it matches the art and name within 0.4px
+    // at 1366; 1.9px low at 800 and 390, where the live body drops to 13px.
+    // Kept on purpose: the pattern's currentcolor chevron (#333, 12.63:1)
+    // over slick's grey disc (3.16:1 on white, 2.77:1 on Ford's #f0f0f0).
+    'ford-plain': {
+      of: 'ford',
+      variant: 'Plain',
+      ladder: [
+        [0, 2],
+        [460, 3],
+        [768, 5],
+      ],
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.2em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': 'calc(1.875% - 0.62em)',
+            '--plate-pad': '1.875% calc(2.5% + 0.68em) 0',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '0.1px' } } },
+      },
+      // PREVIEW ONLY: the face every Ford site on this code loads, from
+      // DealerOn's CDN, on the body (forddemo1's is on its headings only).
+      font: { family: 'ford-f1', css: 'https://cdn.dealeron.com/assets/fonts/ford-f1/fonts.min.css' },
+      source: 'forddemo3.dealeron.com, 2026-11-05',
     },
     gmc: {
       label: 'GMC',
@@ -1263,6 +1308,8 @@
     },
     honda: {
       label: 'Honda',
+      // Its own code is `honda-model-bar-slick`; a second one has its own entry below.
+      variant: 'Plain',
       look: 'tile',
       ladder: [
         [0, 1],
@@ -1329,6 +1376,93 @@
       // PREVIEW ONLY.
       font: { family: 'poppins-regular', css: 'https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css' },
       source: 'hondademo2.dealeron.com, 2026-09-15',
+    },
+    // `honda-model-bar-slick-tabbed` on hondademo1, measured 2026-11-05
+    // (docs/research/2026-11-05-measurements/honda-tabbed.md). Four slick bars
+    // in Bootstrap tab panes under a four-tab row: the same template as
+    // forddemo1's (bordered box, grey cells, a 5px line over the picked tab,
+    // hidden-xs short names, the button inside the box), so the tabs props
+    // are Ford's shape with Honda's values. 5, 991:3, 460:1: honda's own
+    // ladder gives the same counts, inherited, as is the font.
+    // Its card differs from the plain bar's: the name 14px (1em; 15px there)
+    // at 400, and no 10px side padding on the image, only the 0.95 scale.
+    // Departures: the live arrow is #919191 effective, 3.15:1, so Ford's
+    // #767676 (4.54:1); the live phone tab wraps "HYBRID & ELECTRIC" onto two
+    // lines at 12px, ours stays on one at the body's 13px with the short name
+    // "Hybrid" (ours, not live). The tab line keeps the live #2198dc: 3.19:1
+    // on the white picked cell. Live holds five hybrids and EVs; three have no
+    // cutout here (Civic, Accord and Prelude Hybrid), so that pane draws two.
+    'honda-tabbed': {
+      of: 'honda',
+      variant: 'Tabbed',
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.17em',
+            '--plate-pad': '1.17% 2.5% 0',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--dos-arrow-fg': '#767676',
+              '--dos-arrow-fg-hover': '#6c6c6c',
+              '--dos-arrow-bg-hover': 'transparent',
+              '--tab-flex': '1 1 0%',
+              '--tab-size': '1.14em',
+              '--tab-size-narrow': '0.923em',
+              '--tab-size-phone': '1em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-case': 'uppercase',
+              '--tab-color': '#000',
+              '--tab-selected': '#000',
+              '--tab-dim': '1',
+              '--tab-bg': '#f0f0f0',
+              '--tab-selected-bg': '#fff',
+              '--tab-line': '#2198dc',
+              '--tab-line-hover': 'transparent',
+              '--tab-line-size': '0.31em',
+              '--tab-line-inset': '0 auto',
+              '--tab-pad': '0.94em 0.31em',
+              '--tab-pad-narrow': '1.25em 0.42em',
+              '--tab-pad-phone': '1.15em 0.38em',
+              '--tab-gap': '0.1px',
+              '--tab-gap-phone': '0.1px',
+              '--tab-rule': 'transparent',
+              '--tab-cell-rule': '#ccc',
+              '--tab-cell-divider': '#ccc',
+              '--tab-row-gap': '0.1px',
+              '--tab-fade': '0.15s',
+              '--box-border': '1px solid #ccc',
+              '--box-pad': '2.14em',
+              '--box-pad-narrow': '1.154em',
+              '--title-gap': '0.6em',
+              '--more-gap': '3.14em',
+            },
+            panes: ['SUVs [& Crossovers]', 'Minivan [& Truck]', 'Cars', 'Hybrid [& Electric]'],
+            words: { title: 'Our Vehicles', titleClass: 'heading-lg', lead: '', moreText: 'Explore All New Models', moreHref: '/searchnew.aspx' },
+          },
+        },
+      },
+      // PREVIEW ONLY: hondademo1's theme tokens and the computed look of the
+      // two platform classes the snippet names (heading-lg, btn-cta).
+      theme: {
+        '--cta-background-color': '#007cc2',
+        '--cta-font-color': '#fff',
+        '--cta-hover-color': '#00629a',
+        '--main-color': '#00324F',
+        css: '.heading-lg{font-family:poppins-semibold,sans-serif;font-size:42px;font-weight:500;line-height:1.1}.btn{font-family:poppins-semibold,sans-serif;text-transform:uppercase;border-width:2px;border-radius:25px;transition:0.3s ease-in-out}.btn-lg{padding:8px 25px;font-size:16px}.btn-cta{color:#fff;background-color:#e42525;border-color:#e42525}.btn-cta:hover,.btn-cta:focus{color:#e42525;background-color:#fff}',
+      },
+      source: 'hondademo1.dealeron.com, 2026-11-05',
     },
     hyundai: {
       label: 'Hyundai',
@@ -1494,6 +1628,8 @@
     },
     kia: {
       label: 'Kia',
+      // Its own code is `kia-model-bar`; a second one has its own entry below.
+      variant: 'Tabbed',
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1562,6 +1698,37 @@
       // PREVIEW ONLY.
       font: { family: 'KiaSignatureRegular', css: 'https://cdn.dealeron.com/assets/fonts/kiasignature/fonts.min.css' },
       source: 'kiademo2.dealeron.com, 2026-09-15',
+    },
+    // `kia-model-bar-slick` on kiademo3, measured 2026-11-05
+    // (docs/research/2026-11-05-measurements/kia-slick.md). Slick 5, 768:3,
+    // 460:2: kia's own ladder, inherited, as are the font and the label. The
+    // same 14px KiaSignatureRegular body as kiademo2, 13px below 992.
+    // - 19 cutouts on white, slides butting, each slide padded 10px a side;
+    //   no zoom - the code's scale(.95) hover rule targets .carImage and these
+    //   images are .modelbarImage, so it never fires;
+    // - the name 1em (the look's default: it tracks the body to 13px, as live
+    //   does), 400, #05141f, on a 1.4286 line, pulled 10px up over the foot.
+    // Kept on purpose: the pattern's currentcolor chevron (#05141f, 18.65:1)
+    // over the live slick disc (#919191 effective, 3.16:1 on white).
+    // Not carried: the live bar's EV3 and Sorento Plug-In Hybrid have no
+    // cutouts here, so it draws kia's roster.
+    'kia-plain': {
+      of: 'kia',
+      variant: 'Plain',
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#05141f',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '-0.7143em',
+            '--plate-pad': '0 0.7143em',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '0.1px' } } },
+      },
+      source: 'kiademo3.dealeron.com, 2026-11-05',
     },
     landrover: {
       label: 'Land Rover',
@@ -1714,6 +1881,8 @@
     },
     lincoln: {
       label: 'Lincoln',
+      // Its own code is `lincoln-model-bar-slick`; a second one has its own entry below.
+      variant: 'Version 1',
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1767,6 +1936,41 @@
       },
       // No font entry: the body is a Typekit kit DealerOn's CDN does not serve.
       source: 'lincolndemo2.dealeron.com, 2026-11-03',
+    },
+    // `lincoln-model-bar-slick2` on www.rydelllincoln.com (a live dealer site,
+    // the article's example), measured 2026-11-05
+    // (docs/research/2026-11-05-measurements/lincoln-slick2.md). Nothing on
+    // the page names the code: it was told from v1 by its own CSS block and its
+    // 991 breakpoint. Same four cutouts, white page, 0.95 -> 1 hover in 0.1s,
+    // arrows and 35px channel as v1; lincoln's ladder gives the same counts.
+    // What differs: no 10px image padding (the car is 95% of the slide, not
+    // about 88%), and the name 15px, 700, on a 24px line, 10px up into the
+    // image box at every width. Rendered through the real tile CSS at
+    // 1366/800/390 and matched the live art and name.
+    // Kept on purpose: the pattern's currentcolor chevron (#333, 12.63:1)
+    // over the live grey (3.16:1).
+    'lincoln-v2': {
+      of: 'lincoln',
+      variant: 'Version 2',
+      note: 'A bold 15px name over larger cars than the first code; the same counts.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.0714em',
+            '--name-weight': '700',
+            '--name-case': 'uppercase',
+            '--name-leading': '1.6',
+            '--name-gap': '-0.6667em',
+            '--plate-pad': '1.875% 2.5%',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.1s',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '0.1px' } } },
+      },
+      source: 'www.rydelllincoln.com, 2026-11-05',
     },
     mini: { label: 'MINI', look: 'tile', ladder: null, demos: 3 },
     mazda: {
@@ -2236,6 +2440,16 @@
     const parent = b.of && BRANDS[b.of];
     if (!parent) continue;
     for (const k of INHERIT) if (b[k] === undefined && parent[k] !== undefined) b[k] = parent[k];
+    // Tab names are the brand's roster tags, and a second code draws the
+    // brand's roster, so on a pattern it carries nothing for it takes the
+    // brand's tab names - and nothing else of the other code's measurement.
+    // Without them Kia's Slick on the tabbed bar declared the pattern's own
+    // Trucks / SUVs / Crossovers over a roster tagged with Kia's tabs, and
+    // three tabs came up empty (lint-generated-css, 2026-11-05).
+    for (const [pid, own] of Object.entries(parent.styles?.patterns ?? {})) {
+      if (!own.panes || b.styles?.patterns?.[pid]) continue;
+      b.styles = { ...b.styles, patterns: { ...b.styles?.patterns, [pid]: { panes: own.panes } } };
+    }
   }
   // The brand an entry belongs to (itself, for a brand), and the name to show
   // for it. Every place that draws a logo or a brand's name goes through these,

@@ -318,6 +318,37 @@ test('a second code for a brand is its own chip and its own stage, under the bra
   await ctx.close();
 });
 
+// 2026-11-05, the first real second codes: drawing every preset on every
+// pattern its card reached gave Kia four stages (its tabbed code drawn as a
+// plain bar, and the plain one as a tabbed bar) and put one id on two of them.
+// Read off the data: every brand with more than one code.
+test('a brand with two codes draws each once, on its own pattern, and no id repeats', async () => {
+  await page.goto(`${ORIGIN}/demo/brands.html`, { waitUntil: 'load' });
+  await page.waitForSelector('#b-chevrolet .dos-slide');
+  const got = await page.evaluate(() => {
+    const { BRANDS, brandName } = globalThis.CARGO;
+    const families = Object.keys(BRANDS).filter((b) => !BRANDS[b].of && Object.values(BRANDS).some((v) => v.of === b));
+    const ids = [...document.querySelectorAll('[id]')].map((e) => e.id);
+    return {
+      families: families.map((b) => ({
+        b,
+        heads: [...document.querySelectorAll(`#b-${b} .bb-block-head h3`)].length,
+        codes: [b, ...Object.keys(BRANDS).filter((v) => BRANDS[v].of === b)].length,
+        named: [b, ...Object.keys(BRANDS).filter((v) => BRANDS[v].of === b)].map((m) => brandName(m)),
+      })),
+      dupes: [...new Set(ids.filter((id, i) => ids.indexOf(id) !== i))],
+      kia: [...document.querySelectorAll('#b-kia .bb-block-head h3')].map((h) => h.textContent),
+      lincoln: [...document.querySelectorAll('#b-lincoln .bb-block-head h3')].map((h) => h.textContent),
+    };
+  });
+  assert.ok(got.families.length > 0, 'no brand has a second code yet — this test has nothing to hold');
+  for (const f of got.families) assert.equal(f.heads, f.codes, `${f.b}: ${f.heads} stages for ${f.codes} codes (${f.named.join(', ')})`);
+  assert.deepEqual(got.dupes, [], 'an id appears more than once on the brands page');
+  assert.deepEqual(got.kia, ['Tabbed bar', 'Model bar']);
+  // Two codes on one pattern are told apart by name.
+  assert.deepEqual(got.lincoln, ['Model bar · Version 1', 'Model bar · Version 2']);
+});
+
 test('the deep link lands on the brand and nothing threw', async () => {
   await page.goto(`${ORIGIN}/demo/brands.html#toyota`, { waitUntil: 'load' });
   await page.waitForSelector('#b-toyota .dos-slide');

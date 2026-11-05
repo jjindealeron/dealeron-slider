@@ -570,7 +570,7 @@ ${VIDEO_DIALOG_CSS}`,
     tabs: {
       label: 'Model bar with tabs',
       blurb:
-        'The same strip under body-style tabs. Each pane holds its own slider, and a pane revealed later measures itself correctly — so none of slick’s hidden-pane refresh hacks are needed. This is how Chevrolet has shipped its bar since Nov 2025.',
+        'The same strip under body-style tabs. Each pane holds its own slider, and a pane revealed later measures itself correctly — so none of the old slider’s hidden-pane refresh hacks are needed. This is how Chevrolet has shipped its bar since Nov 2025.',
       look: 'tile',
       // Only this pattern opts into the Tab box: cutouts is shared with the model
       // bar and the two-row grid, and adding the key to the roster itself would

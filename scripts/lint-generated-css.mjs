@@ -43,7 +43,7 @@ sandbox.history = { replaceState: noop };
 for (const f of ['looks.js', 'brands.js', 'cms-paths.js', 'patterns.js', 'workbench.js']) {
   new Function('globalThis', 'document', 'window', readFileSync(`demo/assets/${f}`, 'utf8')).call(sandbox, sandbox, sandbox.document, sandbox);
 }
-const { PATTERNS, LOOKS, BRANDS, renderPattern, renderLook, ENGINE_DEFAULTS, variantsOf } = sandbox.CARGO;
+const { PATTERNS, LOOKS, BRANDS, brandOf, renderPattern, renderLook, ENGINE_DEFAULTS, variantsOf } = sandbox.CARGO;
 
 // cssFor() drops any value equal to an engine default, so that map has to BE
 // the engine. Read the real `.dos { … }` block out of src/dealeron-slider.css and
@@ -283,7 +283,8 @@ for (const { id, bid, r } of variantPairs) {
         console.error(`  ${bid} on “${pid}”: ${lost.length} declared pane(s) never reached the tab row — ${lost.join(', ')} — no roster row is tagged for them, so the tab was dropped`);
         problems++;
       }
-      if (!tagged.has(bid)) stride.push(`${bid}/${pid}`);
+      // A brand's second code draws the brand's roster (brands.js `of`).
+      if (!tagged.has(brandOf(bid))) stride.push(`${bid}/${pid}`);
     }
   }
   if (stride.length) console.warn(`  note: ${stride.length} tabbed variant(s) still slice the roster by stride, so their tab names describe nothing: ${stride.join(', ')}`);

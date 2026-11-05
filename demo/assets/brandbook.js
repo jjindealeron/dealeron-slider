@@ -39,8 +39,27 @@
   // `of`, 2026-11-05) is not a brand of its own: its stages sit in its
   // brand's section after the brand's own, each headed with the code's name.
   const membersOf = (id) => [id, ...Object.keys(BRANDS).filter((v) => BRANDS[v].of === id)];
+  // The patterns a preset's own CODE was measured on: the ones it carries
+  // props or words for. Its card values reach every pattern on the same look
+  // too, which is what patternsOf() lists, and for a brand with one code that
+  // is the section; with two, drawing each on every pattern gave Kia four
+  // stages, two of them ("Model bar" from the tabbed code, "Tabbed bar" from the plain one) each code
+  // in the other's layout. Tab names a second code takes from its brand
+  // (brands.js) are neither, so they do not count.
+  const ownPatterns = (m) =>
+    patternsOf(m).filter((pid) => {
+      const s = BRANDS[m].styles?.patterns?.[pid];
+      return s && (s.props || s.words);
+    });
   // Every [preset, pattern] pair a brand's section draws, its own first.
-  const blocksOf = (id) => membersOf(id).flatMap((m) => patternsOf(m).map((pid) => [m, pid]));
+  const blocksOf = (id) => {
+    const members = membersOf(id);
+    if (members.length === 1) return patternsOf(id).map((pid) => [id, pid]);
+    return members.flatMap((m) => {
+      const own = ownPatterns(m);
+      return (own.length ? own : patternsOf(m)).map((pid) => [m, pid]);
+    });
+  };
 
   // Measured brands first, then the rest alphabetically by label.
   const ids = Object.keys(BRANDS)
@@ -100,15 +119,20 @@
       const cls = `bb-${m}-${pid}`;
       // Named per brand: this page draws the same pattern for every brand,
       // and a page of regions all called "Our models" fails landmark-unique.
-      // brandName() adds the code to a brand that has more than one.
-      const r = renderPattern(pid, cls, { brand: m, label: `${brandName(m)} ${short.toLowerCase()}` });
+      // Two codes on one pattern (Lincoln's two plain bars) are told apart
+      // by the code's name, on the stage's label and its heading; two codes
+      // on different patterns already are, by the pattern.
+      const dup = blocks.filter(([, p]) => p === pid).length > 1;
+      const r = renderPattern(pid, cls, { brand: m, label: `${dup ? brandName(m) : b.label} ${short.toLowerCase()}` });
       css.push(r.css);
       const block = document.createElement('div');
       block.className = 'bb-block';
       // A second code's own anchor, so brands.html#toyota-v3 lands on its
-      // stage the way #toyota lands on the brand (gotoHash below).
-      if (m !== id) block.id = `b-${m}`;
-      const head = several && mb.variant ? `${short} · ${mb.variant}` : short;
+      // stage the way #toyota lands on the brand (gotoHash below). On its
+      // FIRST block only: Kia's Slick draws on two patterns, and an id twice
+      // is no anchor.
+      if (m !== id && !document.getElementById(`b-${m}`) && !sec.querySelector(`#b-${m}`)) block.id = `b-${m}`;
+      const head = dup && mb.variant ? `${short} · ${mb.variant}` : short;
       const where = several && mb.source ? `<p class="bb-note">Measured on ${esc(mb.source)}.</p>` : '';
       block.innerHTML = `<div class="bb-block-head"><h3>${esc(head)}</h3><a class="ui-btn" href="index.html#${pid}?brand=${m}">Open in the builder</a></div>${where}<div class="gx-stage bb-stage" data-pattern="${pid}" data-brand="${m}"></div>`;
       const stage = /** @type {HTMLElement} */ (block.querySelector('.bb-stage'));

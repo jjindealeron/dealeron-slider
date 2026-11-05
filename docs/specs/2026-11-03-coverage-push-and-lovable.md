@@ -66,9 +66,13 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
       font and theme unless it sets its own
   - [x] The mechanism: `of`/`variant` in `brands.js`, chips and Other brand list, the brands page
         grouping, the patterns page links, `check-looks.mjs`, tests
-  - [ ] Measured into `docs/research/2026-11-05-measurements/`, each script re-run before landing:
-        Maserati, Lincoln Slick v2, Toyota Tabs v3, Ford Slick, Kia Slick, Honda slick-tabbed, CDJR
-        ×4
-  - [ ] Each code landed as a preset with its ledger row, gates green, Lovable refreshed
+  - [x] Measured into `docs/research/2026-11-05-measurements/`, each script re-run before landing:
+        the ten codes but CDJR's four
+  - [x] CDJR ×4 measured: none buildable yet (logo tabs; one example draws another code; one waits
+        on cutouts)
+  - [x] `kia-plain`, `lincoln-v2`, `ford-plain` and `honda-tabbed` landed with their ledger rows
+  - [ ] Toyota Tabs v3 (needs a tabbed split-card pattern) and Maserati (needs its cutouts and
+        logo): Steven's decisions
+  - [ ] Lovable refreshed
 - [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,
       `dealeron-slider-repo-2026-11-03.zip` (421 files, tracked only)

@@ -46,6 +46,24 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
   `re2js` `^2.9.1` (GHSA-gg6h-894w-4m9c: `markdownlint` 0.42.0 pins exactly 2.8.6, the fix is
   2.8.7). Once `npm ls minimatch re2js` without the overrides shows fixed versions, remove them.
 
+## 2026-11-05 — found while measuring the second codes, not actioned
+
+The measurements are `docs/research/2026-11-05-measurements/`. Each of these is about a preset built
+before, read off a different page, so each needs its own page re-read before it changes.
+
+- **Lincoln's built `--plate-pad` may sit the art about 19px low.** `ford-slick-render.mjs` drew the
+  same live image setup (`padding: 0 10px`, `scale(.95)`) through the shipped CSS with `lincoln`'s
+  `calc(3.75% + 1.02em) calc(2.5% + 0.68em) 0`, and the art and name landed about 19px below where
+  `1.875%` on top (Acura's and `ford-plain`'s form) puts them. Not checked on lincolndemo2 itself.
+- **Honda's built preset never sets `--name-weight`**, so the name draws at the tile's 600; the
+  tabbed bar on hondademo1 draws 400 and its agent read the plain bar as 400 too, from the
+  2026-09-15 notes rather than a fresh read of hondademo2. The same preset's comment calls
+  hondademo2's ladder "5@768:3,460:2" while it carries `[[0,1],[460,3],[992,5]]`; which is right is
+  unread.
+- **`2026-11-03-measurements/lincoln.md` says v1 flips "1px early" at 460 and 992.** Slick switches
+  at a width below its breakpoint, which would make those exact; inferred on rydelllincoln.com, not
+  re-measured on lincolndemo2.
+
 ## 2026-11-03 — found while measuring fourteen codes, not actioned
 
 The measurements are `docs/research/2026-11-03-measurements/`; the plan for the day is
@@ -66,11 +84,21 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
-- **The ten codes that do not fit one preset per brand** (a second code on the same pattern, or no
-  preset at all) wait on variant presets: `lincoln-model-bar-slick2`,
-  `toyota-modelbar-slick-tabbed-v3`, the four CDJR codes, `ford-model-bar-slick`,
-  `kia-model-bar-slick`, `honda-model-bar-slick-tabbed`, `maserati-modelbar-slick`. There were
-  eleven until the article dropped `lexus-model-bar-slick2` in October 2026 (`docs/coverage.md`).
+- **Of the ten codes that did not fit one preset per brand,** four are built since a second code
+  became its own preset (2026-11-05: `kia-plain`, `lincoln-v2`, `ford-plain`, `honda-tabbed`). Left,
+  each a decision rather than a measurement (`docs/research/2026-11-05-measurements/`):
+  - `toyota-modelbar-slick-tabbed-v3`: a split photo card behind tabs, a pattern we lack, over
+    800x744 photos the repo does not have.
+  - `maserati-modelbar-slick`: no Maserati cutouts or logo in the repo, and a wordmark image over
+    each car that the tile has no slot for.
+  - `cdjr-model-bar` and `cdjr-fiat-model-bar`: logo tabs (a brand mark per tab, no text).
+  - `cdjr-model-bar-no-back`: its example, cdjrdemo4, draws the Fiat bar; it needs a page that draws
+    it.
+  - `cdjr-fiat-model-bar-no-back`: text tabs and buildable, but needs a CDJR entry and roster, and
+    16 of its models have no cutout here.
+
+  There were eleven until the article dropped `lexus-model-bar-slick2` in October 2026
+  (`docs/coverage.md`).
 
 ## 2026-10-27 — heard on NVDA and VoiceOver, not actioned
 
