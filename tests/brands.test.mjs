@@ -24,9 +24,14 @@ test('every brand has a tile, measured ones first, each with its logo', async ()
       ok: a.querySelector('img')?.naturalWidth > 0,
     })),
   );
-  const brands = await page.evaluate(() => Object.keys(globalThis.CARGO.BRANDS));
+  // A tile per BRAND: a second code for one (brands.js `of`) is drawn inside
+  // its brand's section, and counts as measuring that brand.
+  const brands = await page.evaluate(() => Object.keys(globalThis.CARGO.BRANDS).filter((b) => !globalThis.CARGO.BRANDS[b].of));
   assert.equal(tiles.length, brands.length);
-  const measured = await page.evaluate(() => Object.keys(globalThis.CARGO.BRANDS).filter((b) => globalThis.CARGO.patternsOf(b).length));
+  const measured = await page.evaluate(() => {
+    const { BRANDS, patternsOf } = globalThis.CARGO;
+    return Object.keys(BRANDS).filter((b) => !BRANDS[b].of && Object.keys(BRANDS).some((m) => (m === b || BRANDS[m].of === b) && patternsOf(m).length));
+  });
   assert.deepEqual(
     tiles
       .slice(0, measured.length)
@@ -254,6 +259,63 @@ test("Cadillac's and Hyundai's names on the plain model bar take the stage's tex
     assert.notEqual(got.name, 'rgb(255, 255, 255)', `${id}: a white name on the plain model bar`);
     assert.equal(got.name, got.stage, `${id}: the name does not follow the stage`);
   }
+});
+
+// docs/backlog.md 2026-11-03 / Steven 2026-11-05: ten codes are a brand's
+// SECOND code (Toyota's Tabs v3 beside the Tabs v2 it already draws), and a
+// preset holds one measurement, so each is a preset of its own naming its
+// brand with `of`. Held with a synthetic one injected into brands.js as
+// served, so the mechanism is tested whether or not a real one has landed:
+// before it, the chip read plain "Toyota" twice and asked for
+// img/logo-toyota-probe.png, and the brands page drew it as a 33rd brand with
+// no logo and no cars of its own.
+test('a second code for a brand is its own chip and its own stage, under the brand', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  await ctx.route('**/demo/assets/brands.js', async (route) => {
+    const res = await route.fetch();
+    const probe = `    'toyota-probe': { of: 'toyota', variant: 'Probe', styles: { patterns: { tabs: { props: { '--tab-selected': '#123456' } } } }, source: 'probe.example, 2026-11-05' },\n    volkswagen: {`;
+    await route.fulfill({ response: res, body: (await res.text()).replace('    volkswagen: {', probe) });
+  });
+  const thrown = [];
+  const p = await ctx.newPage();
+  p.on('pageerror', (e) => thrown.push(e.message));
+
+  await p.goto(`${ORIGIN}/demo/index.html#tabs`, { waitUntil: 'load' });
+  await p.waitForSelector('#wb-variants button[data-brand="toyota-probe"]');
+  const chip = await p.evaluate(() => {
+    const img = document.querySelector('#wb-variants button[data-brand="toyota-probe"] img');
+    return { text: img.parentElement.textContent.trim(), src: img.getAttribute('src'), loaded: img.naturalWidth > 0 };
+  });
+  assert.deepEqual(chip, { text: 'Toyota · Probe', src: 'img/logo-toyota.png', loaded: true }, "the chip names the brand and the code, with the brand's logo");
+  await p.click('#wb-variants button[data-brand="toyota-probe"]');
+  await p.waitForTimeout(400);
+  const alt = await p.evaluate(() => document.querySelector('iframe').contentDocument.querySelector('.dos-slide img')?.getAttribute('alt'));
+  assert.match(alt ?? '', /^Toyota /, "the second code draws its brand's cars");
+
+  await p.goto(`${ORIGIN}/demo/brands.html#toyota-probe`, { waitUntil: 'load' });
+  await p.waitForSelector('#b-toyota-probe .dos-slide');
+  await p.waitForTimeout(400);
+  const page2 = await p.evaluate(() => ({
+    tile: !!document.querySelector('#bb-index a[href="#toyota-probe"]'),
+    inside: !!document.querySelector('#b-toyota #b-toyota-probe'),
+    head: document.querySelector('#b-toyota-probe h3')?.textContent,
+    where: document.querySelector('#b-toyota-probe > .bb-note')?.textContent,
+    live: !!(/** @type {any} */ (document.querySelector('#b-toyota-probe .dos'))?._dos),
+    top: document.getElementById('b-toyota-probe').getBoundingClientRect().top,
+  }));
+  assert.equal(page2.tile, false, 'a second code is not a brand tile');
+  assert.equal(page2.inside, true, "a second code's stage is inside its brand's section");
+  assert.equal(page2.head, 'Tabbed bar · Probe');
+  assert.equal(page2.where, 'Measured on probe.example, 2026-11-05.');
+  assert.equal(page2.live, true);
+  assert.ok(page2.top >= 0 && page2.top < 120, `brands.html#toyota-probe should land on its stage, landed ${page2.top}px off`);
+
+  await p.goto(`${ORIGIN}/demo/patterns.html`, { waitUntil: 'load' });
+  await p.waitForSelector('#p-tabs .gx-also');
+  const link = await p.evaluate(() => [...document.querySelectorAll('#p-tabs .gx-also a')].find((a) => a.textContent.includes('Probe'))?.getAttribute('href'));
+  assert.equal(link, 'brands.html#toyota-probe');
+  assert.deepEqual(thrown, []);
+  await ctx.close();
 });
 
 test('the deep link lands on the brand and nothing threw', async () => {

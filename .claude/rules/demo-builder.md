@@ -84,6 +84,17 @@ a knob that lies — pattern values live in props. If an OEM needs something no 
 knob; if it needs structure, that is a new pattern. Specs: `2026-09-09-oem-variants-design.md`,
 `2026-09-10-brands-page-design.md`.
 
+**A brand's second code is a preset of its own** (Steven, 2026-11-05). A preset holds one
+measurement (one `source`, one ladder, one set of card values), so a second code beside a built one
+gets its own entry keyed after the code, with `of: '<brand>'` and
+`variant: '<the code's short name>'`. It takes the brand's label, ladder, font and theme unless it
+sets its own, and the brand's roster unless `ROSTERS` has its key. Every logo and name goes through
+`brandOf()` and `brandName()` (`brands.js`), so it is a chip reading "Toyota · Tabs v3" with
+Toyota's mark, a block inside Toyota's section on `brands.html` (anchored `#b-<key>`), and its own
+ledger row. `check-looks.mjs` fails on an `of` that names no brand, a missing `variant`, an
+unmeasured one, or two with one name; `tests/brands.test.mjs` holds the drawing with a synthetic one
+injected into `brands.js`.
+
 **Rows is a SETTING, not a pattern.** `state.rows` (1–3) wraps each slide's cards in `.cargo-col`
 and emits the matching `grid-template-rows` from the same place. `rowsApply()` is the one place that
 says where it applies — off for every `track: 'div'` pattern (the galleries and the lightbox), a

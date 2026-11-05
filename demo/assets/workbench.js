@@ -16,7 +16,7 @@
   // loads immediately before this file. patterns.html and
   // scripts/lint-generated-css.mjs load neither, and neither builds a settings
   // panel: both leave through `if (!stage) return` long before buildPanel().
-  const { LOOKS, BRANDS, perViewFor, pane } = globalThis.CARGO;
+  const { LOOKS, BRANDS, brandOf, brandName, perViewFor, pane } = globalThis.CARGO;
   // The patterns and their example rosters live in assets/patterns.js, loaded
   // just before this file; the few helpers the generator shares with them
   // (escTab, the video dialog markup, clamp) come the same way.
@@ -2795,14 +2795,16 @@
       const selectHadFocus = hadFocus && document.activeElement.id === 'wb-brand';
       strip.replaceChildren();
       if (brandable) {
-        for (const [bid, label] of [['', 'Default'], ...ids.map((b) => [b, BRANDS[b].label])]) {
+        // A second code for a brand is its own chip, named after the brand
+        // and the code ("Toyota · Tabs v3") and wearing the brand's logo.
+        for (const [bid, label] of [['', 'Default'], ...ids.map((b) => [b, brandName(b)])]) {
           const btn = document.createElement('button');
           btn.type = 'button';
           btn.dataset.brand = bid;
           btn.setAttribute('aria-pressed', String((state.brand ?? '') === bid));
           if (bid) {
             const img = document.createElement('img');
-            img.src = `img/logo-${bid}.png`;
+            img.src = `img/logo-${brandOf(bid)}.png`;
             img.alt = '';
             img.width = 116;
             img.height = 100;
@@ -2825,10 +2827,10 @@
         placeholder.value = '';
         placeholder.textContent = 'Other brand…';
         select.append(placeholder);
-        for (const [bid, b] of rest) {
+        for (const [bid] of rest) {
           const opt = document.createElement('option');
           opt.value = bid;
-          opt.textContent = b.label;
+          opt.textContent = brandName(bid);
           select.append(opt);
         }
         // Shows state.brand only when it is one of THIS select's own

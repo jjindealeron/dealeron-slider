@@ -2178,6 +2178,10 @@ code {
 
 .bb-block {
   margin-block-start: 1rem;
+
+  /* A second code's block is a link target (brands.html#toyota-v3), under the
+     same sticky masthead as .gx-card. */
+  scroll-margin-block-start: 4.5rem;
 }
 
 /* The code under each stage: closed by default (the page is for looking), the

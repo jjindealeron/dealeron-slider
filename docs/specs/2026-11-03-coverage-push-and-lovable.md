@@ -60,7 +60,15 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
       workspace Git access. After today's import, a refresh edits the project's files in place in
       Lovable's code editor (same project, same address); a new ZIP import would make a new project
       at a new address
-- [ ] Variant presets for the 10 (11 until the article dropped `lexus-model-bar-slick2`; not
-      started; in `docs/backlog.md`)
+- [ ] Variant presets for the 10 (11 until the article dropped `lexus-model-bar-slick2`; in
+      `docs/backlog.md`). Steven chose one preset per code on 2026-11-05: a second code's preset
+      names its brand with `of` and its own code with `variant`, and takes the brand's roster, logo,
+      font and theme unless it sets its own
+  - [x] The mechanism: `of`/`variant` in `brands.js`, chips and Other brand list, the brands page
+        grouping, the patterns page links, `check-looks.mjs`, tests
+  - [ ] Measured into `docs/research/2026-11-05-measurements/`, each script re-run before landing:
+        Maserati, Lincoln Slick v2, Toyota Tabs v3, Ford Slick, Kia Slick, Honda slick-tabbed, CDJR
+        ×4
+  - [ ] Each code landed as a preset with its ledger row, gates green, Lovable refreshed
 - [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,
       `dealeron-slider-repo-2026-11-03.zip` (421 files, tracked only)

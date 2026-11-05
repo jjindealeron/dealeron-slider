@@ -2216,10 +2216,41 @@
     return out;
   }
 
+  // A SECOND CODE for a brand is its own preset (Steven, 2026-11-05). A preset
+  // holds one measurement - one `source`, one ladder, one set of card values -
+  // and the Salesforce article ships several codes per brand: Lincoln's Slick
+  // v2 and Toyota's Tabs v3 sit on the same pattern as the codes already built,
+  // so folding them into `lincoln` or `toyota` would overwrite those. So a
+  // second code is an entry of its own, keyed after the code, with:
+  //   of: 'toyota'        the brand it belongs to - roster, logo and the
+  //                        brands page section are that brand's
+  //   variant: 'Tabs v3'  its code's short name, shown after the brand's
+  //                        ("Toyota · Tabs v3") on every chip and heading
+  // It takes the brand's label, card suggestion, ladder, demo count, font and
+  // theme unless it sets its own, and carries its own `styles` and `source`
+  // like any measured preset; docs/coverage.md names it by its key. A brand
+  // with a second code may name its own code with `variant` too, so the two
+  // chips say which is which. scripts/check-looks.mjs holds the shape.
+  const INHERIT = ['label', 'look', 'ladder', 'demos', 'font', 'theme'];
+  for (const b of Object.values(BRANDS)) {
+    const parent = b.of && BRANDS[b.of];
+    if (!parent) continue;
+    for (const k of INHERIT) if (b[k] === undefined && parent[k] !== undefined) b[k] = parent[k];
+  }
+  // The brand an entry belongs to (itself, for a brand), and the name to show
+  // for it. Every place that draws a logo or a brand's name goes through these,
+  // so a variant never asks for an img/logo-<variant>.png that does not exist.
+  const brandOf = (id) => BRANDS[id]?.of ?? id;
+  const brandName = (id) => {
+    const b = BRANDS[id];
+    return b ? (b.variant ? `${b.label} · ${b.variant}` : b.label) : id;
+  };
+
   // Attach each brand's own vehicles. A brand with none keeps `models` unset,
-  // and the workbench falls back to the Chevrolet roster.
+  // and the workbench falls back to the Chevrolet roster. A variant draws its
+  // brand's roster unless ROSTERS has one under its own key.
   for (const [id, b] of Object.entries(BRANDS)) {
-    const list = roster(id, b.label);
+    const list = roster(ROSTERS[id] ? id : brandOf(id), b.label);
     // "In stock now" is demo filler under every name. A MEASURED brand's
     // rows carry what its live bar shows, and neither measured bar shows a
     // line under the name - with it, the Chevrolet card ran 17px taller than
@@ -2228,5 +2259,5 @@
     if (list) b.models = list;
   }
 
-  globalThis.CARGO = Object.assign(globalThis.CARGO || {}, { BRANDS, perViewFor, TIER_BOX, CHROME, MARGIN });
+  globalThis.CARGO = Object.assign(globalThis.CARGO || {}, { BRANDS, brandOf, brandName, perViewFor, TIER_BOX, CHROME, MARGIN });
 })();

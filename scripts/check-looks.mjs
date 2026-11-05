@@ -214,8 +214,11 @@ for (const propsMap of Object.values(PATTERN_PROPS)) {
 // trips the workbench's own cramped warning the moment you select it.
 const ROSTER = 32;
 const brands = Object.entries(BRANDS ?? {});
-if (brands.length !== ROSTER) {
-  console.error(`  brands: ${brands.length} presets, expected ${ROSTER} (the census roster)`);
+// A second code for a brand (brands.js `of`, 2026-11-05) is a preset, not a
+// brand: the roster count is of brands.
+const ownBrands = brands.filter(([, b]) => !b.of);
+if (ownBrands.length !== ROSTER) {
+  console.error(`  brands: ${ownBrands.length} brands, expected ${ROSTER} (the census roster)`);
   bad++;
 }
 for (const [id, b] of brands) {
@@ -223,7 +226,32 @@ for (const [id, b] of brands) {
     console.error(`  ${id}: no label`);
     bad++;
   }
-  if (!existsSync(`demo/img/logo-${id}.png`)) {
+  // A second code exists to carry one measured code under a brand that
+  // already has a preset: it names a real brand (not another second code),
+  // says which code it is, and is measured, or it is an empty chip that draws
+  // its brand's defaults under a different name.
+  if (b.of !== undefined) {
+    const home = BRANDS[b.of];
+    if (!home || home.of) {
+      console.error(`  ${id}: of "${b.of}" is not a brand in brands.js — a second code belongs to a brand that has no "of" of its own`);
+      bad++;
+      continue;
+    }
+    if (typeof b.variant !== 'string' || !b.variant.trim()) {
+      console.error(`  ${id}: a second code for ${b.of} with no variant name — the chips would read "${home.label}" twice`);
+      bad++;
+    }
+    if (b.styles == null) {
+      console.error(`  ${id}: a second code for ${b.of} with no measured styles — it would draw ${b.of}'s defaults under another name`);
+      bad++;
+    }
+    const twin = brands.find(([v, o]) => v !== id && (o.of === b.of || v === b.of) && o.variant === b.variant);
+    if (twin) {
+      console.error(`  ${id}: variant "${b.variant}" is also ${twin[0]}'s — two chips with one name`);
+      bad++;
+    }
+    // The logo, roster and section are the brand's: checked under its own id.
+  } else if (!existsSync(`demo/img/logo-${id}.png`)) {
     console.error(`  ${id}: no demo/img/logo-${id}.png — the Brands page draws every brand by its mark`);
     bad++;
   }

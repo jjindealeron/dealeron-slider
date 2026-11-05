@@ -4,7 +4,7 @@
 // docs/specs/2026-09-10-brands-page-design.md
 
 (() => {
-  const { PATTERNS, BRANDS, SHORT, renderPattern, renderSnippet, patternsOf, hl } = globalThis.CARGO;
+  const { PATTERNS, BRANDS, SHORT, renderPattern, renderSnippet, patternsOf, brandName, hl } = globalThis.CARGO;
 
   // Copy, the way the builder's buttons do it: the clipboard gets the text,
   // the button says so for a moment, and a browser that refuses says what to
@@ -35,17 +35,28 @@
   const theme = [];
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/"/g, '&quot;');
 
+  // One tile and one section per BRAND. A second code for a brand (brands.js
+  // `of`, 2026-11-05) is not a brand of its own: its stages sit in its
+  // brand's section after the brand's own, each headed with the code's name.
+  const membersOf = (id) => [id, ...Object.keys(BRANDS).filter((v) => BRANDS[v].of === id)];
+  // Every [preset, pattern] pair a brand's section draws, its own first.
+  const blocksOf = (id) => membersOf(id).flatMap((m) => patternsOf(m).map((pid) => [m, pid]));
+
   // Measured brands first, then the rest alphabetically by label.
-  const ids = Object.keys(BRANDS).sort((a, b) => {
-    const ma = patternsOf(a).length > 0;
-    const mb = patternsOf(b).length > 0;
-    if (ma !== mb) return ma ? -1 : 1;
-    return BRANDS[a].label.localeCompare(BRANDS[b].label);
-  });
+  const ids = Object.keys(BRANDS)
+    .filter((id) => !BRANDS[id].of)
+    .sort((a, b) => {
+      const ma = blocksOf(a).length > 0;
+      const mb = blocksOf(b).length > 0;
+      if (ma !== mb) return ma ? -1 : 1;
+      return BRANDS[a].label.localeCompare(BRANDS[b].label);
+    });
 
   for (const id of ids) {
     const b = BRANDS[id];
-    const measured = patternsOf(id);
+    const blocks = blocksOf(id);
+    const measured = blocks.map(([, pid]) => pid);
+    const several = membersOf(id).length > 1;
     const tile = document.createElement('a');
     tile.className = 'gx-tile bb-tile';
     tile.href = `#${id}`;
@@ -59,9 +70,13 @@
     // draws the Chevrolet default set, and the note used to say "from Fiat's
     // demo sites" over six Chevrolets - true of the ladder, false of the
     // cars. The appended sentence says which part is whose.
-    const note = measured.length
-      ? `Measured on ${esc(b.source ?? '')}.`
-      : `${esc(b.label)}'s vehicles and how many across, from its demo sites. Values not measured yet.${b.models ? '' : ` ${esc(b.label)} has no cutout roster of its own, so the cars below are the default ones — the count and the layout are ${esc(b.label)}'s, the vehicles are not.`}`;
+    // A brand with more than one code was measured code by code, on
+    // different pages, so each stage says where its own values came from.
+    const note = several
+      ? `Measured code by code; each one below says where.`
+      : measured.length
+        ? `Measured on ${esc(b.source ?? '')}.`
+        : `${esc(b.label)}'s vehicles and how many across, from its demo sites. Values not measured yet.${b.models ? '' : ` ${esc(b.label)} has no cutout roster of its own, so the cars below are the default ones — the count and the layout are ${esc(b.label)}'s, the vehicles are not.`}`;
     // A brand that names the font its sites load (brands.js `font`) is shown
     // in it: the stylesheet is linked once per brand and the family goes on
     // each of its stages as an inline style - page scaffolding, the same as
@@ -70,21 +85,32 @@
     // loads the font.
     const fontNote = b.font ? ` ${b.font.headings ? 'Headings shown' : 'Shown'} in ${esc(b.font.family)}, which its sites already load; the copied code names no font.` : '';
     sec.innerHTML = `<div class="gx-head"><img class="bb-logo" src="img/logo-${id}.png" width="116" height="100" alt="" loading="lazy"><div><h2>${esc(b.label)}</h2><p class="bb-note">${note}${fontNote}</p>${b.note ? `<p class="bb-note">${esc(b.note)}</p>` : ''}</div></div>`;
-    if (b.font?.css) {
+    // Each font sheet once per section, the brand's and any its codes add.
+    const sheets = new Set(membersOf(id).map((m) => BRANDS[m].font?.css));
+    sheets.delete(undefined);
+    for (const href of sheets) {
       const link = document.createElement('link');
       link.rel = 'stylesheet';
-      link.href = b.font.css;
+      link.href = href;
       document.head.append(link);
     }
-    for (const pid of measured.length ? measured : ['modelbar']) {
-      const cls = `bb-${id}-${pid}`;
+    for (const [m, pid] of blocks.length ? blocks : [[id, 'modelbar']]) {
+      const mb = BRANDS[m];
+      const short = SHORT?.[pid] ?? PATTERNS[pid].label;
+      const cls = `bb-${m}-${pid}`;
       // Named per brand: this page draws the same pattern for every brand,
       // and a page of regions all called "Our models" fails landmark-unique.
-      const r = renderPattern(pid, cls, { brand: id, label: `${b.label} ${(SHORT?.[pid] ?? PATTERNS[pid].label).toLowerCase()}` });
+      // brandName() adds the code to a brand that has more than one.
+      const r = renderPattern(pid, cls, { brand: m, label: `${brandName(m)} ${short.toLowerCase()}` });
       css.push(r.css);
       const block = document.createElement('div');
       block.className = 'bb-block';
-      block.innerHTML = `<div class="bb-block-head"><h3>${esc(SHORT?.[pid] ?? PATTERNS[pid].label)}</h3><a class="ui-btn" href="index.html#${pid}?brand=${id}">Open in the builder</a></div><div class="gx-stage bb-stage" data-pattern="${pid}"></div>`;
+      // A second code's own anchor, so brands.html#toyota-v3 lands on its
+      // stage the way #toyota lands on the brand (gotoHash below).
+      if (m !== id) block.id = `b-${m}`;
+      const head = several && mb.variant ? `${short} · ${mb.variant}` : short;
+      const where = several && mb.source ? `<p class="bb-note">Measured on ${esc(mb.source)}.</p>` : '';
+      block.innerHTML = `<div class="bb-block-head"><h3>${esc(head)}</h3><a class="ui-btn" href="index.html#${pid}?brand=${m}">Open in the builder</a></div>${where}<div class="gx-stage bb-stage" data-pattern="${pid}" data-brand="${m}"></div>`;
       const stage = /** @type {HTMLElement} */ (block.querySelector('.bb-stage'));
       stage.innerHTML = r.html;
       // The code under the stage: the same three parts the builder copies,
@@ -92,7 +118,7 @@
       // measured brand's bar from here without a trip through the builder.
       // Closed by default - the page is for looking, and 24 open code boxes
       // are a wall - and highlighted the way the builder's box is.
-      const snip = renderSnippet(pid, { brand: id });
+      const snip = renderSnippet(pid, { brand: m });
       const whole = `<style>\n${snip.css}\n</style>\n\n${snip.html}${snip.js ? `\n\n<script>\n${snip.js}\n</script>` : ''}`;
       const code = document.createElement('details');
       code.className = 'bb-code';
@@ -101,24 +127,26 @@
       block.append(code);
       // Not a font that is on the headings alone (Ford): theme.css below
       // names that one on .h1, and the body stays the page's.
-      if (b.font && !b.font.headings) stage.style.fontFamily = `${b.font.family}, Arial, Helvetica, sans-serif`;
+      if (mb.font && !mb.font.headings) stage.style.fontFamily = `${mb.font.family}, Arial, Helvetica, sans-serif`;
       // The brand's theme tokens (brands.js `theme`), page scaffolding the
       // same way: a value written as var(--cta-background-color) draws the
       // brand's own here. ui.css carries the demo's stand-in values.
-      for (const [k, v] of Object.entries(b.theme ?? {})) if (k !== 'css') stage.style.setProperty(k, v);
+      for (const [k, v] of Object.entries(mb.theme ?? {})) if (k !== 'css') stage.style.setProperty(k, v);
       // The brand's own heading and button rules (theme.css), scoped to its
       // stages: each selector gets the stage in front of it, so Chevrolet's
-      // bold button does not restyle Toyota's stage further down.
-      if (b.theme?.css) {
+      // bold button does not restyle Toyota's stage further down. A second
+      // code's stages are scoped to themselves, in case its theme differs.
+      if (mb.theme?.css) {
+        const scope = m === id ? `#b-${id} .bb-stage` : `#b-${id} .bb-stage[data-brand="${m}"]`;
         theme.push(
-          b.theme.css
+          mb.theme.css
             .split('}')
             .filter((r) => r.trim())
             .map((r) => {
               const [sel, body] = r.split('{');
               return `${sel
                 .split(',')
-                .map((s) => `#b-${id} .bb-stage ${s.trim()}`)
+                .map((s) => `${scope} ${s.trim()}`)
                 .join(', ')} {${body}}`;
             })
             .join('\n'),

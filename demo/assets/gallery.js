@@ -7,7 +7,7 @@
 // from the preview.
 
 (() => {
-  const { PATTERNS, renderPattern, variantsOf, BRANDS, SHORT } = globalThis.CARGO;
+  const { PATTERNS, renderPattern, variantsOf, brandName, SHORT } = globalThis.CARGO;
   const grid = document.getElementById('gx-grid');
   if (!grid || !renderPattern) return;
 
@@ -38,7 +38,7 @@
           ${
             variantsOf(id).length
               ? `<p class="gx-also">Also measured for ${variantsOf(id)
-                  .map((bid) => `<a href="brands.html#${bid}">${BRANDS[bid].label}</a>`)
+                  .map((bid) => `<a href="brands.html#${bid}">${brandName(bid)}</a>`)
                   .join(', ')}</p>`
               : ''
           }
