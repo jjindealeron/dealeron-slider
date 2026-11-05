@@ -840,3 +840,31 @@ fails.
 The name half changes `dist/do-slider.css` and `.min.css`, so the shared folder is behind until they
 are uploaded again. README's re-upload rule watched `git log src/ demo/assets/patterns.js`, which
 would have missed this commit (`looks.js` feeds the card styles), and now watches `dist/`.
+
+## 2026-11-05 — every bare arrow beside its content takes the section's text colour
+
+The model bar's arrow moved to `currentcolor` with the name the same morning; eight other patterns
+still drew a `#262626` chevron with no backing. Measured before changing any, on `patterns.html` at
+1366, 768, 390 and 320, on the demo's white stage and on a `#fff`-on-`#161616` section: five points
+across each chevron, the background composited from what is visually under it (`elementsFromPoint`,
+not the arrow's ancestors, which is how `scripts/a11y.mjs` judges it), cards clipped to the visible
+track. A first pass that did not clip reported every arrow overlapping a card by 24-44px; those were
+slides scrolled out of view under the gutter. Clipped, no arrow touches a visible card at any width.
+
+Seven (`wordmark`, `cards`, `split`, `logostrip`, `locations`, `tabs`, `reviews`) sit on the section
+itself: `#262626` was 15.13:1 on white and 1.2:1 on `#161616`; `currentcolor` is 18.32 and 18.1.
+They take `currentcolor`, and so does the `logo` look's own `--dos-arrow-fg` in the shared card
+sheet, which would otherwise disagree with its pattern. Chevrolet's `#666` and Ford's `#767676` on
+the tabbed bar are measured brand values and stay (3.16 and 3.98:1 on `#161616`); Cadillac's and
+Hyundai's white is theirs too.
+
+The gallery is the exception. Its arrows float over the photo (`gutter: false`, 2026-08-27), though
+its dark chevron was chosen on 2026-07-14 for arrows beside it. With the arrow hidden, the pixels
+under the chevron on the six demo photos hold values at about 1:1 against `#262626`, `#10151c` and
+`#fff` alike on four or five slides; only the engine's backing, `#fff` on `rgba(0, 0, 0, 0.55)`,
+clears every pixel (4.76:1 or better). That is a design choice between a backing and a gutter, so it
+went to `docs/backlog.md`.
+
+`tests/colour.test.mjs` reads every arrow with a transparent backing off `patterns.html` at 768
+(where every pattern overflows) and needs 3:1 against what is under it on both sections. It failed
+first on the seven at 1.2:1, and it holds the gallery as the one bare arrow allowed over a picture.

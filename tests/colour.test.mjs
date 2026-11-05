@@ -3,7 +3,7 @@
 // transparent - never modern rgb(r g b / a).
 import { test } from '@playwright/test';
 import assert from 'node:assert/strict';
-import { openBuilder, pick, rowByLabel, copyParts } from './helpers.mjs';
+import { openBuilder, pick, rowByLabel, copyParts, ORIGIN } from './helpers.mjs';
 
 test.describe.configure({ mode: 'serial' });
 
@@ -147,6 +147,74 @@ test('opening any picker moves nothing in the panel', async () => {
     await sw.click();
     await page.waitForTimeout(100);
   }
+});
+
+// docs/backlog.md 2026-11-05: seven patterns drew a #262626 arrow with no
+// backing, standing beside the content on the section's own background, so on
+// a dark section it measured 1.2:1. A bare arrow now takes the section's text
+// colour. Read off the page, not a list of ids: every arrow whose backing is
+// transparent, judged against what is visually under its centre. The one bare
+// arrow that floats over a photo (the gallery, gutter: false) needs a backing
+// or a gutter instead - a decision in docs/backlog.md - and any other that
+// starts floating over a picture fails here.
+test('a bare arrow reads on a light section and a dark one', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 768, height: 900 } });
+  const p = await ctx.newPage();
+  await p.goto(`${ORIGIN}/demo/patterns.html`, { waitUntil: 'load' });
+  await p.waitForSelector('.gx-stage .dos-slide');
+  for (const scene of ['light', 'dark']) {
+    if (scene === 'dark') await p.addStyleTag({ content: '.gx-stage { color: #fff !important; background: #161616 !important; }' });
+    // The engine fades a control's colour over --dos-transition (250ms).
+    await p.waitForTimeout(400);
+    const found = await p.evaluate(() => {
+      const parse = (c) => {
+        const m = (String(c).match(/[0-9.]+/g) || [0, 0, 0]).map(Number);
+        return /transparent/.test(c) ? { r: 0, g: 0, b: 0, a: 0 } : { r: m[0], g: m[1], b: m[2], a: m.length > 3 ? m[3] : 1 };
+      };
+      const over = (f, b) => ({ r: f.a * f.r + (1 - f.a) * b.r, g: f.a * f.g + (1 - f.a) * b.g, b: f.a * f.b + (1 - f.a) * b.b, a: 1 });
+      const lum = (c) => {
+        const t = (v) => ((v /= 255) <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4);
+        return 0.2126 * t(c.r) + 0.7152 * t(c.g) + 0.0722 * t(c.b);
+      };
+      const out = [];
+      for (const stage of document.querySelectorAll('.gx-stage')) {
+        const a = [.../** @type {NodeListOf<HTMLButtonElement>} */ (stage.querySelectorAll('.dos-arrow'))].find((x) => x.offsetParent !== null && !x.disabled);
+        if (!a || parse(getComputedStyle(a).backgroundColor).a > 0) continue;
+        a.scrollIntoView({ block: 'center' });
+        const r = a.getBoundingClientRect();
+        const layers = [];
+        let overMedia = false;
+        for (const e of document.elementsFromPoint(r.left + r.width / 2, r.top + r.height / 2)) {
+          if (e === a || a.contains(e)) continue;
+          if (e.tagName === 'IMG' || e.tagName === 'VIDEO') {
+            overMedia = true;
+            break;
+          }
+          const bg = parse(getComputedStyle(e).backgroundColor);
+          if (bg.a === 0) continue;
+          layers.push(bg);
+          if (bg.a > 0.99) break;
+        }
+        let base = { r: 255, g: 255, b: 255, a: 1 };
+        for (let i = layers.length - 1; i >= 0; i--) base = over(layers[i], base);
+        const [x, y] = [lum(parse(getComputedStyle(a).color)), lum(base)].sort((m, n) => n - m);
+        out.push({ id: stage.closest('[id^="p-"]').id.slice(2), overMedia, ratio: Math.round(((x + 0.05) / (y + 0.05)) * 100) / 100 });
+      }
+      return out;
+    });
+    assert.ok(found.length >= 8, `${scene}: only ${found.length} bare arrows found on patterns.html`);
+    assert.deepEqual(
+      found.filter((f) => f.overMedia).map((f) => f.id),
+      ['gallery'],
+      'a bare arrow over a picture needs a backing',
+    );
+    assert.deepEqual(
+      found.filter((f) => !f.overMedia && f.ratio < 3),
+      [],
+      `${scene}: a bare arrow under 3:1 against the section it sits on`,
+    );
+  }
+  await ctx.close();
 });
 
 test.describe('nothing threw', () => {

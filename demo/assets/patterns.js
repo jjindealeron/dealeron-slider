@@ -392,7 +392,10 @@
       data: { 'data-dos-step': 'slide' },
       // A bare chevron follows the section's text like the tile's name does:
       // the #262626 this replaced was 1.39:1 on mitsubishidemo1's #000 section
-      // (docs/research/2026-11-03-name-colour).
+      // (docs/research/2026-11-03-name-colour). The same goes for every bare
+      // arrow that stands beside its content (2026-11-05: 1.2:1 on a #161616
+      // section, 18:1 now); the gallery's floats over a photo and is the
+      // exception, noted there. tests/colour.test.mjs reads them off the page.
       props: { '--dos-gap': '0.5em', '--dos-controls-space': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
       hideDots: true,
     },
@@ -417,7 +420,7 @@
       look: 'wordmark',
       models: cutouts,
       data: { 'data-dos-step': 'slide' },
-      props: { '--dos-gap': '0.5em', '--dos-controls-space': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      props: { '--dos-gap': '0.5em', '--dos-controls-space': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
       hideDots: true,
     },
     cards: {
@@ -426,7 +429,7 @@
       look: 'vcard',
       models: VEHICLES,
       data: {},
-      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
     },
     // The roster is the look's own `demoModels`, not the model bar's cutouts.
     // A 3:5 card drawn on landscape cutouts is a car floating in dead space,
@@ -447,7 +450,7 @@
       look: 'split',
       models: SERVICES,
       data: {},
-      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
     },
     logostrip: {
       label: 'Logo strip',
@@ -455,7 +458,7 @@
       look: 'logo',
       models: LOGOS,
       data: {},
-      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
     },
     locations: {
       label: 'Locations',
@@ -463,7 +466,7 @@
       look: 'location',
       models: PLACES,
       data: {},
-      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
     },
     hero: {
       gutter: false,
@@ -485,6 +488,10 @@
       blurb:
         'For walking a shopper through one vehicle’s photos — the pictures on a VDP, or a gallery on a custom page. The thumbnails underneath are generated from the slides and behave like real tabs, with arrow keys.',
       data: { 'data-dos-gallery': '' },
+      // Not currentcolor, unlike the other bare arrows: these float OVER the
+      // photo (gutter: false since 2026-08-27; the dark chevron was chosen on
+      // 2026-07-14 for arrows beside it), so no text colour reads on every
+      // picture. A backing or a gutter is a decision in docs/backlog.md.
       props: { '--dos-gap': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
       perView: { base: 1, 768: 1, 992: 1, 1200: 1 },
       minCard: 240,
@@ -572,7 +579,7 @@ ${VIDEO_DIALOG_CSS}`,
         '--dos-gap': '0.5em',
         '--dos-controls-space': '0.1px',
         '--dos-arrow-bg': 'transparent',
-        '--dos-arrow-fg': '#262626',
+        '--dos-arrow-fg': 'currentcolor',
         // The tab row's own values. They were literals in the css below until
         // 2026-09-09, which meant no control showed them - the F039 shape - and
         // a brand variant had nothing to set. Defaults are what the literals
@@ -1088,7 +1095,7 @@ ${VIDEO_DIALOG_CSS}`,
       gutter: true,
       label: 'Customer reviews',
       blurb: 'For customer reviews on a homepage or an About page. Star ratings are announced as “Rated 5 out of 5” rather than read out one star at a time.',
-      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      props: { '--dos-gap': '1em', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
       perView: { base: 1, 768: 2, 992: 3, 1200: 3 },
       minCard: 250,
       models: REVIEWS,

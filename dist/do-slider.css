@@ -889,7 +889,7 @@
   --strip-bg: transparent;
   --card-bg: #f4f6f8;
   --card-fg: #10151c;
-  --dos-arrow-fg: #262626;
+  --dos-arrow-fg: currentcolor;
   --dos-arrow-bg: transparent;
   font-size: var(--cargo-font, 1em);
 }

@@ -389,10 +389,11 @@ const LOOKS = {
       '--strip-bg': 'transparent',
       '--card-bg': '#f4f6f8',
       '--card-fg': '#10151c',
-      // Back to the engine's own dark arrows now the strip is not dark. A look
-      // that sets its own background owns the contrast of the controls sitting
-      // on it, and this one no longer sets one.
-      '--dos-arrow-fg': '#262626',
+      // A look that sets its own background owns the contrast of the controls
+      // sitting on it, and this one no longer sets one, so its bare arrow
+      // takes the section's text colour like every other one beside its
+      // content (2026-11-05; the #262626 here was 1.2:1 on a dark section).
+      '--dos-arrow-fg': 'currentcolor',
       '--dos-arrow-bg': 'transparent',
     },
     css: `%root% { padding-block-start: 1.5em; padding-inline: 1em; background: var(--strip-bg); }

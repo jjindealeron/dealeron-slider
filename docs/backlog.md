@@ -46,16 +46,24 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
 
 - **Acura's ZDX name rides 27px higher than the rest** at any preset: `zdx.png` is 480x300 (16:10)
   among 320x240 cutouts, so its card is shorter. Fix the art, not the preset.
-- **Twelve presets still bake a dark name colour that is only their page's body text** (Acura, Audi,
-  Buick, Ford, Jaguar, Kia, Land Rover, Lexus, Lincoln, Nissan, Subaru, Toyota): each was measured
-  off a live bar whose name inherits it, so on a dealer page with a dark section they draw dark on
-  dark, the trap the tile's own default no longer sets (2026-11-05). Dropping them is a decision,
-  not a measurement; Chevrolet, Genesis, Honda and Mazda set their own colour on the live bar and
-  are not in question (`docs/research/2026-11-03-name-colour`, "Not settled here").
-- **Eight other patterns keep a `#262626` bare arrow** (`wordmark`, `cards`, `split`, `logostrip`,
-  `locations`, `gallery`, `tabs`, `reviews`). The model bar's now follows the section's text
-  (2026-11-05); these would be near-invisible on a dark section the same way. Not changed because
-  the fix was asked for the four model-bar brands.
+- **Twelve presets set the name-colour knob to a fixed dark hex** (Acura, Audi, Buick, Ford, Jaguar,
+  Kia, Land Rover, Lexus, Lincoln, Nissan, Subaru, Toyota: `--name-color` `#333`, `#282828`, `#000`
+  or `#05141f`). It is a preset variable a designer can change, but the value it carries is their
+  page's body text, measured off a live bar whose name inherits it, so on a dealer page with a dark
+  section it stays dark unless someone changes the knob. Leaving it unset is the only way to follow
+  the theme: the themes expose no text-colour variable, only `--main-color` and
+  `--cta-background-color`, `--cta-font-color`, `--cta-hover-color` (read off acurademo1,
+  chevroletdemo1 and gmcdemo1, 2026-11-05). Dropping them is a decision, not a measurement;
+  Chevrolet, Genesis, Honda and Mazda set their own colour on the live bar and are not in question
+  (`docs/research/2026-11-03-name-colour`, "Not settled here").
+- **The gallery's bare arrow floats over the photo** (`gutter: false` since 2026-08-27; its
+  `#262626` was chosen on 2026-07-14, when its arrows stood beside the photo). On the six demo
+  photos the chevron's own area holds pixels at about 1:1 on four or five of them, for `#262626` and
+  for any text colour alike, so `currentcolor` cannot fix it (2026-11-05). Either the engine's own
+  backing, `#fff` on `rgba(0, 0, 0, 0.55)` as the hero patterns use (every pixel 4.76:1 or better,
+  but a dark disc appears on the photo), or the gutter back on and `currentcolor` (the arrows stand
+  beside the photo again, which narrows it by two arrow widths). A design choice, so not made here.
+  `tests/colour.test.mjs` holds it as the one bare arrow allowed over a picture.
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
