@@ -1,4 +1,5 @@
-// The 32 OEM brands on the platform, as presets for the one component.
+// The 33 OEM brands on the platform, as presets for the one component: the
+// census's 32, and Maserati (2026-11-05), whose code the article ships.
 //
 // A preset is NOT a copy of a slider. It sets the ROSTER (which vehicles), the
 // LADDER (how many across at each breakpoint), and - since 2026-09-09, where a
@@ -57,7 +58,7 @@
   // 640x360, Alfa Romeo 300x500 portraits) and the wrong width/height
   // attribute is a layout shift on a real page.
   //
-  // Thirty-one of the 32 have imagery. Only Fiat falls back to the Chevrolet
+  // Thirty-two of the 33 have imagery. Only Fiat falls back to the Chevrolet
   // cutouts, and says so in the picker rather than pretending otherwise.
   const ROSTERS = {
     bmw: [
@@ -289,6 +290,24 @@
         ['corsair.png', 320, 240, 'Corsair'],
       ],
     ],
+    // maseratidemo4's own model-bar folder (brand-maserati/homepage/model-bar/
+    // 2024-2026/side), in the bar's order, as its names draw them: side
+    // profiles at 953x348, and MCPURA at 1160x420. The live alt on MCPURA says
+    // "GT2 Stradale"; the name and the file say MCPURA, which is kept.
+    maserati: [
+      'maserati',
+      [
+        ['mcpura.png', 1160, 420, 'MCPURA'],
+        ['grancabrio.webp', 953, 348, 'GranCabrio'],
+        ['granturismo.webp', 953, 348, 'GranTurismo'],
+        ['grecale.webp', 953, 348, 'Grecale'],
+        ['ghibli.webp', 953, 348, 'Ghibli'],
+        ['levante.webp', 953, 348, 'Levante'],
+        ['quattroporte.webp', 953, 348, 'Quattroporte'],
+        ['mc20.webp', 953, 348, 'MC20'],
+        ['mc20-cielo.webp', 953, 348, 'MC20 Cielo'],
+      ],
+    ],
     // forddemo1's own model-bar folder, 400x300 (brand-ford/Homepage/model-bar/
     // 2025, and 2023 for the Transit Connect the bar still points at). Escape
     // and Edge are NOT here: both are still in that page's source, commented
@@ -424,32 +443,53 @@
         ['chrome-corvette.png', 320, 240, 'Corvette', 'Performance'],
       ],
     ],
+    // The four CDJR rosters run the 2026 model bar's full line-up, in the
+    // order cdjrdemo1/2 draw it (Bruner's three extras appended), from
+    // /static/brand-chrysler/Homepage/model-bar/2026/ (2026-11-05,
+    // docs/research/2026-11-05-measurements/cdjr.md). The first eight keep
+    // their names; the live bar calls two of them "Charger 2 Door" and
+    // "RAM 1500".
     chrysler: [
       'cdjr',
       [
         ['chrysler-pacifica.png', 480, 360, 'Pacifica'],
         ['chrysler-voyager.png', 480, 360, 'Voyager'],
+        ['chrysler-pacifica-hybrid.png', 480, 360, 'Pacifica Hybrid'],
       ],
     ],
     dodge: [
       'cdjr',
       [
         ['dodge-charger.png', 480, 360, 'Charger'],
+        ['dodge-charger-4d.png', 480, 360, 'Charger 4 Door'],
         ['dodge-durango.png', 480, 360, 'Durango'],
+        ['dodge-hornet.png', 480, 360, 'Hornet'],
       ],
     ],
     jeep: [
       'cdjr',
       [
+        ['jeep-compass.png', 480, 360, 'Compass'],
+        ['jeep-recon.png', 480, 360, 'Recon'],
         ['jeep-wrangler.png', 480, 360, 'Wrangler'],
+        ['jeep-cherokee.png', 480, 360, 'Cherokee'],
         ['jeep-grand-cherokee.png', 480, 360, 'Grand Cherokee'],
+        ['jeep-gladiator.png', 480, 360, 'Gladiator'],
+        ['jeep-grand-wagoneer.png', 480, 360, 'Grand Wagoneer'],
+        ['jeep-wagoneer.png', 480, 360, 'Wagoneer'],
+        ['jeep-wagoneer-s.png', 480, 360, 'Wagoneer S'],
       ],
     ],
     ram: [
       'cdjr',
       [
+        ['ram-1500-rho.png', 480, 360, 'RAM 1500 RHO'],
         ['ram-1500.png', 480, 360, 'Ram 1500'],
         ['ram-2500.png', 480, 360, 'Ram 2500'],
+        ['ram-3500.png', 480, 360, 'Ram 3500'],
+        ['ram-chassis-cab.png', 480, 360, 'Ram Chassis Cab'],
+        ['ram-promaster-window-van.png', 480, 360, 'ProMaster Window Van'],
+        ['ram-promaster.png', 480, 360, 'Ram ProMaster'],
       ],
     ],
   };
@@ -1973,6 +2013,57 @@
       source: 'www.rydelllincoln.com, 2026-11-05',
     },
     mini: { label: 'MINI', look: 'tile', ladder: null, demos: 3 },
+    // `maserati-modelbar-slick` on maseratidemo4, measured 2026-11-05
+    // (docs/research/2026-11-05-measurements/maserati.md). One car at a time,
+    // centred, with 23% of each neighbour showing (20% below 992; one value
+    // here), on white. 16px neue-haas-unica body, 13px below 992, from a
+    // Typekit kit, so no `font`.
+    // - nine side-profile cutouts at the slide's full width, padded 0 10px,
+    //   drawn at scale(.95), full size on hover over 0.25s;
+    // - the name 21px (the platform's .lead), 300, #333, on a 29.4px line,
+    //   pulled 10px up over the car.
+    // The arrows keep a backing, as the live 50px white disc does: they sit
+    // over a neighbour's car, where a bare chevron measured 1.04-1.53:1. The
+    // disc is opaque here (live 0.85), the chevron the live #505050 at .85
+    // over white, 5.41:1; centred on the car, as live (0.46 of the card).
+    // Not carried, no slot: each model's wordmark image above its car.
+    // Departures: no infinite loop, so the first and last cars show white in
+    // one peek; the phone card is 9% smaller than live at the desktop peek.
+    maserati: {
+      label: 'Maserati',
+      look: 'tile',
+      ladder: [[0, 1]],
+      demos: 1,
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.3125em',
+            '--name-weight': '300',
+            '--name-leading': '1.4',
+            '--name-gap': '-0.17em',
+            '--plate-pad': '0.9% calc(2.5% + 0.59em) 0',
+            '--img-hover-scale': '1.0526',
+            '--img-hover-speed': '0.25s',
+            '--strip-pad-x': '0.1px',
+          },
+        },
+        patterns: {
+          modelbar: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--dos-peek': '23%',
+              '--dos-arrow-bg': '#fff',
+              '--dos-arrow-fg': '#6a6a6a',
+              '--dos-arrow-bg-hover': '#fff',
+              '--dos-arrow-fg-hover': '#505050',
+              '--dos-arrow-at': '0.46',
+            },
+          },
+        },
+      },
+      source: 'maseratidemo4.dealeron.com, 2026-11-05',
+    },
     mazda: {
       label: 'Mazda',
       look: 'tile',

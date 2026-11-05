@@ -14,12 +14,12 @@ The article lists 54 codes. Seven of them are GM multi-make combinations, which 
 does** (Steven, 2026-09-15) — they are listed at the bottom and counted nowhere. Two more were on it
 until October 2026; they are at the bottom too, under "Removed from the article".
 
-**47 codes in scope. 24 built.** The other 23 are the work.
+**47 codes in scope. 25 built.** The other 22 are the work.
 
 | Status                             |  N  | What it means                                                                                          |
 | ---------------------------------- | :-: | ------------------------------------------------------------------------------------------------------ |
-| **Replacement built**              | 24  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                      |
-| **Pattern ready, not measured**    |  2  | The builder already has the right pattern; the preset is not built yet. The row says what it waits on. |
+| **Replacement built**              | 25  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                      |
+| **Pattern ready, not measured**    |  1  | The builder already has the right pattern; the preset is not built yet. The row says what it waits on. |
 | **Needs a pattern we do not have** |  6  | The live code is a carousel, but a shape this builder cannot draw yet.                                 |
 | **Not a carousel**                 |  9  | The live code is a static grid or a tabbed list, not a slider. Replacing it is a decision, not a job.  |
 | **Example is dead**                |  3  | The article's example link 404s, so there is nothing left to measure from.                             |
@@ -89,8 +89,8 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | Honda      | Slick                                 | `honda-model-bar-slick-tabbed`                      | hondademo1                     | `tabs`      | Replacement built              | `brands.js` honda-tabbed, measured 2026-11-05; Ford's tabbed template. Three hybrids have no cutout here                                                   |
 | Kia        | Slick                                 | `kia-model-bar-slick`                               | kiademo3                       | `modelbar`  | Replacement built              | `brands.js` kia-plain, measured 2026-11-05; EV3 and Sorento Plug-In Hybrid have no cutout here                                                             |
 | Lincoln    | Slick v2                              | `lincoln-model-bar-slick2`                          | rydelllincoln.com              | `modelbar`  | Replacement built              | `brands.js` lincoln-v2, measured 2026-11-05; told from v1 by its own CSS block and 991 breakpoint                                                          |
-| CDJR       | Tabs with Fiat (no colour background) | `cdjr-fiat-model-bar-no-back`                       | brunerchryslerdodgejeepram.com | `tabs`      | Pattern ready, not measured    | Measured 2026-11-05: text tabs, no Fiat tab. Waits on a CDJR entry and roster: 16 of its models have no cutout here                                        |
-| Maserati   | Large Slick                           | `maserati-modelbar-slick`                           | maseratidemo4                  | `modelbar`  | Pattern ready, not measured    | Measured 2026-11-05: one card at a time, 9 cutouts with a wordmark image over each. Not built: no Maserati cutouts or logo here                            |
+| Maserati   | Large Slick                           | `maserati-modelbar-slick`                           | maseratidemo4                  | `modelbar`  | Replacement built              | `brands.js` maserati, measured 2026-11-05; its own nine cutouts. The wordmark image over each car has no slot                                              |
+| CDJR       | Tabs with Fiat (no colour background) | `cdjr-fiat-model-bar-no-back`                       | brunerchryslerdodgejeepram.com | `tabs`      | Pattern ready, not measured    | Measured 2026-11-05: text tabs, no Fiat tab. Its 16 missing cutouts are in the repo since 2026-11-05; waits on a CDJR entry and a logo for it              |
 | Volkswagen | Tabs                                  | `volkswagen-model-bar-slick2`                       | vwdemo1                        | —           | Needs a pattern we do not have | Measured 2026-11-03: the tab row fits `tabs`, but each card is a per-model colour plate with the car hanging below it                                      |
 | Alfa Romeo | Slick                                 | `alfa-romeo-model-bar-cards`                        | alfaromeo3                     | —           | Needs a pattern we do not have | Measured 2026-11-03 (now alfaromeodemo1): a 300x500 photo, a cutout laid across it, a full-width button. Structure, not values                             |
 | Kia        | Tabs v2                               | `kia-model-bar-tabbed`                              | kiademo1                       | —           | Needs a pattern we do not have | Centre-mode: one large focused card, small peeking neighbours, only the centre car named, over a photographic backdrop. Structure, not values              |

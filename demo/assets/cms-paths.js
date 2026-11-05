@@ -12,7 +12,9 @@
 // the model is guaranteed, not the paint colour. They are still proved to
 // serve from an unrelated dealer domain like everything else here.
 
-// 256 pairs: 248 byte-proved, 8 name-matched (the chrome-*.webp group above).
+// 282 pairs: 274 byte-proved, 8 name-matched (the chrome-*.webp group above).
+// 2026-11-05: 26 merged by hand (Maserati's cutouts and logo, sixteen CDJR cutouts), each
+// fetched from acurademo1 and proved byte-identical from hondademo1, two unrelated domains.
 // Harvested 2026-09-04 by re-running the script; merged additively since.
 // Last proved in full 2026-09-15 - every pair fetched from acurademo1, a domain
 // unrelated to any of them, and hashed against the local file.
@@ -59,6 +61,7 @@ globalThis.CARGO = Object.assign(globalThis.CARGO || {}, {
     'logo-hyundai.png': '/assets/logos/transparent/hyundai.png',
     'logo-nissan.png': '/assets/logos/transparent/nissan.png',
     'logo-toyota.png': '/assets/logos/transparent/toyota.png',
+    'logo-maserati.png': '/assets/logos/transparent/maserati.png',
     'mixed-1.jpg': '/static/brand-chevrolet/custom-pages/models/2026/silverado-1500/ext-img1.jpg',
     'mixed-2.jpg': '/static/brand-nissan/vehicle/2026/Nissan/Altima/MRP/01.jpg',
     'mixed-3.jpg': '/static/brand-buick/vehicle/2026/Buick/Enclave/Hero/01.jpg',
@@ -102,6 +105,22 @@ globalThis.CARGO = Object.assign(globalThis.CARGO || {}, {
     'oem/cdjr/jeep-wrangler.png': '/static/brand-chrysler/Homepage/model-bar/2026/wrangler.png',
     'oem/cdjr/ram-1500.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram1500.png',
     'oem/cdjr/ram-2500.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram2500.png',
+    'oem/cdjr/dodge-charger-4d.png': '/static/brand-chrysler/Homepage/model-bar/2026/charger-4d.png',
+    'oem/cdjr/jeep-cherokee.png': '/static/brand-chrysler/Homepage/model-bar/2026/cherokee.png',
+    'oem/cdjr/jeep-compass.png': '/static/brand-chrysler/Homepage/model-bar/2026/compass.png',
+    'oem/cdjr/fiat-500e.png': '/static/brand-chrysler/Homepage/model-bar/2026/fiat-500.png',
+    'oem/cdjr/jeep-gladiator.png': '/static/brand-chrysler/Homepage/model-bar/2026/gladiator.png',
+    'oem/cdjr/jeep-grand-wagoneer.png': '/static/brand-chrysler/Homepage/model-bar/2026/grand-wagoneer.png',
+    'oem/cdjr/dodge-hornet.png': '/static/brand-chrysler/Homepage/model-bar/2026/hornet.png',
+    'oem/cdjr/chrysler-pacifica-hybrid.png': '/static/brand-chrysler/Homepage/model-bar/2026/pacifica-ph.png',
+    'oem/cdjr/ram-chassis-cab.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram-chassis-cab.png',
+    'oem/cdjr/ram-promaster-window-van.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram-promaster-window.png',
+    'oem/cdjr/ram-promaster.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram-promaster.png',
+    'oem/cdjr/ram-1500-rho.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram1500-rho.png',
+    'oem/cdjr/ram-3500.png': '/static/brand-chrysler/Homepage/model-bar/2026/ram3500.png',
+    'oem/cdjr/jeep-recon.png': '/static/brand-chrysler/Homepage/model-bar/2026/recon.png',
+    'oem/cdjr/jeep-wagoneer-s.png': '/static/brand-chrysler/Homepage/model-bar/2026/wagoneer-s.png',
+    'oem/cdjr/jeep-wagoneer.png': '/static/brand-chrysler/Homepage/model-bar/2026/wagoneer.png',
     'oem/ford/bronco.png': '/static/brand-ford/Homepage/model-bar/2025/bronco.png',
     'oem/ford/explorer.png': '/static/brand-ford/Homepage/model-bar/2025/explorer.png',
     'oem/ford/f-150.png': '/static/brand-ford/Homepage/model-bar/2025/f-150.png',
@@ -274,6 +293,15 @@ globalThis.CARGO = Object.assign(globalThis.CARGO || {}, {
     'oem/kia/sportage-plug-in-hybrid.png': '/static/brand-kia/Homepage/model-bar/2027/sportage-phev.png',
     'oem/kia/telluride-hybrid.png': '/static/brand-kia/Homepage/model-bar/2027/telluride-hybrid.png',
     'oem/kia/carnival-mpv-hybrid.png': '/static/brand-kia/Homepage/model-bar/2027/carnival-hev.png',
+    'oem/maserati/mcpura.png': '/static/brand-maserati/homepage/model-bar/2026/side/mcpura.png',
+    'oem/maserati/grancabrio.webp': '/static/brand-maserati/homepage/model-bar/2026/side/2026-grancabrio-side.webp',
+    'oem/maserati/granturismo.webp': '/static/brand-maserati/homepage/model-bar/2024/side/2024-granturismo-side.webp',
+    'oem/maserati/grecale.webp': '/static/brand-maserati/homepage/model-bar/2025/side/2025-grecale-side.webp',
+    'oem/maserati/ghibli.webp': '/static/brand-maserati/homepage/model-bar/2024/side/2024-ghibli-side.webp',
+    'oem/maserati/levante.webp': '/static/brand-maserati/homepage/model-bar/2024/side/2024-levante-side.webp',
+    'oem/maserati/quattroporte.webp': '/static/brand-maserati/homepage/model-bar/2024/side/2024-quattroporte-side.webp',
+    'oem/maserati/mc20.webp': '/static/brand-maserati/homepage/model-bar/2024/side/2024-mc20-side.webp',
+    'oem/maserati/mc20-cielo.webp': '/static/brand-maserati/homepage/model-bar/2025/side/2025-mc20-cielo-side.webp',
     'oem/toyota/mirai.png': '/static/brand-toyota/Homepage/model-bar/2024/angular-left/mirai.png',
     'oem/toyota/gr86.png': '/static/brand-toyota/Homepage/model-bar/2026/angular-left/gr86.png',
     'oem/toyota/gr-supra.png': '/static/brand-toyota/Homepage/model-bar/2026/angular-left/gr-supra.png',

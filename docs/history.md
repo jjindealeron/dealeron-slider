@@ -919,3 +919,11 @@ Looking at the brands page found two faults the gates had passed. Drawing every 
 pattern its card reached gave Kia four stages, two of them each code in the other's layout, and put
 one anchor id on two blocks. A brand with two codes now draws each once, on the pattern its own code
 was measured on; `tests/brands.test.mjs` holds both and failed on the version before.
+
+Later the same day Steven let the missing pictures in ("yes you can"). Maserati's nine cutouts and
+its logo, and the sixteen CDJR cutouts Bruner's bar and the demos draw, were fetched from the
+platform's shared folders on acurademo1 and proved byte-identical from hondademo1, then mapped in
+`cms-paths.js` like every other picture, so a pasted snippet points at the platform's own copy.
+Maserati became the 33rd brand and was built from its re-run measurement (25 of 47); the CDJR
+cutouts filled out the Chrysler, Dodge, Jeep and Ram rosters to the 2026 bar's line-up. Bruner's bar
+still waits on a CDJR entry, and the platform has no CDJR logo for its tile.

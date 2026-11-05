@@ -71,8 +71,10 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
   - [x] CDJR ×4 measured: none buildable yet (logo tabs; one example draws another code; one waits
         on cutouts)
   - [x] `kia-plain`, `lincoln-v2`, `ford-plain` and `honda-tabbed` landed with their ledger rows
-  - [ ] Toyota Tabs v3 (needs a tabbed split-card pattern) and Maserati (needs its cutouts and
-        logo): Steven's decisions
+  - [x] Maserati built once Steven let the missing pictures in (2026-11-05): its nine cutouts and
+        logo, and Bruner's sixteen CDJR cutouts, from the platform's shared folders
+  - [ ] Toyota Tabs v3 (a tabbed split-card pattern), CDJR logo tabs, a CDJR entry and logo for
+        Bruner: Steven's decisions
   - [ ] Lovable refreshed
 - [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,
       `dealeron-slider-repo-2026-11-03.zip` (421 files, tracked only)

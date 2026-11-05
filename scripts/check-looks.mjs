@@ -208,11 +208,12 @@ for (const propsMap of Object.values(PATTERN_PROPS)) {
   }
 }
 
-// The brand presets. The roster is the census's 32-brand table; a preset that
+// The brand presets. The roster is the census's 32-brand table plus Maserati,
+// whose code the article ships (measured 2026-11-05); a preset that
 // names a look which no longer exists would fail silently in the picker, and a
 // ladder that lands a card under its look's minCard would ship a preset that
 // trips the workbench's own cramped warning the moment you select it.
-const ROSTER = 32;
+const ROSTER = 33;
 const brands = Object.entries(BRANDS ?? {});
 // A second code for a brand (brands.js `of`, 2026-11-05) is a preset, not a
 // brand: the roster count is of brands.

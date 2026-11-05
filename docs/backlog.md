@@ -84,18 +84,22 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
-- **Of the ten codes that did not fit one preset per brand,** four are built since a second code
-  became its own preset (2026-11-05: `kia-plain`, `lincoln-v2`, `ford-plain`, `honda-tabbed`). Left,
-  each a decision rather than a measurement (`docs/research/2026-11-05-measurements/`):
+- **Of the ten codes that did not fit one preset per brand,** five are built since a second code
+  became its own preset (Maserati, its first) (2026-11-05: `kia-plain`, `lincoln-v2`, `ford-plain`,
+  `honda-tabbed`). Left, each a decision rather than a measurement
+  (`docs/research/2026-11-05-measurements/`):
   - `toyota-modelbar-slick-tabbed-v3`: a split photo card behind tabs, a pattern we lack, over
     800x744 photos the repo does not have.
-  - `maserati-modelbar-slick`: no Maserati cutouts or logo in the repo, and a wordmark image over
-    each car that the tile has no slot for.
   - `cdjr-model-bar` and `cdjr-fiat-model-bar`: logo tabs (a brand mark per tab, no text).
   - `cdjr-model-bar-no-back`: its example, cdjrdemo4, draws the Fiat bar; it needs a page that draws
     it.
-  - `cdjr-fiat-model-bar-no-back`: text tabs and buildable, but needs a CDJR entry and roster, and
-    16 of its models have no cutout here.
+  - `cdjr-fiat-model-bar-no-back`: text tabs and buildable, and its 16 missing cutouts are in the
+    repo since 2026-11-05; it waits on a CDJR entry, and the platform has no CDJR logo for its tile
+    (`/assets/logos/transparent/cdjr.png` answers 404).
+- **Fiat could draw its own 500e now** (`demo/img/oem/cdjr/fiat-500e.png`, 2026-11-05), and still
+  falls back to the Chevrolet cutouts: two tests (`brands.test.mjs`, `content.test.mjs`) use Fiat as
+  the one brand with no cutouts of its own, so giving it the car means giving those tests a
+  synthetic subject first.
 
   There were eleven until the article dropped `lexus-model-bar-slick2` in October 2026
   (`docs/coverage.md`).

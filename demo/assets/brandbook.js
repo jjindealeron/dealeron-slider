@@ -85,7 +85,7 @@
     const sec = document.createElement('section');
     sec.className = 'gx-card bb-section';
     sec.id = `b-${id}`;
-    // A roster-only brand with no cutouts of its own (only Fiat, of the 32)
+    // A roster-only brand with no cutouts of its own (only Fiat, of the 33)
     // draws the Chevrolet default set, and the note used to say "from Fiat's
     // demo sites" over six Chevrolets - true of the ladder, false of the
     // cars. The appended sentence says which part is whose.

@@ -20,7 +20,7 @@ slick), which the repo's typecheck cannot describe.
 | `ford-model-bar-slick`            | [ford-slick.md](ford-slick.md)         | Built as `ford-plain`; `ford-slick-render.mjs` draws it through the real CSS |
 | `honda-model-bar-slick-tabbed`    | [honda-tabbed.md](honda-tabbed.md)     | Built as `honda-tabbed`                                                      |
 | `toyota-modelbar-slick-tabbed-v3` | [toyota-v3.md](toyota-v3.md)           | Not built: its card is a split photo card behind tabs, a pattern we lack     |
-| `maserati-modelbar-slick`         | [maserati.md](maserati.md)             | Not built yet: the repo has no Maserati cutouts or logo                      |
+| `maserati-modelbar-slick`         | [maserati.md](maserati.md)             | Built as `maserati`, with its nine cutouts and logo taken from the platform  |
 
 The four CDJR codes share one file, [cdjr.md](cdjr.md). None is built: the demo pages' tabs are
 brand logos with no text, which `tabs` cannot draw (`cdjr-model-bar`, `cdjr-fiat-model-bar`);
