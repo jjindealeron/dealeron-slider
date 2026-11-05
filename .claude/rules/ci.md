@@ -15,6 +15,12 @@ required in branch protection. The relevance list must include everything the au
 is wider than it looks: the root `index.html` (a11y.mjs walks it by name), and `package-lock.json`
 (it pins the playwright and axe-core that produce the verdict) were both missing from the first cut.
 
+**The Playwright Docker image moves with `@playwright/test`.** Every Playwright job runs in
+`mcr.microsoft.com/playwright:v<version>-resolute`, whose browsers work only with that release. An
+update that bumps the package and not the image passes every local test (the new browsers are on
+disk) and fails every CI launch with "please update docker image" (2026-11-05). `npm run check:ci`
+in `validate` fails on the mismatch before the push.
+
 **CI checks that the committed `dist/` matches source** (`git diff --exit-code -- dist`, after the
 build). Without it a `src/` change with a forgotten rebuild passed everything: `npm run size`
 rebuilds `dist` on the runner and the tests then measure that fresh build, while the repo went on
