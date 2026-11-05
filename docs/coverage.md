@@ -171,10 +171,16 @@ other six name no example link at all. There is no live page to measure and no l
 ## Removed from the article
 
 Version 21 (2026-01-20, read 2026-09-15) listed these two; Version 23 (2026-10-08) does not, and no
-other row changed between them. They no longer exist as far as the article is concerned, so they are
-counted nowhere. The ledger's evidence for each is kept in case either comes back.
+other row changed between them.
 
-| OEM        | Type    | Replacement code         | Example link              | Status when removed         | Evidence                                                   |
-| ---------- | ------- | ------------------------ | ------------------------- | --------------------------- | ---------------------------------------------------------- |
-| Lexus      | Slick   | `lexus-model-bar-slick2` | lexusoftucsonautomall.com | Pattern ready, not measured | 1 slick bar, 20 slides, 5@768:3,460:2 — a live dealer site |
-| Mitsubishi | General | `mitsubishi-model-bar`   | mitsubishidemo5           | Not a carousel              | Static `.model-bar`                                        |
+A code leaving the article is built anyway if a dealer still runs it, and dropped if not (Steven,
+2026-11-05); why it left does not matter. So each example site was loaded on 2026-11-05 the same way
+as every row above (full load, scrolled to the bottom, slick's own config read). Neither runs its
+dropped code any more: each now draws a code this repo has already built, matched against that
+code's own example page. Neither is built and neither is counted. A dealer site found still running
+either puts its row back in the table above as work.
+
+| OEM        | Type    | Replacement code         | Example link              | When removed                                                       | On its example site                                                                                                                                                        |
+| ---------- | ------- | ------------------------ | ------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Lexus      | Slick   | `lexus-model-bar-slick2` | lexusoftucsonautomall.com | Pattern ready, not measured: 1 slick bar, 20 slides, 5@768:3,460:2 | 2026-11-05: not in use. The site now draws `lexus-modelbar-slick-tabbed` (built): 3 tabbed bars, 14/3/11 slides, 5@991:3,600:2,400:1, the same as lexusdemo1 to the tab id |
+| Mitsubishi | General | `mitsubishi-model-bar`   | mitsubishidemo5           | Not a carousel: static `.model-bar`                                | 2026-11-05: not in use. The host redirects to mitsubishidemo3, which draws `mitsubishi-model-bar-slick` (built): 5 slides, 5@992:3,460:2, the same as mitsubishidemo1      |

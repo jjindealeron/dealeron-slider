@@ -88,6 +88,10 @@ const unbold = (/** @type {string} */ s) => s.replace(/\*\*/g, '').trim();
 const summary = tableAfter('| Status').map((r) => ({ status: unbold(r.Status), n: Number(r.N), means: r['What it means'] }));
 const codes = tableAfter('## The codes');
 const outOfScope = tableAfter('## Out of scope');
+// Codes the article has dropped. Listed so the shared page keeps track of
+// them, and counted nowhere: one comes back as work only if a dealer site is
+// found still running it (Steven, 2026-11-05).
+const removed = tableAfter('## Removed from the article');
 
 // The ledger's own counts against its own rows: the summary table is typed by
 // hand, and a checklist whose headline disagrees with its list is worse than
@@ -277,6 +281,8 @@ const html = `<!doctype html>
       .cl-doc { max-inline-size: 90rem; }
       .g-scroll td:nth-child(3), .g-scroll td:nth-child(5), .g-scroll td:nth-child(6) { white-space: nowrap; }
       .g-scroll td:last-child { min-inline-size: 18rem; }
+      #cl-removed td:nth-child(4) { min-inline-size: 14rem; }
+      #cl-removed td:last-child { white-space: normal; }
       .g-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
     </style>
   </head>
@@ -314,6 +320,7 @@ const html = `<!doctype html>
       <nav class="ui-toc" aria-label="On this page">
 ${SECTIONS.map((s) => `        <a href="#cl-${s.id}">${s.title}</a>`).join('\n')}
         <a href="#cl-out">Out of scope</a>
+        <a href="#cl-removed">Removed from the article</a>
       </nav>
 
 ${SECTIONS.map(section).join('\n\n')}
@@ -325,6 +332,17 @@ ${SECTIONS.map(section).join('\n\n')}
           <thead><tr><th scope="col">Replacement code</th><th scope="col">Type</th><th scope="col">Example</th></tr></thead>
           <tbody>
 ${outOfScope.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inline(r.Type)}</td><td>${inline(r['Example link'])}</td></tr>`).join('\n')}
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="cl-removed" aria-labelledby="cl-removed-h">
+        <h3 id="cl-removed-h">Removed from the article <span class="cl-count">${removed.length}</span></h3>
+        <p>Codes the article has dropped. One is built anyway if a dealer still runs it. The ones here no longer run on their example sites, so they are listed and counted nowhere.</p>
+        <div class="g-scroll" role="region" aria-label="Removed from the article: table" tabindex="0"><table>
+          <thead><tr><th scope="col">Replacement code</th><th scope="col">OEM</th><th scope="col">Example</th><th scope="col">When removed</th><th scope="col">On its example site</th></tr></thead>
+          <tbody>
+${removed.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inline(r.OEM)}</td><td>${example(r['Example link'], false)}</td><td>${inline(r['When removed'])}</td><td>${inline(r['On its example site'])}</td></tr>`).join('\n')}
           </tbody>
         </table></div>
       </section>

@@ -789,3 +789,13 @@ Chevrolet's slick code stays filed as "Slick": on the article it shares the "Tab
 count it as Retired.
 
 Ledger: **20 of 47 in scope**, down from 49; variant presets wait on 10 codes, not 11.
+
+A row leaving the article does not prove dealers stopped loading the code, so Steven set the rule
+the same day: build a dropped code if a dealer still runs it, drop it if not, whatever the reason it
+left. Both example sites were loaded at full load and scrolled to the bottom.
+`lexusoftucsonautomall.com` no longer draws the single 20-slide bar (5@768:3,460:2). It draws three
+tabbed bars, 14/3/11 slides on 5@991:3,600:2,400:1, the same as `lexusdemo1` to the tab id
+(`#mb-suvs`, `#mb-sedans`, `#mb-hybrids-electric`): `lexus-modelbar-slick-tabbed`, already built.
+`mitsubishidemo5` redirects to `mitsubishidemo3`, which draws the `mitsubishidemo1` bar, 5 slides on
+5@992:3,460:2: `mitsubishi-model-bar-slick`, already built. Neither dropped code is built. The check
+covers the article's example sites only; nothing here can search every dealer site.
