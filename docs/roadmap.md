@@ -58,6 +58,20 @@ a map from replacement code to the settings it stands for. Relevant:
 `#LOADCUSTOMFILE|Responsive|Apps|doSlider|<name>#` loads `…/<name>.html` from the shared folder, and
 those files may carry their own `<style>`.
 
+### DONE 2026-11-05, first pass — the code box
+
+Steven picked it as the next work once the second codes were measured. The builder's rail opens with
+**Replacing a code**: paste the whole `#LOADCUSTOMFILE|Responsive|<folder>|<name>#` tag, a path to
+`<name>.html`, or the name alone, and it opens the pattern and the measured preset that stand in for
+that code, with the address bar naming both. The map is a `code: { name, pattern }` on each built
+preset in `brands.js` (25 of them, plus Chevrolet's retired slick code under `also`), and
+`check-looks.mjs` holds it to the code and pattern on the preset's own row in `docs/coverage.md`. A
+code with no replacement yet says so and links the ledger. `tests/codes.test.mjs` opens every built
+code from the data.
+
+Not done: reading a code's own `<name>.html` for settings it overrides. The map is to the measured
+preset, which is what the code draws on its example page.
+
 ## 3. Audit the library, and test it
 
 Full pass over the pattern/look library plus tests for what it claims.

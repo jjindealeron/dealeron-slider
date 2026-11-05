@@ -492,16 +492,64 @@ for (const [rel, path] of Object.entries(CMS)) {
 // and the drift is invisible: the preset works, the tests pass, and the only
 // thing that is wrong is the document someone reads to decide what to do next.
 // So the two are tied together here, both ways.
-const ledger = readFileSync('docs/coverage.md', 'utf8');
+// Since 2026-11-05 each built preset also names its CODE (brands.js `code`),
+// which the builder's code box opens, so the row and the preset must agree on
+// the code and the pattern too, not only on being built. Rows are read whole:
+// matching "`brands.js` kia" by regex also found kia-plain's row.
+const ledgerRows = readFileSync('docs/coverage.md', 'utf8')
+  .split('\n')
+  .filter((l) => l.startsWith('| ') && !l.startsWith('| **'))
+  .map((l) => l.split('|').map((c) => c.trim()))
+  .filter((c) => /^`[^`]+`$/.test(c[3] ?? ''))
+  .map((c) => ({ code: c[3].slice(1, -1), pattern: c[5].replace(/`/g, ''), status: c[6], preset: (c[7].match(/^`brands\.js` ([a-z0-9-]+)/) ?? [])[1] }));
+const builtRows = ledgerRows.filter((r) => r.status === 'Replacement built');
+const codesSeen = new Map();
 for (const [id, b] of brands) {
   const measured = b.styles && typeof b.source === 'string' && b.source.trim();
-  const row = ledger.split('\n').find((l) => l.startsWith('|') && l.includes('Replacement built') && new RegExp('`brands\\.js` ' + id + '\\b').test(l));
+  const row = builtRows.find((r) => r.preset === id);
   if (measured && !row) {
     console.error(`  coverage: ${id} carries measured styles and a source but has no "Replacement built" row in docs/coverage.md — add it, naming the code it draws`);
     bad++;
   }
   if (!measured && row) {
     console.error(`  coverage: docs/coverage.md claims ${id} is built, but its preset has no styles block with a source — one of the two is wrong`);
+    bad++;
+  }
+  if (!measured && b.code) {
+    console.error(`  ${id}: names code ${b.code.name} but is not measured — the code box would open defaults under a code's name`);
+    bad++;
+  }
+  if (!measured || !row) continue;
+  if (!b.code || typeof b.code.name !== 'string') {
+    console.error(`  ${id}: built (docs/coverage.md, ${row.code}) but names no code — add code: { name: '${row.code}', pattern: '${row.pattern}' }`);
+    bad++;
+    continue;
+  }
+  if (b.code.name !== row.code || b.code.pattern !== row.pattern) {
+    console.error(`  ${id}: code { ${b.code.name}, ${b.code.pattern} } but its ledger row says { ${row.code}, ${row.pattern} }`);
+    bad++;
+  }
+  if (!PATTERN_PROPS[b.code.pattern]) {
+    console.error(`  ${id}: code pattern "${b.code.pattern}" is not a pattern`);
+    bad++;
+  }
+  for (const name of [b.code.name, ...(b.code.also ?? [])]) {
+    if (codesSeen.has(name)) {
+      console.error(`  ${id}: code ${name} is also ${codesSeen.get(name)}'s — the code box could open either`);
+      bad++;
+    }
+    codesSeen.set(name, id);
+  }
+  for (const name of b.code.also ?? []) {
+    if (!ledgerRows.some((r) => r.code === name && r.status === 'Retired')) {
+      console.error(`  ${id}: also opens ${name}, which docs/coverage.md does not list as Retired`);
+      bad++;
+    }
+  }
+}
+for (const r of builtRows) {
+  if (!r.preset || !BRANDS[r.preset]) {
+    console.error(`  coverage: ${r.code} is "Replacement built" but names no preset in brands.js`);
     bad++;
   }
 }

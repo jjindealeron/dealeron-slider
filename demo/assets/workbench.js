@@ -16,7 +16,7 @@
   // loads immediately before this file. patterns.html and
   // scripts/lint-generated-css.mjs load neither, and neither builds a settings
   // panel: both leave through `if (!stage) return` long before buildPanel().
-  const { LOOKS, BRANDS, brandOf, brandName, perViewFor, pane } = globalThis.CARGO;
+  const { LOOKS, BRANDS, brandOf, brandName, pickOwn, perViewFor, pane } = globalThis.CARGO;
   // The patterns and their example rosters live in assets/patterns.js, loaded
   // just before this file; the few helpers the generator shares with them
   // (escTab, the video dialog markup, clamp) come the same way.
@@ -2786,7 +2786,9 @@
     // would be claiming a default that is not what is actually live.
     const strip = document.getElementById('wb-variants');
     if (strip) {
-      const ids = variantsOf(state.pattern);
+      // A brand with two codes offers the one drawn on this pattern (pickOwn,
+      // brands.js).
+      const ids = pickOwn(variantsOf(state.pattern), state.pattern);
       strip.hidden = !brandable;
       // replaceChildren() destroys whichever control held focus, so a click
       // or a change that rebuilds the strip must not drop keyboard focus to
@@ -2819,7 +2821,14 @@
         // roster-only ones, plus every brand at all on a cutout card that
         // has nothing measured. Same order brandsFor is already in: BRANDS'
         // own order, because brandsFor is built off Object.entries(BRANDS).
-        const rest = brandsFor.filter(([bid]) => !ids.includes(bid));
+        // A brand that has a chip is not offered again here, and one with two
+        // codes and no chip is offered once.
+        const chipped = new Set(ids.map(brandOf));
+        const restIds = pickOwn(
+          brandsFor.map(([bid]) => bid).filter((bid) => !chipped.has(brandOf(bid))),
+          state.pattern,
+        );
+        const rest = brandsFor.filter(([bid]) => restIds.includes(bid));
         const select = document.createElement('select');
         select.id = 'wb-brand';
         select.setAttribute('aria-label', 'Other brand');
@@ -3543,6 +3552,66 @@
     for (const x of nav.querySelectorAll('button')) x.setAttribute('aria-current', String(x.dataset.go === id));
     if (writeHash) history.replaceState(null, '', '#' + id);
   }
+
+  // Replacement code -> preset (roadmap §2, Steven 2026-11-05). A designer
+  // switching a live bar over has its old code, not a pattern name, so the
+  // code box takes it in any form it turns up in - the whole
+  // #LOADCUSTOMFILE|Responsive|<folder>|<name># tag, a path to <name>.html, or
+  // the name alone - and opens the pattern and measured preset that stand in
+  // for it (brands.js `code`, held to docs/coverage.md by check-looks). The
+  // same two steps as a #pattern?brand= deep link, and the address bar ends up
+  // naming both, so the result can be shared.
+  const LEDGER = 'https://github.com/stevenpelletier90/dealeron-slider/blob/master/docs/coverage.md';
+  const codeFrom = (raw) => {
+    const last = String(raw ?? '')
+      .trim()
+      .replace(/^#+|#+$/g, '')
+      .split('|')
+      .pop()
+      .split('/')
+      .pop()
+      .replace(/\.html?$/i, '')
+      .trim()
+      .toLowerCase();
+    return /^[a-z0-9][a-z0-9._-]*$/.test(last) ? last : null;
+  };
+  const presetForCode = (name) => {
+    for (const [id, b] of Object.entries(BRANDS)) {
+      if (b.code?.name === name) return { id, retired: false };
+      if (b.code?.also?.includes(name)) return { id, retired: true };
+    }
+    return null;
+  };
+  const codeOut = $('wb-oldcode-out');
+  $('wb-oldcode')?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = codeFrom(/** @type {HTMLInputElement} */ ($('wb-oldcode-in')).value);
+    codeOut.replaceChildren();
+    if (!name) {
+      codeOut.textContent = 'Paste a replacement code: the whole #LOADCUSTOMFILE|…# tag, or just its name.';
+      return;
+    }
+    const hit = presetForCode(name);
+    if (!hit) {
+      const a = document.createElement('a');
+      a.href = LEDGER;
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.textContent = 'where each code stands';
+      codeOut.append(`No replacement is built for ${name} yet. See `, a, '.');
+      return;
+    }
+    const b = BRANDS[hit.id];
+    const pid = b.code.pattern;
+    if (pid !== state.pattern) goToPattern(pid);
+    applyBrand(hit.id);
+    buildPanel();
+    buildContent();
+    render();
+    history.replaceState(null, '', `#${pid}?brand=${hit.id}`);
+    const what = `${PATTERNS[pid].label}, ${brandName(hit.id)}`;
+    codeOut.textContent = hit.retired ? `${name} is retired; its replacement is ${b.code.name}: ${what}.` : `${name}: ${what}. Measured on ${b.source}.`;
+  });
 
   // F089: the builder read location.hash once at boot, so typing a different
   // #pattern and pressing Enter left the previous one on screen - the address

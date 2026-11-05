@@ -446,6 +446,41 @@ body {
   gap: 1px;
 }
 
+/* The code box above the pattern list: the same mono field as the settings
+   rows, an Open button beside it, and the answer under it. */
+.wb-oldcode {
+  margin-block-end: 1rem;
+}
+
+.wb-oldcode-row {
+  display: flex;
+  gap: 0.35rem;
+}
+
+.wb-oldcode-row input {
+  flex: 1 1 auto;
+  min-inline-size: 0;
+  padding: 0.28rem 0.45rem;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--ink);
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+}
+
+.wb-oldcode-out {
+  margin: 0.4rem 0 0;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  color: var(--ink-soft);
+  overflow-wrap: anywhere;
+}
+
+.wb-oldcode-out:empty {
+  display: none;
+}
+
 #wb-nav button {
   display: flex;
   gap: 0.5rem;

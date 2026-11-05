@@ -53,8 +53,10 @@ is:
    **Head Section** tab — the one that takes HTML, not "Style Only, Head Section". The builder's
    step 3 has the tags. `docs/cms-implementation.md` §1 has a loader for a sitewide include instead.
 2. **Build it** in the Lovable builder: pick the pattern, the brand above the stage, then the
-   settings. Give it a name in "Name for this slider". The name becomes its CSS class, and two
-   sliders on one page with the same name overwrite each other.
+   settings. Replacing a built code, paste the old one into **Replacing a code** at the top of the
+   rail instead, and the builder opens the pattern and preset that stand in for it. Give it a name
+   in "Name for this slider". The name becomes its CSS class, and two sliders on one page with the
+   same name overwrite each other.
 3. **Copy it.** The builder hands over two parts: **CSS** for Style Only (raw CSS, no `<style>` tag)
    and **HTML** for a Custom HTML block. That is how a slider goes on one page. For a replacement
    code the file is one `.html`, so it takes what the code box below the buttons shows: the CSS
@@ -92,7 +94,9 @@ Nothing on the Brands page is typed by hand; it is drawn from `brands.js`.
    (lengths in `em`, never `px` or `rem`; never a CSS block or markup), the page and date under
    `source`, the models in its roster, the art in `demo/img/`. `.claude/rules/demo-builder.md` has
    the rules a preset must follow.
-3. **Move its row** in `docs/coverage.md` to "Replacement built", with the evidence.
+3. **Move its row** in `docs/coverage.md` to "Replacement built", with the evidence, and give the
+   preset `code: { name, pattern }` with the same code and pattern; `npm run check:looks` fails
+   until the two agree, and that is what the builder's code box opens.
 4. **Run `npm run validate` and `npm run test`.** Both must pass.
 5. **Commit**, then **refresh the Lovable copy** (below) with `public/demo/assets/brands.js`, the
    new images and `public/demo/coverage.html`.

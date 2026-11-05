@@ -93,7 +93,19 @@ sets its own, and the brand's roster unless `ROSTERS` has its key. Every logo an
 Toyota's mark, a block inside Toyota's section on `brands.html` (anchored `#b-<key>`), and its own
 ledger row. `check-looks.mjs` fails on an `of` that names no brand, a missing `variant`, an
 unmeasured one, or two with one name; `tests/brands.test.mjs` holds the drawing with a synthetic one
-injected into `brands.js`.
+injected into `brands.js`. A brand with two codes OFFERS one per pattern, the one whose
+`code.pattern` it is (both when both are, as Lincoln's two plain bars), else its own entry:
+`pickOwn()` in `brands.js` decides it for the chips, the Other brand list and the patterns page, and
+the brands page draws each code on its own pattern only. Offering both put "Honda · Tabbed" on the
+plain model bar, a bar no dealer site has.
+
+**A built preset names its code, and the code box opens it** (roadmap §2, 2026-11-05).
+`code: { name, pattern }` on each measured preset is the replacement code it stands in for and the
+pattern it draws it on (`also` for a retired code it replaces). The rail's **Replacing a code** box
+(`#wb-oldcode`, wired after `goToPattern()` in `workbench.js`) takes the tag, a path or the bare
+name and runs the same two steps as a `#pattern?brand=` deep link. `check-looks.mjs` holds code and
+pattern to the preset's row in `docs/coverage.md`. Its ids are `wb-oldcode*` because `#wb-code` is
+the code panel's; `tests/codes.test.mjs` fails on any id that repeats on the builder page.
 
 **Rows is a SETTING, not a pattern.** `state.rows` (1–3) wraps each slide's cards in `.cargo-col`
 and emits the matching `grid-template-rows` from the same place. `rowsApply()` is the one place that

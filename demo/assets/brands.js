@@ -521,6 +521,7 @@
   const BRANDS = {
     acura: {
       label: 'Acura',
+      code: { name: 'acura-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -587,6 +588,7 @@
     },
     audi: {
       label: 'Audi',
+      code: { name: 'audi-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -644,6 +646,7 @@
     bmw: { label: 'BMW', look: 'tile', ladder: null, demos: 3 },
     buick: {
       label: 'Buick',
+      code: { name: 'buick-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -699,6 +702,7 @@
     },
     cadillac: {
       label: 'Cadillac',
+      code: { name: 'cadillac-model-bar', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -832,6 +836,7 @@
     },
     chevrolet: {
       label: 'Chevrolet',
+      code: { name: 'chevrolet-model-bar', pattern: 'tabs', also: ['chevrolet-model-bar-slick'] },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -998,6 +1003,7 @@
       label: 'Ford',
       // Its own code is `ford-model-bar-slick-tabbed-panels`; a second one has its own entry below.
       variant: 'Tabbed',
+      code: { name: 'ford-model-bar-slick-tabbed-panels', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -1158,6 +1164,7 @@
     'ford-plain': {
       of: 'ford',
       variant: 'Plain',
+      code: { name: 'ford-model-bar-slick', pattern: 'modelbar' },
       ladder: [
         [0, 2],
         [460, 3],
@@ -1186,6 +1193,7 @@
     },
     gmc: {
       label: 'GMC',
+      code: { name: 'gmc-model-bar', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1266,6 +1274,7 @@
     },
     genesis: {
       label: 'Genesis',
+      code: { name: 'genesis-model-bar-tabbed', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -1350,6 +1359,7 @@
       label: 'Honda',
       // Its own code is `honda-model-bar-slick`; a second one has its own entry below.
       variant: 'Plain',
+      code: { name: 'honda-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -1435,6 +1445,7 @@
     'honda-tabbed': {
       of: 'honda',
       variant: 'Tabbed',
+      code: { name: 'honda-model-bar-slick-tabbed', pattern: 'tabs' },
       styles: {
         looks: {
           tile: {
@@ -1506,6 +1517,7 @@
     },
     hyundai: {
       label: 'Hyundai',
+      code: { name: 'hyundai-model-bar-slick', pattern: 'tabs' },
       look: 'tile',
       // Read off hyundaidemo1's instances on 2026-11-03: 2 per row to 768, 3
       // to 992, 4 to 1200, then 6 (in two rows - the builder's Rows setting,
@@ -1598,6 +1610,7 @@
     infiniti: { label: 'Infiniti', look: 'tile', ladder: null, demos: 2 },
     jaguar: {
       label: 'Jaguar',
+      code: { name: 'jaguar-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1670,6 +1683,7 @@
       label: 'Kia',
       // Its own code is `kia-model-bar`; a second one has its own entry below.
       variant: 'Tabbed',
+      code: { name: 'kia-model-bar', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1755,6 +1769,7 @@
     'kia-plain': {
       of: 'kia',
       variant: 'Plain',
+      code: { name: 'kia-model-bar-slick', pattern: 'modelbar' },
       styles: {
         looks: {
           tile: {
@@ -1772,6 +1787,7 @@
     },
     landrover: {
       label: 'Land Rover',
+      code: { name: 'land-rover-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1829,6 +1845,7 @@
     },
     lexus: {
       label: 'Lexus',
+      code: { name: 'lexus-modelbar-slick-tabbed', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -1923,6 +1940,7 @@
       label: 'Lincoln',
       // Its own code is `lincoln-model-bar-slick`; a second one has its own entry below.
       variant: 'Version 1',
+      code: { name: 'lincoln-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -1992,6 +2010,7 @@
     'lincoln-v2': {
       of: 'lincoln',
       variant: 'Version 2',
+      code: { name: 'lincoln-model-bar-slick2', pattern: 'modelbar' },
       note: 'A bold 15px name over larger cars than the first code; the same counts.',
       styles: {
         looks: {
@@ -2031,6 +2050,7 @@
     // one peek; the phone card is 9% smaller than live at the desktop peek.
     maserati: {
       label: 'Maserati',
+      code: { name: 'maserati-modelbar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [[0, 1]],
       demos: 1,
@@ -2066,6 +2086,7 @@
     },
     mazda: {
       label: 'Mazda',
+      code: { name: 'mazda-model-bar-slick-tabbed', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -2158,6 +2179,7 @@
     },
     mitsubishi: {
       label: 'Mitsubishi',
+      code: { name: 'mitsubishi-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
       // Read off mitsubishidemo1's slick instance on 2026-11-03: 5 across, 3
       // below 992, 2 below 460. The 768 rung that stood here was the census's
@@ -2221,6 +2243,7 @@
     },
     nissan: {
       label: 'Nissan',
+      code: { name: 'nissan-model-bar-bodystyle', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -2318,6 +2341,7 @@
     },
     subaru: {
       label: 'Subaru',
+      code: { name: 'subaru-model-bar-slick', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 2],
@@ -2394,6 +2418,7 @@
     },
     toyota: {
       label: 'Toyota',
+      code: { name: 'toyota-modelbar-slick-tabbed-v2', pattern: 'tabs' },
       // toyotademo1 runs a tabbed cutout bar on the Chevrolet template
       // (measured 2026-09-10: slidesToShow 5, 3 under 991, 2 under 600, 1 under
       // 400, four body-style tabs). toyotademo2's split photo cards are what the
@@ -2526,6 +2551,14 @@
   // like any measured preset; docs/coverage.md names it by its key. A brand
   // with a second code may name its own code with `variant` too, so the two
   // chips say which is which. scripts/check-looks.mjs holds the shape.
+  //
+  // A BUILT preset names the replacement code it stands in for (2026-11-05,
+  // roadmap §2): `code: { name, pattern }`, the code as the Salesforce article
+  // spells it and the pattern it draws it on, plus `also` for a code that is
+  // retired in favour of this one. The builder's code box reads it: paste an
+  // old #LOADCUSTOMFILE...# and it opens that pattern with this preset. It is
+  // never inherited, and scripts/check-looks.mjs holds it to the row in
+  // docs/coverage.md that names this preset, code and pattern alike.
   const INHERIT = ['label', 'look', 'ladder', 'demos', 'font', 'theme'];
   for (const b of Object.values(BRANDS)) {
     const parent = b.of && BRANDS[b.of];
@@ -2550,6 +2583,21 @@
     const b = BRANDS[id];
     return b ? (b.variant ? `${b.label} · ${b.variant}` : b.label) : id;
   };
+  // Which of a brand's presets to OFFER on a pattern. A brand with one code
+  // offers it everywhere its values reach, as before. A brand with two offers
+  // the one whose own code is drawn on this pattern (both, when both are -
+  // Lincoln's two plain bars), else its own entry: "Honda · Tabbed" on the
+  // plain model bar drew a bar no dealer site has (2026-11-05). Order is kept.
+  const pickOwn = (ids, pid) => {
+    const families = new Map();
+    for (const id of ids) families.set(brandOf(id), [...(families.get(brandOf(id)) ?? []), id]);
+    return ids.filter((id) => {
+      const members = families.get(brandOf(id));
+      if (members.length === 1) return true;
+      const own = members.filter((m) => BRANDS[m].code?.pattern === pid);
+      return own.length ? own.includes(id) : id === members[0];
+    });
+  };
 
   // Attach each brand's own vehicles. A brand with none keeps `models` unset,
   // and the workbench falls back to the Chevrolet roster. A variant draws its
@@ -2564,5 +2612,5 @@
     if (list) b.models = list;
   }
 
-  globalThis.CARGO = Object.assign(globalThis.CARGO || {}, { BRANDS, brandOf, brandName, perViewFor, TIER_BOX, CHROME, MARGIN });
+  globalThis.CARGO = Object.assign(globalThis.CARGO || {}, { BRANDS, brandOf, brandName, pickOwn, perViewFor, TIER_BOX, CHROME, MARGIN });
 })();

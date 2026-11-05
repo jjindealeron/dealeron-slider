@@ -7,7 +7,7 @@
 // from the preview.
 
 (() => {
-  const { PATTERNS, renderPattern, variantsOf, brandName, SHORT } = globalThis.CARGO;
+  const { PATTERNS, renderPattern, variantsOf, brandName, pickOwn, SHORT } = globalThis.CARGO;
   const grid = document.getElementById('gx-grid');
   if (!grid || !renderPattern) return;
 
@@ -36,8 +36,8 @@
           <h2>${p.label}</h2>
           <p>${p.blurb}</p>
           ${
-            variantsOf(id).length
-              ? `<p class="gx-also">Also measured for ${variantsOf(id)
+            pickOwn(variantsOf(id), id).length
+              ? `<p class="gx-also">Also measured for ${pickOwn(variantsOf(id), id)
                   .map((bid) => `<a href="brands.html#${bid}">${brandName(bid)}</a>`)
                   .join(', ')}</p>`
               : ''

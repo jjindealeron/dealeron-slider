@@ -71,6 +71,18 @@
            sit under it, which cost the preview 312px at every window size and
            put a real 1170px container out of reach on a 1440px laptop. -->
       <aside class="ui-rail" id="ui-rail">
+        <!-- The other way in (roadmap §2, 2026-11-05): a designer replacing a
+             live bar has its old #LOADCUSTOMFILE...# code, not a pattern name.
+             Pasting it opens the pattern and the measured preset that stand in
+             for that code (brands.js `code`); the wiring is in workbench.js. -->
+        <form class="wb-oldcode" id="wb-oldcode" autocomplete="off">
+          <h2 id="wb-oldcode-h">Replacing a code</h2>
+          <div class="wb-oldcode-row">
+            <input id="wb-oldcode-in" type="text" aria-labelledby="wb-oldcode-h" aria-describedby="wb-oldcode-out" placeholder="kia-model-bar-slick" spellcheck="false" />
+            <button type="submit" class="ui-btn">Open</button>
+          </div>
+          <p class="wb-oldcode-out" id="wb-oldcode-out" role="status"></p>
+        </form>
         <h2>Start from</h2>
         <nav id="wb-nav" aria-label="Slider patterns"></nav>
       </aside>

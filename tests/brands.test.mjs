@@ -273,7 +273,7 @@ test('a second code for a brand is its own chip and its own stage, under the bra
   const ctx = await browser.newContext({ viewport: { width: 1440, height: 900 } });
   await ctx.route('**/demo/assets/brands.js', async (route) => {
     const res = await route.fetch();
-    const probe = `    'toyota-probe': { of: 'toyota', variant: 'Probe', styles: { patterns: { tabs: { props: { '--tab-selected': '#123456' } } } }, source: 'probe.example, 2026-11-05' },\n    volkswagen: {`;
+    const probe = `    'toyota-probe': { of: 'toyota', variant: 'Probe', code: { name: 'probe-code', pattern: 'tabs' }, styles: { patterns: { tabs: { props: { '--tab-selected': '#123456' } } } }, source: 'probe.example, 2026-11-05' },\n    volkswagen: {`;
     await route.fulfill({ response: res, body: (await res.text()).replace('    volkswagen: {', probe) });
   });
   const thrown = [];

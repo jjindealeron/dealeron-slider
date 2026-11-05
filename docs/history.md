@@ -927,3 +927,24 @@ platform's shared folders on acurademo1 and proved byte-identical from hondademo
 Maserati became the 33rd brand and was built from its re-run measurement (25 of 47); the CDJR
 cutouts filled out the Chrysler, Dodge, Jeep and Ram rosters to the 2026 bar's line-up. Bruner's bar
 still waits on a CDJR entry, and the platform has no CDJR logo for its tile.
+
+## 2026-11-05 — the code box: paste an old replacement code, get its replacement
+
+With the measurable second codes built, Steven picked roadmap §2 as the next work. Each built preset
+now names its code and pattern (`code` in `brands.js`; Chevrolet's retired slick code opens
+Chevrolet's under `also`), and `check-looks.mjs` holds both to the preset's own row in
+`docs/coverage.md`. The row lookup was rewritten while doing it: it matched "`brands.js` kia" by
+regex, which also found `kia-plain`'s row. The builder's rail opens with **Replacing a code**, which
+takes the whole `#LOADCUSTOMFILE|…#` tag, a path to the file or the bare name, and opens the pattern
+and preset with the address bar naming both; an unbuilt code says so and links the ledger.
+
+The box first went in as `id="wb-code"`, which the code panel already had: `getElementById` found
+the form, and the builder wrote the snippet into it, so the field vanished on load. It is
+`wb-oldcode` now, and `tests/codes.test.mjs` fails on any id that repeats on the builder page; it
+also opens every built code off the data, and failed on the builder before the box.
+
+A side review the same evening found the builder still offering both of a brand's presets on both
+layouts, so "Honda · Tabbed" on the plain model bar drew a bar no dealer site has. Each layout now
+offers the preset whose own code is drawn there (`pickOwn()` in `brands.js`, used by the chips, the
+Other brand list and the patterns page); a brand with one code is unchanged.
+`tests/variants.test.mjs` holds it and failed without it.

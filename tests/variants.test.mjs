@@ -247,12 +247,33 @@ test.describe('a brand applies its values', () => {
     // Counted off the data rather than written down: this said ">= 28" for "32
     // less the four measured", and measuring three more on 2026-09-15 failed it
     // for the work getting done.
-    const { brands, chips } = await page.evaluate(() => ({
-      brands: Object.keys(globalThis.CARGO.BRANDS).length,
-      chips: Object.keys(globalThis.CARGO.BRANDS).filter((b) => globalThis.CARGO.patternsOf(b).length).length,
-    }));
+    // Counted by BRAND since 2026-11-05: a brand with two codes is one chip
+    // here or one option, never both (pickOwn, brands.js).
+    const { brands, chips } = await page.evaluate(() => {
+      const { BRANDS, patternsOf, brandOf } = globalThis.CARGO;
+      const families = [...new Set(Object.keys(BRANDS).map(brandOf))];
+      return { brands: families.length, chips: families.filter((f) => Object.keys(BRANDS).some((m) => brandOf(m) === f && patternsOf(m).length)).length };
+    });
     const optCount = await page.locator('#wb-brand option:not([value=""])').count();
     assert.equal(optCount, brands - chips, `a cutout card offers every other brand in the select: ${brands} brands less ${chips} measured chips should be ${brands - chips}, got ${optCount}`);
+  });
+
+  // 2026-11-05: both of Kia's, Ford's, Honda's and Lincoln's presets were
+  // chips on both layouts, so "Honda · Tabbed" on the plain model bar drew a
+  // bar no dealer site has. Each layout offers the code drawn on it.
+  test('a brand with two codes offers, on each layout, the code drawn there', async () => {
+    const offered = async () => ({
+      chips: await page.locator('#wb-variants button[data-brand]:not([data-brand=""])').evaluateAll((bs) => bs.map((b) => /** @type {HTMLElement} */ (b).dataset.brand)),
+      options: await page.locator('#wb-brand option').evaluateAll((os) => os.map((o) => /** @type {HTMLOptionElement} */ (o).value)),
+    });
+    await pick(page, 'modelbar');
+    let o = await offered();
+    for (const id of ['kia-plain', 'ford-plain', 'honda', 'lincoln', 'lincoln-v2']) assert.ok(o.chips.includes(id), `model bar: no ${id} chip`);
+    for (const id of ['kia', 'ford', 'honda-tabbed']) assert.ok(!o.chips.includes(id) && !o.options.includes(id), `model bar offers ${id}, a tabbed code`);
+    await pick(page, 'tabs');
+    o = await offered();
+    for (const id of ['kia', 'ford', 'honda-tabbed', 'lincoln']) assert.ok(o.chips.includes(id), `tabbed bar: no ${id} chip`);
+    for (const id of ['kia-plain', 'ford-plain', 'honda', 'lincoln-v2']) assert.ok(!o.chips.includes(id) && !o.options.includes(id), `tabbed bar offers ${id}`);
   });
 
   test('Toyota is a second measured brand on the tabbed bar', async () => {
