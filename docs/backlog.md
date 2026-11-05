@@ -44,7 +44,15 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
 - **stylelint 18 waits on `stylelint-config-recess-order`.** Its newest release (7.10.0) declares
   `stylelint` `^16.18.0 || ^17.0.0`, so `npm install stylelint@18` stops on ERESOLVE, and
   `stylelint-config-standard` 41 needs stylelint 18, so both stay a major behind (17.16.0 and
-  40.0.0). Take all three together once recess-order accepts 18; never `--legacy-peer-deps`.
+  40.0.0). Take all three together once recess-order accepts 18; never `--legacy-peer-deps`. Tried
+  the same day in a throwaway worktree (stylelint 18.0.0 was two days old): with recess-order
+  removed, `lint:css` passed unchanged, and `lint:css:generated` failed only on
+  `"declaration-block-single-line-max-declarations": null` in `.stylelintrc.generated.json` (69
+  "Unknown rule" errors; 18 dropped the rule, and the line only switched it off), so delete that
+  line in the same commit. What removing recess-order would cost: properties in any order pass,
+  which a probe confirmed, and `lint:css:fix` stops sorting them. Its engine, `stylelint-order`
+  8.1.3, already accepts 18, and recess-order published twice in the two weeks before, so the wait
+  should be short; Steven's call whether to wait or drop it.
 - **Two overrides to drop when their parents catch up.** `minimatch` `^11.0.4` (GHSA-g3hv-75wg-m249:
   `eslint` 10.14.0 and `@eslint/config-array` 0.23.5 ask for `^10.2.4`, and the fix is 11.0.1) and
   `re2js` `^2.9.1` (GHSA-gg6h-894w-4m9c: `markdownlint` 0.42.0 pins exactly 2.8.6, the fix is
