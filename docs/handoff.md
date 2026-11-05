@@ -164,7 +164,9 @@ password gate" in `scripts/export-lovable.mjs`.
 3. **Fix the name colours before handing those bars out:** GMC's and Mitsubishi's go dark on their
    dark sections, and Cadillac's and Hyundai's white names show white-on-white on the plain model
    bar (`docs/backlog.md`, 2026-11-03).
-4. **Re-read the Salesforce article** for codes added since 2026-09-15, the last time it was read.
+4. **Re-read the Salesforce article** for changes since 2026-11-05 (Version 23), the last time it
+   was read. Its Versions → Compare view puts any older version beside the current one, which is the
+   quickest way to see what moved.
 5. **Delete the old `…/Apps/customSlider/` folder** once nothing links it (README, "Deployment
    status").
 6. **Manual QA still open:** `docs/backlog.md`, "Manual QA".

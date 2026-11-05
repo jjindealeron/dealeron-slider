@@ -3,24 +3,25 @@
 What this repo can actually replace today, one row per replacement code.
 
 The list of codes is not ours. It is the Salesforce Knowledge article **"Model Bar Replacement
-Codes"** (article 000001851, last modified 2026-01-20,
+Codes"** (article 000001851, Version 23, last modified 2026-10-08,
 [permalink](https://dealeron.my.salesforce.com/lightning/articles/Knowledge/Model-Bar-Replacement-Codes)),
-read on 2026-09-15. That article is the authority on which codes exist; this file is the authority
-on which of them we have built a replacement for. When the two disagree about a code, the article
-wins and this file gets corrected — except where a row below says the article itself looks wrong,
-which is a thing to raise with whoever owns it rather than to paper over.
+last read on 2026-11-05. That article is the authority on which codes exist; this file is the
+authority on which of them we have built a replacement for. When the two disagree about a code, the
+article wins and this file gets corrected — except where a row below says the article itself looks
+wrong, which is a thing to raise with whoever owns it rather than to paper over.
 
-The article lists 56 codes. Seven of them are GM multi-make combinations, which **the team no longer
-does** (Steven, 2026-09-15) — they are listed at the bottom and counted nowhere.
+The article lists 54 codes. Seven of them are GM multi-make combinations, which **the team no longer
+does** (Steven, 2026-09-15) — they are listed at the bottom and counted nowhere. Two more were on it
+until October 2026; they are at the bottom too, under "Removed from the article".
 
-**49 codes in scope. 20 built.** The other 29 are the work.
+**47 codes in scope. 20 built.** The other 27 are the work.
 
 | Status                             |  N  | What it means                                                                                         |
 | ---------------------------------- | :-: | ----------------------------------------------------------------------------------------------------- |
 | **Replacement built**              | 20  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                     |
-| **Pattern ready, not measured**    | 11  | The builder already has the right pattern; nobody has measured this OEM's version of it yet.          |
+| **Pattern ready, not measured**    | 10  | The builder already has the right pattern; nobody has measured this OEM's version of it yet.          |
 | **Needs a pattern we do not have** |  3  | The live code is a carousel, but a shape this builder cannot draw yet.                                |
-| **Not a carousel**                 | 10  | The live code is a static grid or a tabbed list, not a slider. Replacing it is a decision, not a job. |
+| **Not a carousel**                 |  9  | The live code is a static grid or a tabbed list, not a slider. Replacing it is a decision, not a job. |
 | **Example is dead**                |  3  | The article's example link 404s, so there is nothing left to measure from.                            |
 | **Article looks wrong**            |  1  | The example link does not draw the bar its row describes.                                             |
 | **Retired**                        |  1  | The article marks it deprecated. Not a gap.                                                           |
@@ -32,7 +33,7 @@ that count is wrong in both directions. GM ships **ten** in-scope codes; Toyota 
 four, Kia and Nissan three each. Meanwhile CDJR is **one** code family covering Chrysler, Dodge,
 Jeep and Ram, which `brands.js` holds as four separate presets.
 
-So the brand count made the job look like 33 items when it is 49, and made four presets look like
+So the brand count made the job look like 33 items when it is 47, and made four presets look like
 four gaps when they are one code. A row here is a thing a designer can be handed. That is the unit.
 
 ## How each column was established
@@ -41,6 +42,10 @@ Nothing in the table is inherited. The codes and their types, files and example 
 the article on 2026-09-15. Every example link was then loaded in Chromium the same day and read for
 what it actually draws — slick instances, their `slidesToShow` and `responsive` ladder taken from
 slick's own config, tab rows that drive panes, and the static markup where there is no carousel.
+
+On 2026-11-05 the list was checked again, row by row, against Version 23. The article's Versions →
+Compare view set Version 21 (the one read on 2026-09-15) beside it, so every change in between was
+visible rather than inferred.
 
 Two methodology notes, because both changed answers:
 
@@ -85,9 +90,8 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | CDJR       | Tabs (no colour background)           | `cdjr-model-bar-no-back`                            | cdjrdemo4                      | `tabs`      | Pattern ready, not measured    | 5 slick bars, 6@991:3,460:2                                                                                                                                |
 | CDJR       | Tabs with Fiat (no colour background) | `cdjr-fiat-model-bar-no-back`                       | brunerchryslerdodgejeepram.com | `tabs`      | Pattern ready, not measured    | 4 slick bars, 5@991:3,460:1 — a live dealer site, not a demo host                                                                                          |
 | Ford       | Slick                                 | `ford-model-bar-slick`                              | forddemo3                      | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 5@768:3,460:2. Ford is measured, but from the tabbed code                                                                                     |
-| Honda      | Slick Tabbed                          | `honda-model-bar-slick-tabbed`                      | hondademo1                     | `tabs`      | Pattern ready, not measured    | 4 slick bars behind a tab row, 5@991:3,460:1                                                                                                               |
+| Honda      | Slick                                 | `honda-model-bar-slick-tabbed`                      | hondademo1                     | `tabs`      | Pattern ready, not measured    | 4 slick bars behind a tab row, 5@991:3,460:1                                                                                                               |
 | Kia        | Slick                                 | `kia-model-bar-slick`                               | kiademo3                       | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 5@768:3,460:2                                                                                                                                 |
-| Lexus      | Slick                                 | `lexus-model-bar-slick2`                            | lexusoftucsonautomall.com      | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 20 slides, 5@768:3,460:2 — a live dealer site                                                                                                 |
 | Lincoln    | Slick v2                              | `lincoln-model-bar-slick2`                          | rydelllincoln.com              | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 4 slides, 4@991:3,460:2 — a live dealer site                                                                                                  |
 | Maserati   | Large Slick                           | `maserati-modelbar-slick`                           | maseratidemo4                  | `modelbar`  | Pattern ready, not measured    | 1 slick bar, 9 slides, 1@992:1 — one card at a time                                                                                                        |
 | Toyota     | Tabs v3                               | `toyota-modelbar-slick-tabbed-v3`                   | toyotademo2                    | `tabs`      | Pattern ready, not measured    | 4 tabs, 4 bars, 11/3/13/14 slides                                                                                                                          |
@@ -98,9 +102,8 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | Ford       | General                               | `ford-model-bar-2.0-alt`                            | forddemo5                      | —           | Not a carousel                 | Static `.modelBar`, 11 children, no slick                                                                                                                  |
 | Genesis    | Tabbed Non-EV                         | `genesis-non-ev-model-bar-tabbed`                   | genesisofcartersville.com      | —           | Not a carousel                 | A different template again — `.info-model` blocks, no slick                                                                                                |
 | INFINITI   | Tiles                                 | `infiniti-model-bar-v2`                             | infinitidemo1                  | —           | Not a carousel                 | Static `.modelbar-container` of `.modelbar-item` cards                                                                                                     |
-| INFINITI   | Tiles (dark background)               | `infiniti-model-bar-black`                          | infinitioflexington.com        | —           | Not a carousel                 | The same static tiles on a dark band                                                                                                                       |
+| INFINITI   | Tiles                                 | `infiniti-model-bar-black`                          | infinitioflexington.com        | —           | Not a carousel                 | The same static tiles on a dark band                                                                                                                       |
 | Maserati   | Tiles                                 | `maserati-modelbar`                                 | maseratidemo1                  | —           | Not a carousel                 | Static `.modelBar`, 8 children                                                                                                                             |
-| Mitsubishi | General                               | `mitsubishi-model-bar`                              | mitsubishidemo5                | —           | Not a carousel                 | Static `.model-bar`                                                                                                                                        |
 | Nissan     | Slick                                 | `nissan-model-bar-slick`                            | coeurdalenenissan.com          | —           | Not a carousel                 | Static `.vehicleModels` + `.model-list` behind 5 tabs. Despite "Slick" in the name, no slick runs                                                          |
 | Nissan     | Tabs                                  | `nissan-model-bar-tabbed`                           | nissandemo1                    | —           | Not a carousel                 | The same static tabbed list                                                                                                                                |
 | Porsche    | Porsche                               | `porsche-model-bar`                                 | porschedemo1                   | —           | Not a carousel                 | Static `.model-container` + `.featured-model`                                                                                                              |
@@ -112,7 +115,7 @@ not enough to measure from. Measuring is the next step for those rows regardless
 
 ## What the table says that the brand tracker could not
 
-**Ten codes are not carousels.** "Tiles", "General" and Porsche's own type draw static grids, and
+**Nine codes are not carousels.** "Tiles", "General" and Porsche's own type draw static grids, and
 Nissan's two codes draw a static tabbed list on both of their example pages — including the one
 called `nissan-model-bar-slick`. Our engine replaces _sliders_. Turning a static grid into a
 carousel is a design change to the dealer's page, not a like-for-like swap, and it needs someone to
@@ -164,3 +167,14 @@ other six name no example link at all. There is no live page to measure and no l
 | Tabs | `chevrolet-cadillac-model-bar`           | none given    |
 | Tabs | `chevrolet-buick-gmc-cadillac-model-bar` | none given    |
 | Tabs | `buick-gmc-cadillac-model-bar`           | none given    |
+
+## Removed from the article
+
+Version 21 (2026-01-20, read 2026-09-15) listed these two; Version 23 (2026-10-08) does not, and no
+other row changed between them. They no longer exist as far as the article is concerned, so they are
+counted nowhere. The ledger's evidence for each is kept in case either comes back.
+
+| OEM        | Type    | Replacement code         | Example link              | Status when removed         | Evidence                                                   |
+| ---------- | ------- | ------------------------ | ------------------------- | --------------------------- | ---------------------------------------------------------- |
+| Lexus      | Slick   | `lexus-model-bar-slick2` | lexusoftucsonautomall.com | Pattern ready, not measured | 1 slick bar, 20 slides, 5@768:3,460:2 — a live dealer site |
+| Mitsubishi | General | `mitsubishi-model-bar`   | mitsubishidemo5           | Not a carousel              | Static `.model-bar`                                        |

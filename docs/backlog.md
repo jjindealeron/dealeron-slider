@@ -62,10 +62,11 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
-- **The eleven codes that do not fit one preset per brand** (a second code on the same pattern, or
-  no preset at all) wait on variant presets: `lincoln-model-bar-slick2`, `lexus-model-bar-slick2`,
+- **The ten codes that do not fit one preset per brand** (a second code on the same pattern, or no
+  preset at all) wait on variant presets: `lincoln-model-bar-slick2`,
   `toyota-modelbar-slick-tabbed-v3`, the four CDJR codes, `ford-model-bar-slick`,
-  `kia-model-bar-slick`, `honda-model-bar-slick-tabbed`, `maserati-modelbar-slick`.
+  `kia-model-bar-slick`, `honda-model-bar-slick-tabbed`, `maserati-modelbar-slick`. There were
+  eleven until the article dropped `lexus-model-bar-slick2` in October 2026 (`docs/coverage.md`).
 
 ## 2026-10-27 — heard on NVDA and VoiceOver, not actioned
 

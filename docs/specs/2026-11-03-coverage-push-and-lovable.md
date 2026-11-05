@@ -31,7 +31,9 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
 ## Steps
 
 - [x] Rename close-out: tick the folder rename and the `~/.claude` references (0ee6cf0)
-- [ ] Re-read the Salesforce article for codes added since 2026-09-15 (needs Steven's sign-in)
+- [x] Re-read the Salesforce article for codes added since 2026-09-15 (needs Steven's sign-in).
+      2026-11-05: Version 23 (2026-10-08) adds none and drops `lexus-model-bar-slick2` and
+      `mitsubishi-model-bar`; the ledger is 20 of 47
 - [x] `docs/coverage.md`: the "Keeping this true" paragraph said the ledger guard was not built; it
       is (`scripts/check-looks.mjs`), and the paragraph now says so
 - [x] Measure the 14 (parallel agents return values; each re-run before it lands). Every re-run
@@ -58,6 +60,7 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
       workspace Git access. After today's import, a refresh edits the project's files in place in
       Lovable's code editor (same project, same address); a new ZIP import would make a new project
       at a new address
-- [ ] Variant presets for the 11 (not started; in `docs/backlog.md`)
+- [ ] Variant presets for the 10 (11 until the article dropped `lexus-model-bar-slick2`; not
+      started; in `docs/backlog.md`)
 - [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,
       `dealeron-slider-repo-2026-11-03.zip` (421 files, tracked only)

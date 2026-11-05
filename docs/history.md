@@ -770,3 +770,22 @@ three of them byte-identical to `dist/` (cache-busted against `cadillacdemo1.dea
 frozen from that upload. The script that renamed the references skipped paths after `src/` and `./`,
 which also skipped `.../dealeron-slider.min.css` in README's upload steps; a grep for every
 remaining `dealeron-slider` caught it.
+
+## 2026-11-05 — the article drops two codes; 20 of 47
+
+The Salesforce article had been republished twice since the ledger read it: Version 22 on 2026-10-02
+and Version 23 on 2026-10-08. Its Versions → Compare view set Version 21 (2026-01-20, the one read
+on 2026-09-15) beside Version 23, and each version's rows were rebuilt from that diff. Only two rows
+differ, both removed: `lexus-model-bar-slick2` (pattern ready, not measured) and
+`mitsubishi-model-bar` (not a carousel). No code was added and no example link changed. The rest of
+the diff is markup noise (`rel` attributes, image ids).
+
+The same row-by-row check found two Type cells the ledger had paraphrased rather than copied:
+Honda's `honda-model-bar-slick-tabbed` reads "Slick" on the article (the ledger had "Slick Tabbed")
+and INFINITI's `infiniti-model-bar-black` reads "Tiles" ("Tiles (dark background)" came from its
+screenshot's alt text). Both versions agree on those labels, so they were never article edits.
+Chevrolet's slick code stays filed as "Slick": on the article it shares the "Tabs" row of
+`chevrolet-model-bar` under the November 2025 deprecation note, and the ledger splits it out to
+count it as Retired.
+
+Ledger: **20 of 47 in scope**, down from 49; variant presets wait on 10 codes, not 11.
