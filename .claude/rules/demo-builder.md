@@ -190,7 +190,8 @@ holds all of it.
 **CSS in JS template literals is linted too.** `scripts/lint-generated-css.mjs` runs the real
 generator (`cssFor`) and stylelints its output, so what is checked is what ships.
 `.stylelintrc.generated.json` turns off source-layout rules (the card CSS is deliberately compact)
-and keeps the semantic ones: property order, the `rem` ban, hex length, zero units.
+and keeps the semantic ones: the `rem` ban, the legacy `rgba()` notation, hex length, zero units.
+Property order is not checked since recess-order went (2026-11-05).
 
 **`npm run validate` also guards the data.** `scripts/check-looks.mjs` (which prints the current
 counts) asserts every old skin is claimed by exactly one component, a component absorbing nothing is

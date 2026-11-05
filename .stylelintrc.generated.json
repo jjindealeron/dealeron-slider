@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+  "extends": ["stylelint-config-standard"],
   "rules": {
     "selector-class-pattern": ["^[a-z][a-z0-9]*([_-]+[a-z0-9]+)*$", { "message": "Expected class selector to be kebab-case (BEM `--` modifiers allowed, e.g. .dos-arrow--prev)" }],
     "no-descending-specificity": null,
@@ -24,7 +24,6 @@
       }
     ],
 
-    "declaration-block-single-line-max-declarations": null,
     "at-rule-empty-line-before": null,
     "declaration-empty-line-before": null,
     "rule-empty-line-before": null,

@@ -873,3 +873,24 @@ Steven chose the backing the same day ("we need those to have a backing"). The g
 the engine's own `#fff` on `rgba(0, 0, 0, 0.55)`, the values the filterable, media and fullscreen
 galleries and the mini gallery already set, so its snippet emits no arrow colour at all and the
 photo keeps its full width. The test allows no bare arrow over a picture now.
+
+## 2026-11-05 — every dependency on its latest release; recess-order goes
+
+Steven asked for everything updated. Every devDependency went to its `latest` tag (Playwright
+1.64.1, eslint 10.14.0, markdownlint-cli2 0.24.0, guidepup 0.40.0 and the rest), CI moved from Node
+22 to 26, the current LTS and what runs locally, and `npm audit`'s seven advisories in two families
+closed through two overrides (`docs/backlog.md` says when they can go).
+
+The first push went red on every browser launch in validate and a11y: the three Playwright jobs
+still ran the `v1.63.0` Docker image, whose browsers only work with that release. Every local run
+had passed, because 1.64.1's builds were already on disk from another project. The rule lived in a
+`validate.yml` comment; `scripts/check-ci.mjs` now compares each image tag with `package-lock.json`
+inside `npm run validate`, and failed on the three old tags before they moved.
+
+Stylelint 18 (released 2026-11-03) stopped on ERESOLVE: `stylelint-config-recess-order` 7.10.0, the
+newest, accepts 16 or 17 only, and `stylelint-config-standard` 41 needs 18. Tried in a throwaway
+worktree with recess-order removed, the source CSS linted clean unchanged and the generated CSS
+failed only on `declaration-block-single-line-max-declarations: null`, a rule 18 deleted and the
+line only switched off. A probe with properties out of order passed, so the cost is property order
+alone. Steven had it removed ("remove recess order"): stylelint 18 and config-standard 41 went in,
+both configs extend the standard config only, and the dead line went.

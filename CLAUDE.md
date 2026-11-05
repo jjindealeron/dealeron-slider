@@ -95,8 +95,9 @@ Steven's choice, so DealerOn colleagues can see it.
 
 - Formatting: Prettier, `printWidth: 200`, single quotes in JS / double in CSS. Long single-line
   statements in the engine are the formatter's output — leave them unwrapped.
-- CSS: stylelint standard + `recess-order` (property order enforced). Kebab-case selectors with BEM
-  `--` modifiers. Logical properties (`inline-size`, `inset-inline`) are the house style.
+- CSS: stylelint standard, no property-order rule (`recess-order` went on 2026-11-05, when it held
+  stylelint a major behind; `docs/history.md`). Kebab-case selectors with BEM `--` modifiers.
+  Logical properties (`inline-size`, `inset-inline`) are the house style.
 - Missing markup fails loudly: `console.error` for a missing track/slides, `console.warn` for a
   missing `aria-label` or a conflicting option combination. Keep that pattern for new validation.
 - Extending behavior belongs in page script, not the engine — listen for `dos:change` (bubbles from

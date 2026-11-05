@@ -1,5 +1,5 @@
 {
-  "extends": ["stylelint-config-standard", "stylelint-config-recess-order"],
+  "extends": ["stylelint-config-standard"],
   "ignoreFiles": ["dist/**", "node_modules/**"],
   "rules": {
     "selector-class-pattern": ["^[a-z][a-z0-9]*([_-]+[a-z0-9]+)*$", { "message": "Expected class selector to be kebab-case (BEM `--` modifiers allowed, e.g. .dos-arrow--prev)" }],
