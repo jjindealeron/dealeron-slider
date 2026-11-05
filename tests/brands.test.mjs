@@ -283,7 +283,7 @@ test('a second code for a brand is its own chip and its own stage, under the bra
   await p.goto(`${ORIGIN}/demo/index.html#tabs`, { waitUntil: 'load' });
   await p.waitForSelector('#wb-variants button[data-brand="toyota-probe"]');
   const chip = await p.evaluate(() => {
-    const img = document.querySelector('#wb-variants button[data-brand="toyota-probe"] img');
+    const img = /** @type {HTMLImageElement} */ (document.querySelector('#wb-variants button[data-brand="toyota-probe"] img'));
     return { text: img.parentElement.textContent.trim(), src: img.getAttribute('src'), loaded: img.naturalWidth > 0 };
   });
   assert.deepEqual(chip, { text: 'Toyota · Probe', src: 'img/logo-toyota.png', loaded: true }, "the chip names the brand and the code, with the brand's logo");
