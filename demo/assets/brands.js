@@ -1886,8 +1886,8 @@
       // - slick's 35px arrows in a 35px channel, drawn only at 800 here.
       // NO COLOUR (Steven, 2026-09-15, written up on the GMC entry): the
       // white name and the black come from the dealer's section class, so
-      // nothing here assumes a dark band; the pattern's #262626 arrow reads
-      // on the page's own ground.
+      // nothing here assumes a dark band; the pattern's currentcolor arrow
+      // follows the page's own text (2026-11-05; its #262626 was 1.39:1 here).
       // Not carried, no knob: the live card crops each cutout to a 55% box
       // (cover), which puts the name about 21px closer to the car than ours.
       // Departures: below 768 the live page hides the whole section

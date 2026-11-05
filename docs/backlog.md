@@ -56,14 +56,6 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
   chevroletdemo1 and gmcdemo1, 2026-11-05). Dropping them is a decision, not a measurement;
   Chevrolet, Genesis, Honda and Mazda set their own colour on the live bar and are not in question
   (`docs/research/2026-11-03-name-colour`, "Not settled here").
-- **The gallery's bare arrow floats over the photo** (`gutter: false` since 2026-08-27; its
-  `#262626` was chosen on 2026-07-14, when its arrows stood beside the photo). On the six demo
-  photos the chevron's own area holds pixels at about 1:1 on four or five of them, for `#262626` and
-  for any text colour alike, so `currentcolor` cannot fix it (2026-11-05). Either the engine's own
-  backing, `#fff` on `rgba(0, 0, 0, 0.55)` as the hero patterns use (every pixel 4.76:1 or better,
-  but a dark disc appears on the photo), or the gutter back on and `currentcolor` (the arrows stand
-  beside the photo again, which narrows it by two arrow widths). A design choice, so not made here.
-  `tests/colour.test.mjs` holds it as the one bare arrow allowed over a picture.
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.

@@ -867,4 +867,9 @@ went to `docs/backlog.md`.
 
 `tests/colour.test.mjs` reads every arrow with a transparent backing off `patterns.html` at 768
 (where every pattern overflows) and needs 3:1 against what is under it on both sections. It failed
-first on the seven at 1.2:1, and it holds the gallery as the one bare arrow allowed over a picture.
+first on the seven at 1.2:1, and it held the gallery as the one bare arrow allowed over a picture.
+
+Steven chose the backing the same day ("we need those to have a backing"). The gallery now carries
+the engine's own `#fff` on `rgba(0, 0, 0, 0.55)`, the values the filterable, media and fullscreen
+galleries and the mini gallery already set, so its snippet emits no arrow colour at all and the
+photo keeps its full width. The test allows no bare arrow over a picture now.

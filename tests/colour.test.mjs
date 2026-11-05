@@ -153,10 +153,10 @@ test('opening any picker moves nothing in the panel', async () => {
 // backing, standing beside the content on the section's own background, so on
 // a dark section it measured 1.2:1. A bare arrow now takes the section's text
 // colour. Read off the page, not a list of ids: every arrow whose backing is
-// transparent, judged against what is visually under its centre. The one bare
-// arrow that floats over a photo (the gallery, gutter: false) needs a backing
-// or a gutter instead - a decision in docs/backlog.md - and any other that
-// starts floating over a picture fails here.
+// transparent, judged against what is visually under its centre. An arrow that
+// floats over a photo needs a backing instead (the gallery's was bare until
+// 2026-11-05, about 1:1 on most of its photos), so a bare one over a picture
+// fails here.
 test('a bare arrow reads on a light section and a dark one', async ({ browser }) => {
   const ctx = await browser.newContext({ viewport: { width: 768, height: 900 } });
   const p = await ctx.newPage();
@@ -205,7 +205,7 @@ test('a bare arrow reads on a light section and a dark one', async ({ browser })
     assert.ok(found.length >= 8, `${scene}: only ${found.length} bare arrows found on patterns.html`);
     assert.deepEqual(
       found.filter((f) => f.overMedia).map((f) => f.id),
-      ['gallery'],
+      [],
       'a bare arrow over a picture needs a backing',
     );
     assert.deepEqual(

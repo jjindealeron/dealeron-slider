@@ -394,8 +394,8 @@
       // the #262626 this replaced was 1.39:1 on mitsubishidemo1's #000 section
       // (docs/research/2026-11-03-name-colour). The same goes for every bare
       // arrow that stands beside its content (2026-11-05: 1.2:1 on a #161616
-      // section, 18:1 now); the gallery's floats over a photo and is the
-      // exception, noted there. tests/colour.test.mjs reads them off the page.
+      // section, 18:1 now); the gallery's floats over a photo and has the
+      // engine's backing instead. tests/colour.test.mjs reads them off the page.
       props: { '--dos-gap': '0.5em', '--dos-controls-space': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
       hideDots: true,
     },
@@ -488,11 +488,13 @@
       blurb:
         'For walking a shopper through one vehicle’s photos — the pictures on a VDP, or a gallery on a custom page. The thumbnails underneath are generated from the slides and behave like real tabs, with arrow keys.',
       data: { 'data-dos-gallery': '' },
-      // Not currentcolor, unlike the other bare arrows: these float OVER the
-      // photo (gutter: false since 2026-08-27; the dark chevron was chosen on
-      // 2026-07-14 for arrows beside it), so no text colour reads on every
-      // picture. A backing or a gutter is a decision in docs/backlog.md.
-      props: { '--dos-gap': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      // The engine's backing, like the other photo galleries: these arrows
+      // float OVER the photo (gutter: false since 2026-08-27), so no text
+      // colour reads on every picture. The bare #262626 chevron they had,
+      // chosen on 2026-07-14 for arrows beside the photo, measured about 1:1
+      // on four or five of the six demo photos; #fff on the 0.55 disc clears
+      // every pixel at 4.76:1 or better (Steven, 2026-11-05).
+      props: { '--dos-gap': '0.1px', '--dos-arrow-bg': 'rgba(0, 0, 0, 0.55)', '--dos-arrow-fg': '#fff' },
       perView: { base: 1, 768: 1, 992: 1, 1200: 1 },
       minCard: 240,
       track: 'div',
