@@ -1187,6 +1187,7 @@
   --tab-fade: 0s;
   --tab-line-grow: 0s;
   --tab-flex: 0 1 auto;
+  --pane-align: normal;
   --tab-leading: 1.55;
   --tab-case: none;
   --tab-color: currentcolor;
@@ -1296,6 +1297,15 @@
 }
 :where([data-cargo=tabs]) .cargo-tabs [role=tab] + [role=tab] {
   box-shadow: inset 1px 0 var(--tab-cell-divider);
+}
+:where([data-cargo=tabs]) .cargo-tabs button img {
+  display: block;
+  max-inline-size: 100%;
+  block-size: auto;
+  margin-inline: auto;
+}
+:where([data-cargo=tabs]) .cargo-pane .dos[data-dos-fits] .dos-track {
+  justify-content: var(--pane-align);
 }
 :where([data-cargo=tabs]) .cargo-tabs [role=tab][aria-selected=true] {
   color: var(--tab-selected);

@@ -312,6 +312,8 @@
     '--tab-flex':
       'How each tab is sized, as the CSS flex shorthand. <code>0 1 auto</code> is its own text’s width, centred in the row; <code>1 1 0%</code> shares the row equally, cells edge to edge, which is Ford’s bar. A filled row takes no arrow channel — it has nothing to line up with.',
     '--tab-leading': 'The tab label’s line height, as a number. <code>1.55</code>; Ford runs the page’s <code>1.4286</code>.',
+    '--pane-align':
+      'Where a tab’s cards sit when they all fit with room to spare. <code>normal</code> keeps them at the start; <code>safe center</code> centres them, as CDJR’s bars do with a brand that has two models.',
     '--tab-case': 'Case of the tab labels. <code>none</code> shows them as typed; Ford sets <code>uppercase</code>.',
     '--tab-color': 'Colour of an unselected tab’s text. <code>currentcolor</code> follows the page; Ford pins <code>#000</code> on a #333 page.',
     '--tab-bg': 'Background of an unselected tab. <code>transparent</code> for a row of plain labels; Ford’s cells sit on <code>#f0f0f0</code>.',

@@ -73,9 +73,9 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
   - [x] `kia-plain`, `lincoln-v2`, `ford-plain` and `honda-tabbed` landed with their ledger rows
   - [x] Maserati built once Steven let the missing pictures in (2026-11-05): its nine cutouts and
         logo, and Bruner's sixteen CDJR cutouts, from the platform's shared folders
-  - [ ] Toyota Tabs v3 (a tabbed split-card pattern), CDJR logo tabs, a CDJR entry and logo for
-        Bruner: parked by Steven on 2026-11-05 ("leave any outstanding items for after"); in
-        `docs/backlog.md`
+  - [x] CDJR logo tabs, and a CDJR entry drawn by its brands' four marks: `cdjr`, `cdjr-fiat` and
+        `cdjr-text` built (Steven: "yes please" to the missing layouts, logo tabs first)
+  - [ ] Toyota Tabs v3 (a tabbed split-card pattern): parked; in `docs/backlog.md`
   - [x] Lovable refreshed and published (2026-11-05): all 309 exported files hash-identical on the
         live site, the 26 new pictures included
 - [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,

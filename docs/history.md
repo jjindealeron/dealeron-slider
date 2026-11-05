@@ -948,3 +948,23 @@ layouts, so "Honda · Tabbed" on the plain model bar drew a bar no dealer site h
 offers the preset whose own code is drawn there (`pickOwn()` in `brands.js`, used by the chips, the
 Other brand list and the patterns page); a brand with one code is unchanged.
 `tests/variants.test.mjs` holds it and failed without it.
+
+## 2026-11-05 — logo tabs: three CDJR codes built
+
+Steven said yes to building the missing layouts, logo tabs first. The CDJR demos' tabs are 116x100
+brand logos with no text, over a dark band that sits behind the cars only, and a brand with two
+models is centred under its logo. None of the three needed a new pattern. The tabbed bar took two
+words and a knob: `tabMarks: 'logo'` draws each tab as the platform's logo for its name, with the
+name as its alt; `bodyClass` puts the band on the box that holds the cars; `--pane-align` centres a
+short pane. Tab names stay strings, so nothing that edits, matches or wires them changed.
+
+CDJR became a brand with three presets: `cdjr` (`cdjr-model-bar`, cdjrdemo2), `cdjr-fiat`
+(`cdjr-fiat-model-bar`, cdjrdemo1, a fifth logo and the 500e) and `cdjr-text`
+(`cdjr-fiat-model-bar-no-back`, Bruner's text tabs with its own roster). One roster carries the four
+brands' 2026 line-ups tagged by brand, with each row's make in a sixth slot for its alt text. The
+platform has no CDJR logo, so CDJR is drawn by the four real marks, two by two, rather than by one
+made up. The measurement's script was re-run first; only timing samples moved. 28 of 47 built.
+
+The generated-CSS lint caught two things on the way: `--box-pad` takes one length, so "40px over and
+under" became 40px all round; and its roster scan expected five slots, so the CDJR rows read as
+untagged until it allowed the sixth.

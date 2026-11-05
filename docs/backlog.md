@@ -90,12 +90,14 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
   until after the next work (`docs/research/2026-11-05-measurements/`):
   - `toyota-modelbar-slick-tabbed-v3`: a split photo card behind tabs, a pattern we lack, over
     800x744 photos the repo does not have.
-  - `cdjr-model-bar` and `cdjr-fiat-model-bar`: logo tabs (a brand mark per tab, no text).
   - `cdjr-model-bar-no-back`: its example, cdjrdemo4, draws the Fiat bar; it needs a page that draws
     it.
-  - `cdjr-fiat-model-bar-no-back`: text tabs and buildable, and its 16 missing cutouts are in the
-    repo since 2026-11-05; it waits on a CDJR entry, and the platform has no CDJR logo for its tile
-    (`/assets/logos/transparent/cdjr.png` answers 404).
+
+  The three other CDJR codes were built the same evening once the tabbed bar drew logo tabs (`cdjr`,
+  `cdjr-fiat`, `cdjr-text`). What CDJR's live bars do that ours still does not: the caret that marks
+  the picked logo (ours is the tab line), opening on Jeep (ours opens on the first tab), a 760px
+  logo row (ours shares the full row), and a full-bleed band (ours is the bar's width).
+
 - **Fiat could draw its own 500e now** (`demo/img/oem/cdjr/fiat-500e.png`, 2026-11-05), and still
   falls back to the Chevrolet cutouts: two tests (`brands.test.mjs`, `content.test.mjs`) use Fiat as
   the one brand with no cutouts of its own, so giving it the car means giving those tests a

@@ -492,6 +492,67 @@
         ['ram-promaster.png', 480, 360, 'Ram ProMaster'],
       ],
     ],
+    // The CDJR bars draw the four brands in one bar, a tab per brand, so their
+    // roster is the four line-ups tagged by brand, in the order and with the
+    // names cdjrdemo1 and cdjrdemo2 draw ("Charger 2 Door", "RAM 1500"), plus
+    // Fiat's 500e for the bar with a Fiat tab; a bar without one draws no row
+    // tagged for it. The sixth slot is the make, which the alt text names.
+    cdjr: [
+      'cdjr',
+      [
+        ['chrysler-pacifica.png', 480, 360, 'Pacifica', 'Chrysler', 'Chrysler'],
+        ['chrysler-voyager.png', 480, 360, 'Voyager', 'Chrysler', 'Chrysler'],
+        ['dodge-charger.png', 480, 360, 'Charger 2 Door', 'Dodge', 'Dodge'],
+        ['dodge-charger-4d.png', 480, 360, 'Charger 4 Door', 'Dodge', 'Dodge'],
+        ['dodge-durango.png', 480, 360, 'Durango', 'Dodge', 'Dodge'],
+        ['jeep-compass.png', 480, 360, 'Compass', 'Jeep', 'Jeep'],
+        ['jeep-recon.png', 480, 360, 'Recon', 'Jeep', 'Jeep'],
+        ['jeep-wrangler.png', 480, 360, 'Wrangler', 'Jeep', 'Jeep'],
+        ['jeep-cherokee.png', 480, 360, 'Cherokee', 'Jeep', 'Jeep'],
+        ['jeep-grand-cherokee.png', 480, 360, 'Grand Cherokee', 'Jeep', 'Jeep'],
+        ['jeep-gladiator.png', 480, 360, 'Gladiator', 'Jeep', 'Jeep'],
+        ['jeep-grand-wagoneer.png', 480, 360, 'Grand Wagoneer', 'Jeep', 'Jeep'],
+        ['jeep-wagoneer-s.png', 480, 360, 'Wagoneer S', 'Jeep', 'Jeep'],
+        ['ram-1500-rho.png', 480, 360, 'RAM 1500 RHO', 'RAM', 'RAM'],
+        ['ram-1500.png', 480, 360, 'RAM 1500', 'RAM', 'RAM'],
+        ['ram-2500.png', 480, 360, 'Ram 2500', 'RAM', 'RAM'],
+        ['ram-3500.png', 480, 360, 'Ram 3500', 'RAM', 'RAM'],
+        ['ram-chassis-cab.png', 480, 360, 'Ram Chassis Cab', 'RAM', 'RAM'],
+        ['ram-promaster-window-van.png', 480, 360, 'ProMaster Window Van', 'RAM', 'RAM'],
+        ['ram-promaster.png', 480, 360, 'Ram ProMaster', 'RAM', 'RAM'],
+        ['fiat-500e.png', 480, 360, '500e', 'Fiat', 'Fiat'],
+      ],
+    ],
+    // Bruner's text-tabbed bar draws three models the demos do not (Pacifica
+    // Hybrid, Hornet, Wagoneer), in its own order, and no Fiat.
+    'cdjr-text': [
+      'cdjr',
+      [
+        ['chrysler-pacifica.png', 480, 360, 'Pacifica', 'Chrysler', 'Chrysler'],
+        ['chrysler-pacifica-hybrid.png', 480, 360, 'Pacifica Hybrid', 'Chrysler', 'Chrysler'],
+        ['chrysler-voyager.png', 480, 360, 'Voyager', 'Chrysler', 'Chrysler'],
+        ['dodge-charger.png', 480, 360, 'Charger 2 Door', 'Dodge', 'Dodge'],
+        ['dodge-charger-4d.png', 480, 360, 'Charger 4 Door', 'Dodge', 'Dodge'],
+        ['dodge-durango.png', 480, 360, 'Durango', 'Dodge', 'Dodge'],
+        ['dodge-hornet.png', 480, 360, 'Hornet', 'Dodge', 'Dodge'],
+        ['jeep-compass.png', 480, 360, 'Compass', 'Jeep', 'Jeep'],
+        ['jeep-recon.png', 480, 360, 'Recon', 'Jeep', 'Jeep'],
+        ['jeep-wrangler.png', 480, 360, 'Wrangler', 'Jeep', 'Jeep'],
+        ['jeep-cherokee.png', 480, 360, 'Cherokee', 'Jeep', 'Jeep'],
+        ['jeep-grand-cherokee.png', 480, 360, 'Grand Cherokee', 'Jeep', 'Jeep'],
+        ['jeep-gladiator.png', 480, 360, 'Gladiator', 'Jeep', 'Jeep'],
+        ['jeep-grand-wagoneer.png', 480, 360, 'Grand Wagoneer', 'Jeep', 'Jeep'],
+        ['jeep-wagoneer.png', 480, 360, 'Wagoneer', 'Jeep', 'Jeep'],
+        ['jeep-wagoneer-s.png', 480, 360, 'Wagoneer S', 'Jeep', 'Jeep'],
+        ['ram-1500-rho.png', 480, 360, 'RAM 1500 RHO', 'RAM', 'RAM'],
+        ['ram-1500.png', 480, 360, 'RAM 1500', 'RAM', 'RAM'],
+        ['ram-2500.png', 480, 360, 'Ram 2500', 'RAM', 'RAM'],
+        ['ram-3500.png', 480, 360, 'Ram 3500', 'RAM', 'RAM'],
+        ['ram-chassis-cab.png', 480, 360, 'Ram Chassis Cab', 'RAM', 'RAM'],
+        ['ram-promaster-window-van.png', 480, 360, 'ProMaster Window Van', 'RAM', 'RAM'],
+        ['ram-promaster.png', 480, 360, 'Ram ProMaster', 'RAM', 'RAM'],
+      ],
+    ],
   };
 
   const roster = (id, label) => {
@@ -504,14 +565,14 @@
     // routinely in more than one: Subaru lists all fifteen under "All Vehicles"
     // as well as under their fuel type. A row left untagged shows in every pane,
     // so a roster with no tags behaves exactly as it did.
-    return items.map(([file, w, h, name, tab]) => ({
+    return items.map(([file, w, h, name, tab, make]) => ({
       img: folder ? `img/oem/${folder}/${file}` : `img/${file}`,
       w,
       h,
       name,
       tab,
-      mark: label,
-      alt: `${label} ${name}`,
+      mark: make ?? label,
+      alt: `${make ?? label} ${name}`,
       sub: 'In stock now',
       blurb: `Explore the ${label} ${name}.`,
       href: `/searchnew.aspx?Model=${encodeURIComponent(name)}`,
@@ -833,6 +894,181 @@
         css: '.heading-lg{font-family:"Cadillac Gothic Wide",sans-serif;font-size:32px;font-weight:400;line-height:1.1;text-transform:uppercase;letter-spacing:0.15em}.btn{font-weight:400;text-transform:uppercase;border-radius:0;transition:background-color 200ms linear,color 200ms linear,border-color 200ms linear}.btn-lg{padding:14px 32px;font-size:14px;line-height:1.3333}.btn-cta{color:#000;background-color:transparent;border-color:#000}.bg-main .btn-cta{color:#fff;background-color:transparent;border-color:#fff}.bg-main .btn-cta:hover,.bg-main .btn-cta:focus{color:#282828;background-color:#fff;border-color:#fff}',
       },
       source: 'cadillacdemo1.dealeron.com, 2026-09-14',
+    },
+    // The CDJR family's codes (2026-11-05,
+    // docs/research/2026-11-05-measurements/cdjr.md). A dealer selling
+    // Chrysler, Dodge, Jeep and Ram runs ONE bar with a tab per brand, so CDJR
+    // is a brand of its own here, drawn by the four brands' marks.
+    //
+    // `cdjr-model-bar` on cdjrdemo2: "Shop by Brand" (h3.h1, 36px
+    // proxima-nova 300) over a row of four 116x100 brand logos with no text,
+    // and under it a #212121 bg-main band, 40px over and under, behind the cars
+    // only. Six across, slides butting, each picture padded 10px a side, zoomed
+    // to 1.1 over 0.1s on hover; the name #fff (the band's), 14px Roboto.
+    // tabMarks 'logo' draws the logos, bodyClass 'bg-main' the band.
+    // Departures: the picked logo is marked by the tab line in the band's
+    // colour, not the live caret that rises out of the band; the bar opens on
+    // its first tab, not Jeep; the logos share the full row, where live sits
+    // them in a centred 760px column; the band is the bar's width, not full
+    // bleed. The live arrows are 2.14:1 on the band; ours are the pattern's
+    // currentcolor, white, 16.1:1, and the focus ring #4a90e2 (4.89:1) where
+    // the engine's is 2.56:1 on #212121. Live shows no bar under 768; ours
+    // does, the logos shrinking with their cells.
+    cdjr: {
+      label: 'CDJR',
+      variant: 'Logo tabs',
+      code: { name: 'cdjr-model-bar', pattern: 'tabs' },
+      marks: ['chrysler', 'dodge', 'jeep', 'ram'],
+      look: 'tile',
+      ladder: [
+        [0, 2],
+        [460, 3],
+        [992, 6],
+      ],
+      demos: 3,
+      note: 'One bar for a dealer selling Chrysler, Dodge, Jeep and Ram: a tab per brand, six across on a desktop.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            '--plate-pad': '0 0.714em',
+            '--img-hover-scale': '1.1',
+            '--img-hover-speed': '0.1s',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--dos-focus': '#4a90e2',
+              '--tab-flex': '1 1 0%',
+              '--tab-dim': '1',
+              '--tab-rule': 'transparent',
+              '--tab-line': 'var(--main-color)',
+              '--tab-fade': '0.25s',
+              '--pane-align': 'safe center',
+              '--tab-row-gap': '0.1px',
+              '--title-gap': '0.1px',
+              '--box-pad': '2.86em',
+            },
+            panes: ['Chrysler', 'Dodge', 'Jeep', 'RAM'],
+            words: { title: 'Shop by Brand', titleClass: 'h1', moreText: '', tabMarks: 'logo', bodyClass: 'bg-main' },
+          },
+        },
+      },
+      font: { family: 'Roboto-Regular', css: 'https://cdn.dealeron.com/assets/fonts/roboto/fonts.min.css' },
+      theme: {
+        '--cta-background-color': '#D20F06',
+        '--cta-font-color': '#fff',
+        '--cta-hover-color': '#bf0e0e',
+        '--main-color': '#212121',
+        css: '.h1{font-family:proxima-nova,sans-serif;font-size:36px;font-weight:300;line-height:1.1}',
+      },
+      source: 'cdjrdemo2.dealeron.com, 2026-11-05',
+    },
+    // `cdjr-fiat-model-bar` on cdjrdemo1: the same bar to the value, with a
+    // fifth logo for Fiat and its one car, the 500e.
+    'cdjr-fiat': {
+      of: 'cdjr',
+      variant: 'Logo tabs with Fiat',
+      code: { name: 'cdjr-fiat-model-bar', pattern: 'tabs' },
+      styles: {
+        looks: {
+          tile: {
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            '--plate-pad': '0 0.714em',
+            '--img-hover-scale': '1.1',
+            '--img-hover-speed': '0.1s',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--dos-focus': '#4a90e2',
+              '--tab-flex': '1 1 0%',
+              '--tab-dim': '1',
+              '--tab-rule': 'transparent',
+              '--tab-line': 'var(--main-color)',
+              '--tab-fade': '0.25s',
+              '--pane-align': 'safe center',
+              '--tab-row-gap': '0.1px',
+              '--title-gap': '0.1px',
+              '--box-pad': '2.86em',
+            },
+            panes: ['Chrysler', 'Dodge', 'Jeep', 'RAM', 'Fiat'],
+            words: { title: 'Shop by Brand', titleClass: 'h1', moreText: '', tabMarks: 'logo', bodyClass: 'bg-main' },
+          },
+        },
+      },
+      source: 'cdjrdemo1.dealeron.com, 2026-11-05',
+    },
+    // `cdjr-fiat-model-bar-no-back` on www.brunerchryslerdodgejeepram.com, a
+    // live dealer site (the article's example). A different template: "View
+    // Our Lineup" over four TEXT tabs, Jeep | Ram | Dodge | Chrysler, 18px
+    // Roboto #222 with #ccc bars between, no band, and no Fiat despite the
+    // code's name. Five across; the name 1.2em. Departures: the picked tab's
+    // line is drawn, in the code's own #cb0000 (5.93:1), where the live page
+    // draws none - the code's own rule is written `a: : after`, which the
+    // browser drops - and the dealer's own sheet makes the picked tab #3f4443
+    // against #222, a colour-only 1.61:1 cue. Arrows the pattern's
+    // currentcolor (#333, 12.63:1) over the live 2.55:1.
+    'cdjr-text': {
+      of: 'cdjr',
+      variant: 'Text tabs',
+      code: { name: 'cdjr-fiat-model-bar-no-back', pattern: 'tabs' },
+      ladder: [
+        [0, 1],
+        [460, 3],
+        [992, 5],
+      ],
+      styles: {
+        looks: {
+          tile: {
+            '--name-size': '1.2em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            '--plate-pad': '0 0.714em',
+            '--img-hover-scale': '1.1',
+            '--img-hover-speed': '0.1s',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--tab-size': '1.2857em',
+              '--tab-size-narrow': '1.3846em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-color': '#222',
+              '--tab-selected': '#cb0000',
+              '--tab-dim': '1',
+              '--tab-line': '#cb0000',
+              '--tab-line-grow': '0.15s',
+              '--tab-rule': 'transparent',
+              '--tab-divider': "'|'",
+              '--tab-divider-color': '#ccc',
+              '--tab-divider-size': '0.78',
+              '--tab-gap': '1.69em',
+              '--tab-gap-narrow': '1.65em',
+              '--tab-pad': '0.56em 0.83em',
+              '--tab-row-gap': '1.79em',
+              '--tab-fade': '0.15s',
+              '--pane-align': 'safe center',
+              '--title-gap': '0.44em',
+            },
+            panes: ['Jeep', 'Ram', 'Dodge', 'Chrysler'],
+            words: { title: 'View Our Lineup', titleClass: 'h1', moreText: '' },
+          },
+        },
+      },
+      source: 'www.brunerchryslerdodgejeepram.com, 2026-11-05',
     },
     chevrolet: {
       label: 'Chevrolet',
@@ -2583,6 +2819,11 @@
     const b = BRANDS[id];
     return b ? (b.variant ? `${b.label} · ${b.variant}` : b.label) : id;
   };
+  // The logos a brand is drawn by: its own, or for a family with no mark of
+  // its own (`marks`, CDJR) each member brand's - the platform has no CDJR
+  // logo (/assets/logos/transparent/cdjr.png answers 404), so its tile and
+  // chips show the four real ones rather than one made up.
+  const logosOf = (id) => (BRANDS[brandOf(id)]?.marks ?? [brandOf(id)]).map((m) => `img/logo-${m}.png`);
   // Which of a brand's presets to OFFER on a pattern. A brand with one code
   // offers it everywhere its values reach, as before. A brand with two offers
   // the one whose own code is drawn on this pattern (both, when both are -
@@ -2612,5 +2853,5 @@
     if (list) b.models = list;
   }
 
-  globalThis.CARGO = Object.assign(globalThis.CARGO || {}, { BRANDS, brandOf, brandName, pickOwn, perViewFor, TIER_BOX, CHROME, MARGIN });
+  globalThis.CARGO = Object.assign(globalThis.CARGO || {}, { BRANDS, brandOf, brandName, pickOwn, logosOf, perViewFor, TIER_BOX, CHROME, MARGIN });
 })();

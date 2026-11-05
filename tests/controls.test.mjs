@@ -1234,7 +1234,14 @@ test.describe('a brand preset swaps the vehicles, never the pattern', () => {
     const start = await cardState();
     assert.ok(start.look.length, 'the model bar renders no card style at all');
 
-    const brands = await page.evaluate(() => Object.keys(globalThis.CARGO.BRANDS).slice(0, 8));
+    // Brands, not presets: a brand's second code (brands.js `of`) is offered
+    // only on the pattern its own code is drawn on (pickOwn, 2026-11-05), so
+    // CDJR's Fiat bar is neither a chip nor an option on the model bar.
+    const brands = await page.evaluate(() =>
+      Object.keys(globalThis.CARGO.BRANDS)
+        .filter((id) => !globalThis.CARGO.BRANDS[id].of)
+        .slice(0, 8),
+    );
     const rosters = new Set([start.first]);
 
     for (const id of brands) {

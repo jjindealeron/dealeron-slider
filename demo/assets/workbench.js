@@ -16,7 +16,7 @@
   // loads immediately before this file. patterns.html and
   // scripts/lint-generated-css.mjs load neither, and neither builds a settings
   // panel: both leave through `if (!stage) return` long before buildPanel().
-  const { LOOKS, BRANDS, brandOf, brandName, pickOwn, perViewFor, pane } = globalThis.CARGO;
+  const { LOOKS, BRANDS, brandOf, brandName, pickOwn, logosOf, perViewFor, pane } = globalThis.CARGO;
   // The patterns and their example rosters live in assets/patterns.js, loaded
   // just before this file; the few helpers the generator shares with them
   // (escTab, the video dialog markup, clamp) come the same way.
@@ -163,7 +163,10 @@
   // titleClass and wrapClass are the platform classes the heading and the
   // wrap wear (Cadillac: heading-lg, and bg-main for the band) - which site
   // style a thing wears is a value, and the theme does the styling.
-  const WORDS = ['title', 'lead', 'moreText', 'moreHref', 'titleClass', 'wrapClass'];
+  // tabMarks and bodyClass (2026-11-05, CDJR): 'logo' draws each tab as the
+  // platform's logo for its name, and bodyClass puts platform classes on the
+  // box that holds the cars, so a band can sit behind them and not the tabs.
+  const WORDS = ['title', 'lead', 'moreText', 'moreHref', 'titleClass', 'wrapClass', 'tabMarks', 'bodyClass'];
   const applyBrand = (id) => {
     const p = PATTERNS[state.pattern];
     const prev = BRANDS[state.brand]?.styles;
@@ -270,6 +273,8 @@
     state.lead = null;
     state.titleClass = null;
     state.wrapClass = null;
+    state.tabMarks = null;
+    state.bodyClass = null;
     state.moreText = null;
     state.moreHref = null;
     state.label = null; // only renderLook overrides it — see the note there
@@ -896,6 +901,7 @@
       // panes are built from this one list, because filtering only the panes
       // left Chevrolet with a tab reading "Electric" over the crossovers
       // (2026-09-15).
+      const marks = (state.tabMarks ?? p.tabMarks ?? '').trim();
       const kept = tagged ? (state.panes ?? p.panes).filter((n) => source.some((m) => !tagsOf(m).length || tagsOf(m).includes(norm(n)))) : (state.panes ?? p.panes);
       const names = kept.map(plain);
       const tabs = kept
@@ -905,7 +911,19 @@
         // them to describe - the row is not even presented. The script owns the
         // ids either way: it re-issues them per widget so two bars on one page
         // do not share them.
-        .map((name) => `    <button type="button">${label(name)}</button>`)
+        // A logo tab (tabMarks 'logo', 2026-11-05): the platform's own mark for
+        // the tab's name - img/logo-chrysler.png for "Chrysler", which the copy
+        // panel rewrites to /assets/logos/transparent/chrysler.png - with the
+        // name as its alt, so the button's accessible name is the tab's. No
+        // text, as on CDJR's live bars. The phone-short [bracket] form has
+        // nothing to shorten in a picture.
+        .map((name) =>
+          marks === 'logo'
+            ? `    <button type="button"><img src="img/logo-${plain(name)
+                .toLowerCase()
+                .replace(/[^a-z0-9]/g, '')}.png" width="116" height="100" alt="${escTab(plain(name))}"></button>`
+            : `    <button type="button">${label(name)}</button>`,
+        )
         .join('\n');
       // Two ways to fill the panes, and which one is in force is decided by the
       // rows themselves rather than by a switch.
@@ -976,11 +994,12 @@
       const classes = (v, dflt) => (state[v] ?? p[v] ?? dflt).replace(/[^\w -]/g, '').trim();
       const titleClass = classes('titleClass', 'h1');
       const wrapClass = classes('wrapClass', '');
+      const bodyClass = classes('bodyClass', '');
       const head = (title ? `  <h2 class="${titleClass ? `${titleClass} ` : ''}cargo-title">${escTab(title)}</h2>\n` : '') + (lead ? `  <p class="lead cargo-lead">${escTab(lead)}</p>\n` : '');
       const foot = moreText ? `\n  <p class="cargo-more"><a class="btn btn-cta btn-lg" href="${escUrl(moreHref)}">${escTab(moreText)}</a></p>` : '';
       // The row and the panes in one box, the panes and the button in a
       // padded body inside it - see .cargo-box in the pattern's css.
-      return `<div class="${cls}-wrap${wrapClass ? ` ${wrapClass}` : ''}" data-cargo="tabs" data-tabs>\n${head}  <div class="cargo-box">\n  <div class="cargo-tabs" aria-label="Body style">\n${tabs}\n  </div>\n  <div class="cargo-body">\n${panes}${foot}\n  </div>\n  </div>\n</div>`;
+      return `<div class="${cls}-wrap${wrapClass ? ` ${wrapClass}` : ''}" data-cargo="tabs" data-tabs>\n${head}  <div class="cargo-box">\n  <div class="cargo-tabs" aria-label="Body style">\n${tabs}\n  </div>\n  <div class="cargo-body${bodyClass ? ` ${bodyClass}` : ''}">\n${panes}${foot}\n  </div>\n  </div>\n</div>`;
     }
 
     // Filter buttons above a gallery; the script rebuilds it per category.
@@ -1945,6 +1964,7 @@
     '--tab-fade': 'Pane fade',
     '--tab-line-grow': 'Line grow time',
     '--tab-flex': 'Tab width',
+    '--pane-align': 'Cards in a short tab',
     '--tab-leading': 'Tab line height',
     '--tab-case': 'Tab text case',
     '--tab-color': 'Tab text',
@@ -2006,6 +2026,10 @@
     '--name-order': [
       ['0', 'Name below the vehicle'],
       ['-1', 'Name above the vehicle'],
+    ],
+    '--pane-align': [
+      ['normal', 'At the start'],
+      ['safe center', 'Centred'],
     ],
   };
 
@@ -2529,6 +2553,26 @@
         p.wrapClass ?? '',
         "Platform classes on the whole bar. bg-main makes it the site's dark band - white text and the outline button the theme gives a band - which is how Cadillac's bar sits. Empty for none.",
       );
+      wordKnob(
+        'Band class, cars only',
+        'bodyClass',
+        p.bodyClass ?? '',
+        "Platform classes on the box that holds the cars and the button, not the heading or the tabs. bg-main there puts the dark band behind the cars only, as CDJR's bars do. Empty for none.",
+      );
+      pane.list(
+        names,
+        'Tabs show',
+        state.tabMarks ?? p.tabMarks ?? '',
+        [
+          ['', 'their names'],
+          ['logo', 'brand logos'],
+        ],
+        (v) => {
+          state.tabMarks = v === (p.tabMarks ?? '') ? null : v;
+          render();
+        },
+        { note: "Brand logos draws each tab as the platform's logo for its name (Chrysler, Dodge, Jeep, RAM), with the name as its alt text, as CDJR's bars do." },
+      );
     }
 
     // A pattern's OWN props - the tab row's values today. Engine (--dos-*) and
@@ -2805,12 +2849,19 @@
           btn.dataset.brand = bid;
           btn.setAttribute('aria-pressed', String((state.brand ?? '') === bid));
           if (bid) {
-            const img = document.createElement('img');
-            img.src = `img/logo-${brandOf(bid)}.png`;
-            img.alt = '';
-            img.width = 116;
-            img.height = 100;
-            btn.append(img);
+            // The brand's mark, or a family's marks (CDJR) in a 2x2 group.
+            const logos = logosOf(bid);
+            const host = logos.length > 1 ? document.createElement('span') : btn;
+            if (logos.length > 1) host.className = 'bb-marks';
+            for (const src of logos) {
+              const img = document.createElement('img');
+              img.src = src;
+              img.alt = '';
+              img.width = 116;
+              img.height = 100;
+              host.append(img);
+            }
+            if (host !== btn) btn.append(host);
           }
           btn.append(label);
           btn.addEventListener('click', () => pickBrand(bid));

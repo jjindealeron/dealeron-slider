@@ -22,10 +22,10 @@ slick), which the repo's typecheck cannot describe.
 | `toyota-modelbar-slick-tabbed-v3` | [toyota-v3.md](toyota-v3.md)           | Not built: its card is a split photo card behind tabs, a pattern we lack     |
 | `maserati-modelbar-slick`         | [maserati.md](maserati.md)             | Built as `maserati`, with its nine cutouts and logo taken from the platform  |
 
-The four CDJR codes share one file, [cdjr.md](cdjr.md). None is built: the demo pages' tabs are
-brand logos with no text, which `tabs` cannot draw (`cdjr-model-bar`, `cdjr-fiat-model-bar`);
-cdjrdemo4 draws the Fiat bar, not `cdjr-model-bar-no-back`; and Bruner's text-tabbed
-`cdjr-fiat-model-bar-no-back` waits on a CDJR entry and 16 cutouts the repo lacks.
+The four CDJR codes share one file, [cdjr.md](cdjr.md). Three are built, as `cdjr` (logo tabs),
+`cdjr-fiat` (logo tabs with Fiat) and `cdjr-text` (Bruner's text tabs), once the tabbed bar could
+draw a logo per tab and a band behind the cars only; its script was re-run first. The fourth,
+`cdjr-model-bar-no-back`, has no page that draws it: cdjrdemo4 draws the Fiat bar.
 
 The files are named after the codes, and the codes after slick, the old jQuery slider the live bars
 run. The presets are named after the bar instead (plain or tabbed, version 1 or 2), and their chips

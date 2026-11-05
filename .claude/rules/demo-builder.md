@@ -107,6 +107,15 @@ name and runs the same two steps as a `#pattern?brand=` deep link. `check-looks.
 pattern to the preset's row in `docs/coverage.md`. Its ids are `wb-oldcode*` because `#wb-code` is
 the code panel's; `tests/codes.test.mjs` fails on any id that repeats on the builder page.
 
+**A tab can be a logo, and a band can sit behind the cars only** (2026-11-05, CDJR). Two words on
+the tabbed bar: `tabMarks: 'logo'` draws each tab as `img/logo-<name>.png` (the copy panel's
+`/assets/logos/transparent/<name>.png`) with the tab's name as its alt, and `bodyClass` puts
+platform classes on `.cargo-body` rather than the wrap. Tab names stay strings, so the editor, the
+tag matching and the tab script are unchanged; `lint-generated-css.mjs` reads a logo tab's name off
+its alt. `--pane-align` (`normal` or `safe center`) places a pane's cards when they all fit. A
+family with no mark of its own (CDJR) names its brands' marks in `marks`, and `logosOf()` draws them
+two by two wherever a brand's logo appears; the platform has no CDJR logo, and none is made up.
+
 **Rows is a SETTING, not a pattern.** `state.rows` (1–3) wraps each slide's cards in `.cargo-col`
 and emits the matching `grid-template-rows` from the same place. `rowsApply()` is the one place that
 says where it applies — off for every `track: 'div'` pattern (the galleries and the lightbox), a

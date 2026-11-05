@@ -646,6 +646,11 @@ ${VIDEO_DIALOG_CSS}`,
         // line up with, so cssFor() leaves the arrow channel off the strip
         // when the grow is non-zero.
         '--tab-flex': '0 1 auto',
+        // Where a pane's cards sit when they all fit (2026-11-05): `normal`
+        // keeps them at the start, as every bar has drawn; CDJR's live bars
+        // centre a short pane (Chrysler's two of six). `safe` so a pane that
+        // overflows still starts at its first card.
+        '--pane-align': 'normal',
         '--tab-leading': '1.55',
         '--tab-case': 'none',
         '--tab-color': 'currentcolor',
@@ -816,6 +821,11 @@ ${VIDEO_DIALOG_CSS}`,
 /* A rule between cells, drawn inside the tab that follows so it costs no
    width - a real border would move every centred tab by a pixel. */
 .cargo-tabs [role="tab"] + [role="tab"] { box-shadow: inset 1px 0 var(--tab-cell-divider); }
+/* A logo tab (tabMarks, 2026-11-05) holds the platform's 116x100 mark, which
+   shrinks with its cell rather than pushing the row to scroll. */
+.cargo-tabs button img { display: block; max-inline-size: 100%; block-size: auto; margin-inline: auto; }
+/* A pane whose cards all fit, placed by --pane-align (start unless set). */
+.cargo-pane .dos[data-dos-fits] .dos-track { justify-content: var(--pane-align); }
 .cargo-tabs [role="tab"][aria-selected="true"] { color: var(--tab-selected); background: var(--tab-selected-bg); border-block-end-color: transparent; opacity: 1; }
 /* The line under the selected tab is a box inside the tab's padding, not a
    border, so it can grow out from the centre the way the live bar's does.

@@ -4,7 +4,14 @@
 // docs/specs/2026-09-10-brands-page-design.md
 
 (() => {
-  const { PATTERNS, BRANDS, SHORT, renderPattern, renderSnippet, patternsOf, brandName, hl } = globalThis.CARGO;
+  const { PATTERNS, BRANDS, SHORT, renderPattern, renderSnippet, patternsOf, brandName, logosOf, hl } = globalThis.CARGO;
+  // A brand's mark, or for a family with none of its own (CDJR) its brands'
+  // marks, four in the space one takes (brands.js `marks`, logosOf).
+  const marksHtml = (id, cls, lazy) => {
+    const logos = logosOf(id);
+    const img = (src, c) => `<img${c ? ` class="${c}"` : ''} src="${src}" width="116" height="100" alt=""${lazy ? ' loading="lazy"' : ''}>`;
+    return logos.length === 1 ? img(logos[0], cls) : `<span class="bb-marks${cls ? ` ${cls}-marks` : ''}">${logos.map((src) => img(src, '')).join('')}</span>`;
+  };
 
   // Copy, the way the builder's buttons do it: the clipboard gets the text,
   // the button says so for a moment, and a browser that refuses says what to
@@ -79,7 +86,7 @@
     const tile = document.createElement('a');
     tile.className = 'gx-tile bb-tile';
     tile.href = `#${id}`;
-    tile.innerHTML = `<img src="img/logo-${id}.png" width="116" height="100" alt=""><span class="gx-tile-name">${esc(b.label)}</span><span class="bb-badge">${measured.length ? `${measured.length} pattern${measured.length === 1 ? '' : 's'}` : 'roster only'}</span>`;
+    tile.innerHTML = `${marksHtml(id, '', false)}<span class="gx-tile-name">${esc(b.label)}</span><span class="bb-badge">${measured.length ? `${measured.length} pattern${measured.length === 1 ? '' : 's'}` : 'roster only'}</span>`;
     index.append(tile);
 
     const sec = document.createElement('section');
@@ -103,7 +110,7 @@
     // code stays font-free, since the site the snippet lands on already
     // loads the font.
     const fontNote = b.font ? ` ${b.font.headings ? 'Headings shown' : 'Shown'} in ${esc(b.font.family)}, which its sites already load; the copied code names no font.` : '';
-    sec.innerHTML = `<div class="gx-head"><img class="bb-logo" src="img/logo-${id}.png" width="116" height="100" alt="" loading="lazy"><div><h2>${esc(b.label)}</h2><p class="bb-note">${note}${fontNote}</p>${b.note ? `<p class="bb-note">${esc(b.note)}</p>` : ''}</div></div>`;
+    sec.innerHTML = `<div class="gx-head">${marksHtml(id, 'bb-logo', true)}<div><h2>${esc(b.label)}</h2><p class="bb-note">${note}${fontNote}</p>${b.note ? `<p class="bb-note">${esc(b.note)}</p>` : ''}</div></div>`;
     // Each font sheet once per section, the brand's and any its codes add.
     const sheets = new Set(membersOf(id).map((m) => BRANDS[m].font?.css));
     sheets.delete(undefined);

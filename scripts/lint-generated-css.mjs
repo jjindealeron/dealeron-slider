@@ -251,7 +251,8 @@ for (const { id, bid, r } of variantPairs) {
   const rosterSrc = readFileSync('demo/assets/brands.js', 'utf8');
   const tagged = new Set();
   for (const m of rosterSrc.matchAll(/^ {4}([a-z0-9]+): \[\n {6}'[a-z0-9]*',\n {6}\[([\s\S]*?)\n {6}\],/gm)) {
-    if (/\['[^']+', \d+, \d+, '[^']+', '[^']+'\]/.test(m[2])) tagged.add(m[1]);
+    // A tab tag in the fifth slot, and the make in an optional sixth (CDJR).
+    if (/\['[^']+', \d+, \d+, '[^']+', '[^']+'(?:, '[^']*')?\]/.test(m[2])) tagged.add(m[1]);
   }
 
   const stride = [];
@@ -277,7 +278,8 @@ for (const { id, bid, r } of variantPairs) {
           .trim()
           .toLowerCase();
       const declared = (BRANDS[bid].styles?.patterns?.[pid]?.panes ?? PATTERNS[pid].panes).map(plain);
-      const shown = labels.map((m) => plain(m[1]));
+      // A logo tab's name is its alt (tabMarks 'logo').
+      const shown = labels.map((m) => plain(/<img [^>]*alt="([^"]*)"/.exec(m[1])?.[1] ?? m[1]));
       const lost = declared.filter((n) => !shown.includes(n));
       if (lost.length) {
         console.error(`  ${bid} on “${pid}”: ${lost.length} declared pane(s) never reached the tab row — ${lost.join(', ')} — no roster row is tagged for them, so the tab was dropped`);

@@ -208,12 +208,12 @@ for (const propsMap of Object.values(PATTERN_PROPS)) {
   }
 }
 
-// The brand presets. The roster is the census's 32-brand table plus Maserati,
-// whose code the article ships (measured 2026-11-05); a preset that
+// The brand presets. The roster is the census's 32-brand table plus Maserati
+// and CDJR, whose codes the article ships (measured 2026-11-05); a preset that
 // names a look which no longer exists would fail silently in the picker, and a
 // ladder that lands a card under its look's minCard would ship a preset that
 // trips the workbench's own cramped warning the moment you select it.
-const ROSTER = 33;
+const ROSTER = 34;
 const brands = Object.entries(BRANDS ?? {});
 // A second code for a brand (brands.js `of`, 2026-11-05) is a preset, not a
 // brand: the roster count is of brands.
@@ -252,9 +252,14 @@ for (const [id, b] of brands) {
       bad++;
     }
     // The logo, roster and section are the brand's: checked under its own id.
-  } else if (!existsSync(`demo/img/logo-${id}.png`)) {
-    console.error(`  ${id}: no demo/img/logo-${id}.png — the Brands page draws every brand by its mark`);
-    bad++;
+  } else {
+    // A family with no mark of its own (CDJR) is drawn by its brands' marks.
+    for (const m of b.marks ?? [id]) {
+      if (!existsSync(`demo/img/logo-${m}.png`)) {
+        console.error(`  ${id}: no demo/img/logo-${m}.png — the Brands page draws every brand by its mark`);
+        bad++;
+      }
+    }
   }
   if (!LOOKS[b.look]) {
     console.error(`  ${id}: look "${b.look}" does not exist`);
@@ -299,13 +304,17 @@ for (const [id, b] of brands) {
       // The words around a tabbed bar (2026-09-14, Ford): plain strings for
       // the four word fields and nothing else - a tag in one would be markup.
       for (const [k, v] of Object.entries(entry.words ?? {})) {
-        if (!['title', 'lead', 'moreText', 'moreHref', 'titleClass', 'wrapClass'].includes(k) || typeof v !== 'string' || /[<>]/.test(v)) {
-          console.error(`  ${id}: styles.patterns.${pid}.words.${k} — words are title, lead, moreText, moreHref, titleClass and wrapClass, each plain text`);
+        if (!['title', 'lead', 'moreText', 'moreHref', 'titleClass', 'wrapClass', 'tabMarks', 'bodyClass'].includes(k) || typeof v !== 'string' || /[<>]/.test(v)) {
+          console.error(`  ${id}: styles.patterns.${pid}.words.${k} — words are title, lead, moreText, moreHref, titleClass, wrapClass, tabMarks and bodyClass, each plain text`);
           bad++;
         }
         // The two class words name platform classes the markup wears and
         // nothing else: a class list, no punctuation that could be markup.
-        if ((k === 'titleClass' || k === 'wrapClass') && !/^[a-z][\w-]*( [a-z][\w-]*)*$/i.test(v)) {
+        if (k === 'tabMarks' && v !== '' && v !== 'logo') {
+          console.error(`  ${id}: styles.patterns.${pid}.words.tabMarks = "${v}" — '' (names) or 'logo'`);
+          bad++;
+        }
+        if ((k === 'titleClass' || k === 'wrapClass' || k === 'bodyClass') && !/^[a-z][\w-]*( [a-z][\w-]*)*$/i.test(v)) {
           console.error(`  ${id}: styles.patterns.${pid}.words.${k} = "${v}" — a list of platform class names, nothing else`);
           bad++;
         }

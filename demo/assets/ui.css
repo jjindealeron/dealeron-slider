@@ -2188,6 +2188,37 @@ code {
   block-size: auto;
 }
 
+/* A family with no mark of its own (CDJR, brands.js `marks`) is drawn by its
+   brands' marks, two by two in the space one logo takes: the tile's 2.4rem,
+   the section head's 3.5rem, a chip's 1.6rem. */
+.bb-marks {
+  display: grid;
+  flex: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  inline-size: 2.4rem;
+}
+
+.bb-logo-marks {
+  inline-size: 3.5rem;
+}
+
+.wb-variants .bb-marks {
+  inline-size: 1.6rem;
+}
+
+.bb-tile .bb-marks img,
+.wb-variants button .bb-marks img {
+  inline-size: 100%;
+  padding: 0.05em;
+}
+
+.bb-marks img {
+  block-size: auto;
+  background: var(--mark-plate);
+  border-radius: 2px;
+}
+
 /* Every mark on the page (the index tile, the section head, the variant
    strip's chips) gets its own plate under it - see --mark-plate at the top
    of this file for why: the marks are black-on-transparent, --surface

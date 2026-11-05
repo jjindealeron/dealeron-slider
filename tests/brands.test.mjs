@@ -21,7 +21,9 @@ test('every brand has a tile, measured ones first, each with its logo', async ()
       id: a.getAttribute('href').slice(1),
       badge: a.querySelector('.bb-badge')?.textContent.trim(),
       img: a.querySelector('img')?.getAttribute('src'),
-      ok: a.querySelector('img')?.naturalWidth > 0,
+      // A family drawn by its brands' marks (CDJR) leads with the first.
+      want: globalThis.CARGO.logosOf(a.getAttribute('href').slice(1))[0],
+      ok: [.../** @type {NodeListOf<HTMLImageElement>} */ (a.querySelectorAll('img'))].every((i) => i.naturalWidth > 0),
     })),
   );
   // A tile per BRAND: a second code for one (brands.js `of`) is drawn inside
@@ -41,7 +43,7 @@ test('every brand has a tile, measured ones first, each with its logo', async ()
     'measured brands lead',
   );
   for (const t of tiles) {
-    assert.equal(t.img, `img/logo-${t.id}.png`);
+    assert.equal(t.img, t.want);
     assert.equal(t.ok, true, `${t.id}: logo did not load`);
   }
   assert.match(tiles.find((t) => t.id === 'chevrolet').badge, /^\d+ patterns?$/);
@@ -347,6 +349,49 @@ test('a brand with two codes draws each once, on its own pattern, and no id repe
   assert.deepEqual(got.kia, ['Tabbed bar', 'Model bar']);
   // Two codes on one pattern are told apart by name.
   assert.deepEqual(got.lincoln, ['Model bar · Version 1', 'Model bar · Version 2']);
+});
+
+// 2026-11-05, CDJR (docs/research/2026-11-05-measurements/cdjr.md): the live
+// bars' tabs are brand logos with no text, the dark band sits behind the cars
+// only, and a brand with two models is centred under its logo. tabMarks,
+// bodyClass and --pane-align carry the three; before them the bar was text
+// tabs on a whole dark bar with Chrysler's two cars at the left.
+test("CDJR's bar: logo tabs named by brand, the band behind the cars only, a short pane centred", async () => {
+  await page.goto(`${ORIGIN}/demo/brands.html#cdjr`, { waitUntil: 'load' });
+  await page.waitForSelector('#b-cdjr [data-tabs-on] .dos-slide');
+  await page.waitForTimeout(400);
+  const got = await page.evaluate(() => {
+    const block = document.querySelector('#b-cdjr .bb-block');
+    const tabs = [...block.querySelectorAll('.cargo-tabs > button')];
+    const pane = [.../** @type {NodeListOf<HTMLElement>} */ (block.querySelectorAll('.cargo-pane'))].find((p) => !p.hidden);
+    const track = pane.querySelector('.dos-track').getBoundingClientRect();
+    const slides = [...pane.querySelectorAll('.dos-slide')].map((s) => s.getBoundingClientRect());
+    return {
+      tabs: tabs.map((t) => ({ role: t.getAttribute('role'), alt: t.querySelector('img')?.getAttribute('alt'), src: t.querySelector('img')?.getAttribute('src'), text: t.textContent.trim() })),
+      body: block.querySelector('.cargo-body').className,
+      wrap: block.querySelector('[data-cargo="tabs"]').className,
+      fits: pane.querySelector('.dos').hasAttribute('data-dos-fits'),
+      left: slides[0].left - track.left,
+      right: track.right - slides.at(-1).right,
+      code: block.querySelector('.bb-code code').textContent,
+    };
+  });
+  assert.deepEqual(
+    got.tabs.map((t) => [t.role, t.alt, t.text]),
+    [
+      ['tab', 'Chrysler', ''],
+      ['tab', 'Dodge', ''],
+      ['tab', 'Jeep', ''],
+      ['tab', 'RAM', ''],
+    ],
+    'each tab is a logo whose alt names its brand, with no text',
+  );
+  assert.equal(got.tabs[0].src, 'img/logo-chrysler.png');
+  assert.match(got.code, /\/assets\/logos\/transparent\/chrysler\.png/, "the copied code points the logo at the platform's own copy");
+  assert.match(got.body, /\bbg-main\b/, 'the band is on the box that holds the cars');
+  assert.doesNotMatch(got.wrap, /\bbg-main\b/, 'the band is not behind the heading and logos');
+  assert.equal(got.fits, true, "Chrysler's two cars fit");
+  assert.ok(Math.abs(got.left - got.right) < 2, `a short pane is centred: ${Math.round(got.left)}px before, ${Math.round(got.right)}px after`);
 });
 
 test('the deep link lands on the brand and nothing threw', async () => {
