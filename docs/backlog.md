@@ -39,6 +39,17 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
 `aria-disabled`, the gallery panels' missing `"slide"` — and all three shipped; the evidence is in
 `docs/history.md`.
 
+## 2026-11-05 — held back by the dependency update
+
+- **stylelint 18 waits on `stylelint-config-recess-order`.** Its newest release (7.10.0) declares
+  `stylelint` `^16.18.0 || ^17.0.0`, so `npm install stylelint@18` stops on ERESOLVE, and
+  `stylelint-config-standard` 41 needs stylelint 18, so both stay a major behind (17.16.0 and
+  40.0.0). Take all three together once recess-order accepts 18; never `--legacy-peer-deps`.
+- **Two overrides to drop when their parents catch up.** `minimatch` `^11.0.4` (GHSA-g3hv-75wg-m249:
+  `eslint` 10.14.0 and `@eslint/config-array` 0.23.5 ask for `^10.2.4`, and the fix is 11.0.1) and
+  `re2js` `^2.9.1` (GHSA-gg6h-894w-4m9c: `markdownlint` 0.42.0 pins exactly 2.8.6, the fix is
+  2.8.7). Once `npm ls minimatch re2js` without the overrides shows fixed versions, remove them.
+
 ## 2026-11-03 — found while measuring fourteen codes, not actioned
 
 The measurements are `docs/research/2026-11-03-measurements/`; the plan for the day is
