@@ -799,3 +799,16 @@ tabbed bars, 14/3/11 slides on 5@991:3,600:2,400:1, the same as `lexusdemo1` to 
 `mitsubishidemo5` redirects to `mitsubishidemo3`, which draws the `mitsubishidemo1` bar, 5 slides on
 5@992:3,460:2: `mitsubishi-model-bar-slick`, already built. Neither dropped code is built. The check
 covers the article's example sites only; nothing here can search every dealer site.
+
+That first check proved less than it said. A rendered page does not show which code name produced
+it, and the article itself says Chevrolet's slick code was rewritten to draw the tabbed bar, so "not
+in use" from an example site alone was an overclaim (a side review caught it the same day). Each
+code's own file was then fetched from the path its replacement code names,
+`…/CustomHTMLFiles/Responsive/<folder>/<name>.html`, with a current code from the same folder as the
+control: `lexus-model-bar-slick2.html` answers 404 beside a 200 for
+`lexus-modelbar-slick-tabbed.html`, and `mitsubishi-model-bar.html` is a 38-byte stub,
+`<!-- SF 01941447 - model bar sunset */`, last modified 2026-10-08, the day of Version 23. No site
+carrying either code can draw its bar. The same fetch found the opposite for Chevrolet:
+`chevrolet-model-bar-slick.html` is a 26 KB tabbed bar on slick (2026-04-22, older photos than
+`chevrolet-model-bar.html`, 2026-10-22), so a rollout that replaced only `chevrolet-model-bar` would
+leave every site on the old name on slick. Its ledger row and the handoff's rollout step now say so.

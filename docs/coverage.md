@@ -111,7 +111,7 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | Hyundai    | Tabs                                  | `hyundai-model-bar`                                 | hyundaidemo3                   | `tabs`      | Example is dead                | `hyundaidemo3` returns 404                                                                                                                                 |
 | Toyota     | Tabs                                  | `toyota-modelbar-slick-tabbed`                      | toyotademo6                    | `tabs`      | Example is dead                | `toyotademo6` returns 404                                                                                                                                  |
 | Toyota     | Slick                                 | `toyota-modelbar-slick`                             | toyotademo1                    | `modelbar`  | Article looks wrong            | `toyotademo1` draws the five-tab bar — same tabs, same 6/9/2/7/14 slide counts, same ladder as `toyotademo4` (Tabs v2). Nothing on it is a plain slick bar |
-| Chevrolet  | Slick                                 | `chevrolet-model-bar-slick`                         | chevroletdemo1                 | `modelbar`  | Retired                        | The article marks it deprecated as of November 2025                                                                                                        |
+| Chevrolet  | Slick                                 | `chevrolet-model-bar-slick`                         | chevroletdemo1                 | `modelbar`  | Retired                        | Deprecated November 2025, but its file still draws a tabbed bar on slick (2026-04-22): replace it with `chevrolet-model-bar` at rollout                    |
 
 ## What the table says that the brand tracker could not
 
@@ -174,13 +174,17 @@ Version 21 (2026-01-20, read 2026-09-15) listed these two; Version 23 (2026-10-0
 other row changed between them.
 
 A code leaving the article is built anyway if a dealer still runs it, and dropped if not (Steven,
-2026-11-05); why it left does not matter. So each example site was loaded on 2026-11-05 the same way
-as every row above (full load, scrolled to the bottom, slick's own config read). Neither runs its
-dropped code any more: each now draws a code this repo has already built, matched against that
-code's own example page. Neither is built and neither is counted. A dealer site found still running
-either puts its row back in the table above as work.
+2026-11-05); why it left does not matter. A rendered page cannot settle that: it does not show which
+code name produced it, and a code's file can be rewritten to draw another code's bar (Chevrolet's
+slick code still serves the tabbed bar). So on 2026-11-05 each code's own file was fetched from the
+path its replacement code names, `…/CustomHTMLFiles/Responsive/<folder>/<name>.html`, beside a
+current code's file from the same folder as the control. Lexus's is gone and Mitsubishi's is a
+sunset stub, so no site carrying either code can be drawing its bar. Each example site, loaded the
+same way as every row above, now draws a code this repo has already built. Neither is built and
+neither is counted; a code whose file is found drawing a bar again goes back in the table above as
+work.
 
-| OEM        | Type    | Replacement code         | Example link              | When removed                                                       | On its example site                                                                                                                                                        |
-| ---------- | ------- | ------------------------ | ------------------------- | ------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Lexus      | Slick   | `lexus-model-bar-slick2` | lexusoftucsonautomall.com | Pattern ready, not measured: 1 slick bar, 20 slides, 5@768:3,460:2 | 2026-11-05: not in use. The site now draws `lexus-modelbar-slick-tabbed` (built): 3 tabbed bars, 14/3/11 slides, 5@991:3,600:2,400:1, the same as lexusdemo1 to the tab id |
-| Mitsubishi | General | `mitsubishi-model-bar`   | mitsubishidemo5           | Not a carousel: static `.model-bar`                                | 2026-11-05: not in use. The host redirects to mitsubishidemo3, which draws `mitsubishi-model-bar-slick` (built): 5 slides, 5@992:3,460:2, the same as mitsubishidemo1      |
+| OEM        | Type    | Replacement code         | Example link              | When removed                                                       | Still in use?                                                                                                                                                                                                                                 |
+| ---------- | ------- | ------------------------ | ------------------------- | ------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Lexus      | Slick   | `lexus-model-bar-slick2` | lexusoftucsonautomall.com | Pattern ready, not measured: 1 slick bar, 20 slides, 5@768:3,460:2 | No (2026-11-05). Its file answers 404 (the folder's `lexus-modelbar-slick-tabbed.html` answers 200). The example site now draws `lexus-modelbar-slick-tabbed` (built), the same as lexusdemo1 to the tab id                                   |
+| Mitsubishi | General | `mitsubishi-model-bar`   | mitsubishidemo5           | Not a carousel: static `.model-bar`                                | No (2026-11-05). Its file is a 38-byte stub, `<!-- SF 01941447 - model bar sunset */`, last modified 2026-10-08. The example host redirects to mitsubishidemo3, which draws `mitsubishi-model-bar-slick` (built), the same as mitsubishidemo1 |

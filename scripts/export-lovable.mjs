@@ -338,11 +338,11 @@ ${outOfScope.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inli
 
       <section id="cl-removed" aria-labelledby="cl-removed-h">
         <h3 id="cl-removed-h">Removed from the article <span class="cl-count">${removed.length}</span></h3>
-        <p>Codes the article has dropped. One is built anyway if a dealer still runs it. The ones here no longer run on their example sites, so they are listed and counted nowhere.</p>
+        <p>Codes the article has dropped. One is built anyway if a dealer still runs it. The files of the ones here no longer draw a bar, so they are listed and counted nowhere.</p>
         <div class="g-scroll" role="region" aria-label="Removed from the article: table" tabindex="0"><table>
-          <thead><tr><th scope="col">Replacement code</th><th scope="col">OEM</th><th scope="col">Example</th><th scope="col">When removed</th><th scope="col">On its example site</th></tr></thead>
+          <thead><tr><th scope="col">Replacement code</th><th scope="col">OEM</th><th scope="col">Example</th><th scope="col">When removed</th><th scope="col">Still in use?</th></tr></thead>
           <tbody>
-${removed.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inline(r.OEM)}</td><td>${example(r['Example link'], false)}</td><td>${inline(r['When removed'])}</td><td>${inline(r['On its example site'])}</td></tr>`).join('\n')}
+${removed.map((r) => `<tr><td>${inline(r['Replacement code'])}</td><td>${inline(r.OEM)}</td><td>${example(r['Example link'], false)}</td><td>${inline(r['When removed'])}</td><td>${inline(r['Still in use?'])}</td></tr>`).join('\n')}
           </tbody>
         </table></div>
       </section>

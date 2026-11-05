@@ -65,7 +65,10 @@ is:
    off, the ADA scanner).
 6. **Roll it out** to live sites with the same code. A code is shared: an edit to `<name>.html`
    reaches every site using it at once, fixes and mistakes alike. Which presets become codes is the
-   senior designers' decision (`docs/cms-implementation.md` §6).
+   senior designers' decision (`docs/cms-implementation.md` §6). A retired code can still serve a
+   bar: `chevrolet-model-bar-slick.html` still draws Chevrolet's tabbed bar on slick (2026-11-05),
+   so it is replaced along with `chevrolet-model-bar`. Fetch an old code's file before calling it
+   unused; the `docs/coverage.md` row says what its file held.
 7. **Record it.** A new code belongs on the Salesforce article (ask its owner), then gets a row in
    `docs/coverage.md`.
 
