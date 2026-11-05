@@ -164,9 +164,9 @@ password gate" in `scripts/export-lovable.mjs`.
 2. **The codes still to build** are on the Checklist page. Most wait on variant presets: a second
    code on a pattern its brand already has, or a brand with no preset yet (`docs/backlog.md`,
    2026-11-03, lists them). A few need a pattern the builder does not have.
-3. **Fix the name colours before handing those bars out:** GMC's and Mitsubishi's go dark on their
-   dark sections, and Cadillac's and Hyundai's white names show white-on-white on the plain model
-   bar (`docs/backlog.md`, 2026-11-03).
+3. **Keep the shared folder current.** README "Deployment status" says when `dist/` has moved past
+   the last upload, and the Checklist page says so at every export. It moved on 2026-11-05: the
+   name-colour fix changed both CSS files after the 2026-11-04 upload.
 4. **Re-read the Salesforce article** for changes since 2026-11-05 (Version 23), the last time it
    was read. Its Versions → Compare view puts any older version beside the current one, which is the
    quickest way to see what moved.

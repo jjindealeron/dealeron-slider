@@ -1,0 +1,122 @@
+{
+  "1366-before gmc modelbar": {
+    "name": "rgb(34, 34, 34)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-before mitsubishi modelbar": {
+    "name": "rgb(34, 34, 34)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-before cadillac modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-before hyundai modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-before cadillac tabs": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgba(255, 255, 255, 0.75)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-after gmc modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(255, 255, 255)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-after mitsubishi modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(255, 255, 255)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-after cadillac modelbar": {
+    "name": "rgb(16, 21, 28)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-after hyundai modelbar": {
+    "name": "rgb(16, 21, 28)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "1366-after cadillac tabs": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgba(255, 255, 255, 0.75)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-before gmc modelbar": {
+    "name": "rgb(34, 34, 34)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-before mitsubishi modelbar": {
+    "name": "rgb(34, 34, 34)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-before cadillac modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-before hyundai modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-before cadillac tabs": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgba(255, 255, 255, 0.75)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-after gmc modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(255, 255, 255)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-after mitsubishi modelbar": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgb(255, 255, 255)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-after cadillac modelbar": {
+    "name": "rgb(16, 21, 28)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-after hyundai modelbar": {
+    "name": "rgb(16, 21, 28)",
+    "arrow": "rgb(38, 38, 38)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  },
+  "390-after cadillac tabs": {
+    "name": "rgb(255, 255, 255)",
+    "arrow": "rgba(255, 255, 255, 0.75)",
+    "dots": "none 0",
+    "currentDot": "rgb(51, 51, 51)"
+  }
+}

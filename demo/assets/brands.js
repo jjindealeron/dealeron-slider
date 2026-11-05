@@ -696,11 +696,13 @@
       // the live section leaves 30, and one car per view on a phone where
       // the live bar squeezes two 138px cards under the tile's 150px floor.
       // The band's black is NOT here: the live page's section rule paints
-      // it, and on a dealer page bg-main is whatever the theme says.
+      // it, and on a dealer page bg-main is whatever the theme says. Nor is
+      // the name's white: the tile's name takes its section's text colour, so
+      // bg-main makes it white and the plain model bar leaves it dark (a #fff
+      // here drew white on white there; removed 2026-11-05).
       styles: {
         looks: {
           tile: {
-            '--name-color': '#fff',
             '--name-case': 'uppercase',
             '--name-size': '1.14em',
             '--name-weight': '400',
@@ -1134,11 +1136,12 @@
             // ground to sit on. That is the mistake Cadillac's entry already
             // records: the band's colour is the SITE'S, never a value of ours,
             // and baking one paints a dark box on a page that did not ask for
-            // it. So the name inherits, and a dealer whose section is bg-main
-            // gets white text from their own theme - which is also why there is
-            // no --dos-arrow-fg or --dos-focus override here any more: with no
-            // band of ours, the pattern's #262626 arrow is on the page's own
-            // background and reads.
+            // it. So the name takes the section's text colour (the tile's
+            // currentcolor default, 2026-11-05; until then a fixed #222 drew it
+            // dark on gmcdemo1's own page), and a dealer whose section is
+            // bg-main gets white from their own theme. No --dos-arrow-fg or
+            // --dos-focus override either: the model bar's bare chevron follows
+            // the section's text too.
             //
             // GMC's measured pattern is modelbar, which has no wrap element, so
             // it cannot carry a wrapClass the way Cadillac's tabbed bar does.
@@ -1362,11 +1365,11 @@
       // Kept on purpose, as on Cadillac's band: the engine's chevron size, and
       // a #4a90e2 focus ring (the engine's #1a5fb4 is 2.62:1 on #1f1f21).
       // Roster: tagged with the live panes; the live bar runs seventeen models
-      // where this repo has six cutouts.
+      // where this repo has six cutouts. The name's white is the band's, as
+      // on Cadillac's: no colour here, so the plain model bar stays readable.
       styles: {
         looks: {
           tile: {
-            '--name-color': '#fff',
             '--name-size': '1em',
             '--name-weight': '500',
             '--name-leading': '1.1',

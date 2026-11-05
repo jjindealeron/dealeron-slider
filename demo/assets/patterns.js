@@ -390,7 +390,10 @@
       look: 'tile',
       models: cutouts,
       data: { 'data-dos-step': 'slide' },
-      props: { '--dos-gap': '0.5em', '--dos-controls-space': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': '#262626' },
+      // A bare chevron follows the section's text like the tile's name does:
+      // the #262626 this replaced was 1.39:1 on mitsubishidemo1's #000 section
+      // (docs/research/2026-11-03-name-colour).
+      props: { '--dos-gap': '0.5em', '--dos-controls-space': '0.1px', '--dos-arrow-bg': 'transparent', '--dos-arrow-fg': 'currentcolor' },
       hideDots: true,
     },
     // EVERY CARD IS A RAIL ENTRY, and there is no card-style picker anywhere

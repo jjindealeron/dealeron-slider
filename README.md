@@ -422,6 +422,10 @@ against `cadillacdemo1.dealeron.com` and `www.karlchevrolet.com`: all four answe
 at `b3f745b` (`.min.css` is re-minified by the platform, see below, and begins
 `.dos{--dos-per-view`).
 
+**Behind since 2026-11-05:** the name-colour fix changed `do-slider.css` and `do-slider.min.css`
+(the tile's name now takes its section's text colour), so both need uploading again; the two `.js`
+files did not change.
+
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.
 
@@ -432,10 +436,11 @@ cache-busted against `www.karlchevrolet.com`: all four answered 200, `last-modif
 they replaced gone. Leave that folder until the pages linking it are known to be off it (see "Moving
 a page off an older contract" below), then delete it.
 
-**After the first upload, keep it current by rule, not by number:** if
-`git log src/ demo/assets/patterns.js` has anything after the upload date written here, re-upload,
-then update that date. Deliberately no byte figures: any commit touching `src/` puts the folder out
-of date, and a byte count written here goes stale the same day.
+**After the first upload, keep it current by rule, not by number:** if `git log dist/` has anything
+after the upload date written here, re-upload, then update that date. `dist/` and not its sources,
+because more than `src/` feeds it: the card styles come from `demo/assets/looks.js` and the pattern
+structure from `patterns.js`, and every source change rebuilds and commits `dist/` with it.
+Deliberately no byte figures: a byte count written here goes stale the same day.
 
 **Do not expect `do-slider.min.css` to match `dist/` byte for byte even when it is current** — the
 platform re-minifies CSS it is given: `:after` becomes `::after`, `.5s` becomes `500ms`, `.5`

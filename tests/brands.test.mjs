@@ -209,6 +209,53 @@ test('a black OEM mark gets a plate under it in dark mode, none in light', async
   await ctx.close();
 });
 
+// docs/backlog.md 2026-11-03: GMC's and Mitsubishi's live bars sit on dark
+// sections (#fff on #161616, #fff on #000), and the tile wrote a fixed #222 on
+// the name and the model bar a #262626 arrow, so both went dark on dark (1.01
+// to 1.32:1 across the 8 dark sections in docs/research/2026-11-03-name-colour).
+test('on a dark section the model bar name and arrow follow its white text', async () => {
+  for (const [id, bg] of [
+    ['gmc', '#161616'],
+    ['mitsubishi', '#000'],
+  ]) {
+    const sel = `#b-${id} .bb-stage[data-pattern="modelbar"]`;
+    await page.evaluate(
+      ([s, band]) => {
+        const stage = document.querySelector(s);
+        stage.style.color = '#fff';
+        stage.style.background = band;
+      },
+      [sel, bg],
+    );
+    // The engine fades a control's colour over --dos-transition (250ms); read
+    // before it ends and the arrow still reports the colour it started from.
+    await page.waitForTimeout(400);
+    const got = await page.evaluate((s) => {
+      const stage = document.querySelector(s);
+      const out = { name: getComputedStyle(stage.querySelector('.cargo-name')).color, arrow: getComputedStyle(stage.querySelector('.dos-arrow')).color };
+      stage.style.color = '';
+      stage.style.background = '';
+      return out;
+    }, sel);
+    assert.equal(got.name, 'rgb(255, 255, 255)', `${id}: the name stayed dark on a dark section`);
+    assert.equal(got.arrow, 'rgb(255, 255, 255)', `${id}: the arrow stayed dark on a dark section`);
+  }
+});
+
+// docs/backlog.md 2026-11-03: Cadillac and Hyundai baked #fff into the tile for
+// their bg-main tabbed bar, and a look value reaches every pattern the card is
+// on, so the plain model bar drew white names on white.
+test("Cadillac's and Hyundai's names on the plain model bar take the stage's text colour", async () => {
+  for (const id of ['cadillac', 'hyundai']) {
+    const got = await page.evaluate((brand) => {
+      const stage = document.querySelector(`#b-${brand} .bb-stage[data-pattern="modelbar"]`);
+      return { stage: getComputedStyle(stage).color, name: getComputedStyle(stage.querySelector('.cargo-name')).color };
+    }, id);
+    assert.notEqual(got.name, 'rgb(255, 255, 255)', `${id}: a white name on the plain model bar`);
+    assert.equal(got.name, got.stage, `${id}: the name does not follow the stage`);
+  }
+});
+
 test('the deep link lands on the brand and nothing threw', async () => {
   await page.goto(`${ORIGIN}/demo/brands.html#toyota`, { waitUntil: 'load' });
   await page.waitForSelector('#b-toyota .dos-slide');

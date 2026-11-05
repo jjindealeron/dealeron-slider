@@ -812,3 +812,31 @@ carrying either code can draw its bar. The same fetch found the opposite for Che
 `chevrolet-model-bar-slick.html` is a 26 KB tabbed bar on slick (2026-04-22, older photos than
 `chevrolet-model-bar.html`, 2026-10-22), so a rollout that replaced only `chevrolet-model-bar` would
 leave every site on the old name on slick. Its ledger row and the handoff's rollout step now say so.
+
+## 2026-11-05 — a model name takes its section's text colour
+
+`docs/backlog.md` (2026-11-03) had two halves of one fault. GMC's and Mitsubishi's live bars sit on
+dark sections (`#fff` on `#161616`, `#fff` on `#000`), and the tile wrote a fixed `#222` on
+`.cargo-name` and the model bar a `#262626` arrow, so both went dark on dark. Cadillac and Hyundai
+baked `--name-color: #fff` into the tile for their `bg-main` tabbed bar, and a look value reaches
+every pattern its card is on, so the plain model bar drew white on white.
+
+`docs/research/2026-11-03-name-colour` measured 47 pages: on 31 of the 37 bars with a model name the
+name is exactly the colour it inherits, `#222` fails on all 8 dark sections (1.01 to 1.32:1), and
+the inherited colour never drops below 6.77:1. So the tile's `--name-color` default is now
+`currentcolor` (it keeps the settings panel's colour picker, which `inherit` would not), the model
+bar's `--dos-arrow-fg` is `currentcolor`, and Cadillac's and Hyundai's `#fff` are gone: `bg-main`
+makes their tabbed names white (the Cadillac band test still reads `rgb(255, 255, 255)`), and the
+plain model bar draws them in the stage's `#10151c`. On the demo's stages the name moves from `#222`
+to `#10151c`.
+
+Two tests in `tests/brands.test.mjs` hold it, each failing first: GMC and Mitsubishi on a
+white-on-dark stage read a white name and arrow, and Cadillac's and Hyundai's plain-bar names equal
+the stage's text colour. The arrow half first "failed" for the wrong reason: the engine fades a
+control's colour over `--dos-transition` (250ms), so an arrow read in the same tick as the section's
+change reports the colour it started from. The test waits 400ms; put back to `#262626`, it still
+fails.
+
+The name half changes `dist/do-slider.css` and `.min.css`, so the shared folder is behind until they
+are uploaded again. README's re-upload rule watched `git log src/ demo/assets/patterns.js`, which
+would have missed this commit (`looks.js` feeds the card styles), and now watches `dist/`.

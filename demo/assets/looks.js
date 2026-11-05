@@ -73,7 +73,11 @@ const LOOKS = {
       // Reserves the gutter the arrows sit in. Without it transparent arrows
       // overlay the vehicles instead of standing beside them.
       '--strip-pad-x': 'calc(var(--dos-arrow-size) + 0.25em)',
-      '--name-color': '#222',
+      // The section's own text colour, not a fixed one: on 31 of 37 live bars
+      // the name is exactly that colour, and the #222 this replaced failed on
+      // every dark section (docs/research/2026-11-03-name-colour). currentcolor
+      // rather than inherit keeps the settings panel's colour picker.
+      '--name-color': 'currentcolor',
       '--name-size': '1em',
       '--name-weight': '600',
       '--name-case': 'none',

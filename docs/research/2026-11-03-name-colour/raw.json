@@ -1,0 +1,4174 @@
+{
+  "measured": "2026-11-04T03:41:43.233Z",
+  "viewport": "1366x768",
+  "results": [
+    {
+      "host": "acurademo1.dealeron.com",
+      "why": "built: acura",
+      "status": 200,
+      "url": "https://acurademo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "avenir-lt-pro, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Integra",
+            "el": "p.larger.margin-bottom-x.vehicleName",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block3 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "alfaromeo3.dealeron.com",
+      "why": "needs a pattern: alfa-romeo-model-bar-cards",
+      "status": 200,
+      "url": "https://alfaromeodemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "HelveticaNeueRoman, Helvetica, Arial, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "TONALE",
+            "el": "div.cvModelRange__cardTitle.h3",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#292b35",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#292b35",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 14.08,
+            "inheritParent": 14.08,
+            "inheritSection": 14.08,
+            "old222": 1.13
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #ffffff", "div#content.snap-content #333333"]
+        }
+      ]
+    },
+    {
+      "host": "audidemo1.dealeron.com",
+      "why": "built: audi",
+      "status": 200,
+      "url": "https://audidemo1.dealeron.com/",
+      "body": {
+        "color": "#282828",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "AudiType-Normal"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Audi e-tron GT",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#282828"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#282828"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#282828"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 14.74,
+            "inheritParent": 14.74,
+            "inheritSection": 14.74,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #282828"]
+        }
+      ]
+    },
+    {
+      "host": "bmw1.dealeron.com",
+      "why": "not a carousel: bmw-model-bar-desktop",
+      "status": 200,
+      "url": "https://bmwdemo1.dealeron.com/",
+      "body": {
+        "color": "#262626",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "\"BMWTypeNext Pro\""
+      },
+      "bars": []
+    },
+    {
+      "host": "buickdemo1.dealeron.com",
+      "why": "built: buick",
+      "status": 200,
+      "url": "https://buickdemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Buick-Text-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Envista",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "cadillacdemo1.dealeron.com",
+      "why": "built: cadillac",
+      "status": 200,
+      "url": "https://cadillacdemo1.dealeron.com/",
+      "body": {
+        "color": "#282828",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "\"Cadillac Gothic\", sans-serif"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "VISTIQ",
+            "el": "p.vehicleName.margin-bottom-x.text-uppercase",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#modelelectric.tab-pane.fade.active",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#0a0a0a",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#0a0a0a",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 19.8,
+            "inheritParent": 19.8,
+            "inheritSection": 19.8,
+            "old222": 1.24
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#modelelectric.tab-pane.fade.active #ffffff", "main #282828"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Escalade",
+            "el": "p.vehicleName.margin-bottom-x.text-uppercase",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#modelsuvs.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#0a0a0a",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#0a0a0a",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 19.8,
+            "inheritParent": 19.8,
+            "inheritSection": 19.8,
+            "old222": 1.24
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#modelsuvs.tab-pane.fade #ffffff", "main #282828"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "CT4",
+            "el": "p.vehicleName.margin-bottom-x.text-uppercase",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#modelsedans.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#0a0a0a",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#0a0a0a",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 19.8,
+            "inheritParent": 19.8,
+            "inheritSection": 19.8,
+            "old222": 1.24
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#modelsedans.tab-pane.fade #ffffff", "main #282828"]
+        }
+      ]
+    },
+    {
+      "host": "cdjrdemo1.dealeron.com",
+      "why": "unbuilt: cdjr-fiat-model-bar",
+      "status": 200,
+      "url": "https://cdjrdemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Roboto-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Pacifica",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#chrysler.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#chrysler.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Charger 2 Door",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#dodge.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#dodge.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Compass",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#jeep.tab-pane.active.in",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#jeep.tab-pane.active.in #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "RAM 1500 RHO",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#ram.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#ram.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "500e",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#fiat.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#fiat.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        }
+      ]
+    },
+    {
+      "host": "cdjrdemo2.dealeron.com",
+      "why": "unbuilt: cdjr-model-bar",
+      "status": 200,
+      "url": "https://cdjrdemo2.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Roboto-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Pacifica",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#chrysler.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#chrysler.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Charger 2 Door",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#dodge.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#dodge.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Compass",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#jeep.tab-pane.fade.in",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#jeep.tab-pane.fade.in #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "RAM 1500 RHO",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#ram.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.border-x.modelBarSec.bg-main",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#ram.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        }
+      ]
+    },
+    {
+      "host": "cdjrdemo4.dealeron.com",
+      "why": "unbuilt: cdjr-model-bar-no-back",
+      "status": 200,
+      "url": "https://cdjrdemo4.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Roboto-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Pacifica",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#chrysler.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#chrysler.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Charger 2 Door",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#dodge.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#dodge.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Compass",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#jeep.tab-pane.active.in",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#jeep.tab-pane.active.in #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "RAM 1500 RHO",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#ram.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#ram.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "500e",
+            "el": "p.margin-bottom-x.text-white",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#fiat.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div.bg-main.border-x.modelBarSec",
+            "color": "#212121",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.1,
+            "inheritParent": 16.1,
+            "inheritSection": 1.27,
+            "old222": 1.01
+          },
+          "sameAsParent": true,
+          "sameAsSection": false,
+          "chain": ["div#fiat.tab-pane.fade #ffffff", "div.modelBarCustom.text-center.hidden-xs #333333"]
+        }
+      ]
+    },
+    {
+      "host": "chevroletdemo1.dealeron.com",
+      "why": "built: chevrolet",
+      "status": 200,
+      "url": "https://chevroletdemo1.dealeron.com/",
+      "body": {
+        "color": "#262626",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "ChevySans"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Silverado EV",
+            "el": "p.vehicleName.h5.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#trucks.tab-pane.fade.active",
+            "color": "#262626"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#262626"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 15.13,
+            "inheritSection": 15.13,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#trucks.tab-pane.fade.active #262626"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Bolt EV",
+            "el": "p.vehicleName.h5.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#262626"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#262626"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 15.13,
+            "inheritSection": 15.13,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#electric.tab-pane.fade #262626"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Bolt",
+            "el": "p.vehicleName.h5.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#suvs.tab-pane.fade",
+            "color": "#262626"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#262626"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 15.13,
+            "inheritSection": 15.13,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#suvs.tab-pane.fade #262626"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Corvette",
+            "el": "p.vehicleName.h5.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#performance.tab-pane.fade",
+            "color": "#262626"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#262626"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 15.13,
+            "inheritSection": 15.13,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#performance.tab-pane.fade #262626"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "BrightDrop",
+            "el": "p.vehicleName.h5.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#commercial.tab-pane.fade",
+            "color": "#262626"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#262626"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 15.13,
+            "inheritSection": 15.13,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#commercial.tab-pane.fade #262626"]
+        }
+      ]
+    },
+    {
+      "host": "forddemo1.dealeron.com",
+      "why": "built: ford",
+      "status": 200,
+      "url": "https://forddemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "ford-f1"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Bronco Sport",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#crossovers.tab-pane.fade.in",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#crossovers.tab-pane.fade.in #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Maverick",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#trucks.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#trucks.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Mustang Mach-E",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electric.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Mustang",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#cars.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#cars.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "forddemo3.dealeron.com",
+      "why": "unbuilt: ford-model-bar-slick",
+      "status": 200,
+      "url": "https://forddemo3.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "ford-f1"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Mustang",
+            "el": "p.vehicleName.larger.text-default",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "forddemo5.dealeron.com",
+      "why": "not a carousel: ford-model-bar-2.0-alt",
+      "status": 200,
+      "url": "https://forddemo5.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "antennaRegularLight"
+      },
+      "bars": []
+    },
+    {
+      "host": "genesisdemo1.dealeron.com",
+      "why": "built: genesis",
+      "status": 200,
+      "url": "https://genesisdemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "GenesisSansText"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center-xxs.slick-initialized",
+          "name": {
+            "text": "GV60",
+            "el": "p.vehicleName.h3.margin-bottom-x",
+            "color": "#000000"
+          },
+          "parent": {
+            "el": "div#suv.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 21,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#suv.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center-xxs.slick-initialized",
+          "name": {
+            "text": "G70",
+            "el": "p.vehicleName.h3.margin-bottom-x",
+            "color": "#000000"
+          },
+          "parent": {
+            "el": "div#sedan.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 21,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#sedan.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center-xxs.slick-initialized",
+          "name": {
+            "text": "Electrified G80",
+            "el": "p.vehicleName.h3.margin-bottom-x",
+            "color": "#000000"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 21,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#electric.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "gmcdemo1.dealeron.com",
+      "why": "built: gmc",
+      "status": 200,
+      "url": "https://gmcdemo1.dealeron.com/",
+      "body": {
+        "color": "#ffffff",
+        "bg": "#161616",
+        "size": "16px",
+        "font": "stratumGMC, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Canyon",
+            "el": "p.larger.margin-bottom-x.vehicleName",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#161616",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#161616",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 18.1,
+            "inheritParent": 18.1,
+            "inheritSection": 18.1,
+            "old222": 1.14
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block3 #ffffff"]
+        }
+      ]
+    },
+    {
+      "host": "hondademo1.dealeron.com",
+      "why": "unbuilt: honda-model-bar-slick-tabbed",
+      "status": 200,
+      "url": "https://hondademo1.dealeron.com/",
+      "body": {
+        "color": "#3b3b3b",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "poppins-regular"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "HR-V",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#crossovers.tab-pane.fade.in",
+            "color": "#3b3b3b"
+          },
+          "section": {
+            "el": "div#block4",
+            "color": "#3b3b3b"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 11.2,
+            "inheritSection": 11.2,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#crossovers.tab-pane.fade.in #3b3b3b"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Odyssey",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#trucks.tab-pane.fade",
+            "color": "#3b3b3b"
+          },
+          "section": {
+            "el": "div#block4",
+            "color": "#3b3b3b"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 11.2,
+            "inheritSection": 11.2,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#trucks.tab-pane.fade #3b3b3b"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Civic",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#cars.tab-pane.fade",
+            "color": "#3b3b3b"
+          },
+          "section": {
+            "el": "div#block4",
+            "color": "#3b3b3b"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 11.2,
+            "inheritSection": 11.2,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#cars.tab-pane.fade #3b3b3b"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Accord Hybrid",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#3b3b3b"
+          },
+          "section": {
+            "el": "div#block4",
+            "color": "#3b3b3b"
+          },
+          "bgBehindName": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "div#myTabContent.tab-content.text-center",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 11.2,
+            "inheritSection": 11.2,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#electric.tab-pane.fade #3b3b3b"]
+        }
+      ]
+    },
+    {
+      "host": "hondademo2.dealeron.com",
+      "why": "built: honda (measured here)",
+      "status": 200,
+      "url": "https://hondademo2.dealeron.com/",
+      "body": {
+        "color": "#4d4d4d",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "poppins-regular"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.margin-top-2x",
+          "name": {
+            "text": "Accord",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block3",
+            "color": "#4d4d4d"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#4d4d4d"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f0f0f0",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f0f0f0",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.09,
+            "inheritParent": 7.42,
+            "inheritSection": 7.42,
+            "old222": 13.96
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#block3 #4d4d4d"]
+        }
+      ]
+    },
+    {
+      "host": "hondademo4.dealeron.com",
+      "why": "built: honda (ledger example)",
+      "status": 200,
+      "url": "https://hondademo4.dealeron.com/",
+      "body": {
+        "color": "#3b3b3b",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "poppins-regular"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.margin-top-2x",
+          "name": {
+            "text": "Accord",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#3b3b3b"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#3b3b3b"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 11.2,
+            "inheritSection": 11.2,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#block2 #3b3b3b"]
+        }
+      ]
+    },
+    {
+      "host": "hyundaidemo1.dealeron.com",
+      "why": "built: hyundai",
+      "status": 200,
+      "url": "https://hyundaidemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "HyundaiSansHead-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.nav.slick-initialized",
+          "name": {
+            "text": "KONA Electric",
+            "el": "p.model-title.h4.margin-top-1x",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#models-electrified.tab-pane.fade.in",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#1f1f21",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#1f1f21",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.45,
+            "inheritParent": 16.45,
+            "inheritSection": 16.45,
+            "old222": 1.03
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#models-electrified.tab-pane.fade.in #ffffff", "main #333333"]
+        },
+        {
+          "root": "aside.modelBarS.nav.slick-initialized",
+          "name": {
+            "text": "VENUE",
+            "el": "p.model-title.h4.margin-top-1x",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#models-suvs.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#1f1f21",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#1f1f21",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.45,
+            "inheritParent": 16.45,
+            "inheritSection": 16.45,
+            "old222": 1.03
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#models-suvs.tab-pane.fade #ffffff", "main #333333"]
+        },
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "ELANTRA",
+            "el": "p.model-title.h4.margin-top-1x",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#models-sedans.tab-pane.fade",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#1f1f21",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#1f1f21",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.45,
+            "inheritParent": 16.45,
+            "inheritSection": 16.45,
+            "old222": 1.03
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#models-sedans.tab-pane.fade #ffffff", "main #333333"]
+        }
+      ]
+    },
+    {
+      "host": "infinitidemo1.dealeron.com",
+      "why": "not a carousel: infiniti-model-bar-v2",
+      "status": 200,
+      "url": "https://infinitidemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "16px",
+        "font": "InfinitiBrand-Light"
+      },
+      "bars": []
+    },
+    {
+      "host": "jaguardemo3.dealeron.com",
+      "why": "built: jaguar",
+      "status": 200,
+      "url": "https://dealer19076.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "proxima-nova, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "F-PACE",
+            "el": "p.h4.margin-top-1x.text-uppercase",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block3 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "kiademo1.dealeron.com",
+      "why": "needs a pattern: kia-model-bar-tabbed",
+      "status": 200,
+      "url": "https://kiademo1.dealeron.com/",
+      "body": {
+        "color": "#05141f",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "KiaSignatureRegular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Seltos",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div#suv.tab-pane.fade.in",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "section.mobelbar-block",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.mobelbar-block",
+            "color": "#ffffff",
+            "image": true
+          },
+          "bgBehindBar": {
+            "at": "section.mobelbar-block",
+            "color": "#ffffff",
+            "image": true
+          },
+          "contrast": {
+            "liveName": 18.65,
+            "inheritParent": 18.65,
+            "inheritSection": 18.65,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#suv.tab-pane.fade.in #05141f"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Niro Hybrid",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "section.mobelbar-block",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.mobelbar-block",
+            "color": "#ffffff",
+            "image": true
+          },
+          "bgBehindBar": {
+            "at": "section.mobelbar-block",
+            "color": "#ffffff",
+            "image": true
+          },
+          "contrast": {
+            "liveName": 18.65,
+            "inheritParent": 18.65,
+            "inheritSection": 18.65,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electric.tab-pane.fade #05141f"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "K4",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div#sedan.tab-pane.fade",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "section.mobelbar-block",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.mobelbar-block",
+            "color": "#ffffff",
+            "image": true
+          },
+          "bgBehindBar": {
+            "at": "section.mobelbar-block",
+            "color": "#ffffff",
+            "image": true
+          },
+          "contrast": {
+            "liveName": 18.65,
+            "inheritParent": 18.65,
+            "inheritSection": 18.65,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#sedan.tab-pane.fade #05141f"]
+        }
+      ]
+    },
+    {
+      "host": "kiademo2.dealeron.com",
+      "why": "built: kia",
+      "status": 200,
+      "url": "https://kiademo2.dealeron.com/",
+      "body": {
+        "color": "#05141f",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "KiaSignatureRegular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "K4",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div#sedan.tab-pane.fade",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 17.1,
+            "inheritParent": 17.1,
+            "inheritSection": 17.1,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#sedan.tab-pane.fade #05141f"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Seltos",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div#suv.tab-pane.fade.in",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 17.1,
+            "inheritParent": 17.1,
+            "inheritSection": 17.1,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#suv.tab-pane.fade.in #05141f"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Niro Hybrid",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 17.1,
+            "inheritParent": 17.1,
+            "inheritSection": 17.1,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electric.tab-pane.fade #05141f"]
+        }
+      ]
+    },
+    {
+      "host": "kiademo3.dealeron.com",
+      "why": "unbuilt: kia-model-bar-slick",
+      "status": 200,
+      "url": "https://kiademo3.dealeron.com/",
+      "body": {
+        "color": "#05141f",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "KiaSignatureRegular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Seltos",
+            "el": "p.vehicleName.margin-bottom-x",
+            "color": "#05141f"
+          },
+          "parent": {
+            "el": "div.model-bar-block.margin-top_5x.pad-horz-2x",
+            "color": "#05141f"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#05141f"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 18.65,
+            "inheritParent": 18.65,
+            "inheritSection": 18.65,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div.model-bar-block.margin-top_5x.pad-horz-2x #05141f"]
+        }
+      ]
+    },
+    {
+      "host": "landroverdemo3.dealeron.com",
+      "why": "built: landrover",
+      "status": 200,
+      "url": "https://landroverdemo3.dealeron.com/",
+      "body": {
+        "color": "#000000",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "avenir-lt-pro, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "Range Rover",
+            "el": "p.h4.margin-top-1x.text-uppercase",
+            "color": "#000000"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#000000"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#000000"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 21,
+            "inheritParent": 21,
+            "inheritSection": 21,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #000000"]
+        }
+      ]
+    },
+    {
+      "host": "lexusdemo1.dealeron.com",
+      "why": "built: lexus",
+      "status": 200,
+      "url": "https://lexusdemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "15px",
+        "font": "nobel-book"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "UX Hybrid",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#mb-suvs.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#e1e1e1",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#e1e1e1",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 9.66,
+            "inheritParent": 9.66,
+            "inheritSection": 9.66,
+            "old222": 12.17
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#mb-suvs.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "IS",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#mb-sedans.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#e1e1e1",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#e1e1e1",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 9.66,
+            "inheritParent": 9.66,
+            "inheritSection": 9.66,
+            "old222": 12.17
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#mb-sedans.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "ES",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#mb-hybrids-electric.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#e1e1e1",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#e1e1e1",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 9.66,
+            "inheritParent": 9.66,
+            "inheritSection": 9.66,
+            "old222": 12.17
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#mb-hybrids-electric.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "lincolndemo2.dealeron.com",
+      "why": "built: lincoln",
+      "status": 200,
+      "url": "https://lincolndemo2.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "proxima-nova, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Navigator",
+            "el": "p.vehicleName.larger.text-uppercase",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "maseratidemo1.dealeron.com",
+      "why": "not a carousel: maserati-modelbar",
+      "status": 200,
+      "url": "https://maseratidemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "16px",
+        "font": "neue-haas-unica, sans-serif"
+      },
+      "bars": []
+    },
+    {
+      "host": "maseratidemo4.dealeron.com",
+      "why": "unbuilt: maserati-modelbar-slick",
+      "status": 200,
+      "url": "https://maseratidemo4.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "16px",
+        "font": "neue-haas-unica, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "MCPURA",
+            "el": "p.lead.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block2 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "mazdadesign1.dealeron.com",
+      "why": "built: mazda",
+      "status": 200,
+      "url": "https://mazdademo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "MazdaType-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.filtering.text-center",
+          "name": {
+            "text": "Mazda CX-30",
+            "el": "p.vehicleName.h5.margin-bottom-2x",
+            "color": "#101010"
+          },
+          "parent": {
+            "el": "div",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section.introSec",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 19.03,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div #333333"]
+        }
+      ]
+    },
+    {
+      "host": "mitsubishidemo1.dealeron.com",
+      "why": "built: mitsubishi",
+      "status": 200,
+      "url": "https://mitsubishidemo1.dealeron.com/",
+      "body": {
+        "color": "#444444",
+        "bg": "#eeeeee",
+        "size": "14px",
+        "font": "MMC-Office, Arial, Helvetica, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Eclipse Cross",
+            "el": "p.larger.margin-bottom-x.vehicleName",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#ffffff"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#000000",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#000000",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 21,
+            "inheritParent": 21,
+            "inheritSection": 21,
+            "old222": 1.32
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block3 #ffffff", "div#content.snap-content #444444"]
+        }
+      ]
+    },
+    {
+      "host": "mitsubishidemo5.dealeron.com",
+      "why": "not a carousel: mitsubishi-model-bar",
+      "status": 200,
+      "url": "https://mitsubishidemo3.dealeron.com/",
+      "body": {
+        "color": "#444444",
+        "bg": "#d7d7d7",
+        "size": "14px",
+        "font": "MMC-Office, Arial, Helvetica, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Eclipse Cross",
+            "el": "p.larger.margin-bottom-x.vehicleName",
+            "color": "#444444"
+          },
+          "parent": {
+            "el": "div#block3",
+            "color": "#444444"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#444444"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#d7d7d7",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#d7d7d7",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 6.77,
+            "inheritParent": 6.77,
+            "inheritSection": 6.77,
+            "old222": 11.05
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#block3 #444444"]
+        }
+      ]
+    },
+    {
+      "host": "nissandemo1.dealeron.com",
+      "why": "not a carousel: nissan-model-bar-tabbed",
+      "status": 200,
+      "url": "https://nissandemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Helvetica, Arial, sans-serif"
+      },
+      "bars": []
+    },
+    {
+      "host": "nissandemo5.dealeron.com",
+      "why": "built: nissan",
+      "status": 200,
+      "url": "https://nissandemo5.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Helvetica, Arial, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Altima",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#popular.tab-pane.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#popular.tab-pane.active #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": null,
+          "parent": {
+            "el": "div#cars.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": null,
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": null,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#cars.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Armada",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#suv.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#suv.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Frontier",
+            "el": "p.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#trucks.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionO.contentSection1.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#trucks.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "porschedemo1.dealeron.com",
+      "why": "not a carousel: porsche-model-bar",
+      "status": 200,
+      "url": "https://porschedemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "PorscheNextWLa-Regular"
+      },
+      "bars": []
+    },
+    {
+      "host": "subarudemo1.dealeron.com",
+      "why": "built: subaru (measured here)",
+      "status": 200,
+      "url": "https://subarudemo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "poppins-regular, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Uncharted",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#all-vehicles.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#all-vehicles.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Uncharted",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electric.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Crosstrek Hybrid",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#hybrid.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#hybrid.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Crosstrek",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#gas.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#gas.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Crosstrek Wilderness",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#wilderness.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "section.contentSectionE.contentSection2.full",
+            "color": "#f5f5f5",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 11.59,
+            "inheritParent": 11.59,
+            "inheritSection": 11.59,
+            "old222": 14.59
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#wilderness.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.corpcell-slider.slick-initialized.slick-slider",
+          "name": null,
+          "parent": {
+            "el": "div#block10",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block10",
+            "color": "#333333"
+          },
+          "bgBehindName": null,
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": null,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#block10 #333333"]
+        }
+      ]
+    },
+    {
+      "host": "subarudemo2.dealeron.com",
+      "why": "built: subaru (ledger example)",
+      "status": 200,
+      "url": "https://subarudemo2.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "poppins-regular, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Uncharted",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#all-vehicles.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#all-vehicles.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Uncharted",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electric.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electric.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Crosstrek Hybrid",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#hybrid.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#hybrid.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Crosstrek",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#gas.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#gas.tab-pane.fade #333333"]
+        },
+        {
+          "root": "div.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Crosstrek Wilderness",
+            "el": "p.heading-bold.vehicleName.h4",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#wilderness.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "section#model-showroom",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#wilderness.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "toyotademo1.dealeron.com",
+      "why": "built: toyota (measured here)",
+      "status": 200,
+      "url": "https://toyotademo1.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "ToyotaType-Book, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "RAV4",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#popular.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#popular.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Corolla",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#cars.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#cars.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Tacoma",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#truck.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#truck.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Land Cruiser",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#crossovers.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#crossovers.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Prius Plug-in Hybrid",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electrified.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electrified.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "toyotademo2.dealeron.com",
+      "why": "unbuilt: toyota-modelbar-slick-tabbed-v3",
+      "status": 200,
+      "url": "https://toyotademo2.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "ToyotaType-Book, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "2027",
+            "el": "li",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#cars.tab-pane.fade.tab-cars",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.modelToyotaCrown.modelDataURL.slick-slide",
+            "color": "#333333",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#cars.tab-pane.fade.tab-cars #333333"]
+        },
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "2026",
+            "el": "li",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#truck.tab-pane.fade.tab-truck",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.modelTacoma.modelDataURL.slick-slide",
+            "color": "#333333",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#truck.tab-pane.fade.tab-truck #333333"]
+        },
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "2027",
+            "el": "li",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#crossovers.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.modelLandCruiser.slick-slide.slick-current",
+            "color": "#333333",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#crossovers.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "aside.modelBarS.slick-initialized.slick-slider",
+          "name": {
+            "text": "2027",
+            "el": "li",
+            "color": "#ffffff"
+          },
+          "parent": {
+            "el": "div#electrified.tab-pane.fade.tab-electrified",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "div.modelBZ.modelDataURL.slick-slide",
+            "color": "#333333",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": false,
+          "sameAsSection": false,
+          "chain": ["div#electrified.tab-pane.fade.tab-electrified #333333"]
+        }
+      ]
+    },
+    {
+      "host": "toyotademo4.dealeron.com",
+      "why": "built: toyota (ledger example)",
+      "status": 200,
+      "url": "https://toyotademo4.dealeron.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "ToyotaType-Book, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "RAV4",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#popular.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#popular.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Corolla",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#cars.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#cars.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Tacoma",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#truck.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#truck.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Land Cruiser",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#crossovers.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#crossovers.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Prius Plug-in Hybrid",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#electrified.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#electrified.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "vwdemo1.dealeron.com",
+      "why": "needs a pattern: volkswagen-model-bar-slick2",
+      "status": 200,
+      "url": "https://vwdemo1.dealeron.com/",
+      "body": {
+        "color": "#001e50",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "VWTextWeb-Regular, Arial, Helvetica, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.margin-top-1x.text-center",
+          "name": {
+            "text": "ID.4",
+            "el": "h4.margin-bottom-x.text-default",
+            "color": "#001e50"
+          },
+          "parent": {
+            "el": "div#suv.tab-pane.fade.active",
+            "color": "#001e50"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#001e50"
+          },
+          "bgBehindName": {
+            "at": "h4.margin-bottom-x.text-default",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.13,
+            "inheritParent": 16.13,
+            "inheritSection": 16.13,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#suv.tab-pane.fade.active #001e50"]
+        },
+        {
+          "root": "aside.modelBarS.margin-top-1x.text-center",
+          "name": {
+            "text": "Jetta",
+            "el": "h4.margin-bottom-x.text-default",
+            "color": "#001e50"
+          },
+          "parent": {
+            "el": "div#sedan.tab-pane.fade",
+            "color": "#001e50"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#001e50"
+          },
+          "bgBehindName": {
+            "at": "h4.margin-bottom-x.text-default",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.13,
+            "inheritParent": 16.13,
+            "inheritSection": 16.13,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#sedan.tab-pane.fade #001e50"]
+        },
+        {
+          "root": "aside.modelBarS.margin-top-1x.text-center",
+          "name": {
+            "text": "ID.Buzz",
+            "el": "h4.margin-bottom-x.text-default",
+            "color": "#001e50"
+          },
+          "parent": {
+            "el": "div#bus.tab-pane.fade",
+            "color": "#001e50"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#001e50"
+          },
+          "bgBehindName": {
+            "at": "h4.margin-bottom-x.text-default",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 16.13,
+            "inheritParent": 16.13,
+            "inheritSection": 16.13,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#bus.tab-pane.fade #001e50"]
+        }
+      ]
+    },
+    {
+      "host": "www.brunerchryslerdodgejeepram.com",
+      "why": "unbuilt: cdjr-fiat-model-bar-no-back (dealer site)",
+      "status": 200,
+      "url": "https://www.brunerchryslerdodgejeepram.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Roboto-Regular"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Pacifica",
+            "el": "p.margin-bottom-x.text-default",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#chrysler.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#chrysler.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Charger 2 Door",
+            "el": "p.margin-bottom-x.text-default",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#dodge.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#dodge.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Compass",
+            "el": "p.margin-bottom-x.text-default",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#jeep.tab-pane.fade.in",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#jeep.tab-pane.fade.in #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "RAM 1500 RHO",
+            "el": "p.margin-bottom-x.text-default",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#ram.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block2",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#ram.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "www.coeurdalenenissan.com",
+      "why": "not a carousel: nissan-model-bar-slick (dealer site)",
+      "status": 200,
+      "url": "https://www.coeurdalenenissan.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "Helvetica, Arial, sans-serif"
+      },
+      "bars": []
+    },
+    {
+      "host": "www.genesisofcartersville.com",
+      "why": "not a carousel: genesis-non-ev-model-bar-tabbed (dealer site)",
+      "status": 403,
+      "url": "https://www.genesisofcartersville.com/",
+      "body": {
+        "color": "#000000",
+        "bg": "#ffffff",
+        "size": "16px",
+        "font": "\"Times New Roman\""
+      },
+      "bars": []
+    },
+    {
+      "host": "www.infinitioflexington.com",
+      "why": "not a carousel: infiniti-model-bar-black (dealer site)",
+      "status": 200,
+      "url": "https://www.infinitioflexington.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "16px",
+        "font": "InfinitiBrand-Light"
+      },
+      "bars": []
+    },
+    {
+      "host": "www.lexusoftucsonautomall.com",
+      "why": "unbuilt: lexus-model-bar-slick2 (dealer site)",
+      "status": 200,
+      "url": "https://www.lexusoftucsonautomall.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "15px",
+        "font": "nobel-book"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "UX Hybrid",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#mb-suvs.tab-pane.fade.active",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#mb-suvs.tab-pane.fade.active #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "IS",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#mb-sedans.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#mb-sedans.tab-pane.fade #333333"]
+        },
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "ES",
+            "el": "p.vehicleName.larger.margin-bottom-x",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div#mb-hybrids-electric.tab-pane.fade",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div#mb-hybrids-electric.tab-pane.fade #333333"]
+        }
+      ]
+    },
+    {
+      "host": "www.rydelllincoln.com",
+      "why": "unbuilt: lincoln-model-bar-slick2 (dealer site)",
+      "status": 200,
+      "url": "https://www.rydelllincoln.com/",
+      "body": {
+        "color": "#333333",
+        "bg": "#ffffff",
+        "size": "14px",
+        "font": "proxima-nova, sans-serif"
+      },
+      "bars": [
+        {
+          "root": "aside.modelBarS.text-center.slick-initialized",
+          "name": {
+            "text": "Navigator",
+            "el": "p.vehicleName.larger.text-uppercase",
+            "color": "#333333"
+          },
+          "parent": {
+            "el": "div.vehicleModels",
+            "color": "#333333"
+          },
+          "section": {
+            "el": "div#block3",
+            "color": "#333333"
+          },
+          "bgBehindName": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "bgBehindBar": {
+            "at": "body.homepage",
+            "color": "#ffffff",
+            "image": false
+          },
+          "contrast": {
+            "liveName": 12.63,
+            "inheritParent": 12.63,
+            "inheritSection": 12.63,
+            "old222": 15.91
+          },
+          "sameAsParent": true,
+          "sameAsSection": true,
+          "chain": ["div.vehicleModels #333333"]
+        }
+      ]
+    }
+  ]
+}

@@ -2,8 +2,11 @@
 {
   "globs": ["**/*.md"],
   // .claude/worktrees/ holds a full checkout per isolated agent session; it is
-  // gitignored (so Prettier skips it) but cli2 does not read .gitignore.
-  "ignores": ["node_modules", ".superpowers", ".playwright-mcp", ".claude/worktrees"],
+  // gitignored (so Prettier skips it) but cli2 does not read .gitignore. The
+  // same goes for test-results/ and playwright-report/: a failed `npm test`
+  // leaves an error-context.md there, which failed the next validate
+  // (2026-11-05).
+  "ignores": ["node_modules", ".superpowers", ".playwright-mcp", ".claude/worktrees", "test-results", "playwright-report"],
   "config": {
     "default": true,
     "MD013": false,

@@ -44,21 +44,18 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
 The measurements are `docs/research/2026-11-03-measurements/`; the plan for the day is
 `docs/specs/2026-11-03-coverage-push-and-lovable.md`.
 
-- **A brand's white name reaches its model-bar stage, which has no band.** Cadillac (since
-  2026-09-14) and Hyundai set `--name-color: #fff` on the tile for their `bg-main` tabbed bar, and a
-  look value applies to every pattern that card is on, so `brands.html` and the builder draw white
-  names on white under "Model bar" for both. A decision, not a slip: either look values become
-  per-pattern, or the name colour moves onto the tabbed pattern. Measured on `brands.html` at 1366.
 - **Acura's ZDX name rides 27px higher than the rest** at any preset: `zdx.png` is 480x300 (16:10)
   among 320x240 cutouts, so its card is shorter. Fix the art, not the preset.
-- **GMC's and Mitsubishi's names go dark on their own dark sections.** Both live bars sit on black
-  (gmcdemo1's page, mitsubishidemo1's #000 section), and both presets set no colour under the
-  2026-09-15 rule. But the tile writes `color: var(--name-color)` on `.cargo-name` itself
-  (`looks.js`), defaulting to `#222`, so a section's white text never reaches the name, and the
-  `#262626` arrow is near-invisible there too. GMC's comment that the name "inherits" is wrong in
-  the code. Paste either onto a dark section before handing it out; the fix is one decision for both
-  (the name inheriting by default, or the band rule bending for these two). Steven, 2026-11-03: to
-  be addressed in the next round of edits.
+- **Twelve presets still bake a dark name colour that is only their page's body text** (Acura, Audi,
+  Buick, Ford, Jaguar, Kia, Land Rover, Lexus, Lincoln, Nissan, Subaru, Toyota): each was measured
+  off a live bar whose name inherits it, so on a dealer page with a dark section they draw dark on
+  dark, the trap the tile's own default no longer sets (2026-11-05). Dropping them is a decision,
+  not a measurement; Chevrolet, Genesis, Honda and Mazda set their own colour on the live bar and
+  are not in question (`docs/research/2026-11-03-name-colour`, "Not settled here").
+- **Eight other patterns keep a `#262626` bare arrow** (`wordmark`, `cards`, `split`, `logostrip`,
+  `locations`, `gallery`, `tabs`, `reviews`). The model bar's now follows the section's text
+  (2026-11-05); these would be near-invisible on a dark section the same way. Not changed because
+  the fix was asked for the four model-bar brands.
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.

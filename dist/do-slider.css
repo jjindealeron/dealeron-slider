@@ -444,7 +444,7 @@
   --strip-pad: 0.1px;
   --strip-pad-end: 0.1px;
   --strip-pad-x: calc(var(--dos-arrow-size) + 0.25em);
-  --name-color: #222;
+  --name-color: currentcolor;
   --name-size: 1em;
   --name-weight: 600;
   --name-case: none;
