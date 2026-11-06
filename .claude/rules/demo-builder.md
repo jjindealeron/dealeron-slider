@@ -197,14 +197,15 @@ cannot save a bar whose WORDS are too long: those get phone-short names through 
 element's own box, the row is full width either way, and only the tabs feel a font landing or a
 preset repainting.
 
-**The tab row never wraps, at any width** — `.cargo-tabs` is `nowrap` + `overflow-x: auto`, not a
-media query, because the divider glyph hangs off the tab that FOLLOWS it and a wrapped row starts
-with a `|` dangling in the margin. `data-more`, set by the pattern script only while the row
-actually overflows, turns on the left alignment, the `flex: 0 0 auto` and the edge fade; a row that
-fits scrolls nowhere and stays centred. No `scroll-snap` on it: the snap area is the tab's border
-box, so snapping scrolls its `--tab-gap` margin off. `tests/layout.test.mjs` holds all of it at
-eight widths, and its 320px checks drive the catalogue pages directly because the builder's
-narrowest frame button is 390.
+**The tab row never wraps, at any width** — `.cargo-tabs` is `nowrap`, not a media query, because
+the divider glyph hangs off the tab that FOLLOWS it and a wrapped row starts with a `|` dangling in
+the margin. `data-more`, set by the pattern script only while the row actually overflows, turns on
+`overflow-x: auto` (a row that fits is no scroller, so it cannot clip a focused tab's ring,
+2026-11-06), the left alignment, the `flex: 0 0 auto` and the edge fade; a row that fits scrolls
+nowhere and stays centred. No `scroll-snap` on it: the snap area is the tab's border box, so
+snapping scrolls its `--tab-gap` margin off. `tests/layout.test.mjs` holds all of it at eight
+widths, and its 320px checks drive the catalogue pages directly because the builder's narrowest
+frame button is 390.
 
 **Nor does a tab's label wrap inside its tab** (`white-space: nowrap` on the tab, 2026-11-06): a tab
 that may shrink did it by wrapping, so its row never overflowed and the fit script never ran.

@@ -320,6 +320,53 @@ test.describe('the pasted block on a hostile host page', () => {
     assert.deepEqual(bad, [], bad.join(' | '));
   });
 
+  // 2026-11-06: a focused tab's ring lost its top and bottom to its row, which
+  // was a scroll container even when it fitted, so on a platform page it
+  // showed as two lines beside the label, like the dividers; and the two video
+  // play buttons drew their own ring 2px outside, where the track cut 5px off
+  // it on any page. The row scrolls only while it overflows now, and the play
+  // buttons draw inset. The tab keeps whichever ring the page gives it - the
+  // platform's own, here - so this asks only that nothing cuts it.
+  test('a focused tab or play button keeps its whole ring', async () => {
+    const PLATFORM = 'a:focus-visible,.btn:focus-visible,button:focus-visible{outline:5px auto -webkit-focus-ring-color!important;outline-offset:1px!important}';
+    const cutOf = () =>
+      host.evaluate(() => {
+        const e = /** @type {HTMLElement} */ (document.activeElement);
+        const cs = getComputedStyle(e);
+        const b = e.getBoundingClientRect();
+        const reach = (cs.outlineStyle === 'auto' ? 2 : parseFloat(cs.outlineWidth)) + parseFloat(cs.outlineOffset);
+        for (let a = e.parentElement; a; a = a.parentElement) {
+          const s = getComputedStyle(a);
+          if (s.overflowX === 'visible' && s.overflowY === 'visible') continue;
+          const c = a.getBoundingClientRect();
+          return { cls: e.className || e.getAttribute('role'), cut: Math.max(0, c.left - (b.left - reach), b.right + reach - c.right, c.top - (b.top - reach), b.bottom + reach - c.bottom) };
+        }
+        return { cls: e.className || e.getAttribute('role'), cut: 0 };
+      });
+    const bad = [];
+    for (const [id, css, sel] of [
+      ['tabs', PLATFORM, '[role="tab"]'],
+      ['video', '', '.cargo-video'],
+      ['media-gallery', '', '.cargo-mv'],
+    ]) {
+      await pick(page, id);
+      const p = await copyParts(page);
+      await host.setContent(hostHtml({ ...engine, css: `${css}\n${p.css}`, html: p.html, js: p.js }), { waitUntil: 'load' });
+      await host.waitForTimeout(200);
+      // The media gallery opens on a photo; bring the video's panel up first.
+      await host.evaluate((s) => {
+        const slide = [...document.querySelectorAll('.dos-slide')].findIndex((x) => x.querySelector(s));
+        if (slide > 0) /** @type {any} */ (document.querySelector('.dos'))._dos.goTo(slide);
+      }, sel);
+      await host.waitForTimeout(500);
+      await host.keyboard.press('Shift');
+      await host.evaluate((s) => /** @type {HTMLElement} */ (document.querySelector(s)).focus(), sel);
+      const r = await cutOf();
+      if (r.cut > 0.5) bad.push(`${id}: the ${r.cls} ring is cut by ${r.cut.toFixed(1)}px`);
+    }
+    assert.deepEqual(bad, [], bad.join(' | '));
+  });
+
   // F053: a designer restyling a card writes against their own slider name, and
   // `.my-slider .cargo-name` ties with the shared sheet's `.cargo-tile
   // .cargo-name` at (0,2,0) - so source order decided, and where the platform

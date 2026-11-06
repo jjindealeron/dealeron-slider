@@ -1073,3 +1073,21 @@ Building it found two measuring faults. `scrollWidth` reports half the overflow 
 fitting while it scrolled 97px. Both steps now measure the tabs themselves inside that padding. The
 new layout test failed on 17 rows of the first cut; the phone-padding test now holds a bar to no
 more than its own measured phone padding, since the squeeze may take it lower.
+
+## 2026-11-06 — a focused tab and the play buttons keep their whole ring
+
+Looked into with the platform's real focus rules (maseratidemo1's `extend.css`, Bootstrap 3 and
+template 740) on a test host, every control focused from the keyboard. The platform's `button` ring
+replaces the engine's on the arrows, dots, pause button and thumbs; it is fully visible there, so
+Steven left it (overriding a host's deliberate focus style needs `!important`, kept for where
+nothing else works). Two were broken. A focused tab lost the top and bottom of its ring to its row,
+which was a scroll container even when it fitted, so the tab showed two lines beside its label, like
+the dividers. And the video slide's play button and the media gallery's video tile drew their own
+ring 2px outside, where the track cut 5px off it, platform or not.
+
+The row is a scroller now only while the script marks it `data-more`; the play buttons draw inset,
+as the engine draws a slide's. No `!important`, no new setting. Every tab row on brands.html was
+compared pixel for pixel, old CSS against new, at 320, 390, 768 and 1366: the label bands differ by
+at most 1 in 255 (text antialiasing, which Chrome does differently in a scroller), and Ford's and
+Honda's bars now draw the measured 1px #ccc rule under each unpicked cell, which the scrolling row
+had clipped off since they were built. `tests/builder.test.mjs` failed on all three rings before.

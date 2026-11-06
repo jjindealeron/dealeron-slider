@@ -55,14 +55,16 @@ The measurements are `docs/research/2026-11-05-measurements/` (`BRIEF-static.md`
   Maserati's tiles each carry a "Select" button. The tile card is one link, to the model's new
   inventory, so a dealer switched over loses the one-click path to that model's used cars. A second
   link is markup on the card, not a setting.
-- **The platform's ring replaces the engine's on every control.** Its shared `extend.css` sets
+- **The platform's ring stands in for the engine's on its buttons, by decision.** Its shared
+  `extend.css` sets
   `button:focus-visible { outline: 5px auto -webkit-focus-ring-color !important; outline-offset: 1px !important }`,
-  which outweighs the engine's `.dos-arrow:focus-visible` and the rest. So on a platform site
-  `--dos-focus` never reaches the arrows, dots, pause button or thumbs (the builder's Focus ring
-  knob shows a colour the page does not draw), and a thumb's ring sits 1px outside it, where its
-  scroll strip can clip it: the engine draws that ring inset for exactly this reason (WCAG 2.4.7).
-  Read off maseratidemo1's CSS and rendered on a test host page, 2026-11-06; not looked at on a live
-  dealer page. The card links won the same fight with `!important` (`build-cards.mjs`).
+  which outweighs the engine's own ring on the arrows, dots, pause button and thumbs, so
+  `--dos-focus` never reaches them on a platform page. Steven, 2026-11-06: leave it. The platform's
+  ring is the site's own focus style and fully visible on those controls, and beating it would take
+  `!important` in the engine. Fixed the same day without `!important`: the tab row cut a focused
+  tab's ring top and bottom (now a scroller only while it overflows), and the two play buttons drew
+  their own ring outside, where the track cut it (now inset). Still open, low: a thumb's platform
+  ring sits 1px outside it and its strip cuts one side.
 - **Two rows read down each column.** Ford's grid and Maserati's tiles fill a column before the
   next, so the top row is models 1, 3, 5...; live reads across. Accepted by Steven (2026-11-06).
 - **What else the nine do not carry:** BMW's twenty cannot all show at once (six across, four

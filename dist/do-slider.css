@@ -1103,7 +1103,7 @@
 }
 :where([data-cargo=video]) .cargo-video:focus-visible {
   outline: 3px solid var(--dos-focus);
-  outline-offset: 2px;
+  outline-offset: -3px;
 }
 :where([data-cargo=video]) .cargo-video img {
   display: block;
@@ -1245,7 +1245,7 @@
   flex-wrap: nowrap;
   justify-content: center;
   margin-block-end: var(--tab-row-gap);
-  overflow-x: auto;
+  overflow-x: visible;
   overscroll-behavior-x: contain;
   scrollbar-width: none;
   border-block-end: 1px solid var(--tab-rule);
@@ -1258,6 +1258,7 @@
 }
 :where([data-cargo=tabs]) .cargo-tabs[data-more] {
   justify-content: flex-start;
+  overflow-x: auto;
 }
 :where([data-cargo=tabs]) .cargo-tabs[data-more] [role=tab] {
   flex: 0 0 auto;
@@ -1760,7 +1761,8 @@
 }
 :where([data-cargo=media-gallery]) .cargo-mv:focus-visible {
   outline: 3px solid var(--dos-focus);
-  outline-offset: 2px;
+  outline-offset: -3px;
+  border-radius: 8px;
 }
 :where([data-cargo=media-gallery]) .cargo-mv-play {
   position: absolute;

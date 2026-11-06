@@ -550,7 +550,9 @@
       // whatever band it is dropped into, so the card has to take the
       // surrounding text colour the way every non-button card already does.
       css: `.cargo-video { position: relative; display: block; inline-size: 100%; padding: 0; overflow: hidden; font: inherit; color: inherit; text-align: start; cursor: pointer; background: none; border: 0; border-radius: 8px; }
-.cargo-video:focus-visible { outline: 3px solid var(--dos-focus); outline-offset: 2px; }
+/* Inset, as the engine draws a slide's: the button fills its slide and the
+   track clips anything outside it, which cut 5px off this ring (2026-11-06). */
+.cargo-video:focus-visible { outline: 3px solid var(--dos-focus); outline-offset: -3px; }
 .cargo-video img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 10; object-fit: cover; }
 .cargo-play { position: absolute; inset-block-start: 42%; inset-inline-start: 50%; display: grid; place-items: center; inline-size: 56px; block-size: 56px; color: #16324f; background: rgba(255, 255, 255, 0.92); border-radius: 50%; transform: translate(-50%, -50%); }
 .cargo-name { display: block; margin: 0.6em 0 0; font-size: 1em; font-weight: 700; line-height: 1.3; }
@@ -788,8 +790,14 @@ ${VIDEO_DIALOG_CSS}`,
    on a 320px screen than the car underneath. It is not a phone rule: the same
    bar wrapped to two rows at 600 and 700 too, and a row that never wraps cannot
    dangle anything at any width. A row that fits scrolls nowhere and stays
-   centred, so nothing about a desktop bar moves. */
-.cargo-tabs { display: flex; flex-wrap: nowrap; justify-content: center; margin-block-end: var(--tab-row-gap); overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; border-block-end: 1px solid var(--tab-rule); }
+   centred, so nothing about a desktop bar moves.
+
+   And a row that fits is not a scroller at all: overflow-x is visible until
+   the script marks the row data-more. A scroll container clips both ways, so
+   a focused tab's ring lost its top and bottom to the row and showed as two
+   lines beside the label, like the dividers (2026-11-06, measured with the
+   platform's own ring and with the browser's). */
+.cargo-tabs { display: flex; flex-wrap: nowrap; justify-content: center; margin-block-end: var(--tab-row-gap); overflow-x: visible; overscroll-behavior-x: contain; scrollbar-width: none; border-block-end: 1px solid var(--tab-rule); }
 /* Android WebView has no scrollbar-width, and in-app browsers are real dealer
    traffic - the same reason the engine keeps both on its track. */
 .cargo-tabs::-webkit-scrollbar { display: none; }
@@ -806,7 +814,7 @@ ${VIDEO_DIALOG_CSS}`,
    actually overflows. Centring a scroller that overflows puts its first tab out
    of reach, and a cell that shares the row equally (Ford's 1 1 0%) would keep
    shrinking instead of scrolling - but only once there is more than fits. */
-.cargo-tabs[data-more] { justify-content: flex-start; }
+.cargo-tabs[data-more] { justify-content: flex-start; overflow-x: auto; }
 .cargo-tabs[data-more] [role="tab"] { flex: 0 0 auto; }
 /* Which way there is more to see, so the fade never dims an edge with nothing
    past it. Pure decoration, twice over: with no JS there is no attribute, and
@@ -1279,7 +1287,9 @@ ${PHOTO_CSS}
       css: `.cargo-photo { display: block; }
 .cargo-photo img, .cargo-mv img { display: block; inline-size: 100%; block-size: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 8px; }
 .cargo-mv { position: relative; display: block; inline-size: 100%; padding: 0; font: inherit; color: inherit; cursor: pointer; background: none; border: 0; }
-.cargo-mv:focus-visible { outline: 3px solid var(--dos-focus); outline-offset: 2px; }
+/* Inset for the same reason as the video slide's (the track cut 5.2px off it),
+   and rounded like the picture it sits on. */
+.cargo-mv:focus-visible { outline: 3px solid var(--dos-focus); outline-offset: -3px; border-radius: 8px; }
 .cargo-mv-play { position: absolute; inset-block-start: 50%; inset-inline-start: 50%; display: grid; place-items: center; inline-size: 64px; block-size: 64px; font-size: 1.3em; color: #16324f; background: rgba(255, 255, 255, 0.92); border-radius: 50%; transform: translate(-50%, -50%); }
 ${VIDEO_DIALOG_CSS}`,
       slides: (models) =>
