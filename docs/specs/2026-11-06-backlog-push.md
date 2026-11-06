@@ -22,4 +22,4 @@ one push. This is the step checklist, ticked as each step lands; the evidence go
       at a time, each with its art, preset, ledger row and tests. Volkswagen done (values on the
       tile, no new markup); Alfa Romeo done (a new look, Photo with cutout); Toyota Tabs v3 done (a
       rail entry drawn as the tabbed bar, the split card in its panes). 41 of 47.
-- [ ] 6. **Close out:** gates, CI, the Lovable copy staged, backlog and ledger updated.
+- [x] 6. **Close out:** gates, CI, the Lovable copy staged, backlog and ledger updated.
