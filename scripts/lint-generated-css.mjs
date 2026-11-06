@@ -250,9 +250,10 @@ for (const { id, bid, r } of variantPairs) {
 {
   const rosterSrc = readFileSync('demo/assets/brands.js', 'utf8');
   const tagged = new Set();
-  for (const m of rosterSrc.matchAll(/^ {4}([a-z0-9]+): \[\n {6}'[a-z0-9]*',\n {6}\[([\s\S]*?)\n {6}\],/gm)) {
-    // A tab tag in the fifth slot, and the make in an optional sixth (CDJR).
-    if (/\['[^']+', \d+, \d+, '[^']+', '[^']+'(?:, '[^']*')?\]/.test(m[2])) tagged.add(m[1]);
+  for (const m of rosterSrc.matchAll(/^ {4}'?([a-z0-9-]+)'?: \[\n {6}'[a-z0-9/]*',\n {6}\[([\s\S]*?)\n {6}\],/gm)) {
+    // A tab tag in the fifth slot, the make in an optional sixth (CDJR), and
+    // since 2026-11-06 an optional seventh of row fields (Volkswagen's plate).
+    if (/\['[^']+', \d+, \d+, '[^']+', '[^']+'(?:, (?:'[^']*'|undefined))?(?:, \{[^}]*\})?\]/.test(m[2])) tagged.add(m[1]);
   }
 
   const stride = [];

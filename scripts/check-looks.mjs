@@ -179,12 +179,19 @@ const patternsStart = ptSrc.indexOf('const PATTERNS = {');
 const patternsText = ptSrc.slice(patternsStart, ptSrc.indexOf('/* ---- ', patternsStart));
 const PATTERN_PROPS = {};
 const PATTERN_PANES = new Set();
+const PATTERN_ALIAS = new Map();
 for (const m of patternsText.matchAll(/\n {4}([a-z-]+|'[a-z-]+'): \{([\s\S]*?)\n {4}\},/g)) {
   const pid = m[1].replace(/'/g, '');
   const body = m[2];
   PATTERN_PROPS[pid] = Object.fromEntries([...(body.match(/props: \{[\s\S]*?\}/)?.[0] ?? '').matchAll(/'(--[a-z0-9-]+)'/g)].map(([, k]) => [k, true]));
   if (/\n {6}panes: \[/.test(body)) PATTERN_PANES.add(pid);
+  const alias = body.match(/\n {6}cargo: '([a-z-]+)'/)?.[1];
+  if (alias) PATTERN_ALIAS.set(pid, alias);
 }
+// An entry drawn as another pattern (`cargo: 'tabs'`, the tabbed split
+// cards) shares that pattern's props object, assigned after PATTERNS, so the
+// text scan finds none in its own body: it takes the other's.
+for (const [pid, alias] of PATTERN_ALIAS) if (!Object.keys(PATTERN_PROPS[pid]).length) PATTERN_PROPS[pid] = PATTERN_PROPS[alias] ?? {};
 const ENGINE_KEYS = new Set([...(wbSrc.match(/const ENGINE_DEFAULTS = \{[\s\S]*?\n {2}\};/)?.[0] ?? '').matchAll(/'(--dos-[a-z0-9-]+)'/g)].map(([, k]) => k));
 if (!Object.keys(PATTERN_PROPS).length || !ENGINE_KEYS.size) {
   console.error('  check-looks: could not read PATTERNS out of patterns.js or ENGINE_DEFAULTS out of workbench.js — the text scan needs updating');

@@ -209,6 +209,15 @@ the preview. An arrow overlays media but never text: a text card reserves
 `padding-inline: calc(var(--dos-arrow-size) + 0.4em)`. Both are held by the paste-parity test: each
 snippet in a hostile host page must match the preview to the pixel.
 
+**A rail entry can be another pattern with a different card: `cargo`** (2026-11-06, `tabsplit`,
+Toyota's Tabs v3). Every pattern with panes writes `data-cargo="tabs"` on its wrap, so a second
+tabbed entry is drawn by the tabbed bar's shared CSS and script with nothing of its own; it shares
+that pattern's props by OBJECT (`PATTERNS.tabsplit.props = PATTERNS.tabs.props`, under `PATTERNS`),
+so a tab knob added to one reaches both. `cargo: 'tabs'` on the entry tells `build-patterns.mjs` to
+ship no block for its id (it would match nothing) and `check-looks.mjs` to take the other pattern's
+props when it reads the entry's text. Only the card differs, which is why it is a rail entry and not
+a card picker.
+
 **The tabbed bar is authored as PLAIN CONTENT; the script makes it a tab interface.** `htmlFor()`
 emits no `role="tab"`, `role="tabpanel"`, `role="tablist"`, id, `aria-controls`, `aria-labelledby`,
 `aria-selected` or `hidden` — only a row of plain `<button>`s and a sequence of `.cargo-pane` divs,

@@ -776,6 +776,13 @@
   --pill-bg: #fff;
   --pill-fg: #222;
   --card-shadow: none;
+  --name-size: 1.5em;
+  --name-weight: 700;
+  --name-leading: 1.2;
+  --copy-gap: 0.5em;
+  --copy-muted: #d9d9d9;
+  --pill-line: transparent;
+  --pill-hover: var(--pill-bg);
   --dos-focus: #4a90e2;
   font-size: var(--cargo-font, 1em);
 }
@@ -807,26 +814,26 @@
 :where(.cargo-split) .cargo-copy {
   display: flex;
   flex-direction: column;
-  gap: 0.5em;
+  gap: var(--copy-gap);
   align-items: flex-start;
   min-inline-size: 0;
   padding: 28px;
 }
 :where(.cargo-split) .cargo-sub {
   font-size: 0.85em;
-  color: #d9d9d9;
+  color: var(--copy-muted);
 }
 :where(.cargo-split) .cargo-name {
   display: block;
   margin: 0;
-  font-size: 1.5em;
-  font-weight: 700;
-  line-height: 1.2;
+  font-size: var(--name-size);
+  font-weight: var(--name-weight);
+  line-height: var(--name-leading);
 }
 :where(.cargo-split) .cargo-blurb {
   font-size: 0.95em;
   line-height: 1.4;
-  color: #d9d9d9;
+  color: var(--copy-muted);
 }
 :where(.cargo-split) .cargo-cta {
   padding: 0.5em 1.3em;
@@ -836,14 +843,19 @@
   color: var(--pill-fg);
   background: var(--pill-bg);
   border-radius: 999px;
+  box-shadow: inset 0 0 0 2px var(--pill-line);
+  transition: background-color 0.3s ease-in-out;
+}
+:where(.cargo-split) .cargo-cta:hover {
+  background: var(--pill-hover);
 }
 @media (max-width: 767.98px) {
   :where(.cargo-split) .cargo-copy {
-    gap: 0.35em;
+    gap: calc(var(--copy-gap) * 0.7);
     padding: 1em;
   }
   :where(.cargo-split) .cargo-name {
-    font-size: 1.15em;
+    font-size: calc(var(--name-size) * 23 / 30);
   }
   :where(.cargo-split) .cargo-cta {
     padding: 0.45em 1em;

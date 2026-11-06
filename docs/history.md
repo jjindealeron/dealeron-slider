@@ -1231,3 +1231,33 @@ and hondademo1 before it went into cms-paths.js. check-looks paired each row's a
 image's size, which a two-picture card broke; it pairs every image with its own file now. A variants
 test assumed every measured brand is a chip on the tabbed bar; Alfa is measured on its own card
 only, so it holds what is true instead: every brand offered once, chip or option.
+
+## 2026-11-06 — Toyota's Tabs v3: 41 of 47, and no code left waiting on a pattern
+
+`toyota-modelbar-slick-tabbed-v3` draws split photo cards behind four tabs, and the tabbed bar drew
+cutout tiles only. It is a new rail entry, Tabbed split photo cards (`tabsplit`): the tabbed bar's
+own structure and settings with the split card in each pane. Every pattern with panes already wrote
+`data-cargo="tabs"` on its wrap, so the shared tab CSS and script draw it unchanged; its props are
+the tabbed bar's object, assigned under `PATTERNS`; `cargo: 'tabs'` keeps `build-patterns.mjs` from
+shipping a dead block for it (the shared sheet's pattern CSS stayed 20425 B) and lets `check-looks`
+read its props. The split card gained the values the live card needs, each defaulting to the literal
+it replaced: the name's size, weight and line, the gap between the copy's lines, the year and
+tagline's colour, the pill's 2px outline and its hover fill.
+
+The roster is the 27 models live shows outside California (Mirai is removed there by the page's own
+script), each with its year, tagline and tabs from the 2026-11-05 measurement and its photo fetched
+fresh from `brand-toyota/Homepage/model-bar/<year>/picture-based/` with Steven's yes: 800x744, but
+Camry 800x747 and C-HR 800x788 as served. All 27 platform paths were proved byte-identical from
+acurademo1 and hondademo1. On brands.html at 1366: a 556x278 card (live 560x280), the square photo
+half, a 24px / 500 name, the pill's #ddd outline; at 390 the tabs read Cars · Trucks · SUVs ·
+Electrified, the live markup's own short names. Departures are in the preset: one card across until
+992 (live two from 540, stacking photo over copy below 992), opening on the first tab (live, the
+third), no "2 Available" inventory count, the name in Book where live swaps to Semibold, the arrows
+beside the cards, a 1px row rule.
+
+Four shared fixes it took: brands.js stopped blanking a row's own sub line under a measured preset
+(only the "In stock now" filler goes, or the years went with it); a variant with a roster of its own
+no longer inherits its brand's tab names (v3 on the plain tabbed bar declared v2's "Popular" over
+rows tagged otherwise); lint-generated-css counts a row with the new seventh slot as tagged
+(Volkswagen was reported as slicing by stride); and a controls test now lets a non-cutout card offer
+a brand measured for it, since Tabs v3 brings photos to the split card, which is what it takes.

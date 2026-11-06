@@ -529,6 +529,51 @@
         ['bz.png', 518, 220, 'bZ', 'Electrified'],
       ],
     ],
+    // Toyota Tabs v3 (toyotademo2, read 2026-11-06): the split card's photo
+    // per model, out of brand-toyota/Homepage/model-bar/<year>/picture-based/
+    // (800x744, but Camry 800x747 and C-HR 800x788 as served), with the year
+    // and tagline each card shows and the tabs it sits in. Mirai is left out,
+    // as live outside California.
+    'toyota-modelbar-slick-tabbed-v3': [
+      'toyota/photos',
+      [
+        ['2027-toyota-crown.jpg', 800, 744, 'Crown', 'Cars & Minivan | Electrified', undefined, { sub: '2027', blurb: 'Innovation dialed up.' }],
+        [
+          '2027-prius-plug-in-hybrid.jpg',
+          800,
+          744,
+          'Prius Plug-in Hybrid',
+          'Cars & Minivan | Electrified',
+          undefined,
+          { sub: '2027', blurb: 'Take thrilling drives farther with a plug-in advantage.' },
+        ],
+        ['2027-prius.jpg', 800, 744, 'Prius', 'Cars & Minivan | Electrified', undefined, { sub: '2027', blurb: 'The perfect blend of driving excitement and fuel efficiency.' }],
+        ['2026-gr-corolla.jpg', 800, 744, 'GR Corolla', 'Cars & Minivan', undefined, { sub: '2026', blurb: 'Track-tested. Rally-built. Born to push your limits.' }],
+        ['2027-corolla.jpg', 800, 744, 'Corolla', 'Cars & Minivan', undefined, { sub: '2027', blurb: 'Refine your routine.' }],
+        ['2026-corolla-hybrid.jpg', 800, 744, 'Corolla Hybrid', 'Cars & Minivan | Electrified', undefined, { sub: '2026', blurb: 'Take your trips to new lengths.' }],
+        ['2027-corolla-hatchback.jpg', 800, 744, 'Corolla Hatchback', 'Cars & Minivan', undefined, { sub: '2027', blurb: 'Compact size. Full of fun.' }],
+        ['2027_camry.jpg', 800, 747, 'Camry', 'Cars & Minivan', undefined, { sub: '2027', blurb: 'Thoughtful design. Thrilling results.' }],
+        ['2027-gr86.jpg', 800, 744, 'GR86', 'Cars & Minivan', undefined, { sub: '2027', blurb: 'A burst of excitement around every bend.' }],
+        ['2026-gr-supra.jpg', 800, 744, 'GR Supra', 'Cars & Minivan', undefined, { sub: '2026', blurb: 'Make your mark with a motorsport masterpiece.' }],
+        ['2026-sienna.jpg', 800, 744, 'Sienna', 'Cars & Minivan | Electrified', undefined, { sub: '2026', blurb: 'Modern efficiency. Maximum room.' }],
+        ['2026-tacoma.jpg', 800, 744, 'Tacoma', 'Trucks', undefined, { sub: '2026', blurb: 'Built to take on trails and terrain. And everything else.' }],
+        ['2026-tundra.jpg', 800, 744, 'Tundra', 'Trucks', undefined, { sub: '2026', blurb: 'Built to work. Born to play.' }],
+        ['2026-tundra-iforce-max.jpg', 800, 744, 'Tundra i-FORCE MAX', 'Trucks | Electrified', undefined, { sub: '2026', blurb: 'Tough from the ground up.' }],
+        ['2027-land-cruiser.jpg', 800, 744, 'Land Cruiser', 'Crossovers & SUVs', undefined, { sub: '2027', blurb: 'Same legend. New chapter.' }],
+        ['2026-highlander.jpg', 800, 744, 'Highlander', 'Crossovers & SUVs', undefined, { sub: '2026', blurb: 'Go above and beyond the ordinary.' }],
+        ['2027-bz.jpg', 800, 744, 'bZ', 'Crossovers & SUVs | Electrified', undefined, { sub: '2027', blurb: 'Miles and miles of innovation.' }],
+        ['2027-bz-woodland.jpg', 800, 744, 'bZ Woodland', 'Crossovers & SUVs | Electrified', undefined, { sub: '2027', blurb: 'Adventure in every charge.' }],
+        ['2026-grand-highlander.jpg', 800, 744, 'Grand Highlander', 'Crossovers & SUVs', undefined, { sub: '2026', blurb: 'Make family time more epic than ever.' }],
+        ['2026-rav4.jpg', 800, 744, 'RAV4', 'Crossovers & SUVs | Electrified', undefined, { sub: '2026', blurb: 'Adventure is what you make of it.' }],
+        ['2026-rav4-plug-in-hybrid.jpg', 800, 744, 'RAV4 Plug-in Hybrid', 'Crossovers & SUVs | Electrified', undefined, { sub: '2026', blurb: 'Plug in to extraordinary adventures.' }],
+        ['2026-corolla-cross.jpg', 800, 744, 'Corolla Cross', 'Crossovers & SUVs', undefined, { sub: '2026', blurb: 'For the life that requires a little bit of everything.' }],
+        ['2026-corolla-cross-hybrid.jpg', 800, 744, 'Corolla Cross Hybrid', 'Crossovers & SUVs | Electrified', undefined, { sub: '2026', blurb: 'A move in the bold direction.' }],
+        ['2027-c-hr.jpg', 800, 788, 'C-HR', 'Crossovers & SUVs | Electrified', undefined, { sub: '2027', blurb: 'Where edge meets energy.' }],
+        ['2026-4runner.jpg', 800, 744, '4Runner', 'Crossovers & SUVs', undefined, { sub: '2026', blurb: 'The legend continues.' }],
+        ['2027-toyota-crown-signia.jpg', 800, 744, 'Crown Signia', 'Crossovers & SUVs | Electrified', undefined, { sub: '2027', blurb: 'A new class of comfort.' }],
+        ['2026-sequoia.jpg', 800, 744, 'Sequoia', 'Crossovers & SUVs | Electrified', undefined, { sub: '2026', blurb: 'Elevate your presence.' }],
+      ],
+    ],
     // The mb-*.png cutouts alfaromeodemo1 ships beside its tall portrait
     // photographs (brand-alfa-romeo/homepage/model-bar/2025, 580x344). The
     // 300x500 ar-*.jpg portraits that were here until 2026-09-10 are the tall
@@ -3262,7 +3307,7 @@
         [991, 5],
       ],
       demos: 3,
-      note: 'toyotademo1 runs the tabbed cutout bar in body-style tabs; toyotademo2 still shows the older split photo cards.',
+      note: 'toyotademo1 runs the tabbed cutout bar in body-style tabs; toyotademo2’s split photo cards are Tabs v3, its own entry.',
       // Measured on toyotademo1 2026-09-10 the same way Chevrolet's were; the
       // raw computed values are in the commit that added this. Knob values
       // only - see the spec's "What measuring an OEM demo may and may not
@@ -3302,6 +3347,90 @@
       // Book face is exactly what the site does.
       font: { family: 'ToyotaType-Book', css: 'https://cdn.dealeron.com/assets/fonts/ToyotaType/fonts.min.css' },
       source: 'toyotademo1.dealeron.com, 2026-09-10',
+    },
+    // `toyota-modelbar-slick-tabbed-v3` on toyotademo2, measured 2026-11-05
+    // (docs/research/2026-11-05-measurements/toyota-v3.md), its photos read
+    // 2026-11-06. Four tabs over split photo cards: a #333 card, the square
+    // photo down its left half, the year, the name (24px, 500, on a 1.1 line),
+    // a tagline and a white "Shop Now" pill with a 2px #ddd outline (#eee on
+    // hover). Built on Tabbed split photo cards: the tabbed bar's tabs, the
+    // split card's values. Departures: one card across until 992, where live
+    // shows two from 540 and stacks each card photo-over-copy below 992 (two
+    // side by side there leave a copy half too narrow for "Grand
+    // Highlander"); it opens on the first tab, live on the third; no "2
+    // Available" count, which is live inventory a pasted snippet cannot know;
+    // the name in Book at 500, where live swaps to the Semibold face (no
+    // knob); the arrows beside the cards, not a pair under them; the row rule
+    // 1px where live draws 2px.
+    'toyota-modelbar-slick-tabbed-v3': {
+      of: 'toyota',
+      variant: 'Tabs v3',
+      code: { name: 'toyota-modelbar-slick-tabbed-v3', pattern: 'tabsplit' },
+      look: 'split',
+      ladder: [
+        [0, 1],
+        [992, 2],
+      ],
+      note: 'Four tabs over split photo cards: the photo, then the year, the name, a tagline and a Shop Now pill.',
+      styles: {
+        looks: {
+          split: {
+            '--card-bg': '#333',
+            '--pill-fg': '#000',
+            '--name-size': '1.714em',
+            '--name-weight': '500',
+            '--name-leading': '1.1',
+            // 20px from the year to the name, in the 14px body.
+            '--copy-gap': '1.43em',
+            '--copy-muted': '#fff',
+            '--pill-line': '#ddd',
+            '--pill-hover': '#eee',
+          },
+        },
+        patterns: {
+          tabsplit: {
+            props: {
+              // 10px between cards (5px margin each side).
+              '--dos-gap': '0.714em',
+              // slick's glyph is a filled disc: #000 at 0.75 on white is
+              // #404040, 10.37:1, and the chevron knocked out of it white.
+              '--dos-arrow-bg': '#404040',
+              '--dos-arrow-fg': '#fff',
+              '--dos-arrow-bg-hover': '#000',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-color': '#222',
+              '--tab-selected': '#111',
+              '--tab-dim': '1',
+              '--tab-line-hover': 'transparent',
+              '--tab-rule': '#d8d8d8',
+              // The tabs butt.
+              '--tab-gap': '0.1px',
+              '--tab-pad': '0.714em 1.714em 0.857em',
+              '--tab-pad-phone': '0.714em 1em 0.857em',
+              '--tab-gap-phone': '0.1px',
+              // 38px from the rule to the cards.
+              '--tab-row-gap': '2.714em',
+              '--tab-fade': '0.15s',
+              // 28px under the 42px heading, in the heading's em.
+              '--title-gap': '0.667em',
+            },
+            // The live markup's own phone-short names: Cars · Trucks · SUVs ·
+            // Electrified below 992.
+            panes: ['Cars[ & Minivan]', 'Trucks', '[Crossovers & ]SUVs', 'Electrified'],
+            words: { title: 'Explore All Vehicles', titleClass: 'heading-lg', moreText: 'Explore All Vehicles' },
+          },
+        },
+      },
+      // PREVIEW ONLY: toyotademo2's :root tokens and its heading-lg.
+      theme: {
+        '--cta-background-color': '#EB0A1E',
+        '--cta-font-color': '#fff',
+        '--cta-hover-color': '#c4161c',
+        '--main-color': '#333',
+        css: '.heading-lg{font-family:ToyotaType-Semibold,sans-serif;font-size:42px;font-weight:500;line-height:1.1;color:#333}',
+      },
+      source: 'toyotademo2.dealeron.com, 2026-11-05',
     },
     // `volkswagen-model-bar-slick2` on vwdemo1, measured 2026-11-03
     // (docs/research/2026-11-03-measurements/volkswagen.md), its art read
@@ -3470,7 +3599,7 @@
   // never inherited, and scripts/check-looks.mjs holds it to the row in
   // docs/coverage.md that names this preset, code and pattern alike.
   const INHERIT = ['label', 'look', 'ladder', 'demos', 'font', 'theme'];
-  for (const b of Object.values(BRANDS)) {
+  for (const [id, b] of Object.entries(BRANDS)) {
     const parent = b.of && BRANDS[b.of];
     if (!parent) continue;
     for (const k of INHERIT) if (b[k] === undefined && parent[k] !== undefined) b[k] = parent[k];
@@ -3479,7 +3608,10 @@
     // brand's tab names - and nothing else of the other code's measurement.
     // Without them Kia's Slick on the tabbed bar declared the pattern's own
     // Trucks / SUVs / Crossovers over a roster tagged with Kia's tabs, and
-    // three tabs came up empty (lint-generated-css, 2026-11-05).
+    // three tabs came up empty (lint-generated-css, 2026-11-05). Not a code
+    // with a roster of its own (Toyota's Tabs v3, 2026-11-06): its rows carry
+    // their own tags, and the brand's names over them came up empty instead.
+    if (ROSTERS[id]) continue;
     for (const [pid, own] of Object.entries(parent.styles?.patterns ?? {})) {
       if (!own.panes || b.styles?.patterns?.[pid]) continue;
       b.styles = { ...b.styles, patterns: { ...b.styles?.patterns, [pid]: { panes: own.panes } } };
@@ -3523,7 +3655,9 @@
     // rows carry what its live bar shows, and neither measured bar shows a
     // line under the name - with it, the Chevrolet card ran 17px taller than
     // chevroletdemo1's. A designer who wants a sub line types one in step 1.
-    if (list && b.styles) for (const m of list) m.sub = '';
+    // Only the filler: a row's own sub line (Toyota Tabs v3's model year) is
+    // what its live card shows.
+    if (list && b.styles) for (const m of list) if (m.sub === 'In stock now') m.sub = '';
     // A preset whose live bar draws a button under every car (Maserati's
     // "Select") gives every row its words, which the slide editor then shows
     // per slide as Button text.

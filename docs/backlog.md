@@ -76,10 +76,8 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.
 - **Of the ten codes that did not fit one preset per brand,** five are built since a second code
   became its own preset (Maserati, its first) (2026-11-05: `kia-plain`, `lincoln-v2`, `ford-plain`,
-  `honda-tabbed`). Left, each a decision rather than a measurement, parked by Steven on 2026-11-05
-  until after the next work (`docs/research/2026-11-05-measurements/`):
-  - `toyota-modelbar-slick-tabbed-v3`: a split photo card behind tabs, a pattern we lack, over
-    800x744 photos the repo does not have.
+  `honda-tabbed`), and `toyota-modelbar-slick-tabbed-v3` since 2026-11-06 (Tabbed split photo
+  cards). Left, a decision rather than a measurement:
   - `cdjr-model-bar-no-back`: its example, cdjrdemo4, draws the Fiat bar; it needs a page that draws
     it.
 

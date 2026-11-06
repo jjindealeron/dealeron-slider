@@ -85,6 +85,10 @@ export function patternsCss(CARGO) {
   const { PATTERNS, PHOTO_CAPTION_CSS, PHOTO_LINK_CSS } = CARGO;
   const out = [];
   for (const [id, p] of Object.entries(PATTERNS)) {
+    // An entry drawn under another pattern's data-cargo (the tabbed split
+    // cards are a tabbed bar, `cargo: 'tabs'`) has no rules of its own: the
+    // other pattern's ship once, and a block on its own id would match nothing.
+    if (p.cargo) continue;
     const wrap = hasWrap(id, p);
     const own = Object.entries(p.props ?? {}).filter(([k]) => !k.startsWith('--dos-') && !k.startsWith('--cargo-'));
     const parts = [];

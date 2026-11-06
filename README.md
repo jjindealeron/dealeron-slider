@@ -441,7 +441,7 @@ ring, and a card's ring is a layer over its picture with 6px under the tile and 
 the CSS, a tile can draw a second link under its card; then the CSS, 6px under those names, and the
 tile's button can wear the platform's button classes; then the CSS, the tile's plate can stop part
 way down the picture (Volkswagen); then the CSS, an eighth card look, Photo with cutout (Alfa
-Romeo).
+Romeo); then the CSS, the split card's name, copy and pill settings (Toyota Tabs v3).
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.

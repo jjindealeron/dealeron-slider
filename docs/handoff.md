@@ -213,9 +213,9 @@ password gate" in `scripts/export-lovable.mjs`.
 1. **Get the four engine files onto the shared folder**, if README "Deployment status" still says
    they are not there. Until they are, a snippet from the builder draws an unstyled list. Then
    update that section's date.
-2. **The codes still to build** are on the Checklist page. Most wait on variant presets: a second
-   code on a pattern its brand already has, or a brand with no preset yet (`docs/backlog.md`,
-   2026-11-03, lists them). A few need a pattern the builder does not have.
+2. **The codes not built** are on the Checklist page. Since 2026-11-06 none waits on the builder:
+   three have a dead example page and two have an example that draws a different bar, so each needs
+   the Salesforce article's owner to name a page that draws it, and one is retired.
 3. **Keep the shared folder current.** README "Deployment status" says when `dist/` has moved past
    the last upload, and the Checklist page says so at every export. It has moved since the
    2026-11-04 upload: on 2026-11-05 (the name-colour fix) and several times on 2026-11-06, the JS

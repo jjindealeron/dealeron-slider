@@ -17,8 +17,9 @@ one push. This is the step checklist, ticked as each step lands; the evidence go
 - [x] 3. **Acura's ZDX name riding 27px high.** Its cutout is 16:10 among 4:3 ones.
 - [x] 4. **The name colour.** Twelve presets pin the name to a fixed dark hex measured off a light
       page; Steven's call whether it follows the section instead.
-- [ ] 5. **The three codes that need a pattern:** Alfa Romeo's photo-and-cutout cards, Volkswagen's
+- [x] 5. **The three codes that need a pattern:** Alfa Romeo's photo-and-cutout cards, Volkswagen's
       colour plates, Toyota's Tabs v3 split cards. Designed from their measurements first, built one
       at a time, each with its art, preset, ledger row and tests. Volkswagen done (values on the
-      tile, no new markup); Alfa Romeo done (a new look, Photo with cutout).
+      tile, no new markup); Alfa Romeo done (a new look, Photo with cutout); Toyota Tabs v3 done (a
+      rail entry drawn as the tabbed bar, the split card in its panes). 41 of 47.
 - [ ] 6. **Close out:** gates, CI, the Lovable copy staged, backlog and ledger updated.

@@ -327,6 +327,18 @@ const LOOKS = {
       '--pill-bg': '#fff',
       '--pill-fg': '#222',
       '--card-shadow': 'none',
+      // Values that were literals until Toyota's Tabs v3 (2026-11-06) drew
+      // this card under its tabs with its own: the name's size, weight and
+      // line, the space between the copy's lines, the colour of the year and
+      // tagline, and the pill's 2px outline and hover fill. Each default is
+      // the literal it replaced, so every split card draws as it did.
+      '--name-size': '1.5em',
+      '--name-weight': '700',
+      '--name-leading': '1.2',
+      '--copy-gap': '0.5em',
+      '--copy-muted': '#d9d9d9',
+      '--pill-line': 'transparent',
+      '--pill-hover': 'var(--pill-bg)',
       // The card link's own focus ring (2026-11-06) is drawn inside the card,
       // on #2f2f2f, where the engine's #1a5fb4 is 2.13:1. #4a90e2 is portrait's
       // answer to the same dark ground: about 4.1:1 on the card and 3.3:1 on
@@ -337,12 +349,13 @@ const LOOKS = {
 @media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }
 .cargo-card { display: flex; overflow: hidden; color: var(--card-fg); text-decoration: none; background: var(--card-bg); border-radius: 8px; box-shadow: var(--card-shadow); }
 .cargo-card img { flex: 0 0 50%; inline-size: 50%; aspect-ratio: 1; object-fit: cover; }
-.cargo-copy { display: flex; flex-direction: column; gap: 0.5em; align-items: flex-start; min-inline-size: 0; padding: 28px; }
-.cargo-sub { font-size: 0.85em; color: #d9d9d9; }
-.cargo-name { display: block; margin: 0; font-size: 1.5em; font-weight: 700; line-height: 1.2; }
-.cargo-blurb { font-size: 0.95em; line-height: 1.4; color: #d9d9d9; }
-.cargo-cta { padding: 0.5em 1.3em; margin-block-start: auto; font-size: 0.9em; font-weight: 600; color: var(--pill-fg); background: var(--pill-bg); border-radius: 999px; }
-@media (max-width: 767.98px) { .cargo-copy { gap: 0.35em; padding: 1em; } .cargo-name { font-size: 1.15em; } .cargo-cta { padding: 0.45em 1em; font-size: 0.8em; white-space: nowrap; } }
+.cargo-copy { display: flex; flex-direction: column; gap: var(--copy-gap); align-items: flex-start; min-inline-size: 0; padding: 28px; }
+.cargo-sub { font-size: 0.85em; color: var(--copy-muted); }
+.cargo-name { display: block; margin: 0; font-size: var(--name-size); font-weight: var(--name-weight); line-height: var(--name-leading); }
+.cargo-blurb { font-size: 0.95em; line-height: 1.4; color: var(--copy-muted); }
+.cargo-cta { padding: 0.5em 1.3em; margin-block-start: auto; font-size: 0.9em; font-weight: 600; color: var(--pill-fg); background: var(--pill-bg); border-radius: 999px; box-shadow: inset 0 0 0 2px var(--pill-line); transition: background-color 0.3s ease-in-out; }
+.cargo-cta:hover { background: var(--pill-hover); }
+@media (max-width: 767.98px) { .cargo-copy { gap: calc(var(--copy-gap) * 0.7); padding: 1em; } .cargo-name { font-size: calc(var(--name-size) * 23 / 30); } .cargo-cta { padding: 0.45em 1em; font-size: 0.8em; white-space: nowrap; } }
 @media (max-width: 480px) { .cargo-card { flex-direction: column; } .cargo-card img { flex: none; inline-size: 100%; aspect-ratio: 16 / 9; } }`,
     // An absent field emits NO element. Rendering an empty <span> left the copy
     // column with a blank row, and the pill's `margin-block-start: auto` then

@@ -1099,6 +1099,29 @@ ${VIDEO_DIALOG_CSS}`,
 });`,
     },
 
+    // Toyota's Tabs v3 (toyotademo2, 2026-11-06): the tabbed bar with the
+    // split photo card in each pane. The tabs are the tabbed bar's own - its
+    // markup wears data-cargo="tabs" like every bar with panes, so the shared
+    // tab CSS and script draw it, and its settings are that bar's very object
+    // (set under PATTERNS) - and only the card differs. That is why it is a
+    // rail entry of its own: a card is never a picker. `cargo` names the
+    // pattern whose shared CSS it draws with, so the build ships nothing of
+    // its own for it.
+    tabsplit: {
+      label: 'Tabbed split photo cards',
+      blurb: 'The tabbed bar with a split photo card in each pane: the photo down one half, the year, name, tagline and a pill down the other. Wants a wide card, so one across until a laptop.',
+      look: 'split',
+      cargo: 'tabs',
+      models: BRANDS['toyota-modelbar-slick-tabbed-v3'].models,
+      data: { 'data-dos-step': 'slide' },
+      props: null,
+      hideDots: true,
+      panes: ['Cars[ & Minivan]', 'Trucks', '[Crossovers & ]SUVs', 'Electrified'],
+      title: 'View Our Lineup',
+      lead: '',
+      more: { text: 'Explore All New Inventory', href: '/searchnew.aspx' },
+    },
+
     models: {
       gutter: true,
       label: 'Model cards — tall photos',
@@ -1441,6 +1464,9 @@ ${PHOTO_CSS}
       slides: (models) => models.map((m) => `<article class="cargo-stock"><h3 class="cargo-name">${m.name}</h3><p class="cargo-sub">${m.blurb}</p></article>`),
     },
   };
+  // The tabbed split cards share the tabbed bar's settings: one object, so a
+  // tab knob added there reaches both and they cannot drift.
+  PATTERNS.tabsplit.props = PATTERNS.tabs.props;
 
   /* ---- exports ---------------------------------------------------------- */
 

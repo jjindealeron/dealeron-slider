@@ -13,9 +13,9 @@
 // serve from an unrelated dealer domain like everything else here.
 
 // 326 pairs: 318 byte-proved, 8 name-matched (the chrome-*.webp group above).
-// 2026-11-06, later: 15 more by hand (Volkswagen's ten model-bar cutouts, five Alfa Romeo backdrop
-// photos), and Alfa's Tonale cutout moved to the 2026 file live serves, each proved byte-identical
-// from acurademo1 and hondademo1.
+// 2026-11-06, later: 42 more by hand (Volkswagen's ten model-bar cutouts, five Alfa Romeo backdrop
+// photos, Toyota Tabs v3's twenty-seven model photos), and Alfa's Tonale cutout moved to the 2026 file
+// live serves, each proved byte-identical from acurademo1 and hondademo1.
 // 2026-11-06: 44 more merged by hand for the nine static codes (BMW, Maserati tiles, INFINITI,
 // Porsche, Genesis, Nissan), the same way: fetched from acurademo1, proved from hondademo1.
 // 2026-11-05: 26 merged by hand (Maserati's cutouts and logo, sixteen CDJR cutouts), each
@@ -381,5 +381,32 @@ globalThis.CARGO = Object.assign(globalThis.CARGO || {}, {
     'oem/toyota/rav4-plug-in-hybrid.png': '/static/brand-toyota/Homepage/model-bar/2026/angular-left/rav4-plugin-hybrid.png',
     'oem/toyota/tundra-i-force-max.png': '/static/brand-toyota/Homepage/model-bar/2026/angular-left/tundra-iforce-max.png',
     'oem/toyota/bz.png': '/static/brand-toyota/Homepage/model-bar/2026/angular-left/bz.png',
+    'oem/toyota/photos/2027-toyota-crown.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-toyota-crown.jpg',
+    'oem/toyota/photos/2027-prius-plug-in-hybrid.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-prius-plug-in-hybrid.jpg',
+    'oem/toyota/photos/2027-prius.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-prius.jpg',
+    'oem/toyota/photos/2026-gr-corolla.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-gr-corolla.jpg',
+    'oem/toyota/photos/2027-corolla.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-corolla.jpg',
+    'oem/toyota/photos/2026-corolla-hybrid.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-corolla-hybrid.jpg',
+    'oem/toyota/photos/2027-corolla-hatchback.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-corolla-hatchback.jpg',
+    'oem/toyota/photos/2027_camry.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027_camry.jpg',
+    'oem/toyota/photos/2027-gr86.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-gr86.jpg',
+    'oem/toyota/photos/2026-gr-supra.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-gr-supra.jpg',
+    'oem/toyota/photos/2026-sienna.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-sienna.jpg',
+    'oem/toyota/photos/2026-tacoma.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-tacoma.jpg',
+    'oem/toyota/photos/2026-tundra.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-tundra.jpg',
+    'oem/toyota/photos/2026-tundra-iforce-max.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-tundra-iforce-max.jpg',
+    'oem/toyota/photos/2027-land-cruiser.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-land-cruiser.jpg',
+    'oem/toyota/photos/2026-highlander.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-highlander.jpg',
+    'oem/toyota/photos/2027-bz.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-bz.jpg',
+    'oem/toyota/photos/2027-bz-woodland.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-bz-woodland.jpg',
+    'oem/toyota/photos/2026-grand-highlander.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-grand-highlander.jpg',
+    'oem/toyota/photos/2026-rav4.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-rav4.jpg',
+    'oem/toyota/photos/2026-rav4-plug-in-hybrid.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-rav4-plug-in-hybrid.jpg',
+    'oem/toyota/photos/2026-corolla-cross.jpg': '/static/brand-toyota/Homepage/model-bar/2026/CorollaCross/2026-corolla-cross.jpg',
+    'oem/toyota/photos/2026-corolla-cross-hybrid.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-corolla-cross-hybrid.jpg',
+    'oem/toyota/photos/2027-c-hr.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-c-hr.jpg',
+    'oem/toyota/photos/2026-4runner.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-4runner.jpg',
+    'oem/toyota/photos/2027-toyota-crown-signia.jpg': '/static/brand-toyota/Homepage/model-bar/2027/picture-based/2027-toyota-crown-signia.jpg',
+    'oem/toyota/photos/2026-sequoia.jpg': '/static/brand-toyota/Homepage/model-bar/2026/picture-based/2026-sequoia.jpg',
   },
 });

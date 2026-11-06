@@ -1300,21 +1300,27 @@ test.describe('a card cannot be put where it does not belong', () => {
   // a settings-panel row - hasKnob('Brand') has nothing to find any more.
   const brandOffered = (page) => page.evaluate(() => !document.getElementById('wb-variants').hidden);
 
-  test('the brand control is offered only where a cutout roster fits', async () => {
+  // 2026-11-06: a card not built for cutouts may still be offered a brand
+  // that carries values for it, with a roster of its own kind - Toyota's Tabs
+  // v3 brings split values and 800x744 photos, which is what the split card
+  // takes. What must never happen is a cutout roster arriving there: a brand
+  // with nothing for that card is not offered.
+  test('the brand control is offered only where a cutout roster fits, or a brand carries values for the card', async () => {
     const { cutout, other } = await page.evaluate(() => {
-      const { LOOKS, PATTERNS } = globalThis.CARGO;
+      const { LOOKS, PATTERNS, BRANDS } = globalThis.CARGO;
       const ids = Object.keys(PATTERNS).filter((k) => PATTERNS[k].look);
       const takes = (k) => String(LOOKS[PATTERNS[k].look].content).includes('cutout');
-      return { cutout: ids.filter(takes), other: ids.filter((k) => !takes(k)) };
+      const measuredFor = (k) => Object.values(BRANDS).some((b) => b.styles?.patterns?.[k] || b.styles?.looks?.[PATTERNS[k].look]);
+      return { cutout: ids.filter(takes), other: ids.filter((k) => !takes(k)).map((k) => [k, measuredFor(k)]) };
     });
-    assert.ok(cutout.length && other.length, 'every card takes the same content, so this guards nothing');
+    assert.ok(cutout.length && other.some(([, m]) => !m), 'every card takes the same content, so this guards nothing');
     for (const id of cutout) {
       await pick(page, id);
       assert.equal(await brandOffered(page), true, `${id} takes a cutout roster but is offered no brand`);
     }
-    for (const id of other) {
+    for (const [id, measured] of other) {
       await pick(page, id);
-      assert.equal(await brandOffered(page), false, `${id} offers the brand control, and its card is not built for cutouts`);
+      assert.equal(await brandOffered(page), measured, measured ? `${id} has a brand measured for its card, and offers none` : `${id} offers the brand control, and its card is not built for cutouts`);
     }
   });
 

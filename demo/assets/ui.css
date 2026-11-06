@@ -1852,6 +1852,19 @@ code {
     linear-gradient(var(--glyph-ink), var(--glyph-ink)) 50% 0 / 100% 5px no-repeat;
 }
 
+/* A tab row over one wide card: a photo half beside a copy half. */
+.wb-glyph--tabsplit::before {
+  inset: 3px 6px auto;
+  block-size: 3px;
+  background: repeating-linear-gradient(90deg, var(--glyph-ink) 0 6px, transparent 6px 9px);
+}
+
+.wb-glyph--tabsplit::after {
+  inset: 10px 4px 3px;
+  background: linear-gradient(90deg, var(--glyph-ink) 0 50%, var(--glyph-mid) 50%);
+  border-radius: 2px;
+}
+
 /* One wide card: a photo half beside a copy half. */
 .wb-glyph--split::before {
   inset: 5px 4px;

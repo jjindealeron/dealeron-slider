@@ -368,6 +368,47 @@ test("Alfa Romeo's cards: the cutout across the photo's foot, and every name rea
   assert.deepEqual(low, [], `a name too faint on its photo: ${low.join(', ')}`);
 });
 
+// 2026-11-06: Toyota's toyota-modelbar-slick-tabbed-v3 draws split photo
+// cards behind four tabs, which the tabbed bar (cutout tiles only) could not.
+// It is the Tabbed split photo cards entry now: the tabbed bar's own tabs -
+// its markup wears data-cargo="tabs", so the shared tab CSS and script draw
+// it - with the split card's values. Measured live at 1366: a 560x280 #333
+// card, the square photo half, the year, a 24px / 500 name, a tagline, a
+// white pill with a 2px #ddd outline.
+test("Toyota's Tabs v3: four tabs over split photo cards, each with its year, tagline and outlined pill", async () => {
+  const got = await page.evaluate(() => {
+    const s = /** @type {HTMLElement} */ (document.querySelector('#b-toyota .bb-stage[data-brand="toyota-modelbar-slick-tabbed-v3"]'));
+    const c = /** @type {HTMLElement} */ (s.querySelector('.cargo-pane:not([hidden]) .cargo-card'));
+    const cs = (sel) => getComputedStyle(/** @type {Element} */ (c.querySelector(sel)));
+    const r = c.getBoundingClientRect();
+    const img = /** @type {Element} */ (c.querySelector('img')).getBoundingClientRect();
+    return {
+      pattern: s.dataset.pattern,
+      cargo: s.querySelector('[data-tabs]')?.getAttribute('data-cargo'),
+      tabs: [...s.querySelectorAll('[role="tab"]')].length,
+      ratio: r.width / r.height,
+      photoHalf: img.width / r.width,
+      bg: getComputedStyle(c).backgroundColor,
+      year: c.querySelector('.cargo-sub')?.textContent,
+      blurb: c.querySelector('.cargo-blurb')?.textContent,
+      name: `${cs('.cargo-name').fontWeight} ${cs('.cargo-name').fontSize}`,
+      pill: cs('.cargo-cta').boxShadow,
+    };
+  });
+  assert.equal(got.pattern, 'tabsplit');
+  assert.equal(got.cargo, 'tabs', 'the tabbed split cards are not drawn as a tabbed bar');
+  assert.equal(got.tabs, 4);
+  assert.ok(Math.abs(got.ratio - 2) < 0.05 && Math.abs(got.photoHalf - 0.5) < 0.01, `a ${got.ratio.toFixed(2)}:1 card with a ${(got.photoHalf * 100).toFixed(0)}% photo`);
+  assert.equal(got.bg, 'rgb(51, 51, 51)');
+  assert.match(got.year ?? '', /^20\d\d$/, 'no model year over the name');
+  assert.ok(got.blurb, 'no tagline under the name');
+  assert.match(got.name, /^500 2[34]\.\d+px$/, `the name is ${got.name}`);
+  assert.match(got.pill, /rgb\(221, 221, 221\) 0px 0px 0px 2px inset/, `the pill has no 2px #ddd outline: ${got.pill}`);
+  // Its tabs ride the tabbed bar's shared rules, so nothing ships twice.
+  const css = await (await fetch(`${ORIGIN}/dist/do-slider.min.css`)).text();
+  assert.doesNotMatch(css, /data-cargo="tabsplit"/, 'the shared sheet carries a block for the tabbed split cards');
+});
+
 // 2026-11-06 (Steven): twenty presets pinned the model name to their page's
 // measured body colour (#333, Kia's #05141f, ...), which their live bars only
 // inherit, so on a dealer's dark section the name stayed dark on dark. They
