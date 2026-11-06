@@ -1,9 +1,9 @@
 # Handoff: running DealerOn Slider
 
-Written 2026-11-03 by Steven Pelletier for whoever runs this after him: Sarah Yost and the senior
-web designers. It is the map. The detail lives in the documents it points to, and where one of them
-holds a status (what is uploaded, how many codes are built) this page sends you there instead of
-copying it, because a copied status goes stale.
+Written 2026-11-03 by Steven Pelletier, updated 2026-11-06, for whoever runs this after him: Sarah
+Yost and the senior web designers. It is the map. The detail lives in the documents it points to,
+and where one of them holds a status (what is uploaded, how many codes are built) this page sends
+you there instead of copying it, because a copied status goes stale.
 
 ## The one rule
 
@@ -103,6 +103,45 @@ Nothing on the Brands page is typed by hand; it is drawn from `brands.js`.
 
 No FTP upload is needed for a brand change unless `dist/` moved.
 
+## Changing the builder
+
+The builder's pages are drawn from data files in `demo/assets/`, never typed by hand, so a change
+starts in one of these:
+
+| To change                                                                    | Edit           | An FTP upload?                    |
+| ---------------------------------------------------------------------------- | -------------- | --------------------------------- |
+| A card design (the cutout tile, the vehicle card and the other five)         | `looks.js`     | Yes: built into the engine CSS    |
+| A pattern (its structure, CSS, page script or example content), or a new one | `patterns.js`  | Yes: built into both engine files |
+| A brand preset                                                               | `brands.js`    | No (above)                        |
+| The settings panel, the code panel, how the copied code is written           | `workbench.js` | No                                |
+| The Reference page (`demo/reference.html`, the technical guide)              | `guide.js`     | No                                |
+| How the builder's own pages look                                             | `ui.css`       | No                                |
+| The engine                                                                   | `src/`         | Yes                               |
+
+- **A new setting is a value, never CSS.** A `--` property added to a card design's `settings` or a
+  pattern's `props` shows in the settings panel by itself ("This card style", or the pattern's own
+  folder); give it a plain name in `KNOB_LABELS` in `workbench.js`. A brand that needs something no
+  setting provides gets a new setting; one that needs different markup gets a new pattern. A preset
+  never carries a CSS block or markup.
+- **A new card design is a new entry in the builder's list**, not a style picker: each design writes
+  different markup.
+- **Sizes in `em`, never `rem`.** The platform's Bootstrap 3 sets `html { font-size: 10px }`, so a
+  `rem` ships at 62.5%. Colours use the classic `rgba()` form. `npm run validate` fails on either.
+- **Never rename what a live page uses.** Once the files are on the FTP, the `dos` and `cargo-`
+  class names, the `data-dos` attributes, the `--dos-*` properties and the `dos:*` events stay as
+  they are; add new ones instead ("Before anything goes out", below).
+- **The Reference page's options and API tables are written by hand** in `guide.js`; its table of
+  CSS properties is read from the built CSS. Change an option or a behaviour in `src/` and change
+  `guide.js` in the same commit: nothing checks it.
+
+**Then, every time:** `npm run build`, and `git status dist/` says whether it is an upload.
+`npm run validate` and `npm run test` must pass, and `npm run a11y` (with `npm run serve` up) after
+any change to the demo pages. Commit, refresh the Lovable copy (below), and if `dist/` moved, upload
+all four files (next section) and update README "Deployment status".
+
+The reasons behind each rule, and the traps, are in `.claude/rules/demo-builder.md` (the builder)
+and `.claude/rules/engine.md` (`src/`). They are written for Claude Code but read plainly.
+
 ## Editing on the FTP
 
 Don't. There are two kinds of file in that folder:
@@ -169,8 +208,9 @@ password gate" in `scripts/export-lovable.mjs`.
    code on a pattern its brand already has, or a brand with no preset yet (`docs/backlog.md`,
    2026-11-03, lists them). A few need a pattern the builder does not have.
 3. **Keep the shared folder current.** README "Deployment status" says when `dist/` has moved past
-   the last upload, and the Checklist page says so at every export. It moved on 2026-11-05: the
-   name-colour fix changed both CSS files after the 2026-11-04 upload.
+   the last upload, and the Checklist page says so at every export. It has moved since the
+   2026-11-04 upload: on 2026-11-05 (the name-colour fix) and several times on 2026-11-06, the JS
+   too.
 4. **Re-read the Salesforce article** for changes since 2026-11-05 (Version 23), the last time it
    was read. Its Versions → Compare view puts any older version beside the current one, which is the
    quickest way to see what moved.
