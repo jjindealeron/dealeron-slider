@@ -826,6 +826,11 @@
       ],
       demos: 3,
       note: 'The live block shows one model at a time behind a row of twenty series names; here every model is a card.',
+      // Every live pane links the model's new and used inventory, "New" and
+      // "Pre-Owned" (/searchnew.aspx and /searchused.aspx, the same query).
+      // The card is the New link; this is the other, under it, in the live
+      // buttons' #1c69d3 (5.24:1 on white).
+      link2: 'Pre-Owned',
       styles: {
         looks: {
           tile: {
@@ -834,6 +839,7 @@
             '--name-weight': '500',
             '--name-leading': '1.1',
             '--plate-pad': '0.1px',
+            '--cta-fg': '#1c69d3',
           },
         },
       },
@@ -3046,6 +3052,11 @@
       ],
       demos: 3,
       note: 'Photo cards, not cutouts: all six across from 1200, and the name under the photo rather than over it.',
+      // Live, "Search New" and "Search Pre-Owned" slide up over the photo on
+      // hover, and stay invisible to a keyboard (three hidden stops a card).
+      // Here the card is the new search and the used one is a link under it,
+      // in its live words, visible at rest.
+      link2: 'Search Pre-Owned',
       styles: {
         looks: {
           tile: {

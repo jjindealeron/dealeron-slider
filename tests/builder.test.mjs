@@ -12,7 +12,7 @@
 // shipping. This is the fast one, for every commit.
 import { test } from '@playwright/test';
 import assert from 'node:assert/strict';
-import { openBuilder, pick, patternIds, copyParts, setField, setLength, hostHtml, engineFiles, readSlider, ORIGIN } from './helpers.mjs';
+import { openBuilder, pick, patternIds, copyParts, setField, setLength, hostHtml, engineFiles, readSlider, rowByLabel, ORIGIN } from './helpers.mjs';
 
 test.describe.configure({ mode: 'serial' });
 
@@ -427,6 +427,69 @@ test.describe('the pasted block on a hostile host page', () => {
     await cat.close();
     assert.ok(n >= 9, `only ${n} stages with a card link on patterns.html`);
     assert.deepEqual(bad, [], bad.join(' | '));
+  });
+
+  // 2026-11-06: BMW's live block links each model's new AND used inventory and
+  // Porsche's cards both searches, where our card was one link, so a dealer
+  // switched over lost the one-click path to used. The tile now draws a second
+  // link under the card when the slider has words for it: a sibling, never
+  // inside the card (a link in a link is invalid), at the card's search made a
+  // used one, named with the model, in one grid cell with its card when Rows
+  // stacks them. With no words the snippet is byte for byte what it was, so
+  // every bar already pasted stays as it is.
+  test('a second link under each card: its own search, the model in its name, nothing when empty', async () => {
+    const PLATFORM = 'a:focus-visible,.btn:focus-visible,button:focus-visible{outline:5px auto -webkit-focus-ring-color!important;outline-offset:1px!important}a:focus{outline:0 none!important}';
+    await pick(page, 'modelbar');
+    const before = (await copyParts(page)).html;
+    const editorField = () => page.locator('#wb-content fieldset').first().locator('label:has(> span:text-is("Second link")) input').count();
+    assert.equal(await editorField(), 0, 'the slide editor offers a second link before the slider has one');
+    assert.equal(await rowByLabel(page, 'Second link under each card').count(), 1, 'the card has no Second link setting');
+    await setField(page, 'Second link under each card', 'Pre-Owned');
+    assert.equal(await editorField(), 1, 'the slide editor offers no address for the second link');
+    const p = await copyParts(page);
+    const cards = [...p.html.matchAll(/<a class="cargo-card" href="([^"]+)"/g)].map((x) => x[1]);
+    const links = [...p.html.matchAll(/<a class="cargo-link" href="([^"]+)" aria-label="([^"]+)">([^<]+)<\/a>/g)];
+    assert.ok(cards.length >= 4 && links.length === cards.length, `${links.length} second links for ${cards.length} cards`);
+    links.forEach((l, i) => assert.equal(l[1], cards[i].replace('/searchnew.aspx', '/searchused.aspx'), `card ${i}: the second link is not the card's used search`));
+    assert.match(links[0][2], /^Pre-Owned \S/, 'the second link is not named with its model after its words');
+    assert.equal(links[0][3], 'Pre-Owned');
+
+    // On a host carrying the platform's link rules: each card, then its own
+    // link, in tab order, and the link draws the card ring.
+    await host.setContent(hostHtml({ ...engine, css: `${PLATFORM}\n${p.css}`, html: p.html, js: p.js }), { waitUntil: 'load' });
+    await host.waitForTimeout(150);
+    await host.evaluate(() => document.body.focus());
+    const order = [];
+    let ring = '';
+    for (let i = 0; i < 20 && order.length < 4; i++) {
+      await host.keyboard.press('Tab');
+      const got = await host.evaluate(() => {
+        const e = /** @type {HTMLElement} */ (document.activeElement);
+        if (!e?.closest('.dos-track')) return null;
+        const cs = getComputedStyle(e);
+        const r = getComputedStyle(e, '::after');
+        return { cls: e.className, ring: `outline ${cs.outlineStyle}, layer ${r.borderTopStyle} ${r.borderTopWidth}` };
+      });
+      if (!got) continue;
+      order.push(got.cls);
+      if (got.cls === 'cargo-link' && !ring) ring = got.ring;
+    }
+    assert.deepEqual(order, ['cargo-card', 'cargo-link', 'cargo-card', 'cargo-link'], 'the tab order does not run card, its link, next card');
+    assert.equal(ring, 'outline none, layer solid 2px', 'the second link has no card ring on a platform page');
+
+    // Rows 2: a column holds whole items, never a card parted from its link.
+    await setField(page, 'Rows', '2');
+    await page.waitForTimeout(250);
+    const stacked = await copyParts(page);
+    await host.setContent(hostHtml({ ...engine, css: stacked.css, html: stacked.html, js: stacked.js }), { waitUntil: 'load' });
+    const cols = await host.evaluate(() => [...document.querySelectorAll('.cargo-col')].map((c) => [...c.children].map((x) => x.className).join('+')));
+    assert.ok(cols.length > 0 && cols.every((c) => c === 'cargo-item+cargo-item'), `columns hold ${cols.join(' | ')}`);
+    await setField(page, 'Rows', '1');
+    await page.waitForTimeout(250);
+
+    await setField(page, 'Second link under each card', '');
+    assert.equal(await editorField(), 0, 'the slide editor keeps the second link address after the words are cleared');
+    assert.equal((await copyParts(page)).html, before, 'clearing the second link left the snippet changed');
   });
 
   // 2026-11-06: a focused tab's ring lost its top and bottom to its row, which

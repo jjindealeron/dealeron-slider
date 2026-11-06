@@ -437,7 +437,8 @@ measures a slide's position from slide 0, so a percentage or `min()` peek centre
 tabbed bar's script marks the cards beside the current one. Later that day the CSS again: card links
 draw their own focus ring, and a tab's label no longer wraps inside it; then both files, a tab row
 gives up spacing before type; then the CSS, a focused tab and the play buttons keep their whole
-ring, and a card's ring is a layer over its picture with 4px under the tile and wordmark names.
+ring, and a card's ring is a layer over its picture with 4px under the tile and wordmark names; then
+the CSS, a tile can draw a second link under its card.
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.

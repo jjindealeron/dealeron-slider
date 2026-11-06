@@ -144,6 +144,18 @@ Maserati's eight tiles) shows every model at once. `code.same` lists other live 
 same block (Nissan's two): each needs its own built row naming the preset, and the code box says the
 code draws the same bar.
 
+**A tile can draw a second link under its card** (2026-11-06, BMW's and Porsche's used inventory).
+Its words are the slider's, `state.link2` ("Second link under each card" in The card folder; a
+preset's `link2`, set and taken back the way `rows` is), and `htmlFor()` hands them to every row.
+The tile's `markup()` then returns the card and an `a.cargo-link` beside it inside one
+`.cargo-item`: never a link inside the card (invalid HTML), and one element so Rows keeps a card and
+its link in one grid cell. The address is the row's `href2`, else the card's `/searchnew.aspx` made
+`/searchused.aspx` (`usedFor()` in `looks.js`); with neither, that card is drawn alone. Its
+`aria-label` is the words, then the model, so the visible text starts the name. No words emit
+exactly the old markup, so every bar already pasted stays as it is. The slide editor offers `href2`
+only while the slider has words. `.cargo-link` is in the card ring's selector. `tests/builder` and
+`tests/brands` hold it.
+
 **Rows is a SETTING, not a pattern.** `state.rows` (1–3) wraps each slide's cards in `.cargo-col`
 and emits the matching `grid-template-rows` from the same place. `rowsApply()` is the one place that
 says where it applies — off for every `track: 'div'` pattern (the galleries and the lightbox), a

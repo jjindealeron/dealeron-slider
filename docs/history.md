@@ -1114,3 +1114,22 @@ tail hang 1.9px below its line box, so it ends 2.1px up, against the ring's insi
 crossing it. A descender would end that close on INFINITI, Subaru (2.8px), BMW (3.4) and Toyota
 (3.9), all on the same 1.1 leading. `tests/builder.test.mjs` failed before on both: three looks'
 descenders inside the ring, and 74% and 73% of the ring on the vehicle card and models.
+
+## 2026-11-06 — BMW's and Porsche's cards link each model's used inventory too
+
+The backlog's "second link per card, before rollout" was Steven's call; he took the link under the
+card. Read off the 2026-11-05 measurements first, it was two brands, not three. BMW's live block
+gives every model a "New" and a "Pre-Owned" button (`/searchnew.aspx` and `/searchused.aspx`, the
+same query), and Porsche's cards slide up "Search New" and "Search Pre-Owned" on hover, invisible to
+a keyboard (three hidden stops a card). Maserati's "Select" is a `span.btn` inside the card's one
+link, so it stays in the backlog as what it is: a button the preset cannot yet fill in.
+
+The tile's card stays the one link it was, to new inventory, and a second link sits under it, in a
+`.cargo-item` with the card so Rows cannot part them. Its words are the slider's ("Second link under
+each card"; BMW's preset says "Pre-Owned" in its live buttons' `#1c69d3`, Porsche's "Search
+Pre-Owned"), its address the card's search made a used one unless a row gives its own, and its name
+the words and the model ("Pre-Owned X1"). Each card is two tab stops, card then link, and the link
+draws the card ring. With no words the snippet is byte for byte what it was, which the test holds,
+so no pasted bar changes. On brands.html at 1366 and 390 the links sit on one line per bar and
+nothing leaves its slide; Nissan's bar is untouched. `tests/builder.test.mjs` and
+`tests/brands.test.mjs` failed before (no setting, no link).

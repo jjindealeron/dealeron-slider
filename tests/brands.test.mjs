@@ -263,6 +263,38 @@ test("Cadillac's and Hyundai's names on the plain model bar take the stage's tex
   }
 });
 
+// 2026-11-06: BMW's live block links every model's New and Pre-Owned
+// inventory, Porsche's cards Search New and Search Pre-Owned; a dealer
+// switched to ours lost the used one. Each preset now draws it, in its live
+// words, as a link under the card; a brand whose live bar has none draws none.
+test("BMW's and Porsche's bars link each model's used inventory under its card, Nissan's does not", async () => {
+  for (const [brand, words] of [
+    ['bmw', 'Pre-Owned'],
+    ['porsche', 'Search Pre-Owned'],
+    ['nissan', null],
+  ]) {
+    const got = await page.evaluate((b) => {
+      const slide = document.querySelector(`#b-${b} .dos-slide`);
+      const card = slide.querySelector('.cargo-card');
+      const link = slide.querySelector('.cargo-link');
+      return {
+        card: card.getAttribute('href'),
+        href: link?.getAttribute('href'),
+        text: link?.textContent,
+        name: link?.getAttribute('aria-label'),
+        model: card.querySelector('.cargo-name').textContent,
+      };
+    }, brand);
+    if (!words) {
+      assert.equal(got.href, undefined, `${brand}: a second link no live bar of theirs has`);
+      continue;
+    }
+    assert.equal(got.text, words, `${brand}: the second link does not say what the live one says`);
+    assert.equal(got.href, got.card.replace('/searchnew.aspx', '/searchused.aspx'), `${brand}: the second link is not the card's used search`);
+    assert.equal(got.name, `${words} ${got.model}`, `${brand}: the second link is not named with its model`);
+  }
+});
+
 // docs/backlog.md 2026-11-03 / Steven 2026-11-05: ten codes are a brand's
 // SECOND code (Toyota's Tabs v3 beside the Tabs v2 it already draws), and a
 // preset holds one measurement, so each is a preset of its own naming its

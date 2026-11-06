@@ -102,8 +102,9 @@ for (const [name, bp] of TIERS) {
 }
 
 // Keyboard focus on the card links: every look's card is one link
-// (.cargo-card), and the models and service patterns have their own
-// (.cargo-model, .cargo-svc). They had no ring of their own, only the
+// (.cargo-card), the models and service patterns have their own
+// (.cargo-model, .cargo-svc), and the tile can draw a second link under its
+// card (.cargo-link, BMW's "Pre-Owned"). They had no ring of their own, only the
 // browser's, and the platform takes that away. Its shared extend.css forces a
 // link's ring 1px OUTSIDE it (`a:focus-visible { outline-offset: 1px
 // !important }`), where the track's overflow clips all but a sliver, and
@@ -127,8 +128,8 @@ for (const [name, bp] of TIERS) {
 out.push(
   '',
   '/* ---- keyboard focus on a card link ---- */',
-  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {\n  position: relative;\n  outline: 0 !important;\n}',
-  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible::after {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  content: "";\n  border: 2px solid var(--dos-focus);\n  border-radius: inherit;\n}',
+  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc, .cargo-link):focus-visible {\n  position: relative;\n  outline: 0 !important;\n}',
+  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc, .cargo-link):focus-visible::after {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  content: "";\n  border: 2px solid var(--dos-focus);\n  border-radius: inherit;\n}',
 );
 
 for (const [id, look] of Object.entries(LOOKS)) {

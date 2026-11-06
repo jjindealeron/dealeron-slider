@@ -46,6 +46,12 @@
 //                      card has to stack by 480. Do not "tidy" them into one
 //                      number - each is the width its own card stops working.
 
+// A new-inventory search's used twin: the platform's two search pages take
+// the same query (bmwdemo1 links /searchnew.aspx?Make=BMW&Model=X1 and
+// /searchused.aspx?Make=BMW&Model=X1 from one model). Anything else has no
+// twin to guess, so it gives nothing.
+const usedFor = (href) => (/\/searchnew\.aspx/i.test(href ?? '') ? href.replace(/\/searchnew\.aspx/i, '/searchused.aspx') : '');
+
 const LOOKS = {
   tile: {
     // A vehicle cutout with its name under it - no card, no plate.
@@ -128,11 +134,30 @@ const LOOKS = {
 @media (prefers-reduced-motion: reduce) { .cargo-card:hover img { transform: none; } }
 .cargo-name { order: var(--name-order); margin: var(--name-gap) 0 0; font-size: var(--name-size); font-weight: var(--name-weight); line-height: var(--name-leading); color: var(--name-color); text-transform: var(--name-case); letter-spacing: var(--name-tracking); }
 .cargo-sub { display: block; margin-block-start: 0.15em; font-size: 0.8em; line-height: 1.35; color: #5f6368; }
-.cargo-cta { display: inline-block; align-self: center; padding: 0.4em 1em; margin-block-start: 0.5em; font-size: 0.8em; font-weight: 600; line-height: 1.4; color: var(--cta-fg); background: var(--cta-bg); border-radius: 999px; }`,
-    markup: (m) => `<a class="cargo-card" href="${m.href}">
+.cargo-cta { display: inline-block; align-self: center; padding: 0.4em 1em; margin-block-start: 0.5em; font-size: 0.8em; font-weight: 600; line-height: 1.4; color: var(--cta-fg); background: var(--cta-bg); border-radius: 999px; }
+.cargo-item { display: flex; flex-direction: column; block-size: 100%; }
+.cargo-item > .cargo-card { flex: 1 1 auto; block-size: auto; }
+.cargo-link { align-self: center; padding: 0.4em 1em; margin-block-start: 0.25em; font-size: 0.8em; font-weight: 600; line-height: 1.4; color: var(--cta-fg); text-decoration: none; background: var(--cta-bg); border-radius: 999px; }
+.cargo-link:hover { text-decoration: underline; }`,
+    // A second link under the card (2026-11-06): BMW's live block links each
+    // model's new AND used inventory, Porsche's cards both searches. The card
+    // stays the one link it was, to new inventory, and the second link is its
+    // sibling - a link inside a link is invalid HTML - so the two share a
+    // .cargo-item, which keeps them in one grid cell when Rows stacks the
+    // cards. Its address is the card's with /searchused.aspx for
+    // /searchnew.aspx unless the row gives its own; neither, and the card is
+    // drawn alone. Its name carries the model ("Pre-Owned X1"), so twenty of
+    // them in a links list are not twenty "Pre-Owned"s; the visible text
+    // starts it, so a voice user says what they see.
+    markup: (m) => {
+      const card = `<a class="cargo-card" href="${m.href}">
   <span class="cargo-media">${m.badge ? `<span class="cargo-badge">${m.badge}</span>` : ''}<img src="${m.img}" width="${m.w ?? 320}" height="${m.h ?? 240}" alt="${m.alt}" loading="lazy" decoding="async"></span>
   <p class="cargo-name">${m.name}</p>${m.sub ? `\n  <small class="cargo-sub">${m.sub}</small>` : ''}${m.cta ? `\n  <span class="cargo-cta">${m.cta}</span>` : ''}
-</a>`,
+</a>`;
+      const to = m.link2 ? m.href2 || usedFor(m.href) : '';
+      if (!to) return card;
+      return `<div class="cargo-item">\n${card.replace(/^/gm, '  ')}\n  <a class="cargo-link" href="${to}" aria-label="${m.link2} ${m.name}">${m.link2}</a>\n</div>`;
+    },
   },
 
   vcard: {

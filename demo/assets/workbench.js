@@ -179,6 +179,11 @@
     // hands it back to the pattern's own when another brand, or none, comes in.
     if (b?.rows && rowsApply()) state.rows = b.rows;
     else if (prevBrand?.rows) state.rows = p.rows ?? 1;
+    // The second link, the same way: a preset whose live bar links used
+    // inventory too (BMW, Porsche) sets its words, and another brand, or
+    // none, takes them back off. Words a designer typed with no preset stay.
+    if (b?.link2) state.link2 = b.link2;
+    else if (prevBrand?.link2) state.link2 = null;
     const undo = (s) => {
       if (!s) return;
       for (const k of Object.keys(s.looks?.[state.look] ?? {})) {
@@ -284,6 +289,11 @@
     state.bodyClass = null;
     state.moreText = null;
     state.moreHref = null;
+    // The words of a second link under every card (BMW's "Pre-Owned"); null
+    // draws the card alone. Slider-wide, because every card of a bar says the
+    // same thing; where each one goes is the row's (href2, or the card's own
+    // search made a used one).
+    state.link2 = null;
     state.label = null; // only renderLook overrides it — see the note there
     // The class this slider's CSS hangs off. Every snippet used to be
     // `.my-slider`, so a second slider pasted on the same page redefined the
@@ -798,7 +808,8 @@
     const take = (n, from = 0) => Array.from({ length: n }, (_, i) => source[(from + i) % source.length]);
     // A pattern draws its slides one of three ways: its own slides(), a shared
     // card look, or - for the card grid - entirely inside its own branch below.
-    const draw = (list) => (p.slides ? p.slides(list) : state.look ? list.map((m) => LOOKS[state.look].markup(m)) : []);
+    // The second link's words are the slider's, so every row is handed them.
+    const draw = (list) => (p.slides ? p.slides(list) : state.look ? list.map((m) => LOOKS[state.look].markup(state.link2 ? { ...m, link2: state.link2 } : m)) : []);
     // Rows > 1 puts a COLUMN in each slide, not a card - one slide is still one
     // scroll stop, which is what keeps the dots and the announced count honest.
     // Applied wherever slides are drawn, so it works on the tabbed bar's panes
@@ -2452,6 +2463,25 @@
       // hiding the option would sometimes hide the right answer.
       const warn = cropWarning(LOOKS[state.look], modelsFor(p));
       if (warn) pane.note(style, warn);
+      // Only on a card that draws one (the tile), read off its markup like the
+      // slide editor's fields, never a list of looks. The editor is rebuilt
+      // too: each card's own address for the link shows only while there is
+      // a link.
+      if (readsOf(LOOKS[state.look].markup).has('link2'))
+        pane.text(
+          style,
+          'Second link under each card',
+          state.link2 ?? '',
+          (v) => {
+            state.link2 = v.trim() || null;
+            buildContent();
+            render();
+          },
+          {
+            placeholder: 'Pre-Owned',
+            note: "A second link under every card, beside the card's own: BMW's and Porsche's bars link each model's used inventory too. It goes to the card's search with /searchused.aspx for /searchnew.aspx; change one in the slide editor. Empty draws the card alone.",
+          },
+        );
     }
 
     colourKnob(colors, 'Arrow colour', '--dos-arrow-fg', state.props);
@@ -2964,6 +2994,11 @@
     // /searchnew.aspx and /searchused.aspx for inventory, /service.aspx,
     // /finance.aspx, /trade.aspx, /testdrive.aspx, /orderparts.aspx for the rest.
     href: { label: 'Link', type: 'text', hint: '/searchnew.aspx?Model=Tahoe — or /service.aspx, /finance.aspx, /trade.aspx' },
+    // Where this card's second link goes, when the slider has one (The card ->
+    // Second link under each card). Empty takes the Link above and swaps its
+    // /searchnew.aspx for /searchused.aspx; a Link that is no new-inventory
+    // search has no used twin, and that card is drawn without a second link.
+    href2: { label: 'Second link', type: 'text', hint: 'Empty uses the Link above with /searchused.aspx in place of /searchnew.aspx' },
     video: { label: 'Opens a video', type: 'checkbox' },
     // The address of the actual video, per slide. Empty ships the placeholder
     // div and the comment telling you what to put in it, which is what the two
@@ -3100,7 +3135,7 @@
   // card style, with the wrong class name, and nothing on the page saying why.
   // Same shape as the content store, keyed by pattern for the same reason.
   const SKEY = 'dos-settings';
-  const SAVED = ['look', 'brand', 'perView', 'props', 'lookProps', 'data', 'hideDots', 'gutter', 'name', 'count', 'rows', 'panes', ...WORDS, 'dotsOver', 'dotsWere'];
+  const SAVED = ['look', 'brand', 'perView', 'props', 'lookProps', 'data', 'hideDots', 'gutter', 'name', 'count', 'rows', 'panes', ...WORDS, 'link2', 'dotsOver', 'dotsWere'];
 
   // Same split as the slides: what is on screen is the session's, what is in
   // localStorage is what Keep was pressed on.
@@ -3286,6 +3321,7 @@
     // The words around the tabbed bar, same terms: only where the pattern has
     // tabs, only plain strings. An empty string is a kept choice (no heading).
     if (PATTERNS[state.pattern].panes) for (const k of WORDS) if (typeof s[k] === 'string' && okStored(s[k])) state[k] = s[k];
+    if (typeof s.link2 === 'string' && s.link2.trim() && okStored(s.link2)) state.link2 = s.link2;
     if (Number.isInteger(s.count) && s.count >= 1 && s.count <= 16) state.count = s.count;
     // Clamped to the knob's own range, and only where stacking means anything:
     // a stored 2 must not survive onto a gallery, where the thumb strip counts
@@ -3339,7 +3375,10 @@
     // which pane a row lands in, and no card style reads it, so the probe would
     // hide the one field the tabbed bar exists to offer.
     const PATTERN_KEYS = new Set(pat.panes ? ['tab'] : []);
-    const keys = Object.keys(FIELDS).filter((k) => rows.some((m) => m[k] !== undefined) && (!drawn || drawn.has(k) || PATTERN_KEYS.has(k)));
+    // href2 is no roster's: it shows wherever the card draws a second link and
+    // the slider has one, so it is never a box that changes nothing.
+    const carried = (k) => rows.some((m) => m[k] !== undefined) || (k === 'href2' && !!state.link2);
+    const keys = Object.keys(FIELDS).filter((k) => carried(k) && (!drawn || drawn.has(k) || PATTERN_KEYS.has(k)));
 
     const note = document.createElement('p');
     note.className = 'wb-note';

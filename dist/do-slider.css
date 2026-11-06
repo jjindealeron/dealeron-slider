@@ -439,11 +439,11 @@
     --dos-per-view: 8;
   }
 }
-.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {
+.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc, .cargo-link):focus-visible {
   position: relative;
   outline: 0 !important;
 }
-.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible::after {
+.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc, .cargo-link):focus-visible::after {
   position: absolute;
   inset: 0;
   pointer-events: none;
@@ -571,6 +571,30 @@
   color: var(--cta-fg);
   background: var(--cta-bg);
   border-radius: 999px;
+}
+:where(.cargo-tile) .cargo-item {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+}
+:where(.cargo-tile) .cargo-item > .cargo-card {
+  flex: 1 1 auto;
+  block-size: auto;
+}
+:where(.cargo-tile) .cargo-link {
+  align-self: center;
+  padding: 0.4em 1em;
+  margin-block-start: 0.25em;
+  font-size: 0.8em;
+  font-weight: 600;
+  line-height: 1.4;
+  color: var(--cta-fg);
+  text-decoration: none;
+  background: var(--cta-bg);
+  border-radius: 999px;
+}
+:where(.cargo-tile) .cargo-link:hover {
+  text-decoration: underline;
 }
 .cargo-vcard {
   --strip-bg: transparent;
