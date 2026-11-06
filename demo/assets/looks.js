@@ -52,6 +52,16 @@
 // twin to guess, so it gives nothing.
 const usedFor = (href) => (/\/searchnew\.aspx/i.test(href ?? '') ? href.replace(/\/searchnew\.aspx/i, '/searchused.aspx') : '');
 
+// A row's own plate colour (Volkswagen gives each model one), as a custom
+// property on that card's picture. Only a colour gets through - a hex or an
+// rgb()/rgba() - because it lands in a style attribute, where anything else
+// would be markup nobody meant to ship. No colour, no attribute: the card is
+// exactly what it was.
+const plateOf = (c) => {
+  const v = String(c ?? '').trim();
+  return /^(#[0-9a-f]{3,8}|rgba?\([\d\s.,%]+\))$/i.test(v) ? ` style="--plate-bg: ${v}"` : '';
+};
+
 const LOOKS = {
   tile: {
     // A vehicle cutout with its name under it - no card, no plate.
@@ -110,6 +120,11 @@ const LOOKS = {
       // the name drifts away from the car. Raise it when --plate-bg is a real
       // colour and you want the plate to read as a plate.
       '--plate-pad': '6% 6% 1%',
+      // How far down the picture the plate reaches; the car below it stands
+      // on the page (2026-11-06, Volkswagen: a plate per model, the car
+      // hanging about 50px below it). 100% is the whole picture, which is
+      // exactly the flat colour the plate always was.
+      '--plate-reach': '100%',
       '--badge-bg': '#16324f',
       '--badge-fg': '#fff',
       // Transparent by default: on a cutout strip the button should read as a
@@ -132,7 +147,7 @@ const LOOKS = {
 .cargo-card { display: flex; flex-direction: column; block-size: 100%; padding-block-end: 6px; color: inherit; text-align: center; text-decoration: none; }
 .cargo-media { position: relative; display: block; overflow: hidden; }
 .cargo-badge { position: absolute; inset-block-start: 0.6em; inset-inline-start: 0.6em; padding: 0.25em 0.7em; font-size: 0.75em; font-weight: 700; line-height: 1.4; color: var(--badge-fg); background: var(--badge-bg); border-radius: 999px; }
-.cargo-card img { box-sizing: border-box; inline-size: 100%; block-size: auto; padding: var(--plate-pad); object-fit: contain; background: var(--plate-bg); filter: var(--img-filter); transition: filter 0.2s, transform var(--img-hover-speed) ease; }
+.cargo-card img { box-sizing: border-box; inline-size: 100%; block-size: auto; padding: var(--plate-pad); object-fit: contain; background: linear-gradient(var(--plate-bg) var(--plate-reach), transparent 0); filter: var(--img-filter); transition: filter 0.2s, transform var(--img-hover-speed) ease; }
 .cargo-card:hover img { filter: none; transform: scale(var(--img-hover-scale)); }
 @media (prefers-reduced-motion: reduce) { .cargo-card:hover img { transform: none; } }
 .cargo-name { order: var(--name-order); margin: var(--name-gap) 0 0; font-size: var(--name-size); font-weight: var(--name-weight); line-height: var(--name-leading); color: var(--name-color); text-transform: var(--name-case); letter-spacing: var(--name-tracking); }
@@ -161,7 +176,7 @@ const LOOKS = {
     // starts it, so a voice user says what they see.
     markup: (m) => {
       const card = `<a class="cargo-card" href="${m.href}">
-  <span class="cargo-media">${m.badge ? `<span class="cargo-badge">${m.badge}</span>` : ''}<img src="${m.img}" width="${m.w ?? 320}" height="${m.h ?? 240}" alt="${m.alt}" loading="lazy" decoding="async"></span>
+  <span class="cargo-media">${m.badge ? `<span class="cargo-badge">${m.badge}</span>` : ''}<img src="${m.img}" width="${m.w ?? 320}" height="${m.h ?? 240}" alt="${m.alt}" loading="lazy" decoding="async"${plateOf(m.plate)}></span>
   <p class="cargo-name">${m.name}</p>${m.sub ? `\n  <small class="cargo-sub">${m.sub}</small>` : ''}${m.cta ? `\n  <span class="cargo-cta${m.ctaClass ? ` ${m.ctaClass}` : ''}">${m.cta}</span>` : ''}
 </a>`;
       const to = m.link2 ? m.href2 || usedFor(m.href) : '';

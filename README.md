@@ -439,7 +439,8 @@ draw their own focus ring, and a tab's label no longer wraps inside it; then bot
 gives up spacing before type; then the CSS, a focused tab and the play buttons keep their whole
 ring, and a card's ring is a layer over its picture with 6px under the tile and wordmark names; then
 the CSS, a tile can draw a second link under its card; then the CSS, 6px under those names, and the
-tile's button can wear the platform's button classes.
+tile's button can wear the platform's button classes; then the CSS, the tile's plate can stop part
+way down the picture (Volkswagen).
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.

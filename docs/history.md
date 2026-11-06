@@ -1190,3 +1190,21 @@ Acura's ZDX rode 27px above the rest because its only art on the platform is the
 480x300 (16:10) among 2026 4:3 cutouts; 2025 and 2026 `zdx.png` both 404, and the live acurademo1
 bar does not show it. Refitting the repo's copy would have fixed the preview only, since the snippet
 links the platform's file, so the model is out of the roster, with its demo image and path.
+
+## 2026-11-06 — Volkswagen's colour plates: 39 of 47
+
+`volkswagen-model-bar-slick2` was one of the three codes waiting on a pattern. It turned out to need
+values, not structure: the card is the tile's (link, picture, name), and what it lacked was a plate
+that stops part way down the picture and a plate colour per model. `--plate-reach` (default 100%,
+the flat plate it always was) ends the tile's plate as a hard-stopped gradient, and a row's `plate`
+puts its colour on that card's picture as `style="--plate-bg: …"`, a hex or rgb()/rgba() only, since
+a style attribute is markup. The roster is vwdemo1's ten 864x432 cutouts, read off the live bar with
+their tabs and plates (ID.4 and Golf GTI #c2cacf, four on #dcdee3, four on navy #001e50) and fetched
+from `brand-volkswagen/Homepage/model-bar/2026/` with Steven's yes. On brands.html at 1366: a
+253.2px card (live 254), the plate 122.6px (122.9), the car 44.8px down it (45), the name 10.1px
+under (10). The preset is the 2026-11-03 measurement's, plus no heading over the bar, the live 4px
+tab gap kept on a phone, and a #0b6bd3 focus ring (3.12:1 on the navy plate; the engine's #1a5fb4 is
+2.57:1 there). Departures: the plate scales with the card where live is `min-height: 9vw`; no 10px
+lift on hover; the tab row's 3px rule draws 1px. Its name keeps the theme token's navy, its own
+`.text-default` colour, not an inherited one. Two tests used VW as an unbuilt code and as an
+inheriting name; both were moved.

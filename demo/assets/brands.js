@@ -254,7 +254,25 @@
         ['outback-wilderness.png', 350, 185, 'Outback Wilderness', 'All Vehicles | Wilderness'],
       ],
     ],
-    volkswagen: ['volkswagen', [['atlas.png', 320, 240, 'Atlas']]],
+    // vwdemo1's bar (volkswagen-model-bar-slick2), read 2026-11-06: ten
+    // 864x432 cutouts out of brand-volkswagen/Homepage/model-bar/2026/, each
+    // on its model's plate (the live arctic-blue-car #c2cacf, white-car
+    // #dcdee3 and blue-car #001e50 classes), in its live tab.
+    volkswagen: [
+      'volkswagen',
+      [
+        ['id4.png', 864, 432, 'ID.4', 'SUV', undefined, { plate: '#c2cacf' }],
+        ['atlas-cross-sport.png', 864, 432, 'Atlas Cross Sport', 'SUV', undefined, { plate: '#dcdee3' }],
+        ['atlas.png', 864, 432, 'Atlas', 'SUV', undefined, { plate: '#001e50' }],
+        ['tiguan.png', 864, 432, 'Tiguan', 'SUV', undefined, { plate: '#dcdee3' }],
+        ['taos.png', 864, 432, 'Taos', 'SUV', undefined, { plate: '#dcdee3' }],
+        ['jetta.png', 864, 432, 'Jetta', 'Sedan', undefined, { plate: '#001e50' }],
+        ['jetta-gli.png', 864, 432, 'Jetta GLI', 'Sedan', undefined, { plate: '#dcdee3' }],
+        ['golf-r.png', 864, 432, 'Golf R', 'Sedan', undefined, { plate: '#001e50' }],
+        ['golf-gti.png', 864, 432, 'Golf GTI', 'Sedan', undefined, { plate: '#c2cacf' }],
+        ['id-buzz.png', 864, 432, 'ID.Buzz', 'Bus', undefined, { plate: '#001e50' }],
+      ],
+    ],
     volvo: ['volvo', [['ex90.png', 320, 240, 'EX90']]],
     gmc: [
       'gmc',
@@ -670,7 +688,10 @@
     // routinely in more than one: Subaru lists all fifteen under "All Vehicles"
     // as well as under their fuel type. A row left untagged shows in every pane,
     // so a roster with no tags behaves exactly as it did.
-    return items.map(([file, w, h, name, tab, make]) => ({
+    // A seventh slot, an object, is any other field the row carries for its
+    // card (Volkswagen's `plate` colour per model); rows without one map
+    // exactly as before.
+    return items.map(([file, w, h, name, tab, make, extra]) => ({
       img: folder ? `img/oem/${folder}/${file}` : `img/${file}`,
       w,
       h,
@@ -681,11 +702,13 @@
       sub: 'In stock now',
       blurb: `Explore the ${label} ${name}.`,
       href: `/searchnew.aspx?Model=${encodeURIComponent(name)}`,
+      ...extra,
     }));
   };
 
   // A preset sets `--name-color` only where its live bar gives the name a
-  // colour of its own (Chevrolet, Genesis, Honda, Mazda, Maserati's tiles).
+  // colour of its own (Chevrolet, Genesis, Honda, Mazda, Maserati's tiles,
+  // Volkswagen's .text-default).
   // Where the live name inherits the page's text, the preset leaves it to
   // the tile's currentcolor, which draws that same colour on the brand's own
   // light section and turns light with the text on a dark one; a measured
@@ -3246,8 +3269,22 @@
       font: { family: 'ToyotaType-Book', css: 'https://cdn.dealeron.com/assets/fonts/ToyotaType/fonts.min.css' },
       source: 'toyotademo1.dealeron.com, 2026-09-10',
     },
+    // `volkswagen-model-bar-slick2` on vwdemo1, measured 2026-11-03
+    // (docs/research/2026-11-03-measurements/volkswagen.md), its art read
+    // 2026-11-06. Three tabs (SUV | Sedan | Bus) over a strip of cars, each on
+    // a plate in its model's colour that reaches 123px down a 254px card; the
+    // 2:1 car starts 45px down the plate and hangs about 50px below it onto
+    // the white page, and the name sits under it, 18px bold in the theme's
+    // navy (`.text-default`, the name's own colour). Built on the tile: the
+    // plate is `--plate-reach` and each row's `plate`, nothing new in the
+    // markup. Departures: the plate scales with the card (live, `min-height:
+    // 9vw`, taller on a tablet than a laptop); no 10px lift on hover; the tab
+    // row's 3px rule is 1px (no knob for its size); and the focus ring is
+    // #0b6bd3 (3.12:1 on the navy plate, 5.18:1 on white) where the engine's
+    // #1a5fb4 is 2.57:1 across a navy plate.
     volkswagen: {
       label: 'Volkswagen',
+      code: { name: 'volkswagen-model-bar-slick2', pattern: 'tabs' },
       look: 'tile',
       ladder: [
         [0, 1],
@@ -3256,7 +3293,73 @@
         [1200, 4],
       ],
       demos: 2,
-      note: 'A tile of colour behind each car, one featured in navy — the same counts as Genesis in a different card style.',
+      note: 'Three tabs over a strip of cars, each on a plate of its own colour with the car hanging below it.',
+      styles: {
+        looks: {
+          tile: {
+            // The live name is `.text-default`, the theme token's navy.
+            '--name-color': 'var(--cta-background-color)',
+            '--name-size': '1.29em',
+            // VWTextWeb-Regular at 700 is the VWHeadWeb-Bold file the live name uses.
+            '--name-weight': '700',
+            '--name-leading': '1.1',
+            // 10px, in the name's own 18px.
+            '--name-gap': '0.56em',
+            // 45px of plate over the car on the 254px card, and the plate
+            // 123px of the 172px picture box, so the car hangs below it.
+            '--plate-pad': '17.7% 0 0',
+            '--plate-reach': '71.5%',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              // 20px of padding each side of every slide: 40px between cars.
+              '--dos-gap': '2.86em',
+              // DEPARTURE: the live resting arrow is #919191, 3.15:1 on white.
+              '--dos-arrow-fg': '#767676',
+              '--dos-arrow-fg-hover': '#6c6c6c',
+              '--dos-arrow-bg-hover': 'transparent',
+              '--dos-focus': '#0b6bd3',
+              '--tab-size': '1.21em',
+              '--tab-size-narrow': '1.31em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-color': '#001e50',
+              '--tab-selected': '#001e50',
+              '--tab-dim': '1',
+              '--tab-line': '#001e50',
+              '--tab-line-hover': '#0040c5',
+              '--tab-line-size': '3px',
+              '--tab-line-grow': '0s',
+              '--tab-cell-rule': '#dfe4e8',
+              '--tab-rule': 'transparent',
+              '--tab-pad': '0.41em 1.47em 0.59em',
+              '--tab-gap': '0.24em',
+              // Live keeps its 4px between tabs at every width; the pattern's
+              // phone default (0.25em) would open it up on a phone.
+              '--tab-gap-phone': '0.24em',
+              '--tab-row-gap': '3em',
+              '--tab-fade': '0.15s',
+            },
+            panes: ['SUV', 'Sedan', 'Bus'],
+            // No heading and no lead over the live bar; the button under it.
+            words: { title: '', moreText: 'Explore All New Inventory', moreHref: '/searchnew.aspx' },
+          },
+        },
+      },
+      font: { family: 'VWTextWeb-Regular', css: 'https://cdn.dealeron.com/assets/fonts/vwweb/fonts.min.css' },
+      // PREVIEW ONLY: vwdemo1's theme tokens, and its button as measured at
+      // rest (white fill, navy 2px border, 25px radius).
+      theme: {
+        '--cta-background-color': '#001e50',
+        '--cta-font-color': '#fff',
+        '--cta-hover-color': '#00b0f0',
+        '--main-color': '#11192e',
+        css: '.btn{font-weight:400;border:2px solid #001e50;border-radius:25px;background:#fff;color:#001e50;transition:0.25s ease-in-out}.btn-lg{padding:10px 26px 12px;font-size:18px}',
+      },
+      source: 'vwdemo1.dealeron.com, 2026-11-03',
     },
     volvo: {
       label: 'Volvo',

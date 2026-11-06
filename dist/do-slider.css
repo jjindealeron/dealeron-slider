@@ -469,6 +469,7 @@
   --name-leading: 1.35;
   --plate-bg: transparent;
   --plate-pad: 6% 6% 1%;
+  --plate-reach: 100%;
   --badge-bg: #16324f;
   --badge-fg: #fff;
   --cta-bg: transparent;
@@ -530,7 +531,7 @@
   block-size: auto;
   padding: var(--plate-pad);
   object-fit: contain;
-  background: var(--plate-bg);
+  background: linear-gradient(var(--plate-bg) var(--plate-reach), transparent 0);
   filter: var(--img-filter);
   transition: filter 0.2s, transform var(--img-hover-speed) ease;
 }

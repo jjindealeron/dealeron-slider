@@ -14,13 +14,13 @@ The article lists 54 codes. Seven of them are GM multi-make combinations, which 
 does** (Steven, 2026-09-15) — they are listed at the bottom and counted nowhere. Two more were on it
 until October 2026; they are at the bottom too, under "Removed from the article".
 
-**47 codes in scope. 38 built.** The other 9 are the work.
+**47 codes in scope. 39 built.** The other 8 are the work.
 
 | Status                             |  N  | What it means                                                                                          |
 | ---------------------------------- | :-: | ------------------------------------------------------------------------------------------------------ |
-| **Replacement built**              | 38  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                      |
+| **Replacement built**              | 39  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                      |
 | **Pattern ready, not measured**    |  0  | The builder already has the right pattern; the preset is not built yet. The row says what it waits on. |
-| **Needs a pattern we do not have** |  3  | The live code is a carousel, but a shape this builder cannot draw yet.                                 |
+| **Needs a pattern we do not have** |  2  | The live code is a carousel, but a shape this builder cannot draw yet.                                 |
 | **Not a carousel**                 |  0  | A static grid or tabbed list, not a slider. Steven chose on 2026-11-06 to replace them anyway.         |
 | **Example is dead**                |  3  | The article's example link 404s, so there is nothing left to measure from.                             |
 | **Article looks wrong**            |  2  | The example link does not draw the bar its row describes.                                              |
@@ -103,7 +103,7 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | Nissan     | Slick                                 | `nissan-model-bar-slick`                            | coeurdalenenissan.com          | `tabs`      | Replacement built              | `brands.js` nissan-grid, measured 2026-11-06; the same block as nissan-model-bar-tabbed                                                                    |
 | Nissan     | Tabs                                  | `nissan-model-bar-tabbed`                           | nissandemo1                    | `tabs`      | Replacement built              | `brands.js` nissan-grid, measured 2026-11-06; the same block as nissan-model-bar-slick                                                                     |
 | Porsche    | Porsche                               | `porsche-model-bar`                                 | porschedemo1                   | `modelbar`  | Replacement built              | `brands.js` porsche, measured 2026-11-06; six photo cards, all across from 1200, each with its Search Pre-Owned link                                       |
-| Volkswagen | Tabs                                  | `volkswagen-model-bar-slick2`                       | vwdemo1                        | —           | Needs a pattern we do not have | Measured 2026-11-03: the tab row fits `tabs`, but each card is a per-model colour plate with the car hanging below it                                      |
+| Volkswagen | Tabs                                  | `volkswagen-model-bar-slick2`                       | vwdemo1                        | `tabs`      | Replacement built              | `brands.js` volkswagen, measured 2026-11-03, art read 2026-11-06; each car on its model's plate, hanging below it                                          |
 | Alfa Romeo | Slick                                 | `alfa-romeo-model-bar-cards`                        | alfaromeo3                     | —           | Needs a pattern we do not have | Measured 2026-11-03 (now alfaromeodemo1): a 300x500 photo, a cutout laid across it, a full-width button. Structure, not values                             |
 | Toyota     | Tabs v3                               | `toyota-modelbar-slick-tabbed-v3`                   | toyotademo2                    | —           | Needs a pattern we do not have | Measured 2026-11-05: split photo cards (photo, year, name, tagline, pill) behind 4 tabs; `tabs` draws cutout tiles only                                    |
 | GMC        | Slick                                 | `gmc-model-bar-slick`                               | gmcdemo4                       | `modelbar`  | Example is dead                | `gmcdemo4` returns 404                                                                                                                                     |

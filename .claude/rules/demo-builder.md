@@ -100,10 +100,11 @@ knob; if it needs structure, that is a new pattern. Specs: `2026-09-09-oem-varia
 
 **A measured colour the live element only inherits is not a value** (Steven, 2026-11-06). A preset
 sets `--name-color` only where the live bar gives the name its own colour (Chevrolet, Genesis,
-Honda, Mazda, Maserati's tiles); where the name inherits the page's text, the measured hex is that
-page's body colour, and pinned on the name it draws dark on a dealer's dark section. Leave it to the
-tile's `currentcolor`. Check the same way for any other colour knob: remove the site's own rules and
-re-read, as Maserati's button navy turned out to be one demo's Custom CSS.
+Honda, Mazda, Maserati's tiles, Volkswagen's `.text-default`); where the name inherits the page's
+text, the measured hex is that page's body colour, and pinned on the name it draws dark on a
+dealer's dark section. Leave it to the tile's `currentcolor`. Check the same way for any other
+colour knob: remove the site's own rules and re-read, as Maserati's button navy turned out to be one
+demo's Custom CSS.
 
 **A brand's second code is a preset of its own** (Steven, 2026-11-05). A preset holds one
 measurement (one `source`, one ladder, one set of card values), so a second code beside a built one

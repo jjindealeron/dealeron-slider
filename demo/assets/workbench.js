@@ -1979,6 +1979,7 @@
     '--img-hover-scale': 'Zoom on hover',
     '--plate-bg': 'Plate colour',
     '--plate-pad': 'Plate padding',
+    '--plate-reach': 'Plate height',
     '--card-bg': 'Card background',
     '--card-fg': 'Card text',
     '--card-radius': 'Corner radius',
@@ -3037,6 +3038,10 @@
     phone: { label: 'Phone image', type: 'text', hint: 'Different art under 768px — leave empty to use the one above at every width' },
     caption: { label: 'Caption', type: 'text', hint: 'Printed under the photo. Say something the alt text does not, or leave it empty' },
     badge: { label: 'Badge', type: 'text', hint: 'A short label over the photo — New, Certified, Special Offer. Empty draws nothing' },
+    // This card's own plate colour (Volkswagen's model bar gives every model
+    // one). Only where the rows carry the key, so no other roster offers a
+    // box that does nothing; only a hex or rgb()/rgba() reaches the markup.
+    plate: { label: 'Plate colour', type: 'text', hint: '#c2cacf — the colour behind this car. Empty uses the card style’s' },
     w: { label: 'Source width', type: 'number', hint: 'Real pixel width of the file' },
     h: { label: 'Source height', type: 'number', hint: 'Real pixel height of the file' },
     // Empty prints the words the card style has always printed, so a roster

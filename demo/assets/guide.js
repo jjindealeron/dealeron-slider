@@ -280,6 +280,8 @@
     '--img-hover-scale': 'How far the photo zooms when the pointer is over it. <code>1</code> is off. The frame never changes size, so nothing around it moves.',
     '--plate-bg': 'A coloured panel drawn behind the vehicle cutout.',
     '--plate-pad': 'How much of that panel shows around the vehicle. The cutouts already carry their own transparent margin, so this stays small unless the panel is a real colour.',
+    '--plate-reach':
+      'How far down the picture that panel reaches, so the car can hang below it onto the page (Volkswagen). 100% fills the whole picture. A slide can give its own plate colour in the slide editor.',
     '--card-bg': "The card's own background, behind the photo and text.",
     '--card-radius': 'Corner rounding on the card.',
     '--card-border': "The card's outline, written as one value — width, style and colour together. <code>none</code> removes it.",

@@ -19,5 +19,6 @@ one push. This is the step checklist, ticked as each step lands; the evidence go
       page; Steven's call whether it follows the section instead.
 - [ ] 5. **The three codes that need a pattern:** Alfa Romeo's photo-and-cutout cards, Volkswagen's
       colour plates, Toyota's Tabs v3 split cards. Designed from their measurements first, built one
-      at a time, each with its art, preset, ledger row and tests.
+      at a time, each with its art, preset, ledger row and tests. Volkswagen done (values on the
+      tile, no new markup).
 - [ ] 6. **Close out:** gates, CI, the Lovable copy staged, backlog and ledger updated.

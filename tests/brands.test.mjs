@@ -263,6 +263,39 @@ test("Cadillac's and Hyundai's names on the plain model bar take the stage's tex
   }
 });
 
+// 2026-11-06: Volkswagen's volkswagen-model-bar-slick2 was a pattern we
+// lacked - a plate in each model's colour, the car hanging below it - and is
+// the tile with --plate-reach and a per-row plate now. Measured live at 1366:
+// a 254px card, the plate 123px, the car 45px down it, the name 10px under.
+test("Volkswagen's bar: each car on its own model's plate, hanging below it", async () => {
+  const got = await page.evaluate(() =>
+    [...document.querySelectorAll('#b-volkswagen .bb-stage[data-pattern="tabs"] .cargo-pane:not([hidden]) .cargo-card')].slice(0, 3).map((c) => {
+      const img = /** @type {HTMLImageElement} */ (c.querySelector('img'));
+      const r = img.getBoundingClientRect();
+      const cs = getComputedStyle(img);
+      return {
+        plate: img.style.getPropertyValue('--plate-bg').trim(),
+        bg: cs.backgroundImage,
+        w: r.width,
+        h: r.height,
+        top: parseFloat(cs.paddingTop),
+        name: c.querySelector('.cargo-name')?.textContent,
+      };
+    }),
+  );
+  assert.deepEqual(
+    got.map((c) => `${c.name} ${c.plate}`),
+    ['ID.4 #c2cacf', 'Atlas Cross Sport #dcdee3', 'Atlas #001e50'],
+  );
+  for (const c of got) {
+    // The plate is a hard-stopped gradient that ends 71.5% down the picture...
+    assert.match(c.bg, /^linear-gradient\(rgb\([^)]+\) 71\.5%, rgba\(0, 0, 0, 0\) 0(px)?\)$/, `${c.name}: no plate that stops part way: ${c.bg}`);
+    // ...the car starts 45px down a 254px card and hangs below the plate.
+    assert.ok(Math.abs(c.top / c.w - 45 / 254) < 0.01, `${c.name}: the car starts ${c.top.toFixed(1)}px down a ${c.w.toFixed(1)}px card`);
+    assert.ok(c.h - c.h * 0.715 > 40, `${c.name}: the car hangs only ${(c.h - c.h * 0.715).toFixed(1)}px below its plate`);
+  }
+});
+
 // 2026-11-06 (Steven): twenty presets pinned the model name to their page's
 // measured body colour (#333, Kia's #05141f, ...), which their live bars only
 // inherit, so on a dealer's dark section the name stayed dark on dark. They
@@ -270,7 +303,7 @@ test("Cadillac's and Hyundai's names on the plain model bar take the stage's tex
 // name's own colour keep it. Every brand's stage turned to white text, the
 // way a dark section turns it: each name follows, except those five.
 test("a brand's model names follow a dark section, unless its live bar colours them itself", async () => {
-  const OWN = ['chevrolet', 'genesis', 'genesis-non-ev', 'honda', 'honda-tabbed', 'mazda', 'maserati-tiles'];
+  const OWN = ['chevrolet', 'genesis', 'genesis-non-ev', 'honda', 'honda-tabbed', 'mazda', 'maserati-tiles', 'volkswagen'];
   const got = await page.evaluate((own) => {
     const out = { stuck: [], followed: [] };
     for (const stage of /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('.bb-stage'))) {

@@ -532,6 +532,30 @@ test.describe('the pasted block on a hostile host page', () => {
     assert.equal(await rowByLabel(page, 'Space between rows').count(), 0, 'one row and still a Space between rows setting');
   });
 
+  // 2026-11-06: Volkswagen gives every model its own plate colour, so the
+  // tile's picture can carry one as a custom property in a style attribute.
+  // A style attribute is markup, so only a colour may reach it: a value that
+  // is not one leaves the card exactly as it was, and so does none. The
+  // preset puts its ten colours in the copied code.
+  test("a card's own plate colour: only a colour reaches the markup", async () => {
+    const tile = (plate) => page.evaluate((v) => globalThis.CARGO.LOOKS.tile.markup({ href: '/x', img: 'a.png', alt: 'A', name: 'A', plate: v }), plate);
+    const bare = await tile(undefined);
+    assert.doesNotMatch(bare, /style=/, 'a card with no plate colour carries a style attribute');
+    for (const ok of ['#c2cacf', '#001E50', 'rgb(0, 30, 80)', 'rgba(0,0,0,0.5)'])
+      assert.match(await tile(ok), new RegExp(`<img [^>]* style="--plate-bg: ${ok.replace(/[()]/g, '\\$&')}">`), `${ok} did not reach the picture`);
+    for (const bad of ['red', 'url(x)', '#fff;background:url(x)', '" onerror="x', 'var(--x)', '']) assert.equal(await tile(bad), bare, `${JSON.stringify(bad)} changed the card`);
+
+    await page.fill('#wb-oldcode-in', 'volkswagen-model-bar-slick2');
+    await page.press('#wb-oldcode-in', 'Enter');
+    await stageReady(page);
+    const { html } = await copyParts(page);
+    const plates = [...html.matchAll(/style="--plate-bg: (#[0-9a-f]+)"/g)].map((x) => x[1]);
+    assert.ok(plates.length >= 10 && new Set(plates).size === 3, `Volkswagen's snippet carries ${plates.length} plates in ${new Set(plates).size} colours`);
+    assert.doesNotMatch(html, /cargo-title/, "Volkswagen's bar has no heading");
+    await page.click('#wb-variants button[data-brand=""]');
+    await stageReady(page);
+  });
+
   // 2026-11-06: a focused tab's ring lost its top and bottom to its row, which
   // was a scroll container even when it fitted, so on a platform page it
   // showed as two lines beside the label, like the dividers; and the two video

@@ -68,9 +68,10 @@ test('a retired code opens its replacement and says so; an unbuilt one and junk 
   assert.match(retired.out, /retired; its replacement is chevrolet-model-bar/);
 
   const before = (await open('kia-model-bar')).hash;
-  const unbuilt = await open('volkswagen-model-bar-slick2');
+  // A code whose example page is dead, so it stays unbuilt.
+  const unbuilt = await open('gmc-model-bar-slick');
   assert.equal(unbuilt.hash, before, 'an unbuilt code moved the builder');
-  assert.match(unbuilt.out, /No replacement is built for volkswagen-model-bar-slick2 yet/);
+  assert.match(unbuilt.out, /No replacement is built for gmc-model-bar-slick yet/);
   assert.match(await page.locator('#wb-oldcode-out a').getAttribute('href'), /docs\/coverage\.md$/);
 
   for (const raw of ['', '<script>']) {
