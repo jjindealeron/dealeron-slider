@@ -1837,6 +1837,21 @@ code {
   background: repeating-linear-gradient(90deg, var(--glyph-ink) 0 6px, transparent 6px 9px);
 }
 
+/* A tall photo with a car laid across its foot, a button under it. */
+.wb-glyph--backdrop::before {
+  inset: 2px 9px 9px;
+  background: var(--glyph-mid);
+  border-radius: 2px 2px 0 0;
+}
+
+.wb-glyph--backdrop::after {
+  inset: auto 4px 3px;
+  block-size: 9px;
+  background:
+    linear-gradient(var(--glyph-ink), var(--glyph-ink)) 50% 100% / 70% 2px no-repeat,
+    linear-gradient(var(--glyph-ink), var(--glyph-ink)) 50% 0 / 100% 5px no-repeat;
+}
+
 /* One wide card: a photo half beside a copy half. */
 .wb-glyph--split::before {
   inset: 5px 4px;

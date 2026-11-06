@@ -143,7 +143,14 @@
   // portrait art (only Equinox, Silverado 1500 and Trax exist, and only as
   // 1000x1000 squares), so the pattern uses the marque whose art fits it.
   // Picking a brand in the workbench still swaps the whole roster.
-  const MODELS = BRANDS.alfaromeo.models;
+  // Without each row's `photo`: that is the Photo-with-cutout card's backdrop
+  // (2026-11-06), and on these patterns it would be an editor box that
+  // changes nothing.
+  const MODELS = BRANDS.alfaromeo.models.map((m) => Object.fromEntries(Object.entries(m).filter(([k]) => k !== 'photo')));
+  // The Photo-with-cutout card's own example: Alfa Romeo's rows whole, each
+  // with its cutout and the tall photo behind it - the one marque whose art
+  // has both.
+  const BACKDROPS = BRANDS.alfaromeo.models;
 
   // Deliberately mismatched source files. The point of the example is that the
   // CSS crops them to one shape, so a dealer uploading whatever they have still
@@ -443,6 +450,18 @@
       models: MODELS,
       data: {},
       props: { '--dos-gap': '1em' },
+    },
+    // Alfa Romeo's alfa-romeo-model-bar-cards (2026-11-06). Dots off, as on
+    // the model bar: the live bar has none.
+    backdrop: {
+      label: 'Photo with cutout',
+      blurb:
+        "A tall photo with the model's name over it and its cutout laid across the photo's foot, a button under them, on a dark strip. Each slide wants both pictures: a 3:5 photo and a transparent cutout.",
+      look: 'backdrop',
+      models: BACKDROPS,
+      data: {},
+      props: { '--dos-gap': '1em' },
+      hideDots: true,
     },
     split: {
       label: 'Split photo cards',

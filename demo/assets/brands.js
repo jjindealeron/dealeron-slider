@@ -533,15 +533,19 @@
     // photographs (brand-alfa-romeo/homepage/model-bar/2025, 580x344). The
     // 300x500 ar-*.jpg portraits that were here until 2026-09-10 are the tall
     // tile's own art, and a brand roster is only ever drawn on a cutout card.
+    // Since 2026-11-06 each row also carries its 300x500 `photo`, which only
+    // the Photo-with-cutout card draws (behind the cutout); every other card
+    // draws the cutout alone. Tonale's cutout and photo are the 2026 files
+    // the live bar serves, the rest 2025.
     alfaromeo: [
       'alfaromeo',
       [
-        ['mb-tonale-sprint.png', 580, 344, 'Tonale'],
-        ['mb-tonale-hybrid.png', 580, 344, 'Tonale Hybrid'],
-        ['mb-giulia-sprint.png', 580, 344, 'Giulia'],
-        ['mb-stelvio-veloce.png', 580, 344, 'Stelvio'],
-        ['mb-giulia-qv.png', 580, 344, 'Giulia Quadrifoglio'],
-        ['mb-stelvio-qv.png', 580, 344, 'Stelvio Quadrifoglio'],
+        ['mb-tonale-sprint.png', 580, 344, 'Tonale', undefined, undefined, { photo: 'img/oem/alfaromeo/ar-tonale-sprint.jpg' }],
+        ['mb-tonale-hybrid.png', 580, 344, 'Tonale Hybrid', undefined, undefined, { photo: 'img/oem/alfaromeo/ar-tonale-hybrid.jpg' }],
+        ['mb-giulia-sprint.png', 580, 344, 'Giulia', undefined, undefined, { photo: 'img/oem/alfaromeo/ar-giulia-sprint.jpg' }],
+        ['mb-stelvio-veloce.png', 580, 344, 'Stelvio', undefined, undefined, { photo: 'img/oem/alfaromeo/ar-stelvio-veloce.jpg' }],
+        ['mb-giulia-qv.png', 580, 344, 'Giulia Quadrifoglio', undefined, undefined, { photo: 'img/oem/alfaromeo/giulia-quadrifoglio.jpg' }],
+        ['mb-stelvio-qv.png', 580, 344, 'Stelvio Quadrifoglio', undefined, undefined, { photo: 'img/oem/alfaromeo/ar-stelvio-qv.jpg' }],
       ],
     ],
     chevrolet: [
@@ -768,9 +772,19 @@
       font: { family: 'AcuraBespoke-Regular', css: 'https://cdn.dealeron.com/assets/fonts/acurabespoke/fonts.min.css', headings: true },
       source: 'acurademo1.dealeron.com, 2026-11-03',
     },
+    // `alfa-romeo-model-bar-cards` on alfaromeodemo1, measured 2026-11-03
+    // (docs/research/2026-11-03-measurements/alfaromeo.md) and re-read
+    // 2026-11-06: on the Photo-with-cutout card, whose defaults are this bar's
+    // own values, so the preset carries only the band and the gap. Slick 6,
+    // 1800:4, 1200:3, 992:2, 540:1, the ladder above. Departures: a dark wash
+    // under the name (live, the second line of "Giulia Quadrifoglio" is
+    // 1.12:1 on its photo); the name kept 16px in from the card at every
+    // width; one cutout overlap (live 74.5px at 1366, 93px at 390); the
+    // focus ring #4a90e2 where the live #ba0616 arrow ring is 2.10:1.
     alfaromeo: {
       label: 'Alfa Romeo',
-      look: 'portrait',
+      code: { name: 'alfa-romeo-model-bar-cards', pattern: 'backdrop' },
+      look: 'backdrop',
       ladder: [
         [0, 1],
         [540, 2],
@@ -779,7 +793,27 @@
         [1800, 6],
       ],
       demos: 1,
-      note: 'The most styled bar we surveyed — tall dark tiles with a browse button.',
+      note: 'Tall dark photo cards, the cutout laid across each photo’s foot, a browse button under it.',
+      styles: {
+        looks: {
+          backdrop: {
+            // The section's bg-main on this demo.
+            '--strip-bg': '#292b35',
+          },
+        },
+        patterns: {
+          backdrop: {
+            props: {
+              // 15px of slide padding a side: 30px between cards.
+              '--dos-gap': '2.14em',
+            },
+          },
+        },
+      },
+      // PREVIEW ONLY: the body's face; the name and button are Sequel live,
+      // which no knob carries.
+      font: { family: 'HelveticaNeueRoman', css: 'https://cdn.dealeron.com/assets/fonts/helveticaneue/fonts.min.css' },
+      source: 'alfaromeodemo1.dealeron.com, 2026-11-03',
     },
     audi: {
       label: 'Audi',
@@ -3387,7 +3421,7 @@
   // belongs to a card. Leaving it out of the clamp is what let Acura's real
   // 5-across ladder through at 768px as a 134px card - measured in the browser,
   // where the workbench's own fit warning caught it.
-  const CHROME = { tile: 96, portrait: 48, logo: 32, location: 32 };
+  const CHROME = { tile: 96, portrait: 48, backdrop: 96, logo: 32, location: 32 };
 
   // Headroom above minCard. An arithmetic model cannot predict a rendered card
   // to the pixel - borders, sub-pixel rounding and the scrollbar all move it a

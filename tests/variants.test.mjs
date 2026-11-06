@@ -248,14 +248,26 @@ test.describe('a brand applies its values', () => {
     // less the four measured", and measuring three more on 2026-09-15 failed it
     // for the work getting done.
     // Counted by BRAND since 2026-11-05: a brand with two codes is one chip
-    // here or one option, never both (pickOwn, brands.js).
-    const { brands, chips } = await page.evaluate(() => {
-      const { BRANDS, patternsOf, brandOf } = globalThis.CARGO;
-      const families = [...new Set(Object.keys(BRANDS).map(brandOf))];
-      return { brands: families.length, chips: families.filter((f) => Object.keys(BRANDS).some((m) => brandOf(m) === f && patternsOf(m).length)).length };
+    // here or one option, never both (pickOwn, brands.js). And read off the
+    // strip since 2026-11-06: a brand measured on another card only (Alfa
+    // Romeo, on Photo with cutout) is no chip on the tabbed bar, so "every
+    // measured brand is a chip here" no longer holds. What does: every brand
+    // is offered exactly once, as a chip or as an option.
+    const brands = await page.evaluate(() => {
+      const { BRANDS, brandOf } = globalThis.CARGO;
+      return new Set(Object.keys(BRANDS).map(brandOf)).size;
     });
-    const optCount = await page.locator('#wb-brand option:not([value=""])').count();
-    assert.equal(optCount, brands - chips, `a cutout card offers every other brand in the select: ${brands} brands less ${chips} measured chips should be ${brands - chips}, got ${optCount}`);
+    const chipFamilies = await page.evaluate(() => {
+      const { brandOf } = globalThis.CARGO;
+      return [...new Set([...document.querySelectorAll('#wb-variants button[data-brand]:not([data-brand=""])')].map((b) => brandOf(/** @type {HTMLElement} */ (b).dataset.brand)))];
+    });
+    const options = await page.evaluate(() => {
+      const { brandOf } = globalThis.CARGO;
+      return [.../** @type {NodeListOf<HTMLOptionElement>} */ (document.querySelectorAll('#wb-brand option:not([value=""])'))].map((o) => brandOf(o.value));
+    });
+    const both = options.filter((o) => chipFamilies.includes(o));
+    assert.deepEqual(both, [], `a brand offered as a chip and as an option: ${both.join(', ')}`);
+    assert.equal(chipFamilies.length + new Set(options).size, brands, `a cutout card offers every brand once: ${chipFamilies.length} chips and ${new Set(options).size} options for ${brands} brands`);
   });
 
   // 2026-11-05: both of Kia's, Ford's, Honda's and Lincoln's presets were

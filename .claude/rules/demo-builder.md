@@ -27,12 +27,12 @@ controls), `vendor/tweakpane.js` (committed classic-script bundle from `scripts/
 `esbuild`/`tweakpane`/`@tweakpane/core` until it is rebuilt and committed — the intended loud
 failure), `cms-paths.js`, `highlight.js`, `theme.js`, `ui.css`.
 
-**Card styles are GENERATED, never hand-written.** `scripts/build-cards.mjs` builds the 7 looks plus
-`dos-{xs,sm,md,lg}-N` column classes from the same `LOOKS` the builder uses and appends them to the
-engine stylesheet behind a `/*! cards */` marker. One file, because every site links it. The marker
-is load-bearing: `npm run size` splits on it to weigh the ENGINE alone. The builder emits
-shared-class markup with only the properties that differ from the look's defaults and offers no
-inlined copy of the card styles — an inlined copy can never be fixed.
+**Card styles are GENERATED, never hand-written.** `scripts/build-cards.mjs` builds the looks (eight
+since 2026-11-06) plus `dos-{xs,sm,md,lg}-N` column classes from the same `LOOKS` the builder uses
+and appends them to the engine stylesheet behind a `/*! cards */` marker. One file, because every
+site links it. The marker is load-bearing: `npm run size` splits on it to weigh the ENGINE alone.
+The builder emits shared-class markup with only the properties that differ from the look's defaults
+and offers no inlined copy of the card styles — an inlined copy can never be fixed.
 
 **A card link draws its own focus ring, `!important`** (2026-11-06). The platform's `extend.css`
 pushes every link's ring 1px outside it, where the track clips it, and template 740's `layout.css`
@@ -63,11 +63,12 @@ pattern scripts publish `DealerOnSlider.wirePatterns()` for markup added after l
 frame and the two catalogue pages call it once per build, a dealer page never does. A change to
 `patterns.js` is an upload, exactly like a change under `src/`.
 
-**Every card is a rail entry; there is no card-style picker.** All seven looks emit different
-element trees, so a control that swaps markup is not a style control. The seven looks are seven rail
-entries (`modelbar`/tile, `wordmark`, `cards`/vcard, `portrait`, `split`, `logostrip`, `locations`),
-each with the roster its card is built for; the settings panel holds settings only. Deep links are
-`#pattern` or `#pattern?brand=id`, never `#pattern/look`. A test fails on a picker reappearing.
+**Every card is a rail entry; there is no card-style picker.** All eight looks emit different
+element trees, so a control that swaps markup is not a style control. The eight looks are eight rail
+entries (`modelbar`/tile, `wordmark`, `cards`/vcard, `portrait`, `backdrop` (Photo with cutout, Alfa
+Romeo's, 2026-11-06), `split`, `logostrip`, `locations`), each with the roster its card is built
+for; the settings panel holds settings only. Deep links are `#pattern` or `#pattern?brand=id`, never
+`#pattern/look`. A test fails on a picker reappearing.
 
 **A card is built for a KIND OF PICTURE (the third axis).** Every look declares `content` (`cutout`,
 `photo`, `cutout-or-photo`, `mark`, `place`) and `crop` (forced aspect or `null`); `check-looks.mjs`

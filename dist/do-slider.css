@@ -927,6 +927,120 @@
   letter-spacing: 0.15em;
   background: var(--cta-bg);
 }
+.cargo-backdrop {
+  --strip-bg: #14161b;
+  --strip-pad: 1.5em;
+  --strip-pad-end: 1.5em;
+  --strip-pad-x: calc(var(--dos-arrow-size) + 0.25em);
+  --dos-dot-current: #fff;
+  --dos-arrow-fg: #fff;
+  --dos-arrow-bg: rgba(255, 255, 255, 0.14);
+  --dos-arrow-bg-hover: rgba(255, 255, 255, 0.26);
+  --dos-focus: #4a90e2;
+  --card-fg: #fff;
+  --photo-width: 70%;
+  --photo-radius: 10px 10px 0 0;
+  --name-size: 1.57em;
+  --name-weight: 500;
+  --name-leading: 1.55;
+  --name-top: 1.64em;
+  --name-inset: 0.727em;
+  --name-scrim: rgba(0, 0, 0, 0.45);
+  --car-rise: 27.7%;
+  --cta-gap: 1.667em;
+  --cta-size: 0.857em;
+  --cta-bg: #f4f4f4;
+  --cta-fg: #1c1f2a;
+  --cta-hover: #ccc;
+  font-size: var(--cargo-font, 1em);
+}
+.cargo-backdrop {
+  padding-block-start: var(--strip-pad);
+  padding-inline: var(--strip-pad-x);
+  background: var(--strip-bg);
+}
+:where(.cargo-backdrop) .dos-track {
+  padding-block-end: var(--strip-pad-end);
+}
+@media (max-width: 767.98px) {
+  .cargo-backdrop {
+    --dos-arrow-size: 36px;
+  }
+}
+@media (max-width: 575.98px) {
+  .cargo-backdrop {
+    --dos-arrow-size: 32px;
+  }
+}
+:where(.cargo-backdrop) .cargo-card {
+  display: flex;
+  flex-direction: column;
+  block-size: 100%;
+  color: var(--card-fg);
+  text-decoration: none;
+}
+:where(.cargo-backdrop) .cargo-media {
+  position: relative;
+  display: block;
+}
+:where(.cargo-backdrop) .cargo-bg {
+  display: block;
+  inline-size: var(--photo-width);
+  block-size: auto;
+  margin-inline: auto;
+  border-radius: var(--photo-radius);
+}
+:where(.cargo-backdrop) .cargo-media:has(> .cargo-bg)::before {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: 0;
+  inline-size: var(--photo-width);
+  block-size: 10em;
+  margin-inline: auto;
+  pointer-events: none;
+  content: "";
+  background: linear-gradient(var(--name-scrim) 50%, transparent);
+  border-radius: var(--photo-radius);
+}
+:where(.cargo-backdrop) .cargo-name {
+  display: block;
+  margin: 0 0 0.4em;
+  font-size: var(--name-size);
+  font-weight: var(--name-weight);
+  line-height: var(--name-leading);
+  text-transform: uppercase;
+}
+:where(.cargo-backdrop) .cargo-bg + .cargo-name {
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline: var(--name-inset);
+  padding-block-start: var(--name-top);
+  margin: 0;
+}
+:where(.cargo-backdrop) .cargo-car {
+  display: block;
+  inline-size: 100%;
+  block-size: auto;
+}
+:where(.cargo-backdrop) .cargo-bg ~ .cargo-car {
+  margin-block-start: calc(-1 * var(--car-rise));
+}
+:where(.cargo-backdrop) .cargo-cta {
+  display: block;
+  padding: 1.167em 1.667em;
+  margin: var(--cta-gap) 1.25em 0;
+  font-size: var(--cta-size);
+  line-height: 1.5;
+  color: var(--cta-fg);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 0.083em;
+  background: var(--cta-bg);
+  transition: background-color 0.3s ease-in-out;
+}
+:where(.cargo-backdrop) .cargo-card:hover .cargo-cta {
+  background: var(--cta-hover);
+}
 .cargo-logo {
   --strip-bg: transparent;
   --card-bg: #f4f6f8;

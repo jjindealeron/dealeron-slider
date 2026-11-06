@@ -13,6 +13,9 @@
 // serve from an unrelated dealer domain like everything else here.
 
 // 326 pairs: 318 byte-proved, 8 name-matched (the chrome-*.webp group above).
+// 2026-11-06, later: 15 more by hand (Volkswagen's ten model-bar cutouts, five Alfa Romeo backdrop
+// photos), and Alfa's Tonale cutout moved to the 2026 file live serves, each proved byte-identical
+// from acurademo1 and hondademo1.
 // 2026-11-06: 44 more merged by hand for the nine static codes (BMW, Maserati tiles, INFINITI,
 // Porsche, Genesis, Nissan), the same way: fetched from acurademo1, proved from hondademo1.
 // 2026-11-05: 26 merged by hand (Maserati's cutouts and logo, sixteen CDJR cutouts), each
@@ -72,13 +75,18 @@ globalThis.CARGO = Object.assign(globalThis.CARGO || {}, {
     'oem/acura/mdx.png': '/static/brand-acura/homepage/modelbar/2026/mdx.png',
     'oem/acura/rdx.png': '/static/brand-acura/homepage/modelbar/2026/rdx.png',
     'oem/acura/tlx.png': '/static/brand-acura/homepage/modelbar/2026/tlx.png',
+    'oem/alfaromeo/ar-tonale-sprint.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2026/ar-tonale-sprint.jpg',
+    'oem/alfaromeo/ar-tonale-hybrid.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2025/ar-tonale-hybrid.jpg',
+    'oem/alfaromeo/ar-giulia-sprint.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2025/ar-giulia-sprint.jpg',
+    'oem/alfaromeo/ar-stelvio-veloce.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2025/ar-stelvio-veloce.jpg',
+    'oem/alfaromeo/ar-stelvio-qv.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2025/ar-stelvio-qv.jpg',
     'oem/alfaromeo/giulia-quadrifoglio.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2025/ar-giulia-qv.jpg',
     'oem/alfaromeo/mb-giulia-qv.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-giulia-qv.png',
     'oem/alfaromeo/mb-giulia-sprint.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-giulia-sprint.png',
     'oem/alfaromeo/mb-stelvio-qv.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-stelvio-qv.png',
     'oem/alfaromeo/mb-stelvio-veloce.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-stelvio-veloce.png',
     'oem/alfaromeo/mb-tonale-hybrid.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-tonale-hybrid.png',
-    'oem/alfaromeo/mb-tonale-sprint.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-tonale-sprint.png',
+    'oem/alfaromeo/mb-tonale-sprint.png': '/static/brand-alfa-romeo/homepage/model-bar/2026/mb-tonale-sprint.png',
     'oem/audi/e-tron-gt.webp': '/static/brand-audi/homepage/modelbar/2026/e-tron-gt.webp',
     'oem/audi/q3.webp': '/static/brand-audi/homepage/modelbar/2026/q3.webp',
     'oem/audi/q4-e-tron.webp': '/static/brand-audi/homepage/modelbar/2026/q4-e-tron.webp',

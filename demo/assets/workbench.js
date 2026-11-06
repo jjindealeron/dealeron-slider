@@ -254,6 +254,7 @@
     wordmark: 'Wordmark strip',
     cards: 'Vehicle cards',
     portrait: 'Tall tile + CTA',
+    backdrop: 'Photo + cutout',
     split: 'Split photo',
     logostrip: 'Logo strip',
     locations: 'Locations',

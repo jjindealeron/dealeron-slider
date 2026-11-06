@@ -183,7 +183,7 @@ today, and the rename map for moving a page across.
 
 ## Card styles come with the stylesheet
 
-`dist/do-slider.min.css` is the engine **plus** a small library of card styling: the seven card
+`dist/do-slider.min.css` is the engine **plus** a small library of card styling: the eight card
 looks and a set of column classes (`npm run size` prints the share). The engine itself styles no
 cards on purpose — `dos-*` is mechanism, `cargo-*` is content — but every site that links it gets
 the card half too, so a slider is mostly just its markup:
@@ -440,7 +440,8 @@ gives up spacing before type; then the CSS, a focused tab and the play buttons k
 ring, and a card's ring is a layer over its picture with 6px under the tile and wordmark names; then
 the CSS, a tile can draw a second link under its card; then the CSS, 6px under those names, and the
 tile's button can wear the platform's button classes; then the CSS, the tile's plate can stop part
-way down the picture (Volkswagen).
+way down the picture (Volkswagen); then the CSS, an eighth card look, Photo with cutout (Alfa
+Romeo).
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.

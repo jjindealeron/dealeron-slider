@@ -1208,3 +1208,26 @@ tab gap kept on a phone, and a #0b6bd3 focus ring (3.12:1 on the navy plate; the
 lift on hover; the tab row's 3px rule draws 1px. Its name keeps the theme token's navy, its own
 `.text-default` colour, not an inherited one. Two tests used VW as an unbuilt code and as an
 inheriting name; both were moved.
+
+## 2026-11-06 — Alfa Romeo's photo-and-cutout cards: 40 of 47
+
+`alfa-romeo-model-bar-cards` needed a card no look drew, so it is the eighth look, `backdrop` (Photo
+with cutout), and its rail entry. Read live on alfaromeodemo1: a 300x500 photo at 70% of the card,
+top corners rounded 10px; the name 22px / 34px over its top, 36px down and 16px in from the card's
+edge, so a long one runs past the photo; the 580x344 cutout across the whole card, rising 74.5px
+(of 269) into the photo's foot; a full-width #f4f4f4 button 15px in, 20px under it, 46px tall. Ours
+lands on every one of those at 1366, as shares of the card where live is a share. A slide without a
+photo draws its name over the cutout alone, so every brand's roster still works on it. Departure:
+live puts the white name straight on the photo, and the second line of a Quadrifoglio name fell to
+3.00:1 there (1.12:1 in the first measurement); a dark wash over the photo's top takes every name to
+4.66:1 or better at 1600, 1366 and 390 (text hidden, 95th-percentile pixel behind it), which
+tests/brands.test.mjs holds. Also not carried: the Sequel face (no knob), the steeper overlap below
+540 (93px at 390), and the dead link live wraps around each cutout.
+
+The five photos were fetched from the live bar with Steven's yes; the sixth is the repo's
+`giulia-quadrifoglio.jpg`, byte-identical. Live serves Tonale's 2026 cutout, which replaced the 2025
+one. Every new platform path, Volkswagen's ten included, was proved byte-identical from acurademo1
+and hondademo1 before it went into cms-paths.js. check-looks paired each row's art with the FIRST
+image's size, which a two-picture card broke; it pairs every image with its own file now. A variants
+test assumed every measured brand is a chip on the tabbed bar; Alfa is measured on its own card
+only, so it holds what is true instead: every brand offered once, chip or option.

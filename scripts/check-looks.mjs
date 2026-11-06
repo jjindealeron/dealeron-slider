@@ -467,22 +467,29 @@ function pixelSize(buf) {
 // hardcoded width="320" height="533" and ignored the roster entirely, so Alfa
 // Romeo's 300x500 art went out declaring a size it never had - a roster-only
 // check would have called that clean.
+//
+// Every <img> the card renders, each against its own file: the Photo-with-
+// cutout card (2026-11-06) draws two, a 300x500 photo before the 580x344
+// cutout, and pairing the row's img with the FIRST tag's size compared the
+// cutout with the photo's attributes.
 for (const [id, b] of brands) {
   const look = LOOKS[b.look];
   for (const m of b.models ?? []) {
-    const dim = pixelSize(readFileSync(`demo/${m.img}`));
-    if (!dim) {
-      console.error(`  ${id}: cannot read the pixel size of ${m.img}`);
-      bad++;
-      continue;
-    }
-    const tag = (look?.markup?.(m) ?? '').match(/<img[^>]*>/)?.[0];
-    if (!tag) continue;
-    const w = +(tag.match(/\bwidth="(\d+)"/)?.[1] ?? 0);
-    const h = +(tag.match(/\bheight="(\d+)"/)?.[1] ?? 0);
-    if (w !== dim[0] || h !== dim[1]) {
-      console.error(`  ${id}: ${m.img} is ${dim[0]}x${dim[1]} but the ${b.look} look renders width="${w}" height="${h}" — that pair ships as-is, so it is a layout shift`);
-      bad++;
+    for (const tag of (look?.markup?.(m) ?? '').match(/<img[^>]*>/g) ?? []) {
+      const src = tag.match(/\bsrc="(img\/[^"]+)"/)?.[1];
+      if (!src) continue;
+      const dim = pixelSize(readFileSync(`demo/${src}`));
+      if (!dim) {
+        console.error(`  ${id}: cannot read the pixel size of ${src}`);
+        bad++;
+        continue;
+      }
+      const w = +(tag.match(/\bwidth="(\d+)"/)?.[1] ?? 0);
+      const h = +(tag.match(/\bheight="(\d+)"/)?.[1] ?? 0);
+      if (w !== dim[0] || h !== dim[1]) {
+        console.error(`  ${id}: ${src} is ${dim[0]}x${dim[1]} but the ${b.look} look renders width="${w}" height="${h}" — that pair ships as-is, so it is a layout shift`);
+        bad++;
+      }
     }
   }
 }

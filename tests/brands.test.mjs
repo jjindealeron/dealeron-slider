@@ -296,6 +296,78 @@ test("Volkswagen's bar: each car on its own model's plate, hanging below it", as
   }
 });
 
+// 2026-11-06: Alfa Romeo's alfa-romeo-model-bar-cards needed a card no look
+// drew - a 300x500 photo at 70% of the card, the name over its top, the
+// 580x344 cutout across its foot (74.5px of a 269px card live), a full-width
+// button 20px under it - and is the Photo-with-cutout look now. Live, the
+// second line of a two-line name sits on the photo at as little as 1.12:1, so
+// ours washes the photo's top: every name, its text hidden, against the
+// brightest pixels behind it (95th percentile) must reach 4.5:1.
+test("Alfa Romeo's cards: the cutout across the photo's foot, and every name readable on it", async () => {
+  await page.evaluate(() => document.fonts.ready);
+  const geo = await page.evaluate(() => {
+    const c = document.querySelector('#b-alfaromeo .cargo-card');
+    const r = (e) => e.getBoundingClientRect();
+    const card = r(c);
+    const photo = r(c.querySelector('.cargo-bg'));
+    const car = r(c.querySelector('.cargo-car'));
+    const cta = r(c.querySelector('.cargo-cta'));
+    return { photoShare: photo.width / card.width, rise: (photo.bottom - car.top) / card.width, carFull: car.width / card.width, gap: cta.top - car.bottom };
+  });
+  assert.ok(Math.abs(geo.photoShare - 0.7) < 0.01, `the photo is ${(geo.photoShare * 100).toFixed(1)}% of the card`);
+  assert.ok(Math.abs(geo.rise - 74.5 / 269) < 0.01, `the cutout rises ${(geo.rise * 100).toFixed(1)}% of the card into the photo`);
+  assert.ok(geo.carFull > 0.99, 'the cutout does not span the card');
+  assert.ok(Math.abs(geo.gap - 20) < 1, `the button is ${geo.gap.toFixed(1)}px under the cutout`);
+
+  const hide = await page.addStyleTag({ content: '#b-alfaromeo .cargo-name { color: transparent !important; }' });
+  const lum = ([r, g, b]) => {
+    const f = (c) => ((c /= 255) <= 0.03928 ? c / 12.92 : ((c + 0.055) / 1.055) ** 2.4);
+    return 0.2126 * f(r) + 0.7152 * f(g) + 0.0722 * f(b);
+  };
+  const low = [];
+  const n = await page.locator('#b-alfaromeo .cargo-card').count();
+  for (let i = 0; i < n; i++) {
+    const card = page.locator('#b-alfaromeo .cargo-card').nth(i);
+    await card.evaluate((c) =>
+      /** @type {any} */ (c.closest('.dos'))._dos.goTo([...(c.closest('.dos-track')?.children ?? [])].indexOf(/** @type {Element} */ (c.closest('.dos-slide'))), { behavior: 'instant' }),
+    );
+    await page.waitForTimeout(300);
+    await card.scrollIntoViewIfNeeded();
+    const { name, rects } = await card.evaluate((c) => {
+      const el = /** @type {HTMLElement} */ (c.querySelector('.cargo-name'));
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      return { name: el.textContent, rects: [...range.getClientRects()].map((x) => ({ x: x.x, y: x.y, width: x.width, height: x.height })) };
+    });
+    for (const clip of rects) {
+      const png = (await page.screenshot({ clip })).toString('base64');
+      const px = await page.evaluate(async (b64) => {
+        const im = await new Promise((res) => {
+          const m = new Image();
+          m.onload = () => res(m);
+          m.src = `data:image/png;base64,${b64}`;
+        });
+        const cv = document.createElement('canvas');
+        cv.width = im.width;
+        cv.height = im.height;
+        const g = /** @type {CanvasRenderingContext2D} */ (cv.getContext('2d'));
+        g.drawImage(im, 0, 0);
+        const d = g.getImageData(0, 0, im.width, im.height).data;
+        const all = [];
+        for (let k = 0; k < d.length; k += 4) all.push([d[k], d[k + 1], d[k + 2]]);
+        return all;
+      }, png);
+      const ls = px.map(lum).sort((a, b) => a - b);
+      const ratio = 1.05 / (ls[Math.floor(ls.length * 0.95)] + 0.05);
+      if (ratio < 4.5) low.push(`${name}: ${ratio.toFixed(2)}:1`);
+    }
+  }
+  // The page is shared: names visible again, the slider back on its first card.
+  await hide.evaluate((e) => e.remove());
+  await page.evaluate(() => /** @type {any} */ (document.querySelector('#b-alfaromeo .dos'))._dos.goTo(0, { behavior: 'instant' }));
+  assert.deepEqual(low, [], `a name too faint on its photo: ${low.join(', ')}`);
+});
+
 // 2026-11-06 (Steven): twenty presets pinned the model name to their page's
 // measured body colour (#333, Kia's #05141f, ...), which their live bars only
 // inherit, so on a dealer's dark section the name stayed dark on dark. They

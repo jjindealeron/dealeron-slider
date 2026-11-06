@@ -423,6 +423,86 @@ const LOOKS = {
 </a>`,
   },
 
+  backdrop: {
+    // A tall photo with the model's name over its top, the model's cutout
+    // laid across the photo's foot, and a full-width button under them -
+    // Alfa Romeo's alfa-romeo-model-bar-cards (alfaromeodemo1, 2026-11-06).
+    // Two pictures and a name over one of them is markup no other look emits,
+    // so it is a look of its own (and a rail entry, like every look).
+    icon: `<svg viewBox="0 0 44 30" fill="none" aria-hidden="true"><rect x="15" y="2.5" width="14" height="17" rx="2.5" fill="currentColor" opacity=".45"/><rect x="17" y="5" width="7" height="1.8" rx=".9" fill="var(--wb-icon-bg, #fff)" opacity=".9"/><path d="M9 19h26l-3-5a3 3 0 0 0-2.6-1.5H14.6A3 3 0 0 0 12 14L9 19Z" fill="currentColor" opacity=".85"/><rect x="7" y="18.5" width="30" height="3" rx="1.5" fill="currentColor" opacity=".85"/><rect x="10" y="24.5" width="24" height="3" rx="1" fill="currentColor" opacity=".55"/></svg>`,
+    label: 'Photo with cutout',
+    // The cutout is the row's own img, so every brand's roster draws on it;
+    // the photo behind it is the row's `photo`, and a row without one draws
+    // the name over the cutout alone.
+    content: 'cutout',
+    crop: null,
+    note: "A tall photo with the model's name over it and the model's cutout laid across the photo's foot, a full-width button under them. A slide with no photo draws its name over the cutout alone.",
+    // Narrowest card this look's content fits in, measured by narrowing it
+    // until text overflowed ("QUADRIFOGLIO" is one word at 22px).
+    minCard: 230,
+    perView: { base: 1, 768: 2, 992: 3, 1200: 4 },
+    absorbs: [],
+    isNew: true,
+    // Alfa Romeo's measured values are the defaults, the way the split card's
+    // came from toyotademo2: it is the only bar of this shape.
+    settings: {
+      '--strip-bg': '#14161b',
+      '--strip-pad': '1.5em',
+      '--strip-pad-end': '1.5em',
+      '--strip-pad-x': 'calc(var(--dos-arrow-size) + 0.25em)',
+      // A dark strip, so light dots, arrows and focus ring, as on the tall tile.
+      '--dos-dot-current': '#fff',
+      '--dos-arrow-fg': '#fff',
+      '--dos-arrow-bg': 'rgba(255, 255, 255, 0.14)',
+      '--dos-arrow-bg-hover': 'rgba(255, 255, 255, 0.26)',
+      '--dos-focus': '#4a90e2',
+      '--card-fg': '#fff',
+      // The photo: 70% of the card, centred, its top corners rounded.
+      '--photo-width': '70%',
+      '--photo-radius': '10px 10px 0 0',
+      // The name: 22px / 34px Sequel 500 live, 36px down the photo and 16px
+      // in from the card's edge, so a long name runs past the photo's edge.
+      '--name-size': '1.57em',
+      '--name-weight': '500',
+      '--name-leading': '1.55',
+      '--name-top': '1.64em',
+      '--name-inset': '0.727em',
+      // DEPARTURE: live draws the white name straight on the photo, and the
+      // second line of "Giulia Quadrifoglio" lands on 1.12:1. A dark wash at
+      // the photo's top keeps it readable.
+      '--name-scrim': 'rgba(0, 0, 0, 0.45)',
+      // The cutout's top rises this far (a share of the card's width) into
+      // the photo's foot: 74.5px of a 269px card live.
+      '--car-rise': '27.7%',
+      // The button: 20px under the cutout, 12px Sequel, #f4f4f4 going #ccc.
+      '--cta-gap': '1.667em',
+      '--cta-size': '0.857em',
+      '--cta-bg': '#f4f4f4',
+      '--cta-fg': '#1c1f2a',
+      '--cta-hover': '#ccc',
+    },
+    css: `%root% { padding-block-start: var(--strip-pad); padding-inline: var(--strip-pad-x); background: var(--strip-bg); }
+%root% .dos-track { padding-block-end: var(--strip-pad-end); }
+@media (max-width: 767.98px) { %root% { --dos-arrow-size: 36px; } }
+@media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }
+.cargo-card { display: flex; flex-direction: column; block-size: 100%; color: var(--card-fg); text-decoration: none; }
+.cargo-media { position: relative; display: block; }
+.cargo-bg { display: block; inline-size: var(--photo-width); block-size: auto; margin-inline: auto; border-radius: var(--photo-radius); }
+.cargo-media:has(> .cargo-bg)::before { position: absolute; inset-block-start: 0; inset-inline: 0; inline-size: var(--photo-width); block-size: 10em; margin-inline: auto; pointer-events: none; content: ""; background: linear-gradient(var(--name-scrim) 50%, transparent); border-radius: var(--photo-radius); }
+.cargo-name { display: block; margin: 0 0 0.4em; font-size: var(--name-size); font-weight: var(--name-weight); line-height: var(--name-leading); text-transform: uppercase; }
+.cargo-bg + .cargo-name { position: absolute; inset-block-start: 0; inset-inline: var(--name-inset); padding-block-start: var(--name-top); margin: 0; }
+.cargo-car { display: block; inline-size: 100%; block-size: auto; }
+.cargo-bg ~ .cargo-car { margin-block-start: calc(-1 * var(--car-rise)); }
+.cargo-cta { display: block; padding: 1.167em 1.667em; margin: var(--cta-gap) 1.25em 0; font-size: var(--cta-size); line-height: 1.5; color: var(--cta-fg); text-align: center; text-transform: uppercase; letter-spacing: 0.083em; background: var(--cta-bg); transition: background-color 0.3s ease-in-out; }
+.cargo-card:hover .cargo-cta { background: var(--cta-hover); }`,
+    // The photo is decorative (alt=""): the name and the cutout's alt already
+    // say what the card is, and the button says what it does.
+    markup: (m) => `<a class="cargo-card" href="${m.href}">
+  <span class="cargo-media">${m.photo ? `<img class="cargo-bg" src="${m.photo}" width="${m.pw ?? 300}" height="${m.ph ?? 500}" alt="" loading="lazy" decoding="async">` : ''}<span class="cargo-name">${m.name}</span><img class="cargo-car" src="${m.img}" width="${m.w ?? 580}" height="${m.h ?? 344}" alt="${m.alt}" loading="lazy" decoding="async"></span>
+  <span class="cargo-cta">${m.cta || 'Browse inventory'}</span>
+</a>`,
+  },
+
   logo: {
     // A logo centred on a filled panel - brand strips, nothing else.
     icon: `<svg viewBox="0 0 44 30" fill="none" aria-hidden="true"><rect x="5.5" y="5.5" width="33" height="19" rx="3" fill="currentColor" opacity=".85"/><circle cx="22" cy="15" r="5" fill="var(--wb-icon-bg, #fff)" opacity=".9"/><rect x="17" y="14" width="10" height="2" rx="1" fill="currentColor" opacity=".85"/></svg>`,

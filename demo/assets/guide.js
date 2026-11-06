@@ -295,6 +295,15 @@
     '--pill-fg': 'Text colour of that label.',
     '--cta-bg': 'Background of the button.',
     '--cta-fg': 'Text colour of the button.',
+    '--cta-hover': 'Background of the button while the card is hovered.',
+    '--cta-gap': 'Space between the picture above and the button, in the button’s own size.',
+    '--cta-size': 'Text size of the button.',
+    '--photo-width': 'How wide the tall photo is, as a share of the card; it sits centred, and the cutout spans the whole card under it.',
+    '--photo-radius': 'Corner rounding of the tall photo. Alfa Romeo rounds the top two only.',
+    '--name-top': 'How far down the photo the name starts, in the name’s own size.',
+    '--name-inset': 'How far in from the card’s edges the name sits, in the name’s own size. A long name may run past the photo’s edge, as Alfa Romeo’s does.',
+    '--name-scrim': 'A wash darkening the top of the photo so the name reads on a bright one. <code>transparent</code> turns it off.',
+    '--car-rise': 'How far the cutout climbs into the foot of the photo, as a share of the card’s width.',
     '--tab-size': 'Size of the tab labels. <code>1em</code> matches the page’s body text; Chevrolet runs them at <code>1.29em</code>, 18px on a 14px body.',
     '--tab-weight': 'Weight of the tab labels. <code>600</code> is semibold; Chevrolet wraps each label in <code>&lt;b&gt;</code>, which is <code>700</code>.',
     '--tab-dim': 'How faded an unselected tab is, 0 to 1. <code>1</code> shows every tab at full strength and leaves the line to mark the selected one.',
@@ -416,7 +425,7 @@
       </section>
 
       <section id="g-classes"><h3>Ready-made card classes</h3>
-        <p>The stylesheet carries seven card styles and a set of column classes, so a slider can be written by hand as markup alone. Name a card style and a column ladder on the same element as
+        <p>The stylesheet carries eight card styles and a set of column classes, so a slider can be written by hand as markup alone. Name a card style and a column ladder on the same element as
         <code>dos</code>:</p>
         <pre class="g-code"><code>${esc('<div class="dos cargo-tile dos-xs-2 dos-sm-3 dos-md-4 dos-lg-5" data-dos aria-label="Our models">')}</code></pre>
         ${table(
@@ -425,6 +434,7 @@
             ['cargo-tile', 'Cutout tile — a vehicle cutout with its name under it. The workhorse.'],
             ['cargo-vcard', 'Vehicle card — photo, title, price, on a card background.'],
             ['cargo-wordmark', 'Wordmark above — the model wordmark over the vehicle.'],
+            ['cargo-backdrop', 'Photo with cutout — a tall photo with the name over it, the cutout across its foot, a button under them.'],
             ['cargo-split', 'Split photo card — photo one side, copy the other.'],
             ['cargo-portrait', 'Tall tile with CTA — a portrait photo with a button under it.'],
             ['cargo-logo', 'Logo panel — a grid of brand logos.'],
