@@ -71,6 +71,15 @@ is:
    bar: `chevrolet-model-bar-slick.html` still draws Chevrolet's tabbed bar on slick (2026-11-05),
    so it is replaced along with `chevrolet-model-bar`. Fetch an old code's file before calling it
    unused; the `docs/coverage.md` row says what its file held.
+
+   **Before switching a site over, read its own Custom CSS** for rules aimed at the old bar's
+   classes (`.modelBarS`, `.modelBarItem`, `.slick-*` and the like). Those rules restyle the old
+   bar, and the new slider's classes are different, so they stop matching and the site's look
+   changes. Example: maseratidemo1's navy "Select" buttons come from its own
+   `.modelBarItem .btn-alt1` rule, and the theme's default button is grey. Where the look should
+   carry over, rebuild it as that slider's own values in the builder, or as a rule against its name
+   in Style Only.
+
 7. **Record it.** A new code belongs on the Salesforce article (ask its owner), then gets a row in
    `docs/coverage.md`.
 
