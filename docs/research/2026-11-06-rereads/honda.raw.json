@@ -1,0 +1,266 @@
+{
+  "code": "honda-model-bar-slick",
+  "url": "https://hondademo2.dealeron.com/",
+  "measured": "2026-11-06T19:28:27.210Z",
+  "playwright": "1.64.1",
+  "chromium": "156.0.8078.4",
+  "widths": {
+    "390": {
+      "status": 200,
+      "declined": "button:has-text(\"No Thanks\")",
+      "popup": null,
+      "overlay": "absent",
+      "viewport": [390, 844],
+      "windowWidth": 390,
+      "body": { "font-family": "poppins-regular", "font-size": "13px", "line-height": "18.5714px", "font-weight": "400" },
+      "html": { "font-size": "10px" },
+      "slick": {
+        "slidesToShow": 2,
+        "activeBreakpoint": 460,
+        "breakpoints": [768, 460],
+        "responsive": [
+          { "breakpoint": 768, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+          { "breakpoint": 460, "settings": { "centerPadding": "40px", "slidesToShow": 2 } }
+        ],
+        "original": { "slidesToShow": 5, "slidesToScroll": 1, "infinite": true, "mobileFirst": false, "respondTo": "window" },
+        "slideCount": 11,
+        "slideWidth": 160
+      },
+      "active": 2,
+      "models": ["Accord", "Civic", "CR-V", "CR-V Hybrid", "HR-V", "Passport", "Pilot", "Prelude Hybrid", "Prologue", "Odyssey", "Ridgeline"],
+      "name": {
+        "text": "Accord",
+        "el": "p.margin-bottom-x",
+        "style": {
+          "font-family": "poppins-semibold",
+          "font-size": "15px",
+          "font-weight": "400",
+          "font-style": "normal",
+          "font-synthesis": "weight style small-caps",
+          "line-height": "21.4286px",
+          "color": "rgb(51, 51, 51)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "margin-top": "0px",
+          "margin-bottom": "0px"
+        },
+        "inEm": { "size": 1.1538, "leading": 1.4286 },
+        "weightRules": [],
+        "unreadableSheets": ["https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180"],
+        "fontCheck": { "family": "poppins-semibold", "weight": "400", "check": true, "canvasFont": "15px poppins-semibold", "inkWidth": 54.6 },
+        "facesOfFamily": [{ "weight": "normal", "style": "normal", "status": "loaded" }]
+      },
+      "poppinsFaces": [
+        "poppins-light normal normal unloaded",
+        "poppins-regular normal normal loaded",
+        "poppins-medium normal normal loaded",
+        "poppins-semibold normal normal loaded",
+        "poppins-bold normal normal unloaded",
+        "poppins-medium 700 normal unloaded",
+        "poppins-medium 900 normal unloaded",
+        "poppins-bold 900 normal unloaded"
+      ],
+      "fontSheets": ["https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180"],
+      "blockCss": [
+        ".modelBarS .carImage { transition-timing-function: ease-in; -webkit-transition-duration: 0.1s; -moz-transition-duration: 0.1s; -o-transition-duration: 0.1s; transition-duration: 0.1s; -moz-transform: scale(0.95); -webkit-transform: scale(0.95); transform: scale(0.95); padding: 0 10px; } .modelBarS .carImage:hover { -moz-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); } .modelBarS .vehicleName { margin-top: -10px; } .modelBarS { display: none; } .modelBarS a { text-decoration: none; color: #333; } .modelBarS p { font-family: 'poppins-semibold'; font-size: 15px; }"
+      ],
+      "initScript": [
+        "window.addEventListener('load', function() { $(document).ready(function() { $('.modelBarS').show(); $('.modelBarS').slick({ slidesToShow: 5, slidesToScroll: 1, centerPadding: '60px', autoplay: false, swipeToSlide: true, arrows: true, responsive: [{ breakpoint: 768, settings: { centerPadding: '40px', slidesToShow: 3 } }, { breakpoint: 460, settings: { centerPadding: '40px', slidesToShow: 2 } } ] }); }); });"
+      ]
+    },
+    "800": {
+      "status": 200,
+      "declined": "button:has-text(\"No Thanks\")",
+      "popup": null,
+      "overlay": "absent",
+      "viewport": [800, 900],
+      "windowWidth": 800,
+      "body": { "font-family": "poppins-regular", "font-size": "13px", "line-height": "18.5714px", "font-weight": "400" },
+      "html": { "font-size": "10px" },
+      "slick": {
+        "slidesToShow": 5,
+        "activeBreakpoint": null,
+        "breakpoints": [768, 460],
+        "responsive": [
+          { "breakpoint": 768, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+          { "breakpoint": 460, "settings": { "centerPadding": "40px", "slidesToShow": 2 } }
+        ],
+        "original": { "slidesToShow": 5, "slidesToScroll": 1, "infinite": true, "mobileFirst": false, "respondTo": "window" },
+        "slideCount": 11,
+        "slideWidth": 126
+      },
+      "active": 5,
+      "models": ["Accord", "Civic", "CR-V", "CR-V Hybrid", "HR-V", "Passport", "Pilot", "Prelude Hybrid", "Prologue", "Odyssey", "Ridgeline"],
+      "name": {
+        "text": "Accord",
+        "el": "p.margin-bottom-x",
+        "style": {
+          "font-family": "poppins-semibold",
+          "font-size": "15px",
+          "font-weight": "400",
+          "font-style": "normal",
+          "font-synthesis": "weight style small-caps",
+          "line-height": "21.4286px",
+          "color": "rgb(51, 51, 51)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "margin-top": "0px",
+          "margin-bottom": "0px"
+        },
+        "inEm": { "size": 1.1538, "leading": 1.4286 },
+        "weightRules": [],
+        "unreadableSheets": ["https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180"],
+        "fontCheck": { "family": "poppins-semibold", "weight": "400", "check": true, "canvasFont": "15px poppins-semibold", "inkWidth": 54.6 },
+        "facesOfFamily": [{ "weight": "normal", "style": "normal", "status": "loaded" }]
+      },
+      "poppinsFaces": [
+        "poppins-light normal normal unloaded",
+        "poppins-regular normal normal loaded",
+        "poppins-medium normal normal loaded",
+        "poppins-semibold normal normal loaded",
+        "poppins-bold normal normal unloaded",
+        "poppins-medium 700 normal unloaded",
+        "poppins-medium 900 normal unloaded",
+        "poppins-bold 900 normal unloaded"
+      ],
+      "fontSheets": ["https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180"],
+      "blockCss": [
+        ".modelBarS .carImage { transition-timing-function: ease-in; -webkit-transition-duration: 0.1s; -moz-transition-duration: 0.1s; -o-transition-duration: 0.1s; transition-duration: 0.1s; -moz-transform: scale(0.95); -webkit-transform: scale(0.95); transform: scale(0.95); padding: 0 10px; } .modelBarS .carImage:hover { -moz-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); } .modelBarS .vehicleName { margin-top: -10px; } .modelBarS { display: none; } .modelBarS a { text-decoration: none; color: #333; } .modelBarS p { font-family: 'poppins-semibold'; font-size: 15px; }"
+      ],
+      "initScript": [
+        "window.addEventListener('load', function() { $(document).ready(function() { $('.modelBarS').show(); $('.modelBarS').slick({ slidesToShow: 5, slidesToScroll: 1, centerPadding: '60px', autoplay: false, swipeToSlide: true, arrows: true, responsive: [{ breakpoint: 768, settings: { centerPadding: '40px', slidesToShow: 3 } }, { breakpoint: 460, settings: { centerPadding: '40px', slidesToShow: 2 } } ] }); }); });"
+      ]
+    },
+    "1366": {
+      "status": 200,
+      "declined": "button:has-text(\"No Thanks\")",
+      "popup": null,
+      "overlay": "absent",
+      "viewport": [1366, 768],
+      "windowWidth": 1366,
+      "body": { "font-family": "poppins-regular", "font-size": "14px", "line-height": "20px", "font-weight": "400" },
+      "html": { "font-size": "10px" },
+      "slick": {
+        "slidesToShow": 5,
+        "activeBreakpoint": null,
+        "breakpoints": [768, 460],
+        "responsive": [
+          { "breakpoint": 768, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+          { "breakpoint": 460, "settings": { "centerPadding": "40px", "slidesToShow": 2 } }
+        ],
+        "original": { "slidesToShow": 5, "slidesToScroll": 1, "infinite": true, "mobileFirst": false, "respondTo": "window" },
+        "slideCount": 11,
+        "slideWidth": 240
+      },
+      "active": 5,
+      "models": ["Accord", "Civic", "CR-V", "CR-V Hybrid", "HR-V", "Passport", "Pilot", "Prelude Hybrid", "Prologue", "Odyssey", "Ridgeline"],
+      "name": {
+        "text": "Accord",
+        "el": "p.margin-bottom-x",
+        "style": {
+          "font-family": "poppins-semibold",
+          "font-size": "15px",
+          "font-weight": "400",
+          "font-style": "normal",
+          "font-synthesis": "weight style small-caps",
+          "line-height": "21.4286px",
+          "color": "rgb(51, 51, 51)",
+          "text-transform": "none",
+          "letter-spacing": "normal",
+          "margin-top": "0px",
+          "margin-bottom": "0px"
+        },
+        "inEm": { "size": 1.0714, "leading": 1.4286 },
+        "weightRules": [],
+        "unreadableSheets": ["https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180"],
+        "fontCheck": { "family": "poppins-semibold", "weight": "400", "check": true, "canvasFont": "15px poppins-semibold", "inkWidth": 54.6 },
+        "facesOfFamily": [{ "weight": "normal", "style": "normal", "status": "loaded" }]
+      },
+      "poppinsFaces": [
+        "poppins-light normal normal unloaded",
+        "poppins-regular normal normal loaded",
+        "poppins-medium normal normal loaded",
+        "poppins-semibold normal normal loaded",
+        "poppins-bold normal normal unloaded",
+        "poppins-medium 700 normal unloaded",
+        "poppins-medium 900 normal unloaded",
+        "poppins-bold 900 normal unloaded"
+      ],
+      "fontSheets": ["https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180"],
+      "blockCss": [
+        ".modelBarS .carImage { transition-timing-function: ease-in; -webkit-transition-duration: 0.1s; -moz-transition-duration: 0.1s; -o-transition-duration: 0.1s; transition-duration: 0.1s; -moz-transform: scale(0.95); -webkit-transform: scale(0.95); transform: scale(0.95); padding: 0 10px; } .modelBarS .carImage:hover { -moz-transform: scale(1); -webkit-transform: scale(1); transform: scale(1); } .modelBarS .vehicleName { margin-top: -10px; } .modelBarS { display: none; } .modelBarS a { text-decoration: none; color: #333; } .modelBarS p { font-family: 'poppins-semibold'; font-size: 15px; }"
+      ],
+      "initScript": [
+        "window.addEventListener('load', function() { $(document).ready(function() { $('.modelBarS').show(); $('.modelBarS').slick({ slidesToShow: 5, slidesToScroll: 1, centerPadding: '60px', autoplay: false, swipeToSlide: true, arrows: true, responsive: [{ breakpoint: 768, settings: { centerPadding: '40px', slidesToShow: 3 } }, { breakpoint: 460, settings: { centerPadding: '40px', slidesToShow: 2 } } ] }); }); });"
+      ]
+    }
+  },
+  "fontSheetText": {
+    "https://cdn.dealeron.com/assets/fonts/poppins/fonts.min.css?v=23.136.0+20261106.3.b5ce46484fde26f5bbe2ea0ecf40f0d0cfa42180": [
+      "@font-face{font-family:'poppins-light';src: ...;font-weight:normal;font-style:normal;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-regular';src: ...;font-weight:normal;font-style:normal;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-medium';src: ...;font-weight:normal;font-style:normal;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-semibold';src: ...;font-weight:normal;font-style:normal;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-bold';src: ...;font-weight:normal;font-style:normal;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-medium';font-weight:700;src: ...;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-medium';font-weight:900;src: ...;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}",
+      "@font-face{font-family:'poppins-bold';font-weight:900;src: ...;-webkit-font-smoothing:subpixel-antialiased!important;font-display:swap}"
+    ]
+  },
+  "weightCompare": [
+    { "label": "live: poppins-semibold at 400", "family": "poppins-semibold", "weight": 400, "ink": 3043, "inkWidth": 720, "boxWidth": 731.47, "loaded": true, "inkVsLive": 1, "widthVsLive": 1 },
+    {
+      "label": "tile default: poppins-regular at 600",
+      "family": "poppins-regular",
+      "weight": 600,
+      "ink": 3199,
+      "inkWidth": 704,
+      "boxWidth": 714.47,
+      "loaded": true,
+      "inkVsLive": 1.051,
+      "widthVsLive": 0.978
+    },
+    { "label": "poppins-regular at 700", "family": "poppins-regular", "weight": 700, "ink": 3199, "inkWidth": 704, "boxWidth": 714.47, "loaded": true, "inkVsLive": 1.051, "widthVsLive": 0.978 },
+    { "label": "poppins-regular at 400", "family": "poppins-regular", "weight": 400, "ink": 2030, "inkWidth": 703, "boxWidth": 714.47, "loaded": true, "inkVsLive": 0.667, "widthVsLive": 0.976 },
+    { "label": "poppins-medium at 400", "family": "poppins-medium", "weight": 400, "ink": 2497, "inkWidth": 713, "boxWidth": 725.22, "loaded": true, "inkVsLive": 0.821, "widthVsLive": 0.99 }
+  ],
+  "sweepDown": [
+    { "innerWidth": 1366, "windowWidth": 1366, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 240 },
+    { "innerWidth": 1200, "windowWidth": 1200, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 206 },
+    { "innerWidth": 993, "windowWidth": 993, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 992, "windowWidth": 992, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 991, "windowWidth": 991, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 768, "windowWidth": 768, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 120 },
+    { "innerWidth": 767, "windowWidth": 767, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 233 },
+    { "innerWidth": 461, "windowWidth": 461, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 131 },
+    { "innerWidth": 460, "windowWidth": 460, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 130 },
+    { "innerWidth": 459, "windowWidth": 459, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 195 },
+    { "innerWidth": 390, "windowWidth": 390, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 160 }
+  ],
+  "sweepUp": [
+    { "innerWidth": 390, "windowWidth": 390, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 160 },
+    { "innerWidth": 459, "windowWidth": 459, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 195 },
+    { "innerWidth": 460, "windowWidth": 460, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 130 },
+    { "innerWidth": 461, "windowWidth": 461, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 131 },
+    { "innerWidth": 767, "windowWidth": 767, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 233 },
+    { "innerWidth": 768, "windowWidth": 768, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 120 },
+    { "innerWidth": 991, "windowWidth": 991, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 992, "windowWidth": 992, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 993, "windowWidth": 993, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 1200, "windowWidth": 1200, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 206 },
+    { "innerWidth": 1366, "windowWidth": 1366, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 240 }
+  ],
+  "freshLoad": [
+    { "innerWidth": 390, "windowWidth": 390, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 160 },
+    { "innerWidth": 459, "windowWidth": 459, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 195 },
+    { "innerWidth": 460, "windowWidth": 460, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 130 },
+    { "innerWidth": 461, "windowWidth": 461, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 131 },
+    { "innerWidth": 767, "windowWidth": 767, "slidesToShow": 3, "activeBreakpoint": 768, "slickActive": 3, "slideWidth": 233 },
+    { "innerWidth": 768, "windowWidth": 768, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 120 },
+    { "innerWidth": 991, "windowWidth": 991, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 992, "windowWidth": 992, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 993, "windowWidth": 993, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 165 },
+    { "innerWidth": 1200, "windowWidth": 1200, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 206 },
+    { "innerWidth": 1366, "windowWidth": 1366, "slidesToShow": 5, "activeBreakpoint": null, "slickActive": 5, "slideWidth": 240 }
+  ]
+}

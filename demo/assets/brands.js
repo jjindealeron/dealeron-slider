@@ -1829,10 +1829,13 @@
       variant: 'Plain',
       code: { name: 'honda-model-bar-slick', pattern: 'modelbar' },
       look: 'tile',
+      // 5@768:3,460:2, re-read on hondademo2 2026-11-06 (2 at 459, 3 at 460
+      // to 767, 5 from 768). It carried [0,1],[460,3],[992,5] until then,
+      // which is the tabbed bar's (honda-tabbed, hondademo1).
       ladder: [
-        [0, 1],
+        [0, 2],
         [460, 3],
-        [992, 5],
+        [768, 5],
       ],
       demos: 3,
       // What hondademo2 draws, measured with Playwright at 1280/800/390 on
@@ -1848,7 +1851,10 @@
       // page stopped using.
       // - ten cutouts, slides butting, the art at scale(0.95) going to full
       //   size over 0.1s on hover;
-      // - the name 15px/400 #333 on a 21.43px line, hard under the picture;
+      // - the name 15px #333 on a 21.43px line, hard under the picture, in
+      //   poppins-semibold: computed 400, but that family IS the SemiBold
+      //   face (re-read 2026-11-06), so the tile's 600 on the body's
+      //   poppins-regular is the nearer of the two, not 400;
       // - slick's own 35px arrows in a 35px channel each side.
       styles: {
         looks: {
@@ -1914,6 +1920,13 @@
       of: 'honda',
       variant: 'Tabbed',
       code: { name: 'honda-model-bar-slick-tabbed', pattern: 'tabs' },
+      // Its own ladder: slick 5, 991:3, 460:1 on hondademo1. It inherited the
+      // plain bar's until 2026-11-06, when that one got its own 5@768:3,460:2.
+      ladder: [
+        [0, 1],
+        [460, 3],
+        [992, 5],
+      ],
       styles: {
         looks: {
           tile: {
@@ -2558,7 +2571,7 @@
         [992, 4],
       ],
       demos: 3,
-      note: 'A flat light-gray band. Some client builds switch to four across one pixel earlier than the demo sites do — same counts either way.',
+      note: 'Four across from 992, three from 460, on the page’s own white. Some client builds switch one pixel earlier than the demo sites do — same counts either way.',
       // What lincolndemo2 draws, measured with headless Chromium at
       // 1366/800/390 on 2026-11-03 - the `lincoln-model-bar-slick` code.
       // Slick 4, 992:3, 460:2, the ladder above. lincolndemo2's section is
@@ -2585,10 +2598,14 @@
             '--name-gap': '-0.32em',
             // The live 10px of padding is FIXED and the scale(0.95) is a
             // percentage, so neither a plain percent nor a plain em follows
-            // both: 1.02em/0.68em is the 10px (x0.95, in the 14px card) and
-            // 3.75%/2.5% the scale's inset, which lands on the live art at all
-            // three measured widths.
-            '--plate-pad': 'calc(3.75% + 1.02em) calc(2.5% + 0.68em) 0',
+            // both. The sides: 0.68em is the 10px (x0.95, in the 14px card)
+            // and 2.5% the scale's inset. The top is the scale's inset alone,
+            // 1.875% less 0.375px: the live padding is `0 10px`, nothing on
+            // top. It was calc(3.75% + 1.02em) until the 2026-11-06 re-read on
+            // lincolndemo2 (docs/research/2026-11-06-rereads/lincoln.md), which
+            // drew the art 19.7 / 18.7 / 17.4px low at 1366 / 800 / 390; this
+            // lands within 0.02px at all three.
+            '--plate-pad': 'calc(1.875% - 0.027em) calc(2.5% + 0.68em) 0',
             '--img-hover-scale': '1.0526',
             '--img-hover-speed': '0.1s',
             '--strip-pad-x': 'var(--dos-arrow-size)',

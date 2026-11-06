@@ -66,24 +66,6 @@ The measurements are `docs/research/2026-11-05-measurements/` (`BRIEF-static.md`
   pages); Porsche's 25px photo corners, square crop and name over the photo; INFINITI v2's name over
   the photo and the black code's panel around car and name; Maserati's name size per tier.
 
-## 2026-11-05 — found while measuring the second codes, not actioned
-
-The measurements are `docs/research/2026-11-05-measurements/`. Each of these is about a preset built
-before, read off a different page, so each needs its own page re-read before it changes.
-
-- **Lincoln's built `--plate-pad` may sit the art about 19px low.** `ford-slick-render.mjs` drew the
-  same live image setup (`padding: 0 10px`, `scale(.95)`) through the shipped CSS with `lincoln`'s
-  `calc(3.75% + 1.02em) calc(2.5% + 0.68em) 0`, and the art and name landed about 19px below where
-  `1.875%` on top (Acura's and `ford-plain`'s form) puts them. Not checked on lincolndemo2 itself.
-- **Honda's built preset never sets `--name-weight`**, so the name draws at the tile's 600; the
-  tabbed bar on hondademo1 draws 400 and its agent read the plain bar as 400 too, from the
-  2026-09-15 notes rather than a fresh read of hondademo2. The same preset's comment calls
-  hondademo2's ladder "5@768:3,460:2" while it carries `[[0,1],[460,3],[992,5]]`; which is right is
-  unread.
-- **`2026-11-03-measurements/lincoln.md` says v1 flips "1px early" at 460 and 992.** Slick switches
-  at a width below its breakpoint, which would make those exact; inferred on rydelllincoln.com, not
-  re-measured on lincolndemo2.
-
 ## 2026-11-03 — found while measuring fourteen codes, not actioned
 
 The measurements are `docs/research/2026-11-03-measurements/`; the plan for the day is

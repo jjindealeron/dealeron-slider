@@ -1158,3 +1158,17 @@ Steven took 6px under the tile and wordmark names over 4px: at 4 INFINITI's "QX6
 the ring (its OEM's 1.1 line height). tests/brands.test.mjs now holds every brand stage's name, in
 that brand's font, with a descender, clear of the ring; at 4px it failed on INFINITI (2.1px) and
 Subaru (2.8px). tests/builder.test.mjs failed before on Maserati's tiles (0 buttons for 8 cards).
+
+## 2026-11-06 — Lincoln's art and Honda's ladder, re-read live
+
+The three corrections parked on 2026-11-05 were re-read on their own demo pages
+(`docs/research/2026-11-06-rereads/`, by a helper, then checked here with an independent probe).
+Lincoln's `--plate-pad` put the art 19.7 / 18.7 / 17.4px low at 1366 / 800 / 390: it had applied the
+live image's fixed 10px to the top as well, where lincolndemo2's padding is `0 10px`. The top is now
+the scale's inset alone, `calc(1.875% - 0.027em)`, and the art lands within 0.02px of live at all
+three widths (checked on brands.html against the live formula). Lincoln's "1px early" flips were
+wrong: slick's `responsive` is 992:3, 460:2 and it shows 2 at 459, 3 from 460, 4 from 992, which is
+the ladder already carried; only the note's "flat light-gray band" (another demo's) changed. Honda's
+plain bar carried the tabbed bar's ladder: hondademo2 is 5@768:3,460:2, now its own, and
+`honda-tabbed` gets hondademo1's 5@991:3,460:1 instead of inheriting. Its name's "400" was the
+`poppins-semibold` family drawn at 400, the SemiBold face, so the tile's 600 stays.

@@ -1,0 +1,1508 @@
+{
+  "code": "lincoln-model-bar-slick",
+  "url": "https://lincolndemo2.dealeron.com/",
+  "measured": "2026-11-06T19:24:28.382Z",
+  "playwright": "1.64.1",
+  "chromium": "156.0.8078.4",
+  "widths": {
+    "390": {
+      "status": 200,
+      "declined": null,
+      "popup": null,
+      "viewport": [390, 844],
+      "windowWidth": 390,
+      "body": { "font-family": "proxima-nova, sans-serif", "font-size": "14px", "line-height": "20px" },
+      "html": { "font-size": "10px" },
+      "slick": {
+        "slidesToShow": 2,
+        "activeBreakpoint": 460,
+        "breakpoints": [992, 460],
+        "responsive": [
+          { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+          { "breakpoint": 460, "settings": { "centerPadding": "40px", "slidesToShow": 2 } }
+        ],
+        "slideWidth": 145,
+        "listWidth": 290
+      },
+      "active": 2,
+      "faces": [
+        "proxima-nova 900 normal unloaded",
+        "proxima-nova 900 italic unloaded",
+        "proxima-nova 700 normal loaded",
+        "proxima-nova 700 italic unloaded",
+        "proxima-nova 800 normal unloaded",
+        "proxima-nova 800 italic unloaded",
+        "proxima-nova 600 normal unloaded",
+        "proxima-nova 600 italic unloaded",
+        "proxima-nova 400 normal loaded",
+        "proxima-nova 400 italic unloaded",
+        "proxima-nova 500 normal unloaded",
+        "proxima-nova 500 italic unloaded"
+      ],
+      "slides": [
+        {
+          "name": "Navigator",
+          "slide": {
+            "w": 145,
+            "h": 122.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "122.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 145, "h": 112.75, "bottom": 112.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS01_03_320/cc_2026LIS012075011_03_320_C8.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "145px",
+              "height": "93.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "72.5px 46.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 145, "h": 93.75, "bottom": 93.75 },
+            "drawn": { "x": 3.63, "y": 2.34, "w": 137.75, "h": 89.06, "bottom": 91.41 },
+            "art": { "x": 13.13, "y": 2.34, "w": 118.75, "h": 89.06, "bottom": 91.4 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 88.75, "w": 145, "h": 24, "bottom": 112.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 91.1,
+              "baselineFromSlideTop": 107.25,
+              "capTopFromSlideTop": 95.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 2.34,
+            "artLeftFromSlideLeft": 13.13,
+            "artRightToSlideRight": 13.12,
+            "artBottomToLayoutBottom": 2.35,
+            "layoutBottomToName": -5,
+            "artBottomToName": -2.65,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "93.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelNavigator.slick-slide.slick-current.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "122.75px"
+            }
+          ]
+        },
+        {
+          "name": "Aviator",
+          "slide": {
+            "w": 145,
+            "h": 122.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "122.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 145, "h": 112.75, "bottom": 112.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS02_03_320/cc_2026LIS022092978_03_320_T9.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "145px",
+              "height": "93.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "72.5px 46.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 145, "h": 93.75, "bottom": 93.75 },
+            "drawn": { "x": 3.63, "y": 2.34, "w": 137.75, "h": 89.06, "bottom": 91.41 },
+            "art": { "x": 13.13, "y": 2.34, "w": 118.75, "h": 89.06, "bottom": 91.4 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 88.75, "w": 145, "h": 24, "bottom": 112.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 67.29,
+              "baselineFromSlideTop": 107.25,
+              "capTopFromSlideTop": 95.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 2.34,
+            "artLeftFromSlideLeft": 13.13,
+            "artRightToSlideRight": 13.12,
+            "artBottomToLayoutBottom": 2.35,
+            "layoutBottomToName": -5,
+            "artBottomToName": -2.65,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "93.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelAviator.slick-slide.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "122.75px"
+            }
+          ]
+        },
+        {
+          "name": "Nautilus",
+          "slide": {
+            "w": 145,
+            "h": 122.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "122.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 145, "h": 112.75, "bottom": 112.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS07_03_320/cc_2026LIS072000843_03_320_D4.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "145px",
+              "height": "93.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "72.5px 46.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 145, "h": 93.75, "bottom": 93.75 },
+            "drawn": { "x": 3.63, "y": 2.34, "w": 137.75, "h": 89.06, "bottom": 91.41 },
+            "art": { "x": 13.13, "y": 2.34, "w": 118.75, "h": 89.06, "bottom": 91.4 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 88.75, "w": 145, "h": 24, "bottom": 112.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 77.54,
+              "baselineFromSlideTop": 107.25,
+              "capTopFromSlideTop": 95.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 2.34,
+            "artLeftFromSlideLeft": 13.13,
+            "artRightToSlideRight": 13.12,
+            "artBottomToLayoutBottom": 2.35,
+            "layoutBottomToName": -5,
+            "artBottomToName": -2.65,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "93.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelNautilus.slick-slide",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "122.75px"
+            }
+          ]
+        },
+        {
+          "name": "Corsair",
+          "slide": {
+            "w": 145,
+            "h": 122.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "122.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 145, "h": 112.75, "bottom": 112.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS08_03_320/cc_2026LIS082037990_03_320_AZ.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "145px",
+              "height": "93.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "72.5px 46.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 145, "h": 93.75, "bottom": 93.75 },
+            "drawn": { "x": 3.63, "y": 2.34, "w": 137.75, "h": 89.06, "bottom": 91.41 },
+            "art": { "x": 13.13, "y": 2.34, "w": 118.75, "h": 89.06, "bottom": 91.4 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 88.75, "w": 145, "h": 24, "bottom": 112.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 69.34,
+              "baselineFromSlideTop": 107.25,
+              "capTopFromSlideTop": 95.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 2.34,
+            "artLeftFromSlideLeft": 13.13,
+            "artRightToSlideRight": 13.12,
+            "artBottomToLayoutBottom": 2.35,
+            "layoutBottomToName": -5,
+            "artBottomToName": -2.65,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "93.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelCorsair.slick-slide",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "122.75px"
+            }
+          ]
+        }
+      ]
+    },
+    "800": {
+      "status": 200,
+      "declined": null,
+      "popup": null,
+      "viewport": [800, 900],
+      "windowWidth": 800,
+      "body": { "font-family": "proxima-nova, sans-serif", "font-size": "14px", "line-height": "20px" },
+      "html": { "font-size": "10px" },
+      "slick": {
+        "slidesToShow": 3,
+        "activeBreakpoint": 992,
+        "breakpoints": [992, 460],
+        "responsive": [
+          { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+          { "breakpoint": 460, "settings": { "centerPadding": "40px", "slidesToShow": 2 } }
+        ],
+        "slideWidth": 217,
+        "listWidth": 650
+      },
+      "active": 3,
+      "faces": [
+        "proxima-nova 900 normal unloaded",
+        "proxima-nova 900 italic unloaded",
+        "proxima-nova 700 normal loaded",
+        "proxima-nova 700 italic unloaded",
+        "proxima-nova 800 normal unloaded",
+        "proxima-nova 800 italic unloaded",
+        "proxima-nova 600 normal unloaded",
+        "proxima-nova 600 italic unloaded",
+        "proxima-nova 400 normal loaded",
+        "proxima-nova 400 italic unloaded",
+        "proxima-nova 500 normal unloaded",
+        "proxima-nova 500 italic unloaded"
+      ],
+      "slides": [
+        {
+          "name": "Navigator",
+          "slide": {
+            "w": 217,
+            "h": 176.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "176.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 217, "h": 166.75, "bottom": 166.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS01_03_320/cc_2026LIS012075011_03_320_C8.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "217px",
+              "height": "147.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "108.5px 73.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 217, "h": 147.75, "bottom": 147.75 },
+            "drawn": { "x": 5.43, "y": 3.69, "w": 206.15, "h": 140.36, "bottom": 144.06 },
+            "art": { "x": 14.93, "y": 3.69, "w": 187.15, "h": 140.36, "bottom": 144.05 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 142.75, "w": 217, "h": 24, "bottom": 166.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 91.1,
+              "baselineFromSlideTop": 161.25,
+              "capTopFromSlideTop": 149.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 3.69,
+            "artLeftFromSlideLeft": 14.93,
+            "artRightToSlideRight": 14.92,
+            "artBottomToLayoutBottom": 3.7,
+            "layoutBottomToName": -5,
+            "artBottomToName": -1.3,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "147.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelNavigator.slick-slide.slick-current.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "176.75px"
+            }
+          ]
+        },
+        {
+          "name": "Aviator",
+          "slide": {
+            "w": 217,
+            "h": 176.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "176.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 217, "h": 166.75, "bottom": 166.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS02_03_320/cc_2026LIS022092978_03_320_T9.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "217px",
+              "height": "147.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "108.5px 73.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 217, "h": 147.75, "bottom": 147.75 },
+            "drawn": { "x": 5.42, "y": 3.69, "w": 206.15, "h": 140.36, "bottom": 144.06 },
+            "art": { "x": 14.92, "y": 3.69, "w": 187.15, "h": 140.36, "bottom": 144.05 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 142.75, "w": 217, "h": 24, "bottom": 166.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 67.29,
+              "baselineFromSlideTop": 161.25,
+              "capTopFromSlideTop": 149.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 3.69,
+            "artLeftFromSlideLeft": 14.92,
+            "artRightToSlideRight": 14.93,
+            "artBottomToLayoutBottom": 3.7,
+            "layoutBottomToName": -5,
+            "artBottomToName": -1.3,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "147.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelAviator.slick-slide.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "176.75px"
+            }
+          ]
+        },
+        {
+          "name": "Nautilus",
+          "slide": {
+            "w": 217,
+            "h": 176.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "176.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 217, "h": 166.75, "bottom": 166.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS07_03_320/cc_2026LIS072000843_03_320_D4.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "217px",
+              "height": "147.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "108.5px 73.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 217, "h": 147.75, "bottom": 147.75 },
+            "drawn": { "x": 5.42, "y": 3.69, "w": 206.15, "h": 140.36, "bottom": 144.06 },
+            "art": { "x": 14.92, "y": 3.69, "w": 187.15, "h": 140.36, "bottom": 144.05 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 142.75, "w": 217, "h": 24, "bottom": 166.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 77.54,
+              "baselineFromSlideTop": 161.25,
+              "capTopFromSlideTop": 149.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 3.69,
+            "artLeftFromSlideLeft": 14.92,
+            "artRightToSlideRight": 14.93,
+            "artBottomToLayoutBottom": 3.7,
+            "layoutBottomToName": -5,
+            "artBottomToName": -1.3,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "147.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelNautilus.slick-slide.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "176.75px"
+            }
+          ]
+        },
+        {
+          "name": "Corsair",
+          "slide": {
+            "w": 217,
+            "h": 176.75,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "176.75px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 217, "h": 166.75, "bottom": 166.75 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS08_03_320/cc_2026LIS082037990_03_320_AZ.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "217px",
+              "height": "147.75px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "108.5px 73.875px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 217, "h": 147.75, "bottom": 147.75 },
+            "drawn": { "x": 5.42, "y": 3.69, "w": 206.15, "h": 140.36, "bottom": 144.06 },
+            "art": { "x": 14.92, "y": 3.69, "w": 187.15, "h": 140.36, "bottom": 144.05 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 142.75, "w": 217, "h": 24, "bottom": 166.75 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-5px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 69.34,
+              "baselineFromSlideTop": 161.25,
+              "capTopFromSlideTop": 149.25
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 3.69,
+            "artLeftFromSlideLeft": 14.92,
+            "artRightToSlideRight": 14.93,
+            "artBottomToLayoutBottom": 3.7,
+            "layoutBottomToName": -5,
+            "artBottomToName": -1.3,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "147.75px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelCorsair.slick-slide",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "176.75px"
+            }
+          ]
+        }
+      ]
+    },
+    "1366": {
+      "status": 200,
+      "declined": null,
+      "popup": null,
+      "viewport": [1366, 768],
+      "windowWidth": 1366,
+      "body": { "font-family": "proxima-nova, sans-serif", "font-size": "14px", "line-height": "20px" },
+      "html": { "font-size": "10px" },
+      "slick": {
+        "slidesToShow": 4,
+        "activeBreakpoint": null,
+        "breakpoints": [992, 460],
+        "responsive": [
+          { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+          { "breakpoint": 460, "settings": { "centerPadding": "40px", "slidesToShow": 2 } }
+        ],
+        "slideWidth": 268,
+        "listWidth": 1070
+      },
+      "active": 4,
+      "faces": [
+        "proxima-nova 900 normal unloaded",
+        "proxima-nova 900 italic unloaded",
+        "proxima-nova 700 normal loaded",
+        "proxima-nova 700 italic unloaded",
+        "proxima-nova 800 normal unloaded",
+        "proxima-nova 800 italic unloaded",
+        "proxima-nova 600 normal unloaded",
+        "proxima-nova 600 italic unloaded",
+        "proxima-nova 400 normal loaded",
+        "proxima-nova 400 italic unloaded",
+        "proxima-nova 500 normal unloaded",
+        "proxima-nova 500 italic unloaded"
+      ],
+      "slides": [
+        {
+          "name": "Navigator",
+          "slide": {
+            "w": 268,
+            "h": 210,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "210px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 268, "h": 200, "bottom": 200 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS01_03_320/cc_2026LIS012075011_03_320_C8.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "268px",
+              "height": "186px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "134px 93px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 268, "h": 186, "bottom": 186 },
+            "drawn": { "x": 6.7, "y": 4.65, "w": 254.6, "h": 176.7, "bottom": 181.35 },
+            "art": { "x": 16.2, "y": 4.65, "w": 235.6, "h": 176.7, "bottom": 181.35 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 176, "w": 268, "h": 24, "bottom": 200 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-10px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 91.1,
+              "baselineFromSlideTop": 194.5,
+              "capTopFromSlideTop": 182.5
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 4.65,
+            "artLeftFromSlideLeft": 16.2,
+            "artRightToSlideRight": 16.2,
+            "artBottomToLayoutBottom": 4.65,
+            "layoutBottomToName": -10,
+            "artBottomToName": -5.35,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "186px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelNavigator.slick-slide.slick-current.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "210px"
+            }
+          ]
+        },
+        {
+          "name": "Aviator",
+          "slide": {
+            "w": 268,
+            "h": 210,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "210px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 268, "h": 200, "bottom": 200 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS02_03_320/cc_2026LIS022092978_03_320_T9.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "268px",
+              "height": "186px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "134px 93px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 268, "h": 186, "bottom": 186 },
+            "drawn": { "x": 6.7, "y": 4.65, "w": 254.6, "h": 176.7, "bottom": 181.35 },
+            "art": { "x": 16.2, "y": 4.65, "w": 235.6, "h": 176.7, "bottom": 181.35 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 176, "w": 268, "h": 24, "bottom": 200 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-10px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 67.29,
+              "baselineFromSlideTop": 194.5,
+              "capTopFromSlideTop": 182.5
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 4.65,
+            "artLeftFromSlideLeft": 16.2,
+            "artRightToSlideRight": 16.2,
+            "artBottomToLayoutBottom": 4.65,
+            "layoutBottomToName": -10,
+            "artBottomToName": -5.35,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "186px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelAviator.slick-slide.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "210px"
+            }
+          ]
+        },
+        {
+          "name": "Nautilus",
+          "slide": {
+            "w": 268,
+            "h": 210,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "210px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 268, "h": 200, "bottom": 200 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS07_03_320/cc_2026LIS072000843_03_320_D4.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "268px",
+              "height": "186px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "134px 93px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 268, "h": 186, "bottom": 186 },
+            "drawn": { "x": 6.7, "y": 4.65, "w": 254.6, "h": 176.7, "bottom": 181.35 },
+            "art": { "x": 16.2, "y": 4.65, "w": 235.6, "h": 176.7, "bottom": 181.35 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 176, "w": 268, "h": 24, "bottom": 200 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-10px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 77.54,
+              "baselineFromSlideTop": 194.5,
+              "capTopFromSlideTop": 182.5
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 4.65,
+            "artLeftFromSlideLeft": 16.2,
+            "artRightToSlideRight": 16.2,
+            "artBottomToLayoutBottom": 4.65,
+            "layoutBottomToName": -10,
+            "artBottomToName": -5.35,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "186px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelNautilus.slick-slide.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "210px"
+            }
+          ]
+        },
+        {
+          "name": "Corsair",
+          "slide": {
+            "w": 268,
+            "h": 210,
+            "style": { "padding-top": "0px", "padding-left": "0px", "padding-right": "0px", "margin-top": "0px", "height": "210px", "float": "left", "display": "block" }
+          },
+          "a": { "x": 0, "y": 0, "w": 268, "h": 200, "bottom": 200 },
+          "img": {
+            "src": "/assets/stock/ColorMatched/Transparent/320/cc_2026LIS08_03_320/cc_2026LIS082037990_03_320_AZ.png",
+            "natural": [320, 240],
+            "attrs": ["320", "240"],
+            "complete": true,
+            "style": {
+              "display": "block",
+              "box-sizing": "border-box",
+              "width": "268px",
+              "height": "186px",
+              "max-width": "100%",
+              "padding-top": "0px",
+              "padding-right": "10px",
+              "padding-bottom": "0px",
+              "padding-left": "10px",
+              "margin-top": "0px",
+              "margin-bottom": "0px",
+              "transform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+              "transform-origin": "134px 93px",
+              "transition": "0.1s ease-in",
+              "object-fit": "fill",
+              "vertical-align": "middle",
+              "font-size": "14px"
+            },
+            "restoredTransform": "matrix(0.95, 0, 0, 0.95, 0, 0)",
+            "scale": 0.95,
+            "layout": { "x": 0, "y": 0, "w": 268, "h": 186, "bottom": 186 },
+            "drawn": { "x": 6.7, "y": 4.65, "w": 254.6, "h": 176.7, "bottom": 181.35 },
+            "art": { "x": 16.2, "y": 4.65, "w": 235.6, "h": 176.7, "bottom": 181.35 }
+          },
+          "vehicleName": {
+            "box": { "x": 0, "y": 176, "w": 268, "h": 24, "bottom": 200 },
+            "style": {
+              "font-family": "proxima-nova, sans-serif",
+              "font-size": "16.8px",
+              "font-weight": "300",
+              "font-style": "normal",
+              "line-height": "24px",
+              "text-transform": "uppercase",
+              "letter-spacing": "normal",
+              "color": "rgb(51, 51, 51)",
+              "margin-top": "-10px",
+              "margin-bottom": "10px",
+              "padding-top": "0px",
+              "display": "block"
+            },
+            "metrics": {
+              "font": "300 16.8px proxima-nova, sans-serif",
+              "fontAscent": 18,
+              "fontDescent": 5,
+              "inkAscent": 12,
+              "inkDescent": 0,
+              "capHeight": 12,
+              "inkWidth": 69.34,
+              "baselineFromSlideTop": 194.5,
+              "capTopFromSlideTop": 182.5
+            },
+            "available": true
+          },
+          "gaps": {
+            "artTopFromSlideTop": 4.65,
+            "artLeftFromSlideLeft": 16.2,
+            "artRightToSlideRight": 16.2,
+            "artBottomToLayoutBottom": 4.65,
+            "layoutBottomToName": -10,
+            "artBottomToName": -5.35,
+            "nameBottomToSlideBottom": 10
+          },
+          "chain": [
+            {
+              "el": "img.img-responsive.carImage.margin-auto",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "middle",
+              "height": "186px"
+            },
+            {
+              "el": "a",
+              "display": "inline",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "auto"
+            },
+            {
+              "el": "div.modelCorsair.slick-slide.slick-active",
+              "display": "block",
+              "padding-top": "0px",
+              "margin-top": "0px",
+              "border-top-width": "0px",
+              "line-height": "20px",
+              "font-size": "14px",
+              "vertical-align": "baseline",
+              "height": "210px"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "sweepDown": [
+    { "innerWidth": 994, "windowWidth": 994, "clientWidth": 994, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 },
+    { "innerWidth": 993, "windowWidth": 993, "clientWidth": 993, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 },
+    { "innerWidth": 992, "windowWidth": 992, "clientWidth": 992, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 },
+    { "innerWidth": 991, "windowWidth": 991, "clientWidth": 991, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 990, "windowWidth": 990, "clientWidth": 990, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 770, "windowWidth": 770, "clientWidth": 770, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 769, "windowWidth": 769, "clientWidth": 769, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 768, "windowWidth": 768, "clientWidth": 768, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 767, "windowWidth": 767, "clientWidth": 767, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 223 },
+    { "innerWidth": 766, "windowWidth": 766, "clientWidth": 766, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 222 },
+    { "innerWidth": 462, "windowWidth": 462, "clientWidth": 462, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 121 },
+    { "innerWidth": 461, "windowWidth": 461, "clientWidth": 461, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 121 },
+    { "innerWidth": 460, "windowWidth": 460, "clientWidth": 460, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 120 },
+    { "innerWidth": 459, "windowWidth": 459, "clientWidth": 459, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 180 },
+    { "innerWidth": 458, "windowWidth": 458, "clientWidth": 458, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 179 }
+  ],
+  "sweepUp": [
+    { "innerWidth": 458, "windowWidth": 458, "clientWidth": 458, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 179 },
+    { "innerWidth": 459, "windowWidth": 459, "clientWidth": 459, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 180 },
+    { "innerWidth": 460, "windowWidth": 460, "clientWidth": 460, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 120 },
+    { "innerWidth": 461, "windowWidth": 461, "clientWidth": 461, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 121 },
+    { "innerWidth": 462, "windowWidth": 462, "clientWidth": 462, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 121 },
+    { "innerWidth": 766, "windowWidth": 766, "clientWidth": 766, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 222 },
+    { "innerWidth": 767, "windowWidth": 767, "clientWidth": 767, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 223 },
+    { "innerWidth": 768, "windowWidth": 768, "clientWidth": 768, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 769, "windowWidth": 769, "clientWidth": 769, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 770, "windowWidth": 770, "clientWidth": 770, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 990, "windowWidth": 990, "clientWidth": 990, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 991, "windowWidth": 991, "clientWidth": 991, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 992, "windowWidth": 992, "clientWidth": 992, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 },
+    { "innerWidth": 993, "windowWidth": 993, "clientWidth": 993, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 },
+    { "innerWidth": 994, "windowWidth": 994, "clientWidth": 994, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 }
+  ],
+  "freshLoad": [
+    { "innerWidth": 459, "windowWidth": 459, "clientWidth": 459, "slidesToShow": 2, "activeBreakpoint": 460, "slickActive": 2, "slideWidth": 180 },
+    { "innerWidth": 460, "windowWidth": 460, "clientWidth": 460, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 120 },
+    { "innerWidth": 461, "windowWidth": 461, "clientWidth": 461, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 121 },
+    { "innerWidth": 767, "windowWidth": 767, "clientWidth": 767, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 223 },
+    { "innerWidth": 768, "windowWidth": 768, "clientWidth": 768, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 991, "windowWidth": 991, "clientWidth": 991, "slidesToShow": 3, "activeBreakpoint": 992, "slickActive": 3, "slideWidth": 217 },
+    { "innerWidth": 992, "windowWidth": 992, "clientWidth": 992, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 },
+    { "innerWidth": 993, "windowWidth": 993, "clientWidth": 993, "slidesToShow": 4, "activeBreakpoint": null, "slickActive": 4, "slideWidth": 218 }
+  ]
+}

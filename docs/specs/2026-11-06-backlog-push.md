@@ -11,7 +11,7 @@ one push. This is the step checklist, ticked as each step lands; the evidence go
       a preset's platform classes and the theme draws it; the preset fills it on every row, and
       Space between rows gives the two rows live's 50px. Also: 6px under the tile and wordmark names
       (Steven's choice over 4px).
-- [ ] 2. **Corrections that need a live re-read.** Lincoln's art height and its 460/992 flips
+- [x] 2. **Corrections that need a live re-read.** Lincoln's art height and its 460/992 flips
       (lincolndemo2), Honda's name weight and ladder (hondademo2): re-measured into
       `docs/research/2026-11-06-rereads/`, then the presets corrected where they differ.
 - [ ] 3. **Acura's ZDX name riding 27px high.** Its cutout is 16:10 among 4:3 ones.
