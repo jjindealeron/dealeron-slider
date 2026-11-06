@@ -823,8 +823,13 @@ ${VIDEO_DIALOG_CSS}`,
 
    Each tab overlaps the row's rule by the 1px of its own bottom border, so a
    cell rule (Ford) draws where the row rule would and the two never stack;
-   the picked tab's border goes transparent and the row rule shows through. */
-.cargo-tabs [role="tab"] { position: relative; flex: var(--tab-flex); padding: var(--tab-pad); margin-block-end: -1px; margin-inline: calc(var(--tab-gap) / 2); font: inherit; font-size: calc(var(--tab-size) * var(--tab-fit, 1)); font-weight: var(--tab-weight); line-height: var(--tab-leading); color: var(--tab-color); text-transform: var(--tab-case); cursor: pointer; background: var(--tab-bg); border: 0; border-block-end: 1px solid var(--tab-cell-rule); opacity: var(--tab-dim); }
+   the picked tab's border goes transparent and the row rule shows through.
+
+   nowrap, like the row: a tab that may shrink (--tab-flex 0 1 auto) shrinks by
+   wrapping its label, so the row never overflowed and the fit script never ran.
+   Mazda's four labels went to two lines each at 768-800 with the row half
+   empty (2026-11-06); unwrapped, the row overflows and the type shrinks. */
+.cargo-tabs [role="tab"] { position: relative; flex: var(--tab-flex); padding: var(--tab-pad); margin-block-end: -1px; margin-inline: calc(var(--tab-gap) / 2); font: inherit; font-size: calc(var(--tab-size) * var(--tab-fit, 1)); font-weight: var(--tab-weight); line-height: var(--tab-leading); color: var(--tab-color); text-transform: var(--tab-case); white-space: nowrap; cursor: pointer; background: var(--tab-bg); border: 0; border-block-end: 1px solid var(--tab-cell-rule); opacity: var(--tab-dim); }
 /* A rule between cells, drawn inside the tab that follows so it costs no
    width - a real border would move every centred tab by a pixel. */
 .cargo-tabs [role="tab"] + [role="tab"] { box-shadow: inset 1px 0 var(--tab-cell-divider); }

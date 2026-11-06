@@ -151,6 +151,14 @@ function controlContrast() {
         add('focus ring (page behind the strip)', col, outer);
       }
     }
+    // The card link's ring (2026-11-06, build-cards.mjs) is drawn INSIDE the
+    // card, 2px in, so its ground is the card's own surface, or the band
+    // behind a transparent card: start the walk at the card, not above it.
+    const card = root.querySelector('.cargo-card, .cargo-model, .cargo-svc');
+    if (shown(card) && card.firstElementChild) {
+      const col = parse(getComputedStyle(card).getPropertyValue('--dos-focus'));
+      if (col.a > 0) add('card focus ring', col, ground(card.firstElementChild));
+    }
   }
   return out;
 }

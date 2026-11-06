@@ -482,15 +482,28 @@ for (const path of ['index.html', 'brands.html', 'patterns.html', 'reference.htm
 // FOLLOWS it — dangling at the start of every new row, and Chevrolet's five
 // body styles took more height than the car under them. The row does not wrap
 // at any width now; it scrolls, and only when it has to.
+//
+// Nor does a label inside its tab (2026-11-06). A tab that may shrink did it by
+// wrapping, so its row never overflowed and the fit script never ran: Mazda's
+// four labels sat on two lines each at 768 and 800 with the row half empty,
+// and Subaru's "All Vehicles" at 390. Counted per label with a Range, the
+// lines its text actually paints on; 768 and 800 are where Mazda's showed.
 test('no tab row wraps, at any width', async ({ browser }) => {
   const bad = [];
-  for (const width of [320, 390, 600, 700, 992, 1400]) {
+  for (const width of [320, 390, 600, 700, 768, 800, 992, 1400]) {
     const { ctx, page, errors } = await at(browser, 'brands.html', width);
     const rows = await page.evaluate(() =>
       [...document.querySelectorAll('[data-cargo="tabs"] [role="tablist"]')].map((row, i) => {
         const tabs = [...row.querySelectorAll('[role="tab"]')];
+        const range = document.createRange();
+        const wrapped = tabs.flatMap((t) => {
+          range.selectNodeContents(t);
+          const tops = new Set([...range.getClientRects()].filter((r) => r.width > 0).map((r) => Math.round(r.top)));
+          return tops.size > 1 ? [`"${t.textContent.trim()}" on ${tops.size} lines`] : [];
+        });
         return {
-          i,
+          i: row.closest('[id^="b-"]')?.id ?? i,
+          wrapped,
           lines: new Set(tabs.map((t) => Math.round(t.getBoundingClientRect().top))).size,
           overflow: row.scrollWidth - row.clientWidth,
           more: row.getAttribute('data-more'),
@@ -502,6 +515,7 @@ test('no tab row wraps, at any width', async ({ browser }) => {
     assert.ok(rows.length, `no tab rows found on brands.html at ${width}`);
     for (const r of rows) {
       if (r.lines !== 1) bad.push(`${width}px bar ${r.i}: tabs sit on ${r.lines} lines`);
+      for (const w of r.wrapped) bad.push(`${width}px bar ${r.i}: ${w}`);
       // data-more is the script's report of the same fact the layout shows, and
       // the fade and the left alignment both hang off it. Out of step either
       // way and the row either fades an edge with nothing past it or centres a

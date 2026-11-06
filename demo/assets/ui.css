@@ -2363,7 +2363,11 @@ code {
   border-radius: 10px;
 }
 
-.gx-stage .h1 {
+/* At the platform's own weight, (0,1,0), never .gx-stage .h1 (0,2,0): that
+   beat the tabbed bar's `.cargo-title:is(h2)` (0,1,1), so every bar heading
+   wearing h1 showed Bootstrap's 20px over and 10px under on these pages
+   instead of 0 and its preset's --title-gap (2026-11-06). */
+:where(.gx-stage) .h1 {
   margin: 20px 0 10px;
   font-size: 36px;
   font-weight: 500;

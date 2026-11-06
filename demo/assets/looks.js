@@ -272,6 +272,11 @@ const LOOKS = {
       '--pill-bg': '#fff',
       '--pill-fg': '#222',
       '--card-shadow': 'none',
+      // The card link's own focus ring (2026-11-06) is drawn inside the card,
+      // on #2f2f2f, where the engine's #1a5fb4 is 2.13:1. #4a90e2 is portrait's
+      // answer to the same dark ground: about 4.1:1 on the card and 3.3:1 on
+      // the white page the arrow and dot rings sit on.
+      '--dos-focus': '#4a90e2',
     },
     css: `@media (max-width: 767.98px) { %root% { --dos-arrow-size: 36px; } }
 @media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }

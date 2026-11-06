@@ -1013,3 +1013,39 @@ the code alone (BMW's adds a note), and held one row per preset (Nissan's two).
 
 Not carried, in `docs/backlog.md`: a second link per card (BMW and Porsche's Pre-Owned, Maserati's
 Select), which is Steven's call before rollout, and the measuring agents' side findings.
+
+## 2026-11-06 — three of the static batch's side findings fixed
+
+Steven asked for these three first, out of the batch's backlog entries.
+
+**A card link keeps a focus ring on the platform.** The card links (`.cargo-card` on every look,
+`.cargo-model`, `.cargo-svc`) had no ring of their own, only the browser's. maseratidemo1's inlined
+CSS has two rules against it, both `!important` at (0,1,1): the shared `extend.css` pushes a link's
+ring 1px outside it, and template 740's `layout.css` then removes it
+(`a:focus{outline:0 none!important}`). On a test host carrying both, every card link on all ten
+patterns that have one computed to `outline: none`; with `extend.css` alone, the track clipped the
+ring to a sliver at the card's right edge. `build-cards.mjs` now gives the three classes the own
+ring, 2px of `--dos-focus` in the card's outer 2px, `!important` at (0,3,0): the engine's 3px slide
+ring crossed the names, which sit on the card's bottom edge, and 2px inset is Bootstrap 3's own link
+ring (`outline-offset: -2px`). A descender still touches it on most cards. `a11y.mjs` now measures
+that ring against the card's own surface, and found the split card's `#2f2f2f` at 2.13:1, so the
+split look takes portrait's `#4a90e2` (4.07:1). `tests/builder.test.mjs` reads the link classes off
+every snippet and failed on all ten without the rule.
+
+**A tab label no longer wraps inside its tab.** A tab that may shrink (`--tab-flex: 0 1 auto`)
+shrank by wrapping, so its row never overflowed and the fit script never ran: Mazda's four labels
+sat on two lines each at 768 and 800 with the row half empty, Nissan's grid and Toyota's at 768,
+Subaru's "All Vehicles" from 390. `white-space: nowrap` on the tab; each of those rows now has its
+type shrunk to fit (Nissan's grid lands on the 12px floor at 768) and none scrolls. The six-width
+tab test gained 768 and 800 and a per-label line count, and failed on those bars without it.
+
+**The catalogue pages' `.h1` has the platform's weight.** `ui.css` copied the platform's `.h1` as
+`.gx-stage .h1` (0,2,0), which beat the tabbed bar's `.cargo-title:is(h2)` (0,1,1): all 20 bars on
+brands.html whose heading wears `h1`, and the tabbed bar on patterns.html, showed Bootstrap's 20px
+over and 10px under instead of 0 and their own `--title-gap` (Nissan asks for 28px). The platform's
+own `.h1` is (0,1,0) and loses, so the copy is now `:where(.gx-stage) .h1`. Size, weight, leading,
+family, case and colour came out identical on all 52 headings checked (1366 and 390).
+`tests/brands.test.mjs` failed on all 21 before.
+
+Found on the way and left in the backlog: the platform's button ring replaces the engine's own on
+the arrows, dots and thumbs of every platform site.

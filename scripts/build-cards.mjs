@@ -101,6 +101,26 @@ for (const [name, bp] of TIERS) {
   out.push(bp ? `@media (min-width: ${bp}px) {\n${rules.map((r) => '  ' + r).join('\n')}\n}` : rules.join('\n'));
 }
 
+// Keyboard focus on the card links: every look's card is one link
+// (.cargo-card), and the models and service patterns have their own
+// (.cargo-model, .cargo-svc). They had no ring of their own, only the
+// browser's, and the platform takes that away. Its shared extend.css forces a
+// link's ring 1px OUTSIDE it (`a:focus-visible { outline-offset: 1px
+// !important }`), where the track's overflow clips all but a sliver, and
+// template 740's layout.css then removes it from every link
+// (`a:focus { outline: 0 none !important }`; maseratidemo1, 2026-11-06). Both
+// are !important at (0,1,1), so only an !important rule that weighs more can
+// draw one. --dos-focus, drawn inset so the scroll container cannot clip it:
+// 2px in the card's outer 2px, as Bootstrap 3's own link ring is
+// (outline-offset: -2px), because a card's name sits on its bottom edge and
+// the engine's 3px slide ring crossed the descenders. A site still recolours
+// it through --dos-focus; the platform's buttons keep their own rings.
+out.push(
+  '',
+  '/* ---- keyboard focus on a card link ---- */',
+  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {\n  outline: 2px solid var(--dos-focus) !important;\n  outline-offset: -2px !important;\n}',
+);
+
 for (const [id, look] of Object.entries(LOOKS)) {
   const sel = `.cargo-${id}`;
   const decls = Object.entries(look.settings)

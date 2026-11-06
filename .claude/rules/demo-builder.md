@@ -34,6 +34,14 @@ is load-bearing: `npm run size` splits on it to weigh the ENGINE alone. The buil
 shared-class markup with only the properties that differ from the look's defaults and offers no
 inlined copy of the card styles — an inlined copy can never be fixed.
 
+**A card link draws its own focus ring, `!important`** (2026-11-06). The platform's `extend.css`
+pushes every link's ring 1px outside it, where the track clips it, and template 740's `layout.css`
+removes it; both are `!important` at (0,1,1). `build-cards.mjs` gives `.cargo-card`, `.cargo-model`
+and `.cargo-svc` 2px of `--dos-focus` drawn inset, at (0,3,0) `!important`. A new link class in a
+pattern joins that selector: `tests/builder.test.mjs` reads the classes off every snippet and fails
+until it does. `a11y.mjs` measures the ring against the card's own surface, so a dark card sets
+`--dos-focus` (split, portrait: `#4a90e2`).
+
 **Pattern structure and pattern scripts are SHARED too, never pasted** (spec
 `2026-09-14-shared-pattern-structure-design.md`). `scripts/build-patterns.mjs` appends every
 pattern's CSS and the six pattern scripts to both `dist` files behind a `/*! patterns */` marker,
@@ -187,9 +195,17 @@ media query, because the divider glyph hangs off the tab that FOLLOWS it and a w
 with a `|` dangling in the margin. `data-more`, set by the pattern script only while the row
 actually overflows, turns on the left alignment, the `flex: 0 0 auto` and the edge fade; a row that
 fits scrolls nowhere and stays centred. No `scroll-snap` on it: the snap area is the tab's border
-box, so snapping scrolls its `--tab-gap` margin off. `tests/layout.test.mjs` holds all of it at six
-widths, and its 320px checks drive the catalogue pages directly because the builder's narrowest
-frame button is 390.
+box, so snapping scrolls its `--tab-gap` margin off. `tests/layout.test.mjs` holds all of it at
+eight widths, and its 320px checks drive the catalogue pages directly because the builder's
+narrowest frame button is 390.
+
+**Nor does a tab's label wrap inside its tab** (`white-space: nowrap` on the tab, 2026-11-06): a tab
+that may shrink did it by wrapping, so its row never overflowed and the fit script never ran.
+
+**The catalogue pages' copy of the platform's classes keeps the platform's weight.** `ui.css` draws
+`.h1` and the buttons on `.gx-stage` as page scaffolding; written `.gx-stage .h1` (0,2,0) it beat
+the tabbed bar's `.cargo-title:is(h2)` and spaced every `h1` heading wrong, where the platform's own
+`.h1` (0,1,0) loses. `:where(.gx-stage)` keeps it at (0,1,0).
 
 **Code parity is structural, not policed.** `cssFor(sel)` and `htmlFor(cls)` in `workbench.js` are
 the ONLY producers of CSS and markup; preview is `cssFor('.wb-live')`, copy panel

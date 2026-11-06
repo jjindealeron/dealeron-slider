@@ -439,6 +439,10 @@
     --dos-per-view: 8;
   }
 }
+.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {
+  outline: 2px solid var(--dos-focus) !important;
+  outline-offset: -2px !important;
+}
 .cargo-tile {
   --strip-bg: transparent;
   --strip-pad: 0.1px;
@@ -735,6 +739,7 @@
   --pill-bg: #fff;
   --pill-fg: #222;
   --card-shadow: none;
+  --dos-focus: #4a90e2;
   font-size: var(--cargo-font, 1em);
 }
 @media (max-width: 767.98px) {
@@ -1292,6 +1297,7 @@
   line-height: var(--tab-leading);
   color: var(--tab-color);
   text-transform: var(--tab-case);
+  white-space: nowrap;
   cursor: pointer;
   background: var(--tab-bg);
   border: 0;

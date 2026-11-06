@@ -55,15 +55,14 @@ The measurements are `docs/research/2026-11-05-measurements/` (`BRIEF-static.md`
   Maserati's tiles each carry a "Select" button. The tile card is one link, to the model's new
   inventory, so a dealer switched over loses the one-click path to that model's used cars. A second
   link is markup on the card, not a setting.
-- **Template 740 removes every focus outline** (`a:focus{outline:0 none!important}` in its
-  `layout.css`, read on maseratidemo1). The tile card has no focus style of its own, so on those
-  sites a card likely shows no keyboard focus ring. Inferred from the rule, not rendered.
-- **A tab label wraps inside its tab** on brands.html at 800 (Mazda's built bar does it): with the
-  default `--tab-flex: 0 1 auto` a tab shrinks by wrapping, so the row never overflows and the
-  shrink-to-fit script never starts. `kia-centred` sets `0 0 auto`; `white-space: nowrap` on the tab
-  would fix it for every bar.
-- **`.gx-stage .h1` in `demo/assets/ui.css` overrides `--title-gap`** on the catalogue pages, so a
-  bar whose heading wears `h1` shows a 10px gap there whatever its preset says. Demo only.
+- **The platform's ring replaces the engine's on every control.** Its shared `extend.css` sets
+  `button:focus-visible { outline: 5px auto -webkit-focus-ring-color !important; outline-offset: 1px !important }`,
+  which outweighs the engine's `.dos-arrow:focus-visible` and the rest. So on a platform site
+  `--dos-focus` never reaches the arrows, dots, pause button or thumbs (the builder's Focus ring
+  knob shows a colour the page does not draw), and a thumb's ring sits 1px outside it, where its
+  scroll strip can clip it: the engine draws that ring inset for exactly this reason (WCAG 2.4.7).
+  Read off maseratidemo1's CSS and rendered on a test host page, 2026-11-06; not looked at on a live
+  dealer page. The card links won the same fight with `!important` (`build-cards.mjs`).
 - **Two rows read down each column.** Ford's grid and Maserati's tiles fill a column before the
   next, so the top row is models 1, 3, 5...; live reads across. Accepted by Steven (2026-11-06).
 - **What else the nine do not carry:** BMW's twenty cannot all show at once (six across, four

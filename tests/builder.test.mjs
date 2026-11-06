@@ -282,6 +282,44 @@ test.describe('the pasted block on a hostile host page', () => {
     await host.setViewportSize({ width: 1280, height: 900 });
   });
 
+  // 2026-11-06: a card link had no focus ring of its own, only the browser's,
+  // and the platform takes that away. Its extend.css pushes a link's ring 1px
+  // outside it (the track clipped all but a sliver), and template 740's
+  // layout.css removes it outright: measured before the fix, every
+  // .cargo-card, .cargo-model and .cargo-svc computed to `outline: none 0px`
+  // on a host carrying those two rules, copied from maseratidemo1. The
+  // classes are read off each snippet, so a card link added later is held too.
+  test('every card link keeps an inset focus ring on a host that takes link rings away', async () => {
+    const PLATFORM =
+      'a:focus{outline-offset:1px!important}a:focus-visible,.btn:focus-visible,button:focus-visible{outline:5px auto -webkit-focus-ring-color!important;outline-offset:1px!important}' +
+      'a:focus{outline:0 none!important;outline-offset:0!important}';
+    const bad = [];
+    let held = 0;
+    for (const id of await patternIds(page)) {
+      await pick(page, id);
+      const p = await copyParts(page);
+      if (!/<a class="cargo-/.test(p.html)) continue;
+      await host.setContent(hostHtml({ ...engine, css: `${PLATFORM}\n${p.css}`, html: p.html, js: p.js }), { waitUntil: 'load' });
+      await host.waitForTimeout(150);
+      await host.evaluate(() => document.body.focus());
+      let ring = null;
+      for (let i = 0; i < 20 && !ring; i++) {
+        await host.keyboard.press('Tab');
+        ring = await host.evaluate(() => {
+          const e = document.activeElement;
+          if (!e?.matches('.dos-slide a[class^="cargo-"]')) return null;
+          const cs = getComputedStyle(e);
+          return `${e.className}: ${cs.outlineStyle} ${cs.outlineWidth} offset ${cs.outlineOffset}`;
+        });
+      }
+      held++;
+      if (!ring) bad.push(`${id}: no card link took focus`);
+      else if (!/: solid 2px offset -2px$/.test(ring)) bad.push(`${id} ${ring}`);
+    }
+    assert.ok(held >= 8, `only ${held} patterns emit a card link`);
+    assert.deepEqual(bad, [], bad.join(' | '));
+  });
+
   // F053: a designer restyling a card writes against their own slider name, and
   // `.my-slider .cargo-name` ties with the shared sheet's `.cargo-tile
   // .cargo-name` at (0,2,0) - so source order decided, and where the platform

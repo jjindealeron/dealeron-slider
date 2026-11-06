@@ -466,6 +466,39 @@ test('a preset that sets Rows draws that many rows, every model at once on a des
   }
 });
 
+// 2026-11-06: the catalogue pages' copy of the platform's .h1 was
+// `.gx-stage .h1` (0,2,0), which beat the tabbed bar's own
+// `.cargo-title:is(h2)` (0,1,1), so all 20 bars here whose heading wears h1,
+// and the tabbed bar on the patterns page, showed 20px over and 10px under
+// instead of 0 and their preset's --title-gap (Nissan asks for 28px). The
+// platform's own .h1 is (0,1,0) and loses, so the demo has to as well.
+test('every bar heading is spaced by its own pattern rule, whatever class it wears', async ({ browser }) => {
+  const ctx = await browser.newContext({ viewport: { width: 1366, height: 900 } });
+  const other = await ctx.newPage();
+  await other.goto(`${ORIGIN}/demo/patterns.html`, { waitUntil: 'load' });
+  const bad = [];
+  let h1 = 0;
+  for (const p of [page, other]) {
+    const got = await p.evaluate(() =>
+      [.../** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('.cargo-title'))].map((t) => {
+        const now = getComputedStyle(t);
+        const was = `${now.marginTop} ${now.marginBottom}`;
+        t.style.margin = '0 0 var(--title-gap)';
+        const asked = `${getComputedStyle(t).marginTop} ${getComputedStyle(t).marginBottom}`;
+        t.style.margin = '';
+        return { id: t.closest('[id^="b-"], [id^="p-"]')?.id, h1: t.classList.contains('h1'), was, asked };
+      }),
+    );
+    for (const t of got) {
+      if (t.h1) h1++;
+      if (t.was !== t.asked) bad.push(`${t.id}: ${t.was}, its rule asks ${t.asked}`);
+    }
+  }
+  await ctx.close();
+  assert.ok(h1 >= 10, `only ${h1} bar headings wear h1`);
+  assert.deepEqual(bad, [], bad.join(' | '));
+});
+
 test('the deep link lands on the brand and nothing threw', async () => {
   await page.goto(`${ORIGIN}/demo/brands.html#toyota`, { waitUntil: 'load' });
   await page.waitForSelector('#b-toyota .dos-slide');
