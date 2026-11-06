@@ -46,6 +46,30 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
   `re2js` `^2.9.1` (GHSA-gg6h-894w-4m9c: `markdownlint` 0.42.0 pins exactly 2.8.6, the fix is
   2.8.7). Once `npm ls minimatch re2js` without the overrides shows fixed versions, remove them.
 
+## 2026-11-06 — found while building the nine static codes, not actioned
+
+The measurements are `docs/research/2026-11-05-measurements/` (`BRIEF-static.md`).
+
+- **A second link per card, before rollout: Steven's call.** The live BMW block gives each model New
+  and Pre-Owned buttons, Porsche's cards slide up Search New and Search Pre-Owned on hover, and
+  Maserati's tiles each carry a "Select" button. The tile card is one link, to the model's new
+  inventory, so a dealer switched over loses the one-click path to that model's used cars. A second
+  link is markup on the card, not a setting.
+- **Template 740 removes every focus outline** (`a:focus{outline:0 none!important}` in its
+  `layout.css`, read on maseratidemo1). The tile card has no focus style of its own, so on those
+  sites a card likely shows no keyboard focus ring. Inferred from the rule, not rendered.
+- **A tab label wraps inside its tab** on brands.html at 800 (Mazda's built bar does it): with the
+  default `--tab-flex: 0 1 auto` a tab shrinks by wrapping, so the row never overflows and the
+  shrink-to-fit script never starts. `kia-centred` sets `0 0 auto`; `white-space: nowrap` on the tab
+  would fix it for every bar.
+- **`.gx-stage .h1` in `demo/assets/ui.css` overrides `--title-gap`** on the catalogue pages, so a
+  bar whose heading wears `h1` shows a 10px gap there whatever its preset says. Demo only.
+- **Two rows read down each column.** Ford's grid and Maserati's tiles fill a column before the
+  next, so the top row is models 1, 3, 5...; live reads across. Accepted by Steven (2026-11-06).
+- **What else the nine do not carry:** BMW's twenty cannot all show at once (six across, four
+  pages); Porsche's 25px photo corners, square crop and name over the photo; INFINITI v2's name over
+  the photo and the black code's panel around car and name; Maserati's name size per tier.
+
 ## 2026-11-05 — found while measuring the second codes, not actioned
 
 The measurements are `docs/research/2026-11-05-measurements/`. Each of these is about a preset built

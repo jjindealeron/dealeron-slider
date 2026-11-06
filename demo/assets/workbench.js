@@ -169,9 +169,16 @@
   const WORDS = ['title', 'lead', 'moreText', 'moreHref', 'titleClass', 'wrapClass', 'tabMarks', 'bodyClass'];
   const applyBrand = (id) => {
     const p = PATTERNS[state.pattern];
-    const prev = BRANDS[state.brand]?.styles;
+    const prevBrand = BRANDS[state.brand];
+    const prev = prevBrand?.styles;
     state.brand = id && BRANDS[id] ? id : null;
     const b = BRANDS[state.brand];
+    // Rows, the way the ladder sets cards across (2026-11-06): a static grid's
+    // code (Ford's eleven, Maserati's eight tiles) shows every model at once
+    // only in two rows. Set where the pattern takes rows; a preset that set it
+    // hands it back to the pattern's own when another brand, or none, comes in.
+    if (b?.rows && rowsApply()) state.rows = b.rows;
+    else if (prevBrand?.rows) state.rows = p.rows ?? 1;
     const undo = (s) => {
       if (!s) return;
       for (const k of Object.keys(s.looks?.[state.look] ?? {})) {
@@ -3633,6 +3640,8 @@
     for (const [id, b] of Object.entries(BRANDS)) {
       if (b.code?.name === name) return { id, retired: false };
       if (b.code?.also?.includes(name)) return { id, retired: true };
+      // A live code that draws the same block as this one (Nissan's two).
+      if (b.code?.same?.includes(name)) return { id, same: true };
     }
     return null;
   };
@@ -3664,7 +3673,11 @@
     render();
     history.replaceState(null, '', `#${pid}?brand=${hit.id}`);
     const what = `${PATTERNS[pid].label}, ${brandName(hit.id)}`;
-    codeOut.textContent = hit.retired ? `${name} is retired; its replacement is ${b.code.name}: ${what}.` : `${name}: ${what}. Measured on ${b.source}.`;
+    codeOut.textContent = hit.retired
+      ? `${name} is retired; its replacement is ${b.code.name}: ${what}.`
+      : hit.same
+        ? `${name} draws the same bar as ${b.code.name}: ${what}. Measured on ${b.source}.`
+        : `${name}: ${what}. Measured on ${b.source}.`;
   });
 
   // F089: the builder read location.hash once at boot, so typing a different

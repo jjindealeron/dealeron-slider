@@ -61,14 +61,33 @@
   // Thirty-two of the 33 have imagery. Only Fiat falls back to the Chevrolet
   // cutouts, and says so in the picker rather than pretending otherwise.
   const ROSTERS = {
+    // bmwdemo1's model block (bmw-model-bar-desktop, 2026-11-06): all twenty
+    // series in its own order, from /static/brand-bmw/homepage/model-bar/ at
+    // the live 800x340. The five 320x240 cutouts this roster held before are
+    // left in the folder, unused.
     bmw: [
       'bmw',
       [
-        ['3-series.png', 320, 240, '3 Series'],
-        ['i4.png', 320, 240, 'i4'],
-        ['ix.png', 320, 240, 'iX'],
-        ['x3.png', 320, 240, 'X3'],
-        ['x5.png', 320, 240, 'X5'],
+        ['model-bar/x1.webp', 800, 340, 'X1'],
+        ['model-bar/x2.webp', 800, 340, 'X2'],
+        ['model-bar/x3.webp', 800, 340, 'X3'],
+        ['model-bar/x4.png', 800, 340, 'X4'],
+        ['model-bar/x5.webp', 800, 340, 'X5'],
+        ['model-bar/x6.webp', 800, 340, 'X6'],
+        ['model-bar/x7.webp', 800, 340, 'X7'],
+        ['model-bar/2.webp', 800, 340, '2 Series'],
+        ['model-bar/3.webp', 800, 340, '3 Series'],
+        ['model-bar/4.webp', 800, 340, '4 Series'],
+        ['model-bar/5.webp', 800, 340, '5 Series'],
+        ['model-bar/7.webp', 800, 340, '7 Series'],
+        ['model-bar/8.webp', 800, 340, '8 Series'],
+        ['model-bar/z4.webp', 800, 340, 'Z4'],
+        ['model-bar/m-series.webp', 800, 340, 'M Models'],
+        ['model-bar/xm.webp', 800, 340, 'XM Models'],
+        ['model-bar/ix.webp', 800, 340, 'iX'],
+        ['model-bar/i4.webp', 800, 340, 'i4'],
+        ['model-bar/i5.webp', 800, 340, 'i5'],
+        ['model-bar/i7.webp', 800, 340, 'i7'],
       ],
     ],
     // All fourteen models cadillacdemo1's bar draws, in its own reading order,
@@ -110,7 +129,25 @@
         ['ridgeline.png', 300, 140, 'Ridgeline', 'Minivan & Truck'],
       ],
     ],
-    infiniti: ['infiniti', [['qx80.png', 320, 240, 'QX80']]],
+    // infinitidemo1's v2 block (2026-11-06): three 1000x600 photos. The black
+    // code draws four side-view cutouts instead (infiniti-black below).
+    infiniti: [
+      'infiniti',
+      [
+        ['photos/qx60V2.jpg', 1000, 600, 'QX60'],
+        ['photos/qx65.jpg', 1000, 600, 'QX65'],
+        ['photos/qx80V2.jpg', 1000, 600, 'QX80'],
+      ],
+    ],
+    'infiniti-black': [
+      'infiniti',
+      [
+        ['jellybean/qx50.png', 320, 240, 'QX50'],
+        ['jellybean/qx55.png', 320, 240, 'QX55'],
+        ['jellybean/qx60.png', 320, 240, 'QX60'],
+        ['jellybean/qx80.png', 320, 240, 'QX80'],
+      ],
+    ],
     jaguar: [
       'jaguar',
       [
@@ -126,11 +163,75 @@
       ],
     ],
     mitsubishi: ['mitsubishi', [['outlander.png', 320, 240, 'Outlander']]],
+    // porschedemo1's model block (2026-11-06): six 275x310 photos, not
+    // cutouts, from /static/brand-porsche/Homepage/model-bar/.
     porsche: [
       'porsche',
       [
-        ['911.png', 320, 240, '911'],
-        ['cayenne.png', 320, 240, 'Cayenne'],
+        ['photos/model-718.jpg', 275, 310, '718'],
+        ['photos/model-911.webp', 275, 310, '911'],
+        ['photos/model-panamera.webp', 275, 310, 'Panamera'],
+        ['photos/model-taycan.webp', 275, 310, 'Taycan'],
+        ['photos/model-macan.webp', 275, 310, 'Macan'],
+        ['photos/model-cayenne.webp', 275, 310, 'Cayenne'],
+      ],
+    ],
+    // Second codes with line-ups of their own (2026-11-06).
+    'ford-grid': [
+      'ford',
+      [
+        ['mustang.png', 400, 300, 'Mustang'],
+        ['mustang-mach-e.png', 400, 300, 'Mach-E'],
+        ['explorer.png', 400, 300, 'Explorer'],
+        ['expedition.png', 400, 300, 'Expedition'],
+        ['bronco.png', 400, 300, 'Bronco'],
+        ['bronco-sport.png', 400, 300, 'Bronco Sport'],
+        ['maverick.png', 400, 300, 'Maverick'],
+        ['ranger.png', 400, 300, 'Ranger'],
+        ['f-150.png', 400, 300, 'F-150'],
+        ['super-duty.png', 400, 300, 'Super Duty'],
+        ['transit.png', 400, 300, 'Transit'],
+      ],
+    ],
+    'genesis-non-ev': [
+      'genesis',
+      [
+        ['gv70.png', 400, 225, 'GV70', 'SUV'],
+        ['gv80.png', 400, 225, 'GV80', 'SUV'],
+        ['gv80-coupe.png', 400, 225, 'GV80 Coupe', 'SUV'],
+        ['gv90.png', 400, 225, 'GV90', 'SUV'],
+        ['g70.png', 400, 225, 'G70', 'Sedan'],
+        ['g80.png', 400, 225, 'G80', 'Sedan'],
+        ['g90.png', 400, 225, 'G90', 'Sedan'],
+      ],
+    ],
+    'maserati-tiles': [
+      'maserati',
+      [
+        ['tiles/2026-Grecale.png', 500, 250, 'Grecale'],
+        ['tiles/2025-Ghibli.png', 500, 250, 'Ghibli'],
+        ['tiles/2025-Levante.png', 500, 250, 'Levante'],
+        ['tiles/2025-Quattroporte.png', 500, 250, 'Quattroporte'],
+        ['tiles/2025-GranTurismo.png', 500, 250, 'GranTurismo'],
+        ['tiles/2025-GranCabrio.png', 500, 250, 'GranCabrio'],
+        ['tiles/2026-MCPura.png', 500, 250, 'MCPURA'],
+        ['tiles/2025-MC20.png', 500, 250, 'MC20'],
+      ],
+    ],
+    'nissan-grid': [
+      'nissan',
+      [
+        ['rogue.png', 320, 240, 'Rogue', 'Crossovers & SUVs'],
+        ['rogue-phev.png', 320, 240, 'Rogue PHEV', 'Crossovers & SUVs | Electric'],
+        ['kicks.png', 320, 240, 'Kicks', 'Crossovers & SUVs'],
+        ['murano.png', 320, 240, 'Murano', 'Crossovers & SUVs'],
+        ['pathfinder.png', 320, 240, 'Pathfinder', 'Crossovers & SUVs'],
+        ['armada.png', 320, 240, 'Armada', 'Crossovers & SUVs'],
+        ['sentra.png', 320, 240, 'Sentra', 'Cars'],
+        ['altima.png', 320, 240, 'Altima', 'Cars'],
+        ['frontier.png', 320, 240, 'Frontier', 'Trucks'],
+        ['z.png', 320, 240, 'Z', 'Sports Car'],
+        ['leaf.png', 320, 240, 'Leaf', 'Electric'],
       ],
     ],
     subaru: [
@@ -704,7 +805,41 @@
       font: { family: 'AudiType-Normal', css: 'https://cdn.dealeron.com/assets/fonts/audi/fonts.min.css' },
       source: 'audidemo1.dealeron.com, 2026-11-03',
     },
-    bmw: { label: 'BMW', look: 'tile', ladder: null, demos: 3 },
+    // `bmw-model-bar-desktop` on bmwdemo1 (bmw1 redirects there), measured
+    // 2026-11-06 (docs/research/2026-11-05-measurements/bmw.md). The live block
+    // is a one-model stage: twenty tab panes, one model each (name, New and
+    // Pre-Owned, an 800x340 cutout), picked from a row of series names. Here
+    // every model is a card, six across from 1200; twenty cannot all show at
+    // once. Departures: the name 24px (the phone stack's), because the
+    // desktop's 36px fits no card; mixed case, because uppercase writes iX
+    // and i4 as "IX" and "I4"; no Pre-Owned link (the card is one link).
+    bmw: {
+      label: 'BMW',
+      code: { name: 'bmw-model-bar-desktop', pattern: 'modelbar' },
+      look: 'tile',
+      ladder: [
+        [0, 1],
+        [576, 2],
+        [768, 3],
+        [992, 5],
+        [1200, 6],
+      ],
+      demos: 3,
+      note: 'The live block shows one model at a time behind a row of twenty series names; here every model is a card.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#262626',
+            '--name-size': '1.7143em',
+            '--name-weight': '500',
+            '--name-leading': '1.1',
+            '--plate-pad': '0.1px',
+          },
+        },
+      },
+      font: { family: 'BMWTypeNext Pro', css: 'https://cdn.dealeron.com/assets/fonts/bmwtypenext-pro/fonts.min.css' },
+      source: 'bmwdemo1.dealeron.com, 2026-11-06',
+    },
     buick: {
       label: 'Buick',
       code: { name: 'buick-model-bar-slick', pattern: 'modelbar' },
@@ -1427,6 +1562,41 @@
       font: { family: 'ford-f1', css: 'https://cdn.dealeron.com/assets/fonts/ford-f1/fonts.min.css' },
       source: 'forddemo3.dealeron.com, 2026-11-05',
     },
+    // `ford-model-bar-2.0-alt` on forddemo5, measured 2026-11-06
+    // (docs/research/2026-11-05-measurements/ford-general.md). A static grid on
+    // the platform's grey band: six a row from 1200 (eleven in two rows), four
+    // from 451, two below; no hover. Two rows here too, so all eleven show at
+    // once from 1200 (cards read down each column, not across each row; the
+    // twelfth slot is empty). The name 16.8px antenna Light #333 on the
+    // picture's foot; pictures 20px apart and 10px between rows, as live.
+    'ford-grid': {
+      of: 'ford',
+      variant: 'Grid',
+      code: { name: 'ford-model-bar-2.0-alt', pattern: 'modelbar' },
+      rows: 2,
+      ladder: [
+        [0, 2],
+        [451, 4],
+        [1200, 6],
+      ],
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-size': '1.2em',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            '--plate-pad': '0 0.3571em',
+            '--strip-pad': '0.3571em',
+            '--strip-pad-end': '0.3571em',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '0.7143em' } } },
+      },
+      font: { family: 'antennaRegularLight', css: 'https://cdn.dealeron.com/assets/fonts/fordantenna/fonts.min.css' },
+      source: 'forddemo5.dealeron.com, 2026-11-06',
+    },
     gmc: {
       label: 'GMC',
       code: { name: 'gmc-model-bar', pattern: 'modelbar' },
@@ -1510,6 +1680,7 @@
     },
     genesis: {
       label: 'Genesis',
+      variant: 'All models',
       code: { name: 'genesis-model-bar-tabbed', pattern: 'tabs' },
       look: 'tile',
       ladder: [
@@ -1590,6 +1761,61 @@
       font: { family: 'GenesisSansText', css: 'https://cdn.dealeron.com/assets/fonts/genesis/fonts.min.css' },
       theme: { css: '.h1{font-family:GenesisSansHead,Arial,Helvetica,sans-serif;font-size:36px;font-weight:400;line-height:1.1;letter-spacing:1px;color:#333}' },
       source: 'genesisdemo1.dealeron.com, 2026-11-03',
+    },
+    // `genesis-non-ev-model-bar-tabbed`: Genesis's tabbed bar without its
+    // Electric tab - SUV and Sedan, every model across from 1200. Its example
+    // page is another vendor's site, so it was measured from the code's own
+    // file drawn on genesisdemo1 (Steven, 2026-11-06;
+    // docs/research/2026-11-05-measurements/genesis-non-ev.md). Every value
+    // genesis carries holds; the line is in the tab's em, the phone tab keeps
+    // its padding, and a short pane is centred.
+    'genesis-non-ev': {
+      of: 'genesis',
+      variant: 'No electric',
+      code: { name: 'genesis-non-ev-model-bar-tabbed', pattern: 'tabs' },
+      note: 'The Genesis Collection without its Electric tab: SUV and Sedan, every model across from 1200.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#000',
+            '--name-size': '1.5714em',
+            '--name-weight': '400',
+            '--name-case': 'uppercase',
+            '--name-tracking': '0.0455em',
+            '--name-leading': '1.1',
+            '--name-gap': '0.909em',
+            '--plate-pad': '0.1px',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '1.43em',
+              '--tab-size': '1.2857em',
+              '--tab-size-narrow': '1.3846em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.1',
+              '--tab-case': 'uppercase',
+              '--tab-color': '#000',
+              '--tab-selected': '#000',
+              '--tab-dim': '1',
+              '--tab-line': '#000',
+              '--tab-line-size': '0.167em',
+              '--tab-rule': '#f1f1f1',
+              '--tab-gap': '0.1px',
+              '--tab-pad': '1em 0.889em',
+              '--tab-pad-phone': '1em 0.889em',
+              '--tab-gap-phone': '0.1px',
+              '--tab-fade': '0.15s',
+              '--pane-align': 'safe center',
+              '--title-gap': '0.39em',
+            },
+            panes: ['SUV', 'Sedan'],
+            words: { title: 'The Genesis Collection', titleClass: 'h1 text-uppercase', lead: '', moreText: '' },
+          },
+        },
+      },
+      source: 'genesisdemo1.dealeron.com, the code file drawn in place of its bar, 2026-11-06',
     },
     honda: {
       label: 'Honda',
@@ -1843,7 +2069,67 @@
       theme: { '--main-color': '#1f1f21' },
       source: 'hyundaidemo1.dealeron.com, 2026-11-03',
     },
-    infiniti: { label: 'Infiniti', look: 'tile', ladder: null, demos: 2 },
+    // `infiniti-model-bar-v2` on infinitidemo1, measured 2026-11-06
+    // (docs/research/2026-11-05-measurements/infiniti.md). A static grid of
+    // three 1000x600 photos with the name written over each, three across
+    // from 992; www.infinitioflexington.com runs the same file in a dark
+    // section. Departure: the name sits under the photo, where the live white
+    // name over it drops to 1.5-2.7:1 in places.
+    infiniti: {
+      label: 'Infiniti',
+      variant: 'Photos',
+      code: { name: 'infiniti-model-bar-v2', pattern: 'modelbar' },
+      look: 'tile',
+      ladder: [
+        [0, 2],
+        [992, 3],
+      ],
+      demos: 2,
+      note: 'Three landscape photos across from 992, the name under each where the live block writes it over the photo.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-size': '1.5em',
+            '--name-weight': '400',
+            '--name-leading': '1.1',
+            '--plate-pad': '0.1px',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '1.43em' } } },
+      },
+      font: { family: 'InfinitiBrand-Light', css: 'https://cdn.dealeron.com/assets/fonts/infiniti/fonts.min.css' },
+      source: 'infinitidemo1.dealeron.com, 2026-11-06',
+    },
+    // `infiniti-model-bar-black`: four side-view cutouts on faint panels with
+    // a plain name, made for a dark section, four across from 992. No page
+    // runs it (Lexington, the ledger's example, runs v2), so it was measured
+    // from its own file drawn into Lexington's dark section (Steven,
+    // 2026-11-06). Names take the section's text colour.
+    'infiniti-black': {
+      of: 'infiniti',
+      variant: 'Cutouts',
+      code: { name: 'infiniti-model-bar-black', pattern: 'modelbar' },
+      ladder: [
+        [0, 2],
+        [768, 3],
+        [992, 4],
+      ],
+      note: 'Four side-view cutouts with a plain name, made for a dark section.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-weight': '400',
+            '--name-leading': '1.5',
+            '--plate-pad': '0.1px 2em',
+            '--name-gap': 'calc(0.4em - 10%)',
+            '--img-hover-scale': '1.05',
+            '--img-hover-speed': '0.3s',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '1em' } } },
+      },
+      source: 'infiniti-model-bar-black.html (2026-01-13) drawn in www.infinitioflexington.com, 2026-11-06',
+    },
     jaguar: {
       label: 'Jaguar',
       code: { name: 'jaguar-model-bar-slick', pattern: 'modelbar' },
@@ -2368,6 +2654,7 @@
     // one peek; the phone card is 9% smaller than live at the desktop peek.
     maserati: {
       label: 'Maserati',
+      variant: 'One at a time',
       code: { name: 'maserati-modelbar-slick', pattern: 'modelbar' },
       look: 'tile',
       ladder: [[0, 1]],
@@ -2401,6 +2688,42 @@
         },
       },
       source: 'maseratidemo4.dealeron.com, 2026-11-05',
+    },
+    // `maserati-modelbar` on maseratidemo1, measured 2026-11-06
+    // (docs/research/2026-11-05-measurements/maserati-tiles.md). A static grid
+    // of eight front three-quarter cutouts, two rows of four on a laptop, the
+    // name above each car in the theme's navy. Two rows here too, so all
+    // eight show at once from 768 (cards read down each column). Departures:
+    // no "Select" button under each car (the roster carries none), the name
+    // one size at every width (live 24 / 20px), and no 55% fade on the other
+    // cards on hover, which takes their text to 3.71:1.
+    'maserati-tiles': {
+      of: 'maserati',
+      variant: 'Tiles',
+      code: { name: 'maserati-modelbar', pattern: 'modelbar' },
+      rows: 2,
+      ladder: [
+        [0, 2],
+        [768, 4],
+      ],
+      note: 'Eight tiles in two rows of four, the name above each car.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-order': '-1',
+            '--name-color': '#0c2340',
+            '--name-size': '1.5em',
+            '--name-weight': '400',
+            '--name-leading': '1.1',
+            '--name-gap': '0.1px',
+            '--plate-pad': '0.625em 0.625em 0',
+            '--strip-pad': '1.5625em',
+            '--strip-pad-end': '1.5625em',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '0.1px' } } },
+      },
+      source: 'maseratidemo1.dealeron.com, 2026-11-06',
     },
     mazda: {
       label: 'Mazda',
@@ -2561,6 +2884,7 @@
     },
     nissan: {
       label: 'Nissan',
+      variant: 'Body style',
       code: { name: 'nissan-model-bar-bodystyle', pattern: 'tabs' },
       look: 'tile',
       ladder: [
@@ -2646,7 +2970,96 @@
       theme: { css: '.h1{font-family:NissanBrandW01-Regular,Arial,Helvetica,sans-serif;font-size:36px;font-weight:500;text-transform:uppercase}' },
       source: 'nissandemo5.dealeron.com, 2026-11-03',
     },
-    porsche: { label: 'Porsche', look: 'tile', ladder: null, demos: 3 },
+    // `nissan-model-bar-slick` (www.coeurdalenenissan.com) and
+    // `nissan-model-bar-tabbed` (nissandemo1), measured 2026-11-06
+    // (docs/research/2026-11-05-measurements/nissan-static.md). The two draw
+    // the same block, byte for byte bar the stock counts: a static grid behind
+    // five tabs, seven a row from 768. One preset for both (code.same).
+    // Departures: phone-short tab names ("SUVs", "Sports"; Steven), no hover
+    // underline on the name, and the tab hover grey left out (under 4.5:1).
+    'nissan-grid': {
+      of: 'nissan',
+      variant: 'Grid',
+      code: { name: 'nissan-model-bar-slick', pattern: 'tabs', same: ['nissan-model-bar-tabbed'] },
+      ladder: [
+        [0, 2],
+        [401, 3],
+        [768, 7],
+      ],
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#333',
+            '--name-weight': '400',
+            '--name-leading': '1.4286',
+            '--name-gap': '0.1px',
+            '--plate-pad': '0 0.7143em',
+            '--strip-pad-x': 'var(--dos-arrow-size)',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--tab-size': '1em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-color': '#222',
+              '--tab-selected': '#bb162b',
+              '--tab-dim': '1',
+              '--tab-line': '#bb162b',
+              '--tab-line-hover': 'transparent',
+              '--tab-line-size': '0.2143em',
+              '--tab-pad': '0.5em 1.07em 0.71em',
+              '--tab-gap': '2.24em',
+              '--tab-divider': "'|'",
+              '--tab-divider-color': '#333',
+              '--tab-divider-size': '1',
+              '--tab-rule': 'transparent',
+              '--tab-row-gap': '1em',
+              '--tab-fade': '0.15s',
+              '--title-gap': '0.5em',
+              '--tab-pad-phone': '0.5em 0.5em 0.71em',
+              '--tab-gap-phone': '0.8em',
+            },
+            panes: ['[Crossovers & ]SUVs', 'Cars', 'Trucks', 'Sports[ Car]', 'Electric'],
+            words: { title: 'Choose From Our Inventory', titleClass: 'h1', lead: '', moreText: '' },
+          },
+        },
+      },
+      source: 'www.coeurdalenenissan.com and nissandemo1.dealeron.com, 2026-11-06',
+    },
+    // `porsche-model-bar` on porschedemo1, measured 2026-11-06
+    // (docs/research/2026-11-05-measurements/porsche.md). Six 275x310 photo
+    // cards, all across from 1200 (five and an arrow from 992, where six would
+    // be 139px cards). Departures: the name under the photo in the section's
+    // colour, where the live white name on it is under 3:1 on two cards; no
+    // rounded corners, hover links, arrow icon or All Models card.
+    porsche: {
+      label: 'Porsche',
+      code: { name: 'porsche-model-bar', pattern: 'modelbar' },
+      look: 'tile',
+      ladder: [
+        [0, 2],
+        [540, 3],
+        [992, 6],
+      ],
+      demos: 3,
+      note: 'Photo cards, not cutouts: all six across from 1200, and the name under the photo rather than over it.',
+      styles: {
+        looks: {
+          tile: {
+            '--name-size': '1.7143em',
+            '--name-weight': '400',
+            '--name-leading': '1.1',
+            '--plate-pad': '0.1px',
+          },
+        },
+        patterns: { modelbar: { props: { '--dos-gap': '0.65em' } } },
+      },
+      font: { family: 'PorscheNextWLa-Regular', css: 'https://cdn.dealeron.com/assets/fonts/porsche/fonts.min.css' },
+      source: 'porschedemo1.dealeron.com, 2026-11-06',
+    },
     ram: {
       label: 'RAM',
       look: 'tile',
@@ -2873,7 +3286,8 @@
   // A BUILT preset names the replacement code it stands in for (2026-11-05,
   // roadmap §2): `code: { name, pattern }`, the code as the Salesforce article
   // spells it and the pattern it draws it on, plus `also` for a code that is
-  // retired in favour of this one. The builder's code box reads it: paste an
+  // retired in favour of this one, and `same` for another live code that
+  // draws the same block (Nissan's two static codes). The code box reads it: paste an
   // old #LOADCUSTOMFILE...# and it opens that pattern with this preset. It is
   // never inherited, and scripts/check-looks.mjs holds it to the row in
   // docs/coverage.md that names this preset, code and pattern alike.

@@ -123,6 +123,13 @@ script marks every card but each pane's current one `cargo-side`, from the engin
 marked and every card is drawn alike. One card per view and a percentage peek make it a centred bar;
 `min()` in the peek keeps the centre card at the tile's minimum on a phone.
 
+**A preset may set Rows, and one preset may stand in for two codes** (2026-11-06). `rows: 2` on a
+brand entry sets the Rows setting the way its `ladder` sets cards across, where `rowsApply()`
+allows; another brand, or Default, hands it back. It is how a static grid's code (Ford's eleven,
+Maserati's eight tiles) shows every model at once. `code.same` lists other live codes that draw the
+same block (Nissan's two): each needs its own built row naming the preset, and the code box says the
+code draws the same bar.
+
 **Rows is a SETTING, not a pattern.** `state.rows` (1–3) wraps each slide's cards in `.cargo-col`
 and emits the matching `grid-template-rows` from the same place. `rowsApply()` is the one place that
 says where it applies — off for every `track: 'div'` pattern (the galleries and the lightbox), a

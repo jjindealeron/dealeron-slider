@@ -276,6 +276,20 @@ test.describe('a brand applies its values', () => {
     for (const id of ['kia-plain', 'ford-plain', 'honda', 'lincoln-v2']) assert.ok(!o.chips.includes(id) && !o.options.includes(id), `tabbed bar offers ${id}`);
   });
 
+  // 2026-11-06: a preset may set Rows (Ford's grid, Maserati's tiles), and
+  // like its ladder it is handed back when the brand goes.
+  test('a preset that sets Rows sets it in the builder, and Default hands it back', async () => {
+    await pick(page, 'modelbar');
+    const cols = () => page.evaluate(() => globalThis.CARGO.sdoc().querySelectorAll('.cargo-col').length);
+    assert.equal(await cols(), 0, 'the model bar starts in one row');
+    await page.click('#wb-variants button[data-brand="ford-grid"]');
+    await stageReady(page);
+    assert.ok((await cols()) > 0, 'Ford · Grid did not set two rows');
+    await page.click('#wb-variants button[data-brand=""]');
+    await stageReady(page);
+    assert.equal(await cols(), 0, 'Default left the rows Ford · Grid set');
+  });
+
   test('Toyota is a second measured brand on the tabbed bar', async () => {
     await pick(page, 'tabs');
     const variants = await page.evaluate(() => globalThis.CARGO.variantsOf('tabs'));

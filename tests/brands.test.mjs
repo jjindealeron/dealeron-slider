@@ -436,6 +436,36 @@ test("Kia's centred bar: the current card full size and named, its neighbours sh
   assert.deepEqual(next.centre, { car: 1, name: '1' });
 });
 
+// 2026-11-06: Ford's eleven-model grid and Maserati's eight tiles show every
+// model at once on a desktop only as two rows, so a preset may set Rows. Read
+// off the data: every preset that sets it.
+test('a preset that sets Rows draws that many rows, every model at once on a desktop', async () => {
+  await page.goto(`${ORIGIN}/demo/brands.html`, { waitUntil: 'load' });
+  await page.waitForSelector('#b-chevrolet .dos-slide');
+  const presets = await page.evaluate(() =>
+    Object.entries(globalThis.CARGO.BRANDS)
+      .filter(([, b]) => b.rows)
+      .map(([id, b]) => ({ id, rows: b.rows })),
+  );
+  assert.ok(presets.length > 0, 'no preset sets rows');
+  for (const { id, rows } of presets) {
+    await page.locator(`#b-${id}`).first().scrollIntoViewIfNeeded();
+    await page.waitForTimeout(500);
+    const got = await page.evaluate((id) => {
+      const root = document.querySelector(`#b-${id} .bb-stage .dos`);
+      const cols = [...root.querySelectorAll('.cargo-col')];
+      return {
+        fits: root.hasAttribute('data-dos-fits'),
+        cols: cols.length,
+        perCol: Math.max(...cols.map((c) => c.querySelectorAll('.cargo-card').length)),
+        cards: root.querySelectorAll('.cargo-card').length,
+      };
+    }, id);
+    assert.equal(got.perCol, rows, `${id}: ${got.perCol} cards to a column, not ${rows}`);
+    assert.equal(got.fits, true, `${id}: ${got.cards} models in ${got.cols} columns do not all show at once at 1400`);
+  }
+});
+
 test('the deep link lands on the brand and nothing threw', async () => {
   await page.goto(`${ORIGIN}/demo/brands.html#toyota`, { waitUntil: 'load' });
   await page.waitForSelector('#b-toyota .dos-slide');

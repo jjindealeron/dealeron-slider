@@ -573,6 +573,11 @@ test('the phone tier keeps the squeezed side padding, not the desktop value', as
   // held only while every measured bar happened to use the pattern's 0.25em:
   // Kia's phone gap is a genuinely measured 13.64px, and it failed a test whose
   // real subject is whether the DESKTOP value came back (2026-09-15).
+  // The padding gets the same treatment (2026-11-06): Genesis non-EV's two
+  // short tabs keep their live 0.889em a side on a phone, a measured value in
+  // its preset, not the desktop padding coming back. A bar is held to its
+  // preset's own phone padding where it measured one, and to the squeeze
+  // otherwise, which still catches the pattern default regressing.
   const pads = await page.evaluate(() =>
     [...document.querySelectorAll('[data-cargo="tabs"] [role="tab"]:first-child')].map((t) => {
       const cs = getComputedStyle(t);
@@ -582,13 +587,20 @@ test('the phone tier keeps the squeezed side padding, not the desktop value', as
         const v = getComputedStyle(root).getPropertyValue(name).trim();
         return v.endsWith('em') ? parseFloat(v) : NaN;
       };
-      return { padX: parseFloat(cs.paddingLeft), px: em, marginX: parseFloat(cs.marginLeft), deskGapEm: gapEm('--tab-gap'), phoneGapEm: gapEm('--tab-gap-phone') };
+      const id = t.closest('[id^="b-"]')?.id.slice(2);
+      const own = globalThis.CARGO.BRANDS[id]?.styles?.patterns?.tabs?.props?.['--tab-pad-phone'];
+      const ownX = own ? parseFloat(own.split(/\s+/)[1] ?? own) : NaN;
+      return { id, padX: parseFloat(cs.paddingLeft), px: em, ownX, marginX: parseFloat(cs.marginLeft), deskGapEm: gapEm('--tab-gap'), phoneGapEm: gapEm('--tab-gap-phone') };
     }),
   );
   for (const p of pads) {
-    // 0.5em a side is the squeeze; anything near the 1.1em default means the
-    // shorthand in the phone rule overrode it again.
-    assert.ok(p.padX <= p.px * 0.75, `a phone tab pads ${p.padX}px against a ${p.px}px label — the desktop padding came back`);
+    if (Number.isFinite(p.ownX)) {
+      assert.ok(Math.abs(p.padX - p.ownX * p.px) < 0.5, `${p.id}: a phone tab pads ${p.padX}px, not its measured ${p.ownX}em of a ${p.px}px label`);
+    } else {
+      // 0.5em a side is the squeeze; anything near the 1.1em default means the
+      // shorthand in the phone rule overrode it again.
+      assert.ok(p.padX <= p.px * 0.75, `${p.id}: a phone tab pads ${p.padX}px against a ${p.px}px label — the desktop padding came back`);
+    }
     if (Number.isFinite(p.deskGapEm) && Number.isFinite(p.phoneGapEm)) {
       // Equal is fine: the pattern's own default is 0.25em at both tiers, and a
       // bar that never widened its gap has nothing to squeeze back out. What

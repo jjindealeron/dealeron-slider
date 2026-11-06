@@ -261,6 +261,11 @@ for (const [id, b] of brands) {
       }
     }
   }
+  // Rows on a preset (2026-11-06): 2 or 3, the builder's own range above 1.
+  if (b.rows !== undefined && !(Number.isInteger(b.rows) && b.rows >= 2 && b.rows <= 3)) {
+    console.error(`  ${id}: rows ${b.rows} — a preset sets Rows to 2 or 3, or leaves it out`);
+    bad++;
+  }
   if (!LOOKS[b.look]) {
     console.error(`  ${id}: look "${b.look}" does not exist`);
     bad++;
@@ -511,8 +516,9 @@ const ledgerRows = readFileSync('docs/coverage.md', 'utf8')
   .split('\n')
   .filter((l) => l.startsWith('| ') && !l.startsWith('| **'))
   .map((l) => l.split('|').map((c) => c.trim()))
-  .filter((c) => /^`[^`]+`$/.test(c[3] ?? ''))
-  .map((c) => ({ code: c[3].slice(1, -1), pattern: c[5].replace(/`/g, ''), status: c[6], preset: (c[7].match(/^`brands\.js` ([a-z0-9-]+)/) ?? [])[1] }));
+  // The code is the cell's first `...`: BMW's adds "(+ a second Model-Bar file)".
+  .filter((c) => /^`[^`]+`/.test(c[3] ?? ''))
+  .map((c) => ({ code: c[3].match(/^`([^`]+)`/)[1], pattern: c[5].replace(/`/g, ''), status: c[6], preset: (c[7].match(/^`brands\.js` ([a-z0-9-]+)/) ?? [])[1] }));
 const builtRows = ledgerRows.filter((r) => r.status === 'Replacement built');
 const codesSeen = new Map();
 for (const [id, b] of brands) {
@@ -536,15 +542,27 @@ for (const [id, b] of brands) {
     bad++;
     continue;
   }
-  if (b.code.name !== row.code || b.code.pattern !== row.pattern) {
-    console.error(`  ${id}: code { ${b.code.name}, ${b.code.pattern} } but its ledger row says { ${row.code}, ${row.pattern} }`);
-    bad++;
+  // A preset can stand in for more than one live code when they draw the same
+  // block (code.same, 2026-11-06: Nissan's two static codes): every one of
+  // them has its own built row naming this preset, on this pattern.
+  const own = [b.code.name, ...(b.code.same ?? [])];
+  for (const r of builtRows.filter((x) => x.preset === id)) {
+    if (!own.includes(r.code) || r.pattern !== b.code.pattern) {
+      console.error(`  ${id}: code { ${own.join(' / ')}, ${b.code.pattern} } but its ledger row says { ${r.code}, ${r.pattern} }`);
+      bad++;
+    }
+  }
+  for (const name of own) {
+    if (!builtRows.some((r) => r.code === name && r.preset === id)) {
+      console.error(`  ${id}: draws ${name}, which has no "Replacement built" row naming ${id}`);
+      bad++;
+    }
   }
   if (!PATTERN_PROPS[b.code.pattern]) {
     console.error(`  ${id}: code pattern "${b.code.pattern}" is not a pattern`);
     bad++;
   }
-  for (const name of [b.code.name, ...(b.code.also ?? [])]) {
+  for (const name of [...own, ...(b.code.also ?? [])]) {
     if (codesSeen.has(name)) {
       console.error(`  ${id}: code ${name} is also ${codesSeen.get(name)}'s — the code box could open either`);
       bad++;

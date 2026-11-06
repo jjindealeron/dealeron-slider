@@ -13,15 +13,26 @@ matched the agents' data apart from timing samples, a uniform sub-pixel page off
 fonts loaded in. The scripts carry `// @ts-nocheck`: most of each runs inside the live page (jQuery,
 slick), which the repo's typecheck cannot describe.
 
-| Code                              | Files                                  | Outcome                                                                      |
-| --------------------------------- | -------------------------------------- | ---------------------------------------------------------------------------- |
-| `kia-model-bar-slick`             | [kia-slick.md](kia-slick.md)           | Built as `kia-plain`                                                         |
-| `lincoln-model-bar-slick2`        | [lincoln-slick2.md](lincoln-slick2.md) | Built as `lincoln-v2`                                                        |
-| `ford-model-bar-slick`            | [ford-slick.md](ford-slick.md)         | Built as `ford-plain`; `ford-slick-render.mjs` draws it through the real CSS |
-| `honda-model-bar-slick-tabbed`    | [honda-tabbed.md](honda-tabbed.md)     | Built as `honda-tabbed`                                                      |
-| `kia-model-bar-tabbed`            | [kia-tabs-v2.md](kia-tabs-v2.md)       | Built as `kia-centred` (2026-11-06): centre mode on the tabbed bar           |
-| `toyota-modelbar-slick-tabbed-v3` | [toyota-v3.md](toyota-v3.md)           | Not built: its card is a split photo card behind tabs, a pattern we lack     |
-| `maserati-modelbar-slick`         | [maserati.md](maserati.md)             | Built as `maserati`, with its nine cutouts and logo taken from the platform  |
+| Code                                 | Files                                  | Outcome                                                                       |
+| ------------------------------------ | -------------------------------------- | ----------------------------------------------------------------------------- |
+| `kia-model-bar-slick`                | [kia-slick.md](kia-slick.md)           | Built as `kia-plain`                                                          |
+| `lincoln-model-bar-slick2`           | [lincoln-slick2.md](lincoln-slick2.md) | Built as `lincoln-v2`                                                         |
+| `ford-model-bar-slick`               | [ford-slick.md](ford-slick.md)         | Built as `ford-plain`; `ford-slick-render.mjs` draws it through the real CSS  |
+| `honda-model-bar-slick-tabbed`       | [honda-tabbed.md](honda-tabbed.md)     | Built as `honda-tabbed`                                                       |
+| `kia-model-bar-tabbed`               | [kia-tabs-v2.md](kia-tabs-v2.md)       | Built as `kia-centred` (2026-11-06): centre mode on the tabbed bar            |
+| `ford-model-bar-2.0-alt`             | [ford-general.md](ford-general.md)     | Built as `ford-grid` (2026-11-06): two rows, eleven at once from 1200         |
+| `porsche-model-bar`                  | [porsche.md](porsche.md)               | Built as `porsche` (2026-11-06): six photo cards                              |
+| `genesis-non-ev-model-bar-tabbed`    | [genesis-non-ev.md](genesis-non-ev.md) | Built as `genesis-non-ev` from its code file; the example is another vendor   |
+| `maserati-modelbar`                  | [maserati-tiles.md](maserati-tiles.md) | Built as `maserati-tiles` (2026-11-06): two rows of four                      |
+| `bmw-model-bar-desktop`              | [bmw.md](bmw.md)                       | Built as `bmw` (2026-11-06): twenty cards, six across                         |
+| `infiniti-model-bar-v2` / `-black`   | [infiniti.md](infiniti.md)             | Built as `infiniti` and `infiniti-black`, the black one from its code file    |
+| `nissan-model-bar-slick` / `-tabbed` | [nissan-static.md](nissan-static.md)   | Built as one preset, `nissan-grid` (`code.same`): the two draw the same block |
+| `toyota-modelbar-slick-tabbed-v3`    | [toyota-v3.md](toyota-v3.md)           | Not built: its card is a split photo card behind tabs, a pattern we lack      |
+| `maserati-modelbar-slick`            | [maserati.md](maserati.md)             | Built as `maserati`, with its nine cutouts and logo taken from the platform   |
+
+The nine static ("Not a carousel") codes were measured on 2026-11-06 to a shared brief,
+[BRIEF-static.md](BRIEF-static.md): each becomes a bar that shows every model at once on a desktop
+and slides on a phone.
 
 The four CDJR codes share one file, [cdjr.md](cdjr.md). Three are built, as `cdjr` (logo tabs),
 `cdjr-fiat` (logo tabs with Fiat) and `cdjr-text` (Bruner's text tabs), once the tabbed bar could

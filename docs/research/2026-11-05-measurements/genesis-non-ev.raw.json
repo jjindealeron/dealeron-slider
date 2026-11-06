@@ -1,0 +1,2650 @@
+{
+  "measured": "2026-11-06",
+  "code": "genesis-non-ev-model-bar-tabbed",
+  "example": {
+    "dns": { "www.genesisofcartersville.com": ["wildcard.teamvelocity.com.edgesuite.net"], "genesisdemo1.dealeron.com": ["www.dealeronsite.com"], "www.rydelllincoln.com": ["www.dealeronsite.com"] },
+    "headless": [
+      {
+        "url": "https://www.genesisofcartersville.com/",
+        "status": 403,
+        "title": "Access Denied",
+        "text": "Access Denied You don't have permission to access \"http://www.genesisofcartersville.com/\" on this server. Reference #18."
+      },
+      {
+        "url": "https://genesisofcartersville.com/",
+        "status": 403,
+        "title": "Access Denied",
+        "text": "Access Denied You don't have permission to access \"http://genesisofcartersville.com/\" on this server. Reference #18.c22b"
+      }
+    ],
+    "wayback": [
+      {
+        "snapshot": "20250408031737",
+        "status": 200,
+        "title": "Genesis Dealer Cartersville GA | Genesis of Cartersville",
+        "markers": { "dealerOn": 0, "dealerInspire": 101, "teamVelocity": 0, "secureOfferSites": 0, "infoModel": 0, "vehicleModels": 0, "modelBarS": 0 }
+      },
+      {
+        "snapshot": "20260306142741",
+        "status": 200,
+        "title": "Genesis Dealership in Cartersville GA | Serving Cartersville and Emerson | Genesis Of Cartersville",
+        "markers": { "dealerOn": 0, "dealerInspire": 0, "teamVelocity": 15, "secureOfferSites": 23, "infoModel": 0, "vehicleModels": 0, "modelBarS": 0 }
+      },
+      {
+        "snapshot": "20260610150234",
+        "status": 200,
+        "title": "Full Service Genesis Dealer in Cartersville GA | Serving Cartersville and Emerson | Genesis Of Cartersville",
+        "markers": { "dealerOn": 0, "dealerInspire": 0, "teamVelocity": 15, "secureOfferSites": 26, "infoModel": 0, "vehicleModels": 0, "modelBarS": 0 }
+      }
+    ]
+  },
+  "codeFile": {
+    "url": "https://genesisdemo1.dealeron.com/assets/shared/CustomHTMLFiles/Responsive/Genesis/genesis-non-ev-model-bar-tabbed.html",
+    "status": 200,
+    "lastModified": "Fri, 16 Oct 2026 12:45:29 GMT",
+    "bytes": 12945,
+    "sibling": {
+      "url": "https://genesisdemo1.dealeron.com/assets/shared/CustomHTMLFiles/Responsive/Genesis/genesis-model-bar-tabbed.html",
+      "status": 200,
+      "lastModified": "Fri, 16 Oct 2026 12:15:21 GMT",
+      "bytes": 20221
+    },
+    "styleIdenticalToSibling": true,
+    "style": ".modelBarS { display: none; } .modelBarS a:focus { outline: 0; } .modelBarS .slick-slide { padding: 0 10px; } .vehicleModels #myTab { display: flex; justify-content: center; } .vehicleModels #myTab { position: relative; } .vehicleModels #myTab::after { background-color: #f1f1f1; bottom: 0; content: ''; height: 1px; position: absolute; width: 100%; z-index: 0; } .slick-prev::before, .slick-next::before { content: none; opacity: 1; } .slick-prev, .slick-prev:hover, .slick-prev:focus { background: url('/static/brand-genesis/svg/chevron-left-bold.svg'); background-size: 20px; height: 20px; width: 20px; } .slick-next, .slick-next:hover, .slick-next:focus { background: url('/static/brand-genesis/svg/chevron-right-bold.svg'); background-size: 20px; height: 20px; width: 20px; } /* bootstrap hack: fix content width inside hidden tabs */ .tab-content>.tab-pane, .pill-content>.pill-pane { display: block; height: 0; overflow-y: hidden; } .tab-content>.active, .pill-content>.active { height: auto; } /* end bootstrap hack */ .vehicleModels .nav>li a::after { content: \"\"; display: block; width: 100%; height: 3px; background-color: rgba(0, 0, 0, 0); transition: background-color .2s ease; position: absolute; bottom: 0; left: 0; z-index: 1; } .vehicleModels .nav>li a:hover::after, .vehicleModels .nav>li.active a::after { background-color: #000; } .vehicleModels .nav>li>a { color: #000; margin: 0; padding: 18px 16px; } .vehicleModels .nav>li>a:focus { background: transparent; } .vehicleModels .nav>li>a:hover, .vehicleModels .nav>li.active>a { color: #000; background: transparent; } .vehicleModels .vehicleCount, .vehicleModels .vehicleName { color: #000; } .vehicleModels .vehicleName { font-size: 22px; } .vehicleModels .nav>li { position: relative; display: inline-block; }",
+    "slick": {
+      "slidesToShow": 4,
+      "slidesToScroll": 1,
+      "centerPadding": "60px",
+      "autoplay": false,
+      "swipeToSlide": true,
+      "arrows": true,
+      "responsive": [
+        { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+        { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+        { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+      ]
+    },
+    "slickIdenticalToSibling": true,
+    "links": ["#SHAREDPATH#CustomHTMLFiles/slick/slick.css", "#SHAREDPATH#CustomHTMLFiles/slick/slick-theme.css", "#SHAREDPATH#CustomHTMLFiles/slick/slick.min.js"],
+    "hrefRewrite": "$(this).find('a').attr('href', '/' + modelYear + '-' + modelUrl);",
+    "parsed": {
+      "heading": { "text": "The Genesis Collection", "classes": "h1 margin-x text-uppercase text-center" },
+      "tabs": [
+        { "id": "tab-suv", "active": true, "href": "#suv", "text": "SUV", "aClass": "h4" },
+        { "id": "tab-sedan", "active": false, "href": "#sedan", "text": "Sedan", "aClass": "h4" }
+      ],
+      "panes": [
+        {
+          "id": "suv",
+          "classes": "tab-pane fade active in",
+          "models": [
+            {
+              "name": "GV70",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV70",
+              "href": "/searchnew.aspx?Make=Genesis&Model=GV70",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_gv70.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV70"
+            },
+            {
+              "name": "GV80",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV80",
+              "href": "/searchnew.aspx?Make=Genesis&Model=GV80",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_gv80.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV80"
+            },
+            {
+              "name": "GV80 Coupe",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV80-Coupe",
+              "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g80-coupe.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV80 Coupe"
+            },
+            {
+              "name": "GV90",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2028",
+              "dataUrl": "GV90",
+              "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90",
+              "img": "/static/brand-genesis/homepage/modelbar/2028/2028_gv90.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV90"
+            }
+          ]
+        },
+        {
+          "id": "sedan",
+          "classes": "tab-pane fade",
+          "models": [
+            {
+              "name": "G70",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "G70",
+              "href": "/searchnew.aspx?Make=Genesis&Model=G70",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g70.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis G70"
+            },
+            {
+              "name": "G80",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "G80",
+              "href": "/searchnew.aspx?Make=Genesis&Model=G80",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g80.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis G80"
+            },
+            {
+              "name": "G90",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "G90",
+              "href": "/searchnew.aspx?Make=Genesis&Model=G90",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g90.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis G90"
+            }
+          ]
+        }
+      ]
+    },
+    "siblingParsed": {
+      "heading": { "text": "The Genesis Collection", "classes": "h1 margin-x text-uppercase text-center" },
+      "tabs": [
+        { "id": "tab-suv", "active": true, "href": "#suv", "text": "SUV", "aClass": "h4" },
+        { "id": "tab-sedan", "active": false, "href": "#sedan", "text": "Sedan", "aClass": "h4" },
+        { "id": "tab-electric", "active": false, "href": "#electric", "text": "Electric", "aClass": "h4" }
+      ],
+      "panes": [
+        {
+          "id": "suv",
+          "classes": "tab-pane fade active in",
+          "models": [
+            {
+              "name": "GV60",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV60",
+              "href": "/searchnew.aspx?Make=Genesis&Model=GV60",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/gv60.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV60"
+            },
+            {
+              "name": "GV70",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV70",
+              "href": "/searchnew.aspx?Make=Genesis&Model=GV70",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_gv70.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV70"
+            },
+            {
+              "name": "Electrified GV70",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2027",
+              "dataUrl": "Electrified-GV70",
+              "href": "/searchnew.aspx?Make=Genesis&Model=Electrified+GV70",
+              "img": "/static/brand-genesis/homepage/modelbar/2027/gv70e.webp",
+              "imgAttr": [400, 225],
+              "alt": "Genesis Electrified GV70"
+            },
+            {
+              "name": "GV80",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV80",
+              "href": "/searchnew.aspx?Make=Genesis&Model=GV80",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_gv80.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV80"
+            },
+            {
+              "name": "GV80 Coupe",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV80-Coupe",
+              "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g80-coupe.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV80 Coupe"
+            },
+            {
+              "name": "GV90",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2028",
+              "dataUrl": "GV90",
+              "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90",
+              "img": "/static/brand-genesis/homepage/modelbar/2028/2028_gv90.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV90"
+            }
+          ]
+        },
+        {
+          "id": "sedan",
+          "classes": "tab-pane fade",
+          "models": [
+            {
+              "name": "G70",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "G70",
+              "href": "/searchnew.aspx?Make=Genesis&Model=G70",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g70.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis G70"
+            },
+            {
+              "name": "G80",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "G80",
+              "href": "/searchnew.aspx?Make=Genesis&Model=G80",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g80.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis G80"
+            },
+            {
+              "name": "Electrified G80",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2025",
+              "dataUrl": "Electrified-G80",
+              "href": "/searchnew.aspx?Make=Genesis&Model=Electrified+G80",
+              "img": "/static/brand-genesis/homepage/modelbar/2025/g80e.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis Electrified G80"
+            },
+            {
+              "name": "G90",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "G90",
+              "href": "/searchnew.aspx?Make=Genesis&Model=G90",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_g90.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis G90"
+            }
+          ]
+        },
+        {
+          "id": "electric",
+          "classes": "tab-pane fade",
+          "models": [
+            {
+              "name": "Electrified G80",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2025",
+              "dataUrl": "Electrified-G80",
+              "href": "/searchnew.aspx?Make=Genesis&Model=Electrified+G80",
+              "img": "/static/brand-genesis/homepage/modelbar/2025/g80e.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis Electrified G80"
+            },
+            {
+              "name": "GV60",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2026",
+              "dataUrl": "GV60",
+              "href": "/searchnew.aspx?Make=Genesis&Model=GV60",
+              "img": "/static/brand-genesis/homepage/modelbar/2026/2026_gv60.png",
+              "imgAttr": [400, 225],
+              "alt": "Genesis GV60"
+            },
+            {
+              "name": "Electrified GV70",
+              "nameClass": "vehicleName h3 margin-bottom-x text-uppercase",
+              "countClass": "vehicleCount margin-bottom-x",
+              "year": "2027",
+              "dataUrl": "GV70",
+              "href": "/searchnew.aspx?Make=Genesis&Model=Electrified+GV70",
+              "img": "/static/brand-genesis/homepage/modelbar/2027/gv70e.webp",
+              "imgAttr": [400, 225],
+              "alt": "Genesis Electrified GV70"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "render": {
+    "390": {
+      "status": 200,
+      "before": {
+        "block": "block3",
+        "blockStyles": 1,
+        "modelBarS": 3,
+        "tabs": ["SUV", "Sedan", "Electric"],
+        "headingBottomToTabRowTop": 13,
+        "nameAlign": "center",
+        "textCenterXxsMedia": ["(max-width: 539px)"],
+        "counts": { "GV60": "5", "GV70": "198", "Electrified GV70": "0", "GV80": "134", "GV80 Coupe": "14", "GV90": "0", "G70": "53", "G80": "28", "Electrified G80": "0", "G90": "8" }
+      },
+      "swap": { "styleSwapped": true, "imgs": 16, "complete": 16, "unfilledTokens": 0 },
+      "rest": {
+        "viewport": [390, 844],
+        "docScrollWidth": 598,
+        "barInsideViewport": true,
+        "html": { "font-size": "10px" },
+        "body": { "font-family": "GenesisSansText", "font-size": "13px", "line-height": "18.5714px", "color": "rgb(51, 51, 51)", "background-color": "rgb(255, 255, 255)" },
+        "ancestors": [
+          { "el": "div.vehicleModels", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div#block3", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div.container", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "section.contentSectionE.contentSection2.full.lazyLoadedBackground", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div#content.snap-content", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+          { "el": "body.homepage.sticky-is-enabled", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+          { "el": "html.js.no-touch.csstransforms.csstransforms3d.csstransitions.svg", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(0, 0, 0)" }
+        ],
+        "section": { "padding-top": "10px", "padding-bottom": "10px", "background-color": "rgba(0, 0, 0, 0)", "background-image": "none" },
+        "heading": {
+          "text": "THE GENESIS COLLECTION",
+          "classes": "h1 margin-x text-uppercase text-center",
+          "rect": { "x": 15, "y": 1380.08, "w": 360, "h": 79.19 },
+          "style": {
+            "font-family": "GenesisSansHead",
+            "font-size": "36px",
+            "font-weight": "400",
+            "line-height": "39.6px",
+            "color": "rgb(51, 51, 51)",
+            "letter-spacing": "1px",
+            "text-transform": "uppercase",
+            "text-align": "center",
+            "opacity": "1",
+            "margin-top": "0px",
+            "margin-bottom": "0px"
+          }
+        },
+        "tabRow": {
+          "rect": { "x": 15, "y": 1472.27, "w": 360, "h": 55.8 },
+          "scrollWidth": 360,
+          "clientWidth": 360,
+          "style": {
+            "display": "flex",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "border-bottom-width": "0px",
+            "border-bottom-color": "rgb(51, 51, 51)",
+            "transform": "none",
+            "transition": "all",
+            "justify-content": "center",
+            "flex-wrap": "nowrap"
+          },
+          "rule": { "background-color": "rgb(241, 241, 241)", "height": "1px", "bottom": "0px", "width": "360px" },
+          "wrap": { "margin-top": "13px", "margin-bottom": "0px", "padding-top": "0px", "padding-bottom": "0px" }
+        },
+        "tabs": [
+          {
+            "text": "SUV",
+            "active": true,
+            "li": {
+              "rect": { "x": 114.28, "y": 1472.27, "w": 68, "h": 55.8 },
+              "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+            },
+            "a": {
+              "rect": { "x": 114.28, "y": 1472.27, "w": 68, "h": 55.8 },
+              "style": {
+                "font-family": "GenesisSansHead",
+                "font-size": "18px",
+                "font-weight": "400",
+                "line-height": "19.8px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "18px",
+                "padding-right": "16px",
+                "padding-bottom": "18px",
+                "padding-left": "16px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(0, 0, 0)",
+                "transform": "none",
+                "transition": "all"
+              }
+            },
+            "line": { "background-color": "rgb(0, 0, 0)", "height": "3px", "width": "68px", "bottom": "0px", "transition": "background-color 0.2s" }
+          },
+          {
+            "text": "SEDAN",
+            "active": false,
+            "li": {
+              "rect": { "x": 182.28, "y": 1472.27, "w": 93.42, "h": 55.8 },
+              "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+            },
+            "a": {
+              "rect": { "x": 182.28, "y": 1472.27, "w": 93.42, "h": 55.8 },
+              "style": {
+                "font-family": "GenesisSansHead",
+                "font-size": "18px",
+                "font-weight": "400",
+                "line-height": "19.8px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "18px",
+                "padding-right": "16px",
+                "padding-bottom": "18px",
+                "padding-left": "16px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(0, 0, 0)",
+                "transform": "none",
+                "transition": "all"
+              }
+            },
+            "line": { "background-color": "rgba(0, 0, 0, 0)", "height": "3px", "width": "93.4219px", "bottom": "0px", "transition": "background-color 0.2s" }
+          }
+        ],
+        "panes": [
+          {
+            "id": "suv",
+            "active": true,
+            "style": { "display": "block", "height": "214.625px", "opacity": "1", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+            "slick": {
+              "slidesToShow": 1,
+              "slidesToScroll": 1,
+              "activeBreakpoint": 540,
+              "slideCount": 4,
+              "original": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "swipeToSlide": true,
+                "arrows": true,
+                "dots": false,
+                "infinite": true,
+                "speed": 500,
+                "cssEase": "ease",
+                "centerMode": false,
+                "responsive": [
+                  { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                  { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                  { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                ],
+                "respondTo": "window"
+              }
+            },
+            "models": [
+              { "name": "GV70", "count": "198 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV70" },
+              { "name": "GV80", "count": "134 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV80" },
+              { "name": "GV80 COUPE", "count": "14 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe" },
+              { "name": "GV90", "count": "0 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90" }
+            ],
+            "arrows": { "prev": { "display": "block", "rect": { "x": 15, "y": 1625.38, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 355, "y": 1625.38, "w": 20, "h": 20 } } },
+            "dots": false
+          },
+          {
+            "id": "sedan",
+            "active": false,
+            "style": { "display": "block", "height": "0px", "opacity": "0", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+            "slick": {
+              "slidesToShow": 1,
+              "slidesToScroll": 1,
+              "activeBreakpoint": 540,
+              "slideCount": 3,
+              "original": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "swipeToSlide": true,
+                "arrows": true,
+                "dots": false,
+                "infinite": true,
+                "speed": 500,
+                "cssEase": "ease",
+                "centerMode": false,
+                "responsive": [
+                  { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                  { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                  { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                ],
+                "respondTo": "window"
+              }
+            },
+            "models": [
+              { "name": "G70", "count": "53 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G70" },
+              { "name": "G80", "count": "28 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G80" },
+              { "name": "G90", "count": "8 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G90" }
+            ],
+            "arrows": { "prev": { "display": "block", "rect": { "x": 15, "y": 1840, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 355, "y": 1840, "w": 20, "h": 20 } } },
+            "dots": false
+          }
+        ],
+        "cards": [
+          {
+            "name": "GV70",
+            "slide": { "rect": { "x": 50, "y": 1528.06, "w": 290, "h": 214.63 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "290px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 60, "y": 1528.06, "w": 270, "h": 151.88 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "151.875px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "center",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 60, "y": 1699.94, "w": 270, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "13px",
+              "font-weight": "400",
+              "line-height": "18.5714px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "center",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 60, "y": 1724.13, "w": 270, "h": 18.56 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          }
+        ],
+        "arrows": {
+          "prev": {
+            "rect": { "x": 15, "y": 1625.38, "w": 20, "h": 20 },
+            "style": {
+              "display": "block",
+              "position": "absolute",
+              "width": "20px",
+              "height": "20px",
+              "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-left-bold.svg\")",
+              "background-size": "20px auto",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "opacity": "1",
+              "left": "0px",
+              "right": "340px",
+              "top": "107.312px"
+            }
+          },
+          "next": {
+            "rect": { "x": 355, "y": 1625.38, "w": 20, "h": 20 },
+            "style": {
+              "display": "block",
+              "position": "absolute",
+              "width": "20px",
+              "height": "20px",
+              "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")",
+              "background-size": "20px auto",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "opacity": "1",
+              "left": "340px",
+              "right": "0px",
+              "top": "107.312px"
+            }
+          },
+          "firstImg": { "x": 60, "y": 1528.06, "w": 270, "h": 151.88 }
+        },
+        "list": { "margin-left": "35px", "margin-right": "35px", "padding-left": "0px", "padding-right": "0px" },
+        "gaps": { "headingBottomToTabRowTop": 13, "tabRowBottomToPaneTop": 0, "tabRowBottomToFirstImgTop": 0, "lastCountBottomToPaneBottom": 0 }
+      },
+      "arrowHover": {
+        "rest": { "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")", "background-color": "rgba(0, 0, 0, 0)", "opacity": "1" },
+        "hover": { "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")", "background-color": "rgba(0, 0, 0, 0)", "opacity": "1" }
+      },
+      "clickNext": {
+        "before": "matrix(1, 0, 0, 1, -290, 0)",
+        "first": { "t": 20.7, "transform": "matrix(1, 0, 0, 1, -290, 0)" },
+        "last": { "t": 804.4, "transform": "matrix(1, 0, 0, 1, -580, 0)" },
+        "frames": 49,
+        "after": ["GV80"]
+      },
+      "sedan": {
+        "snapshot": {
+          "viewport": [390, 844],
+          "docScrollWidth": 390,
+          "barInsideViewport": true,
+          "html": { "font-size": "10px" },
+          "body": { "font-family": "GenesisSansText", "font-size": "13px", "line-height": "18.5714px", "color": "rgb(51, 51, 51)", "background-color": "rgb(255, 255, 255)" },
+          "ancestors": [
+            { "el": "div.vehicleModels", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div#block3", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div.container", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "section.contentSectionE.contentSection2.full.lazyLoadedBackground", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div#content.snap-content", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+            { "el": "body.homepage.sticky-is-enabled", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+            { "el": "html.js.no-touch.csstransforms.csstransforms3d.csstransitions.svg", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(0, 0, 0)" }
+          ],
+          "section": { "padding-top": "10px", "padding-bottom": "10px", "background-color": "rgba(0, 0, 0, 0)", "background-image": "none" },
+          "heading": {
+            "text": "THE GENESIS COLLECTION",
+            "classes": "h1 margin-x text-uppercase text-center",
+            "rect": { "x": 15, "y": 1379.95, "w": 360, "h": 79.19 },
+            "style": {
+              "font-family": "GenesisSansHead",
+              "font-size": "36px",
+              "font-weight": "400",
+              "line-height": "39.6px",
+              "color": "rgb(51, 51, 51)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "center",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            }
+          },
+          "tabRow": {
+            "rect": { "x": 15, "y": 1472.14, "w": 360, "h": 55.8 },
+            "scrollWidth": 360,
+            "clientWidth": 360,
+            "style": {
+              "display": "flex",
+              "margin-top": "0px",
+              "margin-right": "0px",
+              "margin-bottom": "0px",
+              "margin-left": "0px",
+              "padding-top": "0px",
+              "padding-right": "0px",
+              "padding-bottom": "0px",
+              "padding-left": "0px",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "border-bottom-width": "0px",
+              "border-bottom-color": "rgb(51, 51, 51)",
+              "transform": "none",
+              "transition": "all",
+              "justify-content": "center",
+              "flex-wrap": "nowrap"
+            },
+            "rule": { "background-color": "rgb(241, 241, 241)", "height": "1px", "bottom": "0px", "width": "360px" },
+            "wrap": { "margin-top": "13px", "margin-bottom": "0px", "padding-top": "0px", "padding-bottom": "0px" }
+          },
+          "tabs": [
+            {
+              "text": "SUV",
+              "active": false,
+              "li": {
+                "rect": { "x": 114.28, "y": 1472.14, "w": 68, "h": 55.8 },
+                "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+              },
+              "a": {
+                "rect": { "x": 114.28, "y": 1472.14, "w": 68, "h": 55.8 },
+                "style": {
+                  "font-family": "GenesisSansHead",
+                  "font-size": "18px",
+                  "font-weight": "400",
+                  "line-height": "19.8px",
+                  "color": "rgb(0, 0, 0)",
+                  "letter-spacing": "1px",
+                  "text-transform": "uppercase",
+                  "text-align": "start",
+                  "opacity": "1",
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "18px",
+                  "padding-right": "16px",
+                  "padding-bottom": "18px",
+                  "padding-left": "16px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(0, 0, 0)",
+                  "transform": "none",
+                  "transition": "all"
+                }
+              },
+              "line": { "background-color": "rgba(0, 0, 0, 0)", "height": "3px", "width": "68px", "bottom": "0px", "transition": "background-color 0.2s" }
+            },
+            {
+              "text": "SEDAN",
+              "active": true,
+              "li": {
+                "rect": { "x": 182.28, "y": 1472.14, "w": 93.42, "h": 55.8 },
+                "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+              },
+              "a": {
+                "rect": { "x": 182.28, "y": 1472.14, "w": 93.42, "h": 55.8 },
+                "style": {
+                  "font-family": "GenesisSansHead",
+                  "font-size": "18px",
+                  "font-weight": "400",
+                  "line-height": "19.8px",
+                  "color": "rgb(0, 0, 0)",
+                  "letter-spacing": "1px",
+                  "text-transform": "uppercase",
+                  "text-align": "start",
+                  "opacity": "1",
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "18px",
+                  "padding-right": "16px",
+                  "padding-bottom": "18px",
+                  "padding-left": "16px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(0, 0, 0)",
+                  "transform": "none",
+                  "transition": "all"
+                }
+              },
+              "line": { "background-color": "rgb(0, 0, 0)", "height": "3px", "width": "93.4219px", "bottom": "0px", "transition": "background-color 0.2s" }
+            }
+          ],
+          "panes": [
+            {
+              "id": "suv",
+              "active": false,
+              "style": { "display": "block", "height": "0px", "opacity": "0", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+              "slick": {
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "activeBreakpoint": 540,
+                "slideCount": 4,
+                "original": {
+                  "slidesToShow": 4,
+                  "slidesToScroll": 1,
+                  "swipeToSlide": true,
+                  "arrows": true,
+                  "dots": false,
+                  "infinite": true,
+                  "speed": 500,
+                  "cssEase": "ease",
+                  "centerMode": false,
+                  "responsive": [
+                    { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                    { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                    { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                  ],
+                  "respondTo": "window"
+                }
+              },
+              "models": [
+                { "name": "GV70", "count": "198 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV70" },
+                { "name": "GV80", "count": "134 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV80" },
+                { "name": "GV80 COUPE", "count": "14 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe" },
+                { "name": "GV90", "count": "0 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90" }
+              ],
+              "arrows": { "prev": { "display": "block", "rect": { "x": 15, "y": 1625.25, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 355, "y": 1625.25, "w": 20, "h": 20 } } },
+              "dots": false
+            },
+            {
+              "id": "sedan",
+              "active": true,
+              "style": { "display": "block", "height": "214.625px", "opacity": "1", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+              "slick": {
+                "slidesToShow": 1,
+                "slidesToScroll": 1,
+                "activeBreakpoint": 540,
+                "slideCount": 3,
+                "original": {
+                  "slidesToShow": 4,
+                  "slidesToScroll": 1,
+                  "swipeToSlide": true,
+                  "arrows": true,
+                  "dots": false,
+                  "infinite": true,
+                  "speed": 500,
+                  "cssEase": "ease",
+                  "centerMode": false,
+                  "responsive": [
+                    { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                    { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                    { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                  ],
+                  "respondTo": "window"
+                }
+              },
+              "models": [
+                { "name": "G70", "count": "53 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G70" },
+                { "name": "G80", "count": "28 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G80" },
+                { "name": "G90", "count": "8 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G90" }
+              ],
+              "arrows": { "prev": { "display": "block", "rect": { "x": 15, "y": 1625.25, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 355, "y": 1625.25, "w": 20, "h": 20 } } },
+              "dots": false
+            }
+          ],
+          "cards": [
+            {
+              "name": "G70",
+              "slide": { "rect": { "x": 50, "y": 1527.94, "w": 290, "h": 214.63 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "290px" } },
+              "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+              "img": {
+                "rect": { "x": 60, "y": 1527.94, "w": 270, "h": 151.88 },
+                "natural": [400, 225],
+                "style": {
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "0px",
+                  "padding-right": "0px",
+                  "padding-bottom": "0px",
+                  "padding-left": "0px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(26, 26, 26)",
+                  "transform": "none",
+                  "transition": "all",
+                  "max-width": "100%",
+                  "height": "151.875px",
+                  "object-fit": "fill"
+                }
+              },
+              "nameStyle": {
+                "font-family": "GenesisSansHead",
+                "font-size": "22px",
+                "font-weight": "400",
+                "line-height": "24.2px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "center",
+                "opacity": "1",
+                "margin-top": "20px",
+                "margin-bottom": "0px"
+              },
+              "nameRect": { "x": 60, "y": 1699.81, "w": 270, "h": 24.19 },
+              "nameLines": 1,
+              "nameOverflows": false,
+              "countStyle": {
+                "font-family": "GenesisSansText",
+                "font-size": "13px",
+                "font-weight": "400",
+                "line-height": "18.5714px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "normal",
+                "text-transform": "none",
+                "text-align": "center",
+                "opacity": "1",
+                "margin-top": "0px",
+                "margin-bottom": "0px"
+              },
+              "countRect": { "x": 60, "y": 1724, "w": 270, "h": 18.56 },
+              "gaps": { "imgToName": 20, "nameToCount": 0 }
+            }
+          ],
+          "arrows": {
+            "prev": {
+              "rect": { "x": 15, "y": 1625.25, "w": 20, "h": 20 },
+              "style": {
+                "display": "block",
+                "position": "absolute",
+                "width": "20px",
+                "height": "20px",
+                "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-left-bold.svg\")",
+                "background-size": "20px auto",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "opacity": "1",
+                "left": "0px",
+                "right": "340px",
+                "top": "107.312px"
+              }
+            },
+            "next": {
+              "rect": { "x": 355, "y": 1625.25, "w": 20, "h": 20 },
+              "style": {
+                "display": "block",
+                "position": "absolute",
+                "width": "20px",
+                "height": "20px",
+                "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")",
+                "background-size": "20px auto",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "opacity": "1",
+                "left": "340px",
+                "right": "0px",
+                "top": "107.312px"
+              }
+            },
+            "firstImg": { "x": 60, "y": 1527.94, "w": 270, "h": 151.88 }
+          },
+          "list": { "margin-left": "35px", "margin-right": "35px", "padding-left": "0px", "padding-right": "0px" },
+          "gaps": { "headingBottomToTabRowTop": 13, "tabRowBottomToPaneTop": 0, "tabRowBottomToFirstImgTop": 0, "lastCountBottomToPaneBottom": 0 }
+        }
+      }
+    },
+    "800": {
+      "status": 200,
+      "before": {
+        "block": "block3",
+        "blockStyles": 1,
+        "modelBarS": 3,
+        "tabs": ["SUV", "Sedan", "Electric"],
+        "headingBottomToTabRowTop": 13,
+        "nameAlign": "start",
+        "textCenterXxsMedia": ["(max-width: 539px)"],
+        "counts": { "GV60": "5", "GV70": "198", "Electrified GV70": "0", "GV80": "134", "GV80 Coupe": "14", "GV90": "0", "G70": "53", "G80": "28", "Electrified G80": "0", "G90": "8" }
+      },
+      "swap": { "styleSwapped": true, "imgs": 18, "complete": 18, "unfilledTokens": 0 },
+      "rest": {
+        "viewport": [800, 900],
+        "docScrollWidth": 800,
+        "barInsideViewport": true,
+        "html": { "font-size": "10px" },
+        "body": { "font-family": "GenesisSansText", "font-size": "13px", "line-height": "18.5714px", "color": "rgb(51, 51, 51)", "background-color": "rgb(255, 255, 255)" },
+        "ancestors": [
+          { "el": "div.vehicleModels", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div#block3", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div.container", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "section.contentSectionE.contentSection2.full.lazyLoadedBackground", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div#content.snap-content", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "body.homepage.sticky-is-enabled", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+          { "el": "html.js.no-touch.csstransforms.csstransforms3d.csstransitions.svg", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(0, 0, 0)" }
+        ],
+        "section": { "padding-top": "10px", "padding-bottom": "10px", "background-color": "rgba(0, 0, 0, 0)", "background-image": "none" },
+        "heading": {
+          "text": "THE GENESIS COLLECTION",
+          "classes": "h1 margin-x text-uppercase text-center",
+          "rect": { "x": 40, "y": 1261.3, "w": 720, "h": 39.59 },
+          "style": {
+            "font-family": "GenesisSansHead",
+            "font-size": "36px",
+            "font-weight": "400",
+            "line-height": "39.6px",
+            "color": "rgb(51, 51, 51)",
+            "letter-spacing": "1px",
+            "text-transform": "uppercase",
+            "text-align": "center",
+            "opacity": "1",
+            "margin-top": "0px",
+            "margin-bottom": "0px"
+          }
+        },
+        "tabRow": {
+          "rect": { "x": 40, "y": 1313.89, "w": 720, "h": 55.8 },
+          "scrollWidth": 720,
+          "clientWidth": 720,
+          "style": {
+            "display": "flex",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "border-bottom-width": "0px",
+            "border-bottom-color": "rgb(51, 51, 51)",
+            "transform": "none",
+            "transition": "all",
+            "justify-content": "center",
+            "flex-wrap": "nowrap"
+          },
+          "rule": { "background-color": "rgb(241, 241, 241)", "height": "1px", "bottom": "0px", "width": "720px" },
+          "wrap": { "margin-top": "13px", "margin-bottom": "0px", "padding-top": "0px", "padding-bottom": "0px" }
+        },
+        "tabs": [
+          {
+            "text": "SUV",
+            "active": true,
+            "li": {
+              "rect": { "x": 319.28, "y": 1313.89, "w": 68, "h": 55.8 },
+              "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+            },
+            "a": {
+              "rect": { "x": 319.28, "y": 1313.89, "w": 68, "h": 55.8 },
+              "style": {
+                "font-family": "GenesisSansHead",
+                "font-size": "18px",
+                "font-weight": "400",
+                "line-height": "19.8px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "18px",
+                "padding-right": "16px",
+                "padding-bottom": "18px",
+                "padding-left": "16px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(0, 0, 0)",
+                "transform": "none",
+                "transition": "all"
+              }
+            },
+            "line": { "background-color": "rgb(0, 0, 0)", "height": "3px", "width": "68px", "bottom": "0px", "transition": "background-color 0.2s" }
+          },
+          {
+            "text": "SEDAN",
+            "active": false,
+            "li": {
+              "rect": { "x": 387.28, "y": 1313.89, "w": 93.42, "h": 55.8 },
+              "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+            },
+            "a": {
+              "rect": { "x": 387.28, "y": 1313.89, "w": 93.42, "h": 55.8 },
+              "style": {
+                "font-family": "GenesisSansHead",
+                "font-size": "18px",
+                "font-weight": "400",
+                "line-height": "19.8px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "18px",
+                "padding-right": "16px",
+                "padding-bottom": "18px",
+                "padding-left": "16px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(0, 0, 0)",
+                "transform": "none",
+                "transition": "all"
+              }
+            },
+            "line": { "background-color": "rgba(0, 0, 0, 0)", "height": "3px", "width": "93.4219px", "bottom": "0px", "transition": "background-color 0.2s" }
+          }
+        ],
+        "panes": [
+          {
+            "id": "suv",
+            "active": true,
+            "style": { "display": "block", "height": "234.312px", "opacity": "1", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+            "slick": {
+              "slidesToShow": 2,
+              "slidesToScroll": 1,
+              "activeBreakpoint": 992,
+              "slideCount": 4,
+              "original": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "swipeToSlide": true,
+                "arrows": true,
+                "dots": false,
+                "infinite": true,
+                "speed": 500,
+                "cssEase": "ease",
+                "centerMode": false,
+                "responsive": [
+                  { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                  { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                  { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                ],
+                "respondTo": "window"
+              }
+            },
+            "models": [
+              { "name": "GV70", "count": "198 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV70" },
+              { "name": "GV80", "count": "134 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV80" },
+              { "name": "GV80 COUPE", "count": "14 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe" },
+              { "name": "GV90", "count": "0 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90" }
+            ],
+            "arrows": { "prev": { "display": "block", "rect": { "x": 40, "y": 1476.84, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 740, "y": 1476.84, "w": 20, "h": 20 } } },
+            "dots": false
+          },
+          {
+            "id": "sedan",
+            "active": false,
+            "style": { "display": "block", "height": "0px", "opacity": "0", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+            "slick": {
+              "slidesToShow": 2,
+              "slidesToScroll": 1,
+              "activeBreakpoint": 992,
+              "slideCount": 3,
+              "original": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "swipeToSlide": true,
+                "arrows": true,
+                "dots": false,
+                "infinite": true,
+                "speed": 500,
+                "cssEase": "ease",
+                "centerMode": false,
+                "responsive": [
+                  { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                  { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                  { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                ],
+                "respondTo": "window"
+              }
+            },
+            "models": [
+              { "name": "G70", "count": "53 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G70" },
+              { "name": "G80", "count": "28 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G80" },
+              { "name": "G90", "count": "8 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G90" }
+            ],
+            "arrows": { "prev": { "display": "block", "rect": { "x": 40, "y": 1711.16, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 740, "y": 1711.16, "w": 20, "h": 20 } } },
+            "dots": false
+          }
+        ],
+        "cards": [
+          {
+            "name": "GV70",
+            "slide": { "rect": { "x": 75, "y": 1369.69, "w": 325, "h": 234.31 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "325px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 85, "y": 1369.69, "w": 305, "h": 171.56 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "171.562px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 85, "y": 1561.25, "w": 305, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "13px",
+              "font-weight": "400",
+              "line-height": "18.5714px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 85, "y": 1585.44, "w": 305, "h": 18.56 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          },
+          {
+            "name": "GV80",
+            "slide": { "rect": { "x": 400, "y": 1369.69, "w": 325, "h": 234.31 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "325px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 410, "y": 1369.69, "w": 305, "h": 171.56 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "171.562px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 410, "y": 1561.25, "w": 305, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "13px",
+              "font-weight": "400",
+              "line-height": "18.5714px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 410, "y": 1585.44, "w": 305, "h": 18.56 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          }
+        ],
+        "arrows": {
+          "prev": {
+            "rect": { "x": 40, "y": 1476.84, "w": 20, "h": 20 },
+            "style": {
+              "display": "block",
+              "position": "absolute",
+              "width": "20px",
+              "height": "20px",
+              "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-left-bold.svg\")",
+              "background-size": "20px auto",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "opacity": "1",
+              "left": "0px",
+              "right": "700px",
+              "top": "117.156px"
+            }
+          },
+          "next": {
+            "rect": { "x": 740, "y": 1476.84, "w": 20, "h": 20 },
+            "style": {
+              "display": "block",
+              "position": "absolute",
+              "width": "20px",
+              "height": "20px",
+              "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")",
+              "background-size": "20px auto",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "opacity": "1",
+              "left": "700px",
+              "right": "0px",
+              "top": "117.156px"
+            }
+          },
+          "firstImg": { "x": 85, "y": 1369.69, "w": 305, "h": 171.56 }
+        },
+        "list": { "margin-left": "35px", "margin-right": "35px", "padding-left": "0px", "padding-right": "0px" },
+        "gaps": { "headingBottomToTabRowTop": 13, "tabRowBottomToPaneTop": 0, "tabRowBottomToFirstImgTop": 0, "lastCountBottomToPaneBottom": 0 }
+      },
+      "arrowHover": {
+        "rest": { "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")", "background-color": "rgba(0, 0, 0, 0)", "opacity": "1" },
+        "hover": { "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")", "background-color": "rgba(0, 0, 0, 0)", "opacity": "1" }
+      },
+      "clickNext": {
+        "before": "matrix(1, 0, 0, 1, -650, 0)",
+        "first": { "t": 32.6, "transform": "matrix(1, 0, 0, 1, -650, 0)" },
+        "last": { "t": 816.2, "transform": "matrix(1, 0, 0, 1, -975, 0)" },
+        "frames": 49,
+        "after": ["GV80", "GV80 Coupe"]
+      },
+      "sedan": {
+        "snapshot": {
+          "viewport": [800, 900],
+          "docScrollWidth": 800,
+          "barInsideViewport": true,
+          "html": { "font-size": "10px" },
+          "body": { "font-family": "GenesisSansText", "font-size": "13px", "line-height": "18.5714px", "color": "rgb(51, 51, 51)", "background-color": "rgb(255, 255, 255)" },
+          "ancestors": [
+            { "el": "div.vehicleModels", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div#block3", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div.container", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "section.contentSectionE.contentSection2.full.lazyLoadedBackground", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div#content.snap-content", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "body.homepage.sticky-is-enabled", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+            { "el": "html.js.no-touch.csstransforms.csstransforms3d.csstransitions.svg", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(0, 0, 0)" }
+          ],
+          "section": { "padding-top": "10px", "padding-bottom": "10px", "background-color": "rgba(0, 0, 0, 0)", "background-image": "none" },
+          "heading": {
+            "text": "THE GENESIS COLLECTION",
+            "classes": "h1 margin-x text-uppercase text-center",
+            "rect": { "x": 40, "y": 1261.3, "w": 720, "h": 39.59 },
+            "style": {
+              "font-family": "GenesisSansHead",
+              "font-size": "36px",
+              "font-weight": "400",
+              "line-height": "39.6px",
+              "color": "rgb(51, 51, 51)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "center",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            }
+          },
+          "tabRow": {
+            "rect": { "x": 40, "y": 1313.89, "w": 720, "h": 55.8 },
+            "scrollWidth": 720,
+            "clientWidth": 720,
+            "style": {
+              "display": "flex",
+              "margin-top": "0px",
+              "margin-right": "0px",
+              "margin-bottom": "0px",
+              "margin-left": "0px",
+              "padding-top": "0px",
+              "padding-right": "0px",
+              "padding-bottom": "0px",
+              "padding-left": "0px",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "border-bottom-width": "0px",
+              "border-bottom-color": "rgb(51, 51, 51)",
+              "transform": "none",
+              "transition": "all",
+              "justify-content": "center",
+              "flex-wrap": "nowrap"
+            },
+            "rule": { "background-color": "rgb(241, 241, 241)", "height": "1px", "bottom": "0px", "width": "720px" },
+            "wrap": { "margin-top": "13px", "margin-bottom": "0px", "padding-top": "0px", "padding-bottom": "0px" }
+          },
+          "tabs": [
+            {
+              "text": "SUV",
+              "active": false,
+              "li": {
+                "rect": { "x": 319.28, "y": 1313.89, "w": 68, "h": 55.8 },
+                "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+              },
+              "a": {
+                "rect": { "x": 319.28, "y": 1313.89, "w": 68, "h": 55.8 },
+                "style": {
+                  "font-family": "GenesisSansHead",
+                  "font-size": "18px",
+                  "font-weight": "400",
+                  "line-height": "19.8px",
+                  "color": "rgb(0, 0, 0)",
+                  "letter-spacing": "1px",
+                  "text-transform": "uppercase",
+                  "text-align": "start",
+                  "opacity": "1",
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "18px",
+                  "padding-right": "16px",
+                  "padding-bottom": "18px",
+                  "padding-left": "16px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(0, 0, 0)",
+                  "transform": "none",
+                  "transition": "all"
+                }
+              },
+              "line": { "background-color": "rgba(0, 0, 0, 0)", "height": "3px", "width": "68px", "bottom": "0px", "transition": "background-color 0.2s" }
+            },
+            {
+              "text": "SEDAN",
+              "active": true,
+              "li": {
+                "rect": { "x": 387.28, "y": 1313.89, "w": 93.42, "h": 55.8 },
+                "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+              },
+              "a": {
+                "rect": { "x": 387.28, "y": 1313.89, "w": 93.42, "h": 55.8 },
+                "style": {
+                  "font-family": "GenesisSansHead",
+                  "font-size": "18px",
+                  "font-weight": "400",
+                  "line-height": "19.8px",
+                  "color": "rgb(0, 0, 0)",
+                  "letter-spacing": "1px",
+                  "text-transform": "uppercase",
+                  "text-align": "start",
+                  "opacity": "1",
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "18px",
+                  "padding-right": "16px",
+                  "padding-bottom": "18px",
+                  "padding-left": "16px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(0, 0, 0)",
+                  "transform": "none",
+                  "transition": "all"
+                }
+              },
+              "line": { "background-color": "rgb(0, 0, 0)", "height": "3px", "width": "93.4219px", "bottom": "0px", "transition": "background-color 0.2s" }
+            }
+          ],
+          "panes": [
+            {
+              "id": "suv",
+              "active": false,
+              "style": { "display": "block", "height": "0px", "opacity": "0", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+              "slick": {
+                "slidesToShow": 2,
+                "slidesToScroll": 1,
+                "activeBreakpoint": 992,
+                "slideCount": 4,
+                "original": {
+                  "slidesToShow": 4,
+                  "slidesToScroll": 1,
+                  "swipeToSlide": true,
+                  "arrows": true,
+                  "dots": false,
+                  "infinite": true,
+                  "speed": 500,
+                  "cssEase": "ease",
+                  "centerMode": false,
+                  "responsive": [
+                    { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                    { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                    { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                  ],
+                  "respondTo": "window"
+                }
+              },
+              "models": [
+                { "name": "GV70", "count": "198 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV70" },
+                { "name": "GV80", "count": "134 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV80" },
+                { "name": "GV80 COUPE", "count": "14 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe" },
+                { "name": "GV90", "count": "0 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90" }
+              ],
+              "arrows": { "prev": { "display": "block", "rect": { "x": 40, "y": 1476.84, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 740, "y": 1476.84, "w": 20, "h": 20 } } },
+              "dots": false
+            },
+            {
+              "id": "sedan",
+              "active": true,
+              "style": { "display": "block", "height": "234.312px", "opacity": "1", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+              "slick": {
+                "slidesToShow": 2,
+                "slidesToScroll": 1,
+                "activeBreakpoint": 992,
+                "slideCount": 3,
+                "original": {
+                  "slidesToShow": 4,
+                  "slidesToScroll": 1,
+                  "swipeToSlide": true,
+                  "arrows": true,
+                  "dots": false,
+                  "infinite": true,
+                  "speed": 500,
+                  "cssEase": "ease",
+                  "centerMode": false,
+                  "responsive": [
+                    { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                    { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                    { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                  ],
+                  "respondTo": "window"
+                }
+              },
+              "models": [
+                { "name": "G70", "count": "53 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G70" },
+                { "name": "G80", "count": "28 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G80" },
+                { "name": "G90", "count": "8 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G90" }
+              ],
+              "arrows": { "prev": { "display": "block", "rect": { "x": 40, "y": 1476.84, "w": 20, "h": 20 } }, "next": { "display": "block", "rect": { "x": 740, "y": 1476.84, "w": 20, "h": 20 } } },
+              "dots": false
+            }
+          ],
+          "cards": [
+            {
+              "name": "G70",
+              "slide": { "rect": { "x": 75, "y": 1369.69, "w": 325, "h": 234.31 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "325px" } },
+              "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+              "img": {
+                "rect": { "x": 85, "y": 1369.69, "w": 305, "h": 171.56 },
+                "natural": [400, 225],
+                "style": {
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "0px",
+                  "padding-right": "0px",
+                  "padding-bottom": "0px",
+                  "padding-left": "0px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(26, 26, 26)",
+                  "transform": "none",
+                  "transition": "all",
+                  "max-width": "100%",
+                  "height": "171.562px",
+                  "object-fit": "fill"
+                }
+              },
+              "nameStyle": {
+                "font-family": "GenesisSansHead",
+                "font-size": "22px",
+                "font-weight": "400",
+                "line-height": "24.2px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "20px",
+                "margin-bottom": "0px"
+              },
+              "nameRect": { "x": 85, "y": 1561.25, "w": 305, "h": 24.19 },
+              "nameLines": 1,
+              "nameOverflows": false,
+              "countStyle": {
+                "font-family": "GenesisSansText",
+                "font-size": "13px",
+                "font-weight": "400",
+                "line-height": "18.5714px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "normal",
+                "text-transform": "none",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "0px",
+                "margin-bottom": "0px"
+              },
+              "countRect": { "x": 85, "y": 1585.44, "w": 305, "h": 18.56 },
+              "gaps": { "imgToName": 20, "nameToCount": 0 }
+            },
+            {
+              "name": "G80",
+              "slide": { "rect": { "x": 400, "y": 1369.69, "w": 325, "h": 234.31 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "325px" } },
+              "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+              "img": {
+                "rect": { "x": 410, "y": 1369.69, "w": 305, "h": 171.56 },
+                "natural": [400, 225],
+                "style": {
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "0px",
+                  "padding-right": "0px",
+                  "padding-bottom": "0px",
+                  "padding-left": "0px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(26, 26, 26)",
+                  "transform": "none",
+                  "transition": "all",
+                  "max-width": "100%",
+                  "height": "171.562px",
+                  "object-fit": "fill"
+                }
+              },
+              "nameStyle": {
+                "font-family": "GenesisSansHead",
+                "font-size": "22px",
+                "font-weight": "400",
+                "line-height": "24.2px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "20px",
+                "margin-bottom": "0px"
+              },
+              "nameRect": { "x": 410, "y": 1561.25, "w": 305, "h": 24.19 },
+              "nameLines": 1,
+              "nameOverflows": false,
+              "countStyle": {
+                "font-family": "GenesisSansText",
+                "font-size": "13px",
+                "font-weight": "400",
+                "line-height": "18.5714px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "normal",
+                "text-transform": "none",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "0px",
+                "margin-bottom": "0px"
+              },
+              "countRect": { "x": 410, "y": 1585.44, "w": 305, "h": 18.56 },
+              "gaps": { "imgToName": 20, "nameToCount": 0 }
+            }
+          ],
+          "arrows": {
+            "prev": {
+              "rect": { "x": 40, "y": 1476.84, "w": 20, "h": 20 },
+              "style": {
+                "display": "block",
+                "position": "absolute",
+                "width": "20px",
+                "height": "20px",
+                "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-left-bold.svg\")",
+                "background-size": "20px auto",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "opacity": "1",
+                "left": "0px",
+                "right": "700px",
+                "top": "117.156px"
+              }
+            },
+            "next": {
+              "rect": { "x": 740, "y": 1476.84, "w": 20, "h": 20 },
+              "style": {
+                "display": "block",
+                "position": "absolute",
+                "width": "20px",
+                "height": "20px",
+                "background-image": "url(\"https://genesisdemo1.dealeron.com/static/brand-genesis/svg/chevron-right-bold.svg\")",
+                "background-size": "20px auto",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "opacity": "1",
+                "left": "700px",
+                "right": "0px",
+                "top": "117.156px"
+              }
+            },
+            "firstImg": { "x": 85, "y": 1369.69, "w": 305, "h": 171.56 }
+          },
+          "list": { "margin-left": "35px", "margin-right": "35px", "padding-left": "0px", "padding-right": "0px" },
+          "gaps": { "headingBottomToTabRowTop": 13, "tabRowBottomToPaneTop": 0, "tabRowBottomToFirstImgTop": 0, "lastCountBottomToPaneBottom": 0 }
+        }
+      }
+    },
+    "1366": {
+      "status": 200,
+      "before": {
+        "block": "block3",
+        "blockStyles": 1,
+        "modelBarS": 3,
+        "tabs": ["SUV", "Sedan", "Electric"],
+        "headingBottomToTabRowTop": 14,
+        "nameAlign": "start",
+        "textCenterXxsMedia": ["(max-width: 539px)"],
+        "counts": { "GV60": "5", "GV70": "198", "Electrified GV70": "0", "GV80": "134", "GV80 Coupe": "14", "GV90": "0", "G70": "53", "G80": "28", "Electrified G80": "0", "G90": "8" }
+      },
+      "swap": { "styleSwapped": true, "imgs": 7, "complete": 7, "unfilledTokens": 0 },
+      "rest": {
+        "viewport": [1366, 768],
+        "docScrollWidth": 1366,
+        "barInsideViewport": true,
+        "html": { "font-size": "10px" },
+        "body": { "font-family": "GenesisSansText", "font-size": "14px", "line-height": "20px", "color": "rgb(51, 51, 51)", "background-color": "rgb(255, 255, 255)" },
+        "ancestors": [
+          { "el": "div.vehicleModels", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div#block3", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div.container", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "section.contentSectionE.contentSection2.full.lazyLoadedBackground", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "div#content.snap-content", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+          { "el": "body.homepage", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+          { "el": "html.js.no-touch.csstransforms.csstransforms3d.csstransitions.svg", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(0, 0, 0)" }
+        ],
+        "section": { "padding-top": "10px", "padding-bottom": "10px", "background-color": "rgba(0, 0, 0, 0)", "background-image": "none" },
+        "heading": {
+          "text": "THE GENESIS COLLECTION",
+          "classes": "h1 margin-x text-uppercase text-center",
+          "rect": { "x": 113, "y": 1321.5, "w": 1140, "h": 39.59 },
+          "style": {
+            "font-family": "GenesisSansHead",
+            "font-size": "36px",
+            "font-weight": "400",
+            "line-height": "39.6px",
+            "color": "rgb(51, 51, 51)",
+            "letter-spacing": "1px",
+            "text-transform": "uppercase",
+            "text-align": "center",
+            "opacity": "1",
+            "margin-top": "0px",
+            "margin-bottom": "0px"
+          }
+        },
+        "tabRow": {
+          "rect": { "x": 113, "y": 1375.09, "w": 1140, "h": 55.8 },
+          "scrollWidth": 1140,
+          "clientWidth": 1140,
+          "style": {
+            "display": "flex",
+            "margin-top": "0px",
+            "margin-right": "0px",
+            "margin-bottom": "0px",
+            "margin-left": "0px",
+            "padding-top": "0px",
+            "padding-right": "0px",
+            "padding-bottom": "0px",
+            "padding-left": "0px",
+            "background-color": "rgba(0, 0, 0, 0)",
+            "border-bottom-width": "0px",
+            "border-bottom-color": "rgb(51, 51, 51)",
+            "transform": "none",
+            "transition": "all",
+            "justify-content": "center",
+            "flex-wrap": "nowrap"
+          },
+          "rule": { "background-color": "rgb(241, 241, 241)", "height": "1px", "bottom": "0px", "width": "1140px" },
+          "wrap": { "margin-top": "14px", "margin-bottom": "0px", "padding-top": "0px", "padding-bottom": "0px" }
+        },
+        "tabs": [
+          {
+            "text": "SUV",
+            "active": true,
+            "li": {
+              "rect": { "x": 602.28, "y": 1375.09, "w": 68, "h": 55.8 },
+              "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+            },
+            "a": {
+              "rect": { "x": 602.28, "y": 1375.09, "w": 68, "h": 55.8 },
+              "style": {
+                "font-family": "GenesisSansHead",
+                "font-size": "18px",
+                "font-weight": "400",
+                "line-height": "19.8px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "18px",
+                "padding-right": "16px",
+                "padding-bottom": "18px",
+                "padding-left": "16px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(0, 0, 0)",
+                "transform": "none",
+                "transition": "all"
+              }
+            },
+            "line": { "background-color": "rgb(0, 0, 0)", "height": "3px", "width": "68px", "bottom": "0px", "transition": "background-color 0.2s" }
+          },
+          {
+            "text": "SEDAN",
+            "active": false,
+            "li": {
+              "rect": { "x": 670.28, "y": 1375.09, "w": 93.42, "h": 55.8 },
+              "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+            },
+            "a": {
+              "rect": { "x": 670.28, "y": 1375.09, "w": 93.42, "h": 55.8 },
+              "style": {
+                "font-family": "GenesisSansHead",
+                "font-size": "18px",
+                "font-weight": "400",
+                "line-height": "19.8px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "18px",
+                "padding-right": "16px",
+                "padding-bottom": "18px",
+                "padding-left": "16px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(0, 0, 0)",
+                "transform": "none",
+                "transition": "all"
+              }
+            },
+            "line": { "background-color": "rgba(0, 0, 0, 0)", "height": "3px", "width": "93.4219px", "bottom": "0px", "transition": "background-color 0.2s" }
+          }
+        ],
+        "panes": [
+          {
+            "id": "suv",
+            "active": true,
+            "style": { "display": "block", "height": "203.688px", "opacity": "1", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+            "slick": {
+              "slidesToShow": 4,
+              "slidesToScroll": 1,
+              "activeBreakpoint": null,
+              "slideCount": 4,
+              "original": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "swipeToSlide": true,
+                "arrows": true,
+                "dots": false,
+                "infinite": true,
+                "speed": 500,
+                "cssEase": "ease",
+                "centerMode": false,
+                "responsive": [
+                  { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                  { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                  { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                ],
+                "respondTo": "window"
+              }
+            },
+            "models": [
+              { "name": "GV70", "count": "198 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV70" },
+              { "name": "GV80", "count": "134 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV80" },
+              { "name": "GV80 COUPE", "count": "14 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe" },
+              { "name": "GV90", "count": "0 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90" }
+            ],
+            "arrows": { "prev": null, "next": null },
+            "dots": false
+          },
+          {
+            "id": "sedan",
+            "active": false,
+            "style": { "display": "block", "height": "0px", "opacity": "0", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+            "slick": {
+              "slidesToShow": 4,
+              "slidesToScroll": 1,
+              "activeBreakpoint": null,
+              "slideCount": 3,
+              "original": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "swipeToSlide": true,
+                "arrows": true,
+                "dots": false,
+                "infinite": true,
+                "speed": 500,
+                "cssEase": "ease",
+                "centerMode": false,
+                "responsive": [
+                  { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                  { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                  { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                ],
+                "respondTo": "window"
+              }
+            },
+            "models": [
+              { "name": "G70", "count": "53 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G70" },
+              { "name": "G80", "count": "28 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G80" },
+              { "name": "G90", "count": "8 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G90" }
+            ],
+            "arrows": { "prev": null, "next": null },
+            "dots": false
+          }
+        ],
+        "cards": [
+          {
+            "name": "GV70",
+            "slide": { "rect": { "x": 148, "y": 1430.89, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 158, "y": 1430.89, "w": 248, "h": 139.5 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "139.5px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 158, "y": 1590.39, "w": 248, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "14px",
+              "font-weight": "400",
+              "line-height": "20px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 158, "y": 1614.58, "w": 248, "h": 20 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          },
+          {
+            "name": "GV80",
+            "slide": { "rect": { "x": 416, "y": 1430.89, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 426, "y": 1430.89, "w": 248, "h": 139.5 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "139.5px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 426, "y": 1590.39, "w": 248, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "14px",
+              "font-weight": "400",
+              "line-height": "20px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 426, "y": 1614.58, "w": 248, "h": 20 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          },
+          {
+            "name": "GV80 COUPE",
+            "slide": { "rect": { "x": 684, "y": 1430.89, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 694, "y": 1430.89, "w": 248, "h": 139.5 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "139.5px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 694, "y": 1590.39, "w": 248, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "14px",
+              "font-weight": "400",
+              "line-height": "20px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 694, "y": 1614.58, "w": 248, "h": 20 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          },
+          {
+            "name": "GV90",
+            "slide": { "rect": { "x": 952, "y": 1430.89, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+            "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+            "img": {
+              "rect": { "x": 962, "y": 1430.89, "w": 248, "h": 139.5 },
+              "natural": [400, 225],
+              "style": {
+                "display": "block",
+                "margin-top": "0px",
+                "margin-right": "0px",
+                "margin-bottom": "0px",
+                "margin-left": "0px",
+                "padding-top": "0px",
+                "padding-right": "0px",
+                "padding-bottom": "0px",
+                "padding-left": "0px",
+                "background-color": "rgba(0, 0, 0, 0)",
+                "border-bottom-width": "0px",
+                "border-bottom-color": "rgb(26, 26, 26)",
+                "transform": "none",
+                "transition": "all",
+                "max-width": "100%",
+                "height": "139.5px",
+                "object-fit": "fill"
+              }
+            },
+            "nameStyle": {
+              "font-family": "GenesisSansHead",
+              "font-size": "22px",
+              "font-weight": "400",
+              "line-height": "24.2px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "20px",
+              "margin-bottom": "0px"
+            },
+            "nameRect": { "x": 962, "y": 1590.39, "w": 248, "h": 24.19 },
+            "nameLines": 1,
+            "nameOverflows": false,
+            "countStyle": {
+              "font-family": "GenesisSansText",
+              "font-size": "14px",
+              "font-weight": "400",
+              "line-height": "20px",
+              "color": "rgb(0, 0, 0)",
+              "letter-spacing": "normal",
+              "text-transform": "none",
+              "text-align": "start",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            },
+            "countRect": { "x": 962, "y": 1614.58, "w": 248, "h": 20 },
+            "gaps": { "imgToName": 20, "nameToCount": 0 }
+          }
+        ],
+        "arrows": { "prev": null, "next": null, "firstImg": { "x": 158, "y": 1430.89, "w": 248, "h": 139.5 } },
+        "list": { "margin-left": "35px", "margin-right": "35px", "padding-left": "0px", "padding-right": "0px" },
+        "gaps": { "headingBottomToTabRowTop": 14, "tabRowBottomToPaneTop": 0, "tabRowBottomToFirstImgTop": 0, "lastCountBottomToPaneBottom": 0 }
+      },
+      "images": [
+        { "src": "/static/brand-genesis/homepage/modelbar/2026/2026_gv70.png", "natural": [400, 225], "repoFile": "gv70.png" },
+        { "src": "/static/brand-genesis/homepage/modelbar/2026/2026_gv80.png", "natural": [400, 225], "repoFile": "gv80.png" },
+        { "src": "/static/brand-genesis/homepage/modelbar/2026/2026_g80-coupe.png", "natural": [400, 225], "repoFile": null },
+        { "src": "/static/brand-genesis/homepage/modelbar/2028/2028_gv90.png", "natural": [400, 225], "repoFile": null },
+        { "src": "/static/brand-genesis/homepage/modelbar/2026/2026_g70.png", "natural": [400, 225], "repoFile": "g70.png" },
+        { "src": "/static/brand-genesis/homepage/modelbar/2026/2026_g80.png", "natural": [400, 225], "repoFile": "g80.png" },
+        { "src": "/static/brand-genesis/homepage/modelbar/2026/2026_g90.png", "natural": [400, 225], "repoFile": "g90.png" }
+      ],
+      "chevron": { "fills": ["fill=\"none\"", "fill=\"black\""], "viewBox": "0 0 16 16" },
+      "tabHover": {
+        "samples": [
+          { "t": 10, "background-color": "rgba(0, 0, 0, 0)" },
+          { "t": 80, "background-color": "rgba(0, 0, 0, 0.07)" },
+          { "t": 100, "background-color": "rgba(0, 0, 0, 0.22)" },
+          { "t": 110, "background-color": "rgba(0, 0, 0, 0.408)" },
+          { "t": 130, "background-color": "rgba(0, 0, 0, 0.576)" },
+          { "t": 150, "background-color": "rgba(0, 0, 0, 0.706)" },
+          { "t": 160, "background-color": "rgba(0, 0, 0, 0.804)" },
+          { "t": 180, "background-color": "rgba(0, 0, 0, 0.875)" },
+          { "t": 200, "background-color": "rgba(0, 0, 0, 0.925)" },
+          { "t": 210, "background-color": "rgba(0, 0, 0, 0.96)" },
+          { "t": 230, "background-color": "rgba(0, 0, 0, 0.984)" },
+          { "t": 240, "background-color": "rgba(0, 0, 0, 0.996)" },
+          { "t": 260, "background-color": "rgb(0, 0, 0)" },
+          { "t": 410, "background-color": "rgb(0, 0, 0)" }
+        ],
+        "text": { "color": "rgb(0, 0, 0)", "background-color": "rgba(0, 0, 0, 0)", "opacity": "1" }
+      },
+      "cardHover": {
+        "samples": [
+          { "t": 0, "transform": "none", "opacity": "1", "filter": "none" },
+          { "t": 410, "transform": "none", "opacity": "1", "filter": "none" }
+        ],
+        "settled": { "name": { "color": "rgb(0, 0, 0)", "text-decoration-line": "none" }, "a": { "color": "rgb(0, 0, 0)", "text-decoration-line": "none", "cursor": "pointer" } }
+      },
+      "sedan": {
+        "fade": [
+          { "t": 0, "opacity": "0", "height": "0px" },
+          { "t": 200, "opacity": "0", "height": "203.688px" },
+          { "t": 230, "opacity": "0.11068", "height": "203.688px" },
+          { "t": 250, "opacity": "0.222013", "height": "203.688px" },
+          { "t": 260, "opacity": "0.33268", "height": "203.688px" },
+          { "t": 280, "opacity": "0.44468", "height": "203.688px" },
+          { "t": 290, "opacity": "0.555347", "height": "203.688px" },
+          { "t": 310, "opacity": "0.66668", "height": "203.688px" },
+          { "t": 330, "opacity": "0.777347", "height": "203.688px" },
+          { "t": 340, "opacity": "0.889347", "height": "203.688px" },
+          { "t": 360, "opacity": "1", "height": "203.688px" },
+          { "t": 510, "opacity": "1", "height": "203.688px" }
+        ],
+        "snapshot": {
+          "viewport": [1366, 768],
+          "docScrollWidth": 1366,
+          "barInsideViewport": true,
+          "html": { "font-size": "10px" },
+          "body": { "font-family": "GenesisSansText", "font-size": "14px", "line-height": "20px", "color": "rgb(51, 51, 51)", "background-color": "rgb(255, 255, 255)" },
+          "ancestors": [
+            { "el": "div.vehicleModels", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div#block3", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div.container", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "section.contentSectionE.contentSection2.full.lazyLoadedBackground", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "div#content.snap-content", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(51, 51, 51)" },
+            { "el": "body.homepage", "bg": "rgb(255, 255, 255)", "color": "rgb(51, 51, 51)" },
+            { "el": "html.js.no-touch.csstransforms.csstransforms3d.csstransitions.svg", "bg": "rgba(0, 0, 0, 0)", "color": "rgb(0, 0, 0)" }
+          ],
+          "section": { "padding-top": "10px", "padding-bottom": "10px", "background-color": "rgba(0, 0, 0, 0)", "background-image": "none" },
+          "heading": {
+            "text": "THE GENESIS COLLECTION",
+            "classes": "h1 margin-x text-uppercase text-center",
+            "rect": { "x": 113, "y": 1321.38, "w": 1140, "h": 39.59 },
+            "style": {
+              "font-family": "GenesisSansHead",
+              "font-size": "36px",
+              "font-weight": "400",
+              "line-height": "39.6px",
+              "color": "rgb(51, 51, 51)",
+              "letter-spacing": "1px",
+              "text-transform": "uppercase",
+              "text-align": "center",
+              "opacity": "1",
+              "margin-top": "0px",
+              "margin-bottom": "0px"
+            }
+          },
+          "tabRow": {
+            "rect": { "x": 113, "y": 1374.97, "w": 1140, "h": 55.8 },
+            "scrollWidth": 1140,
+            "clientWidth": 1140,
+            "style": {
+              "display": "flex",
+              "margin-top": "0px",
+              "margin-right": "0px",
+              "margin-bottom": "0px",
+              "margin-left": "0px",
+              "padding-top": "0px",
+              "padding-right": "0px",
+              "padding-bottom": "0px",
+              "padding-left": "0px",
+              "background-color": "rgba(0, 0, 0, 0)",
+              "border-bottom-width": "0px",
+              "border-bottom-color": "rgb(51, 51, 51)",
+              "transform": "none",
+              "transition": "all",
+              "justify-content": "center",
+              "flex-wrap": "nowrap"
+            },
+            "rule": { "background-color": "rgb(241, 241, 241)", "height": "1px", "bottom": "0px", "width": "1140px" },
+            "wrap": { "margin-top": "14px", "margin-bottom": "0px", "padding-top": "0px", "padding-bottom": "0px" }
+          },
+          "tabs": [
+            {
+              "text": "SUV",
+              "active": false,
+              "li": {
+                "rect": { "x": 602.28, "y": 1374.97, "w": 68, "h": 55.8 },
+                "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+              },
+              "a": {
+                "rect": { "x": 602.28, "y": 1374.97, "w": 68, "h": 55.8 },
+                "style": {
+                  "font-family": "GenesisSansHead",
+                  "font-size": "18px",
+                  "font-weight": "400",
+                  "line-height": "19.8px",
+                  "color": "rgb(0, 0, 0)",
+                  "letter-spacing": "1px",
+                  "text-transform": "uppercase",
+                  "text-align": "start",
+                  "opacity": "1",
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "18px",
+                  "padding-right": "16px",
+                  "padding-bottom": "18px",
+                  "padding-left": "16px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(0, 0, 0)",
+                  "transform": "none",
+                  "transition": "all"
+                }
+              },
+              "line": { "background-color": "rgba(0, 0, 0, 0)", "height": "3px", "width": "68px", "bottom": "0px", "transition": "background-color 0.2s" }
+            },
+            {
+              "text": "SEDAN",
+              "active": true,
+              "li": {
+                "rect": { "x": 670.28, "y": 1374.97, "w": 93.42, "h": 55.8 },
+                "style": { "display": "block", "position": "relative", "margin-left": "0px", "margin-right": "0px", "padding-left": "0px", "padding-right": "0px" }
+              },
+              "a": {
+                "rect": { "x": 670.28, "y": 1374.97, "w": 93.42, "h": 55.8 },
+                "style": {
+                  "font-family": "GenesisSansHead",
+                  "font-size": "18px",
+                  "font-weight": "400",
+                  "line-height": "19.8px",
+                  "color": "rgb(0, 0, 0)",
+                  "letter-spacing": "1px",
+                  "text-transform": "uppercase",
+                  "text-align": "start",
+                  "opacity": "1",
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "18px",
+                  "padding-right": "16px",
+                  "padding-bottom": "18px",
+                  "padding-left": "16px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(0, 0, 0)",
+                  "transform": "none",
+                  "transition": "all"
+                }
+              },
+              "line": { "background-color": "rgb(0, 0, 0)", "height": "3px", "width": "93.4219px", "bottom": "0px", "transition": "background-color 0.2s" }
+            }
+          ],
+          "panes": [
+            {
+              "id": "suv",
+              "active": false,
+              "style": { "display": "block", "height": "0px", "opacity": "0", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+              "slick": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "activeBreakpoint": null,
+                "slideCount": 4,
+                "original": {
+                  "slidesToShow": 4,
+                  "slidesToScroll": 1,
+                  "swipeToSlide": true,
+                  "arrows": true,
+                  "dots": false,
+                  "infinite": true,
+                  "speed": 500,
+                  "cssEase": "ease",
+                  "centerMode": false,
+                  "responsive": [
+                    { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                    { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                    { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                  ],
+                  "respondTo": "window"
+                }
+              },
+              "models": [
+                { "name": "GV70", "count": "198 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV70" },
+                { "name": "GV80", "count": "134 Available", "href": "/searchnew.aspx?Make=Genesis&Model=GV80" },
+                { "name": "GV80 COUPE", "count": "14 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV80%20Coupe" },
+                { "name": "GV90", "count": "0 Available", "href": "/searchnew.aspx?Make=Genesis&ModelAndTrim=GV90" }
+              ],
+              "arrows": { "prev": null, "next": null },
+              "dots": false
+            },
+            {
+              "id": "sedan",
+              "active": true,
+              "style": { "display": "block", "height": "203.688px", "opacity": "1", "overflow-y": "hidden", "transition": "opacity 0.15s linear" },
+              "slick": {
+                "slidesToShow": 4,
+                "slidesToScroll": 1,
+                "activeBreakpoint": null,
+                "slideCount": 3,
+                "original": {
+                  "slidesToShow": 4,
+                  "slidesToScroll": 1,
+                  "swipeToSlide": true,
+                  "arrows": true,
+                  "dots": false,
+                  "infinite": true,
+                  "speed": 500,
+                  "cssEase": "ease",
+                  "centerMode": false,
+                  "responsive": [
+                    { "breakpoint": 1200, "settings": { "centerPadding": "40px", "slidesToShow": 3 } },
+                    { "breakpoint": 992, "settings": { "centerPadding": "40px", "slidesToShow": 2 } },
+                    { "breakpoint": 540, "settings": { "centerPadding": "40px", "slidesToShow": 1 } }
+                  ],
+                  "respondTo": "window"
+                }
+              },
+              "models": [
+                { "name": "G70", "count": "53 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G70" },
+                { "name": "G80", "count": "28 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G80" },
+                { "name": "G90", "count": "8 Available", "href": "/searchnew.aspx?Make=Genesis&Model=G90" }
+              ],
+              "arrows": { "prev": null, "next": null },
+              "dots": false
+            }
+          ],
+          "cards": [
+            {
+              "name": "G70",
+              "slide": { "rect": { "x": 281, "y": 1430.77, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+              "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+              "img": {
+                "rect": { "x": 291, "y": 1430.77, "w": 248, "h": 139.5 },
+                "natural": [400, 225],
+                "style": {
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "0px",
+                  "padding-right": "0px",
+                  "padding-bottom": "0px",
+                  "padding-left": "0px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(26, 26, 26)",
+                  "transform": "none",
+                  "transition": "all",
+                  "max-width": "100%",
+                  "height": "139.5px",
+                  "object-fit": "fill"
+                }
+              },
+              "nameStyle": {
+                "font-family": "GenesisSansHead",
+                "font-size": "22px",
+                "font-weight": "400",
+                "line-height": "24.2px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "20px",
+                "margin-bottom": "0px"
+              },
+              "nameRect": { "x": 291, "y": 1590.27, "w": 248, "h": 24.19 },
+              "nameLines": 1,
+              "nameOverflows": false,
+              "countStyle": {
+                "font-family": "GenesisSansText",
+                "font-size": "14px",
+                "font-weight": "400",
+                "line-height": "20px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "normal",
+                "text-transform": "none",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "0px",
+                "margin-bottom": "0px"
+              },
+              "countRect": { "x": 291, "y": 1614.45, "w": 248, "h": 20 },
+              "gaps": { "imgToName": 20, "nameToCount": 0 }
+            },
+            {
+              "name": "G80",
+              "slide": { "rect": { "x": 549, "y": 1430.77, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+              "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+              "img": {
+                "rect": { "x": 559, "y": 1430.77, "w": 248, "h": 139.5 },
+                "natural": [400, 225],
+                "style": {
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "0px",
+                  "padding-right": "0px",
+                  "padding-bottom": "0px",
+                  "padding-left": "0px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(26, 26, 26)",
+                  "transform": "none",
+                  "transition": "all",
+                  "max-width": "100%",
+                  "height": "139.5px",
+                  "object-fit": "fill"
+                }
+              },
+              "nameStyle": {
+                "font-family": "GenesisSansHead",
+                "font-size": "22px",
+                "font-weight": "400",
+                "line-height": "24.2px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "20px",
+                "margin-bottom": "0px"
+              },
+              "nameRect": { "x": 559, "y": 1590.27, "w": 248, "h": 24.19 },
+              "nameLines": 1,
+              "nameOverflows": false,
+              "countStyle": {
+                "font-family": "GenesisSansText",
+                "font-size": "14px",
+                "font-weight": "400",
+                "line-height": "20px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "normal",
+                "text-transform": "none",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "0px",
+                "margin-bottom": "0px"
+              },
+              "countRect": { "x": 559, "y": 1614.45, "w": 248, "h": 20 },
+              "gaps": { "imgToName": 20, "nameToCount": 0 }
+            },
+            {
+              "name": "G90",
+              "slide": { "rect": { "x": 817, "y": 1430.77, "w": 268, "h": 203.69 }, "style": { "padding-left": "10px", "padding-right": "10px", "width": "268px" } },
+              "a": { "display": "inline", "color": "rgb(26, 26, 26)", "text-decoration-line": "none" },
+              "img": {
+                "rect": { "x": 827, "y": 1430.77, "w": 248, "h": 139.5 },
+                "natural": [400, 225],
+                "style": {
+                  "display": "block",
+                  "margin-top": "0px",
+                  "margin-right": "0px",
+                  "margin-bottom": "0px",
+                  "margin-left": "0px",
+                  "padding-top": "0px",
+                  "padding-right": "0px",
+                  "padding-bottom": "0px",
+                  "padding-left": "0px",
+                  "background-color": "rgba(0, 0, 0, 0)",
+                  "border-bottom-width": "0px",
+                  "border-bottom-color": "rgb(26, 26, 26)",
+                  "transform": "none",
+                  "transition": "all",
+                  "max-width": "100%",
+                  "height": "139.5px",
+                  "object-fit": "fill"
+                }
+              },
+              "nameStyle": {
+                "font-family": "GenesisSansHead",
+                "font-size": "22px",
+                "font-weight": "400",
+                "line-height": "24.2px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "1px",
+                "text-transform": "uppercase",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "20px",
+                "margin-bottom": "0px"
+              },
+              "nameRect": { "x": 827, "y": 1590.27, "w": 248, "h": 24.19 },
+              "nameLines": 1,
+              "nameOverflows": false,
+              "countStyle": {
+                "font-family": "GenesisSansText",
+                "font-size": "14px",
+                "font-weight": "400",
+                "line-height": "20px",
+                "color": "rgb(0, 0, 0)",
+                "letter-spacing": "normal",
+                "text-transform": "none",
+                "text-align": "start",
+                "opacity": "1",
+                "margin-top": "0px",
+                "margin-bottom": "0px"
+              },
+              "countRect": { "x": 827, "y": 1614.45, "w": 248, "h": 20 },
+              "gaps": { "imgToName": 20, "nameToCount": 0 }
+            }
+          ],
+          "arrows": { "prev": null, "next": null, "firstImg": { "x": 291, "y": 1430.77, "w": 248, "h": 139.5 } },
+          "list": { "margin-left": "35px", "margin-right": "35px", "padding-left": "0px", "padding-right": "0px" },
+          "gaps": { "headingBottomToTabRowTop": 14, "tabRowBottomToPaneTop": 0, "tabRowBottomToFirstImgTop": 0, "lastCountBottomToPaneBottom": 0 }
+        }
+      }
+    }
+  },
+  "contrast": { "band": "rgb(255, 255, 255)", "tab": 21, "line": 21, "rule": 1.13, "name": 21, "count": 21 }
+}

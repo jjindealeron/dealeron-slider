@@ -80,5 +80,10 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
   - [ ] Toyota Tabs v3 (a tabbed split-card pattern): parked; in `docs/backlog.md`
   - [x] Lovable refreshed and published (2026-11-05): all 309 exported files hash-identical on the
         live site, the 26 new pictures included
+- [x] The nine "Not a carousel" codes (Steven, 2026-11-06: "go ahead with the nine"), each replaced
+      by a model bar or tabbed bar that shows every model at once on a desktop and slides on a phone
+  - [x] Measured into `docs/research/2026-11-05-measurements/` (brief: `BRIEF-static.md`), seven
+        agents: BMW, Ford 2.0-alt, Genesis non-EV, INFINITI x2, Maserati tiles, Nissan x2, Porsche
+  - [x] Each built, its row moved, gates green (38 of 47); Lovable staged
 - [x] Handover ZIP: `git archive` at 4d8f124 into Steven's Downloads,
       `dealeron-slider-repo-2026-11-03.zip` (421 files, tracked only)

@@ -42,6 +42,19 @@ test('every built code opens its own pattern and preset', async () => {
   }
 });
 
+// 2026-11-06: Nissan's two static codes draw one block, so one preset stands
+// in for both (code.same); the second has to open it too, and say so.
+test('a code that draws the same bar as another opens that preset', async () => {
+  const same = await page.evaluate(() => Object.entries(globalThis.CARGO.BRANDS).flatMap(([id, b]) => (b.code?.same ?? []).map((name) => ({ id, name, of: b.code.name, pattern: b.code.pattern }))));
+  assert.ok(same.length > 0, 'no preset names a second code');
+  for (const c of same) {
+    await open('chevrolet-model-bar');
+    const got = await open(c.name);
+    assert.equal(got.hash, `#${c.pattern}?brand=${c.id}`, `${c.name} opened ${got.hash}`);
+    assert.match(got.out, new RegExp(`^${c.name} draws the same bar as ${c.of}: `));
+  }
+});
+
 test('the code is found in any form it turns up in', async () => {
   for (const raw of ['#LOADCUSTOMFILE|Responsive|Apps|kia-model-bar-slick#', '/assets/shared/CustomHTMLFiles/Responsive/Apps/kia-model-bar-slick.html', '  KIA-MODEL-BAR-SLICK  ']) {
     await open('chevrolet-model-bar');

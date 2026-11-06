@@ -990,3 +990,26 @@ a percentage and a `min()` peek on all three engines; the `min()` one failed bef
 At 390 the tab labels wrapped inside their tabs, because the default `--tab-flex` lets a tab shrink
 and the shrink-to-fit script only reacts to overflow; the preset sets `0 0 auto`, and the labels
 shrink to 12.8px on one line as live. Not drawn: the photo per tab (`docs/backlog.md`).
+
+## 2026-11-06 — the nine static codes built: 38 of 47
+
+The ledger had nine codes as "Not a carousel", a static grid or tabbed list, and "a decision, not a
+job". Steven asked whether they were still replacement codes and chose to build them: each becomes a
+bar that shows every model at once on a desktop and slides on a phone. Seven agents measured them to
+one brief (`docs/research/2026-11-05-measurements/BRIEF-static.md`); every script was re-run before
+its values landed, and only timing samples and page offsets moved.
+
+Steven settled four things for the batch: the 44 missing pictures came in from the platform's shared
+folders the same way as before (fetched from acurademo1, proved from hondademo1, mapped in
+`cms-paths.js`); a preset may set Rows, so Ford's eleven and Maserati's eight tiles show at once in
+two rows, reading down each column; Genesis non-EV and INFINITI black, which no live page runs, were
+measured from their own code files; and Nissan's tabs take short names on a phone.
+
+Built: `bmw`, `porsche` and `infiniti` (the three roster-only brands, now measured),
+`infiniti-black`, `ford-grid`, `maserati-tiles`, `genesis-non-ev` and `nissan-grid`, which stands in
+for both Nissan codes through a new `code.same` list, since the two draw the same block. The checks
+found two of their own gaps on the way: `check-looks.mjs` read a ledger code cell only when it held
+the code alone (BMW's adds a note), and held one row per preset (Nissan's two).
+
+Not carried, in `docs/backlog.md`: a second link per card (BMW and Porsche's Pre-Owned, Maserati's
+Select), which is Steven's call before rollout, and the measuring agents' side findings.
