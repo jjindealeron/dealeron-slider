@@ -167,6 +167,14 @@
   // platform's logo for its name, and bodyClass puts platform classes on the
   // box that holds the cars, so a band can sit behind them and not the tabs.
   const WORDS = ['title', 'lead', 'moreText', 'moreHref', 'titleClass', 'wrapClass', 'tabMarks', 'bodyClass'];
+  // What a card draws that is the SLIDER's, not a row's (2026-11-06): the
+  // words of a second link under every card (BMW's "Pre-Owned") and the
+  // platform classes the card's button wears, so the site's theme draws it
+  // (Maserati's "Select" is the theme's `btn btn-alt1 btn-lg`). A preset's key
+  // of the same name sets one and another brand, or none, takes it back, the
+  // way `rows` is; htmlFor() hands them to every row. Up here because
+  // htmlFor() reads it, and patterns.html leaves at `if (!stage) return`.
+  const CARD_WORDS = ['link2', 'ctaClass'];
   const applyBrand = (id) => {
     const p = PATTERNS[state.pattern];
     const prevBrand = BRANDS[state.brand];
@@ -179,11 +187,18 @@
     // hands it back to the pattern's own when another brand, or none, comes in.
     if (b?.rows && rowsApply()) state.rows = b.rows;
     else if (prevBrand?.rows) state.rows = p.rows ?? 1;
-    // The second link, the same way: a preset whose live bar links used
-    // inventory too (BMW, Porsche) sets its words, and another brand, or
-    // none, takes them back off. Words a designer typed with no preset stay.
-    if (b?.link2) state.link2 = b.link2;
-    else if (prevBrand?.link2) state.link2 = null;
+    // And the space between those rows, where it is not the gap between
+    // cards: Maserati's tiles butt side by side but stand 50px apart.
+    if (b?.rowGap && rowsApply()) state.rowGap = b.rowGap;
+    else if (prevBrand?.rowGap) state.rowGap = null;
+    // The card words, the same way: a preset whose live bar links used
+    // inventory too (BMW, Porsche) or draws the theme's button (Maserati)
+    // sets them, and another brand, or none, takes them back off. Words a
+    // designer typed with no preset stay.
+    for (const k of CARD_WORDS) {
+      if (b?.[k]) state[k] = b[k];
+      else if (prevBrand?.[k]) state[k] = null;
+    }
     const undo = (s) => {
       if (!s) return;
       for (const k of Object.keys(s.looks?.[state.look] ?? {})) {
@@ -273,6 +288,8 @@
     // whole point of stacking inside the slide rather than adding a second
     // track - so the dots and the announced count stay honest.
     state.rows = p.rows ?? 1;
+    // The space between stacked rows; null follows the gap between cards.
+    state.rowGap = null;
     state.dotsOver = false;
     state.dotsWere = null;
     state.dotSpace = null;
@@ -289,11 +306,8 @@
     state.bodyClass = null;
     state.moreText = null;
     state.moreHref = null;
-    // The words of a second link under every card (BMW's "Pre-Owned"); null
-    // draws the card alone. Slider-wide, because every card of a bar says the
-    // same thing; where each one goes is the row's (href2, or the card's own
-    // search made a used one).
-    state.link2 = null;
+    // The slider's card words (CARD_WORDS): null draws the card as it was.
+    for (const k of CARD_WORDS) state[k] = null;
     state.label = null; // only renderLook overrides it — see the note there
     // The class this slider's CSS hangs off. Every snippet used to be
     // `.my-slider`, so a second slider pasted on the same page redefined the
@@ -673,7 +687,11 @@
     // setting rather than carried by one pattern, so the rule and the markup
     // that needs it can never be out of step - the two-row grid used to ship
     // the rule unconditionally and the markup only when `pairUp` was set.
-    const rowsCss = state.rows > 1 && rowsApply() ? `.cargo-col { display: grid; grid-template-rows: repeat(${state.rows}, auto); gap: var(--dos-gap); }` : '';
+    // The rows stand apart by the gap between cards unless Space between rows
+    // says otherwise (2026-11-06): a value through the same length gate as
+    // every knob, so a typo falls back rather than ships.
+    const rowGap = state.rowGap && okValue('--dos-gap', state.rowGap) ? state.rowGap : 'var(--dos-gap)';
+    const rowsCss = state.rows > 1 && rowsApply() ? `.cargo-col { display: grid; grid-template-rows: repeat(${state.rows}, auto); gap: ${rowGap}; }` : '';
     const body = [state.look && !shared() ? scope(LOOKS[state.look].css) : '', rowsCss ? scope(rowsCss) : ''].filter(Boolean).join('\n');
     // Arrows either sit in a gutter beside the content or float over it. Last
     // in the sheet so it beats the padding-inline a card look sets for itself -
@@ -808,8 +826,14 @@
     const take = (n, from = 0) => Array.from({ length: n }, (_, i) => source[(from + i) % source.length]);
     // A pattern draws its slides one of three ways: its own slides(), a shared
     // card look, or - for the card grid - entirely inside its own branch below.
-    // The second link's words are the slider's, so every row is handed them.
-    const draw = (list) => (p.slides ? p.slides(list) : state.look ? list.map((m) => LOOKS[state.look].markup(state.link2 ? { ...m, link2: state.link2 } : m)) : []);
+    // The slider's card words, handed to every row: the link's escaped as row
+    // values are (it lands in text and in an aria-label), the button's classes
+    // cut to what a class list can hold, as titleClass is.
+    const cardWords = {};
+    if (state.link2) cardWords.link2 = escTab(state.link2);
+    if (state.ctaClass) cardWords.ctaClass = state.ctaClass.replace(/[^\w -]/g, '').trim();
+    const withWords = Object.keys(cardWords).length ? (m) => ({ ...m, ...cardWords }) : (m) => m;
+    const draw = (list) => (p.slides ? p.slides(list) : state.look ? list.map((m) => LOOKS[state.look].markup(withWords(m))) : []);
     // Rows > 1 puts a COLUMN in each slide, not a card - one slide is still one
     // scroll stop, which is what keeps the dots and the announced count honest.
     // Applied wherever slides are drawn, so it works on the tabbed bar's panes
@@ -2390,13 +2414,38 @@
         'Rows',
         state.rows,
         (n) => {
+          // Going from one row to more, or back, adds or takes away Space
+          // between rows below, so the panel is rebuilt then; any other count
+          // only re-wraps the slides.
+          const crossing = n > 1 !== state.rows > 1;
           state.rows = n;
           // Structural: a row change re-wraps the slides, so the editor and the
           // readout have to be rebuilt rather than restyled.
-          render();
+          if (crossing)
+            rebuild(() => {
+              buildPanel();
+              render();
+            });
+          else render();
         },
         { min: 1, max: 3, step: 1, note: 'Cards stacked inside each slide. One slide is still one scroll stop, so the dots and the announced count do not change.' },
       );
+      // Only where there is more than one row: at one it would be a box that
+      // changes nothing.
+      if (state.rows > 1) {
+        const rowGapRow = pane.length(
+          grid,
+          'Space between rows',
+          state.rowGap ?? '',
+          (v) => {
+            state.rowGap = String(v).trim() || null;
+            pane.flag(rowGapRow, state.rowGap && !okValue('--dos-gap', state.rowGap) ? 'Needs a unit — try 1em or 16px, and 0.1px rather than 0.' : '');
+            restyle();
+            checkFit();
+          },
+          { placeholder: 'the gap', note: 'The space between stacked rows. Empty uses the gap between cards.', fontPx: () => cardFontPx(false), zero: '0.1px' },
+        );
+      }
     }
 
     // A crossfade ignores all three of these, and saying so is better than
@@ -2463,25 +2512,37 @@
       // hiding the option would sometimes hide the right answer.
       const warn = cropWarning(LOOKS[state.look], modelsFor(p));
       if (warn) pane.note(style, warn);
-      // Only on a card that draws one (the tile), read off its markup like the
-      // slide editor's fields, never a list of looks. The editor is rebuilt
-      // too: each card's own address for the link shows only while there is
-      // a link.
-      if (readsOf(LOOKS[state.look].markup).has('link2'))
+      // The slider's card words (CARD_WORDS), each only on a card that draws
+      // it, read off its markup like the slide editor's fields, never a list
+      // of looks. The editor is rebuilt too: each card's own address for the
+      // second link shows only while there is a link.
+      const reads = readsOf(LOOKS[state.look].markup);
+      const cardWord = (key, label, placeholder, note) => {
+        if (!reads.has(key)) return;
         pane.text(
           style,
-          'Second link under each card',
-          state.link2 ?? '',
+          label,
+          state[key] ?? '',
           (v) => {
-            state.link2 = v.trim() || null;
+            state[key] = v.trim() || null;
             buildContent();
             render();
           },
-          {
-            placeholder: 'Pre-Owned',
-            note: "A second link under every card, beside the card's own: BMW's and Porsche's bars link each model's used inventory too. It goes to the card's search with /searchused.aspx for /searchnew.aspx; change one in the slide editor. Empty draws the card alone.",
-          },
+          { placeholder, note },
         );
+      };
+      cardWord(
+        'link2',
+        'Second link under each card',
+        'Pre-Owned',
+        "A second link under every card, beside the card's own: BMW's and Porsche's bars link each model's used inventory too. It goes to the card's search with /searchused.aspx for /searchnew.aspx; change one in the slide editor. Empty draws the card alone.",
+      );
+      cardWord(
+        'ctaClass',
+        'Button classes',
+        'btn btn-alt1 btn-lg',
+        "The platform classes the button under each name wears, so the site's theme draws it the way it draws its own buttons - Maserati's \"Select\" is btn btn-alt1 btn-lg. Empty draws the card style's own button. A card shows its button where its slide has Button text.",
+      );
     }
 
     colourKnob(colors, 'Arrow colour', '--dos-arrow-fg', state.props);
@@ -3135,7 +3196,7 @@
   // card style, with the wrong class name, and nothing on the page saying why.
   // Same shape as the content store, keyed by pattern for the same reason.
   const SKEY = 'dos-settings';
-  const SAVED = ['look', 'brand', 'perView', 'props', 'lookProps', 'data', 'hideDots', 'gutter', 'name', 'count', 'rows', 'panes', ...WORDS, 'link2', 'dotsOver', 'dotsWere'];
+  const SAVED = ['look', 'brand', 'perView', 'props', 'lookProps', 'data', 'hideDots', 'gutter', 'name', 'count', 'rows', 'rowGap', 'panes', ...WORDS, ...CARD_WORDS, 'dotsOver', 'dotsWere'];
 
   // Same split as the slides: what is on screen is the session's, what is in
   // localStorage is what Keep was pressed on.
@@ -3321,12 +3382,13 @@
     // The words around the tabbed bar, same terms: only where the pattern has
     // tabs, only plain strings. An empty string is a kept choice (no heading).
     if (PATTERNS[state.pattern].panes) for (const k of WORDS) if (typeof s[k] === 'string' && okStored(s[k])) state[k] = s[k];
-    if (typeof s.link2 === 'string' && s.link2.trim() && okStored(s.link2)) state.link2 = s.link2;
+    for (const k of CARD_WORDS) if (typeof s[k] === 'string' && s[k].trim() && okStored(s[k])) state[k] = s[k];
     if (Number.isInteger(s.count) && s.count >= 1 && s.count <= 16) state.count = s.count;
     // Clamped to the knob's own range, and only where stacking means anything:
     // a stored 2 must not survive onto a gallery, where the thumb strip counts
     // slides and a column of two would announce half as many photos as it holds.
     if (Number.isInteger(s.rows) && s.rows >= 1 && s.rows <= 3 && rowsApply()) state.rows = s.rows;
+    if (typeof s.rowGap === 'string' && s.rowGap.trim() && okStored(s.rowGap) && rowsApply()) state.rowGap = s.rowGap;
   }
 
   // The roster as it stands, ignoring any edits — the example content, or the

@@ -41,12 +41,12 @@ removes it; both are `!important` at (0,1,1). `build-cards.mjs` turns that outli
 draws its own: a 2px `--dos-focus` border on a `::after` with `inset: 0`, the focused card
 `position: relative`. Never an outline: Chrome paints a positioned child over its parent's outline,
 and every `.cargo-media` is positioned for its badge, so the vehicle card showed 74% of an outline
-ring and Porsche's bar 29% (2026-11-06). A look whose text ends on the card's bottom edge keeps 4px
-under it for the ring (tile, wordmark: `padding-block-end: 4px`). A new link class in a pattern
-joins that selector: `tests/builder.test.mjs` reads the classes off every snippet and fails until it
-does, and checks on patterns.html that the ring shows whole and a descender clears it. `a11y.mjs`
-measures the ring against the card's own surface, so a dark card sets `--dos-focus` (split,
-portrait: `#4a90e2`).
+ring and Porsche's bar 29% (2026-11-06). A look whose text ends on the card's bottom edge keeps 6px
+under it for the ring (tile, wordmark: `padding-block-end: 6px`; 4px left INFINITI's Q tail on the
+ring). A new link class in a pattern joins that selector: `tests/builder.test.mjs` reads the classes
+off every snippet and fails until it does, and checks on patterns.html that the ring shows whole and
+a descender clears it. `a11y.mjs` measures the ring against the card's own surface, so a dark card
+sets `--dos-focus` (split, portrait: `#4a90e2`).
 
 **Pattern structure and pattern scripts are SHARED too, never pasted** (spec
 `2026-09-14-shared-pattern-structure-design.md`). `scripts/build-patterns.mjs` appends every
@@ -140,9 +140,23 @@ marked and every card is drawn alike. One card per view and a percentage peek ma
 **A preset may set Rows, and one preset may stand in for two codes** (2026-11-06). `rows: 2` on a
 brand entry sets the Rows setting the way its `ladder` sets cards across, where `rowsApply()`
 allows; another brand, or Default, hands it back. It is how a static grid's code (Ford's eleven,
-Maserati's eight tiles) shows every model at once. `code.same` lists other live codes that draw the
-same block (Nissan's two): each needs its own built row naming the preset, and the code box says the
-code draws the same bar.
+Maserati's eight tiles) shows every model at once. `rowGap` beside it is the space between those
+rows ("Space between rows", shown only above one row), where it is not the gap between cards:
+Maserati's tiles butt side by side and stand 50px apart. `code.same` lists other live codes that
+draw the same block (Nissan's two): each needs its own built row naming the preset, and the code box
+says the code draws the same bar.
+
+**What a card draws that is the slider's, not a row's, is `CARD_WORDS`** (2026-11-06,
+`workbench.js`): the second link's words (`link2`) and the platform classes the tile's button wears
+(`ctaClass`). Each is a text row in The card folder where the look's markup reads it, a preset key
+of the same name set and taken back the way `rows` is, and `htmlFor()` hands it to every row (the
+link's words escaped, the classes cut to a class list). **The button wears the platform's own
+classes** when a live bar uses the theme's button: Maserati's "Select" is
+`btn btn-alt1 btn-lg pad-horz-2x margin-top-1x`, and its navy on maseratidemo1 was that demo's
+Custom CSS, not the code's (re-read with the block removed). The tile's pill steps aside for a
+`.btn` with `:not(:where(.btn))`, which keeps the rule at the weight a designer's own rule beats;
+the theme's values reach the preview only through the preset's `theme.css`. A preset's `cta` puts
+its words on every row.
 
 **A tile can draw a second link under its card** (2026-11-06, BMW's and Porsche's used inventory).
 Its words are the slider's, `state.link2` ("Second link under each card" in The card folder; a

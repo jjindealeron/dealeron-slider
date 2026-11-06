@@ -502,7 +502,7 @@
   display: flex;
   flex-direction: column;
   block-size: 100%;
-  padding-block-end: 4px;
+  padding-block-end: 6px;
   color: inherit;
   text-align: center;
   text-decoration: none;
@@ -561,8 +561,10 @@
   color: #5f6368;
 }
 :where(.cargo-tile) .cargo-cta {
-  display: inline-block;
   align-self: center;
+}
+:where(.cargo-tile) .cargo-cta:not(:where(.btn)) {
+  display: inline-block;
   padding: 0.4em 1em;
   margin-block-start: 0.5em;
   font-size: 0.8em;
@@ -739,7 +741,7 @@
 }
 :where(.cargo-wordmark) .cargo-card {
   display: block;
-  padding-block-end: 4px;
+  padding-block-end: 6px;
   color: var(--name-color);
   text-align: center;
   text-decoration: none;

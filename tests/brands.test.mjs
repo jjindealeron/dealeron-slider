@@ -263,6 +263,41 @@ test("Cadillac's and Hyundai's names on the plain model bar take the stage's tex
   }
 });
 
+// 2026-11-06: a focused card draws a 2px ring inside its edge, and the tile
+// and wordmark keep room under the name for it. 4px was not room enough for
+// every brand's own font: an OEM's 1.1 line height hangs a descender below its
+// line, and INFINITI's "QX60" Q tail ended 2.1px up, on the ring (Subaru's
+// font would have put a descender 2.8px up). So per stage, in the font that
+// stage draws its name in: where a descender (gjpqy) would end, which must be
+// clear of the ring's 2px by more than a hair.
+test("every brand's names clear the card's focus ring, a descender included", async () => {
+  await page.evaluate(() => document.fonts.ready);
+  const close = await page.evaluate(() => {
+    const cv = /** @type {CanvasRenderingContext2D} */ (document.createElement('canvas').getContext('2d'));
+    const out = [];
+    for (const st of document.querySelectorAll('[id^="b-"]')) {
+      const card = [...st.querySelectorAll('.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc)')].find((c) => /** @type {HTMLElement} */ (c).offsetParent);
+      if (!card) continue;
+      const b = card.getBoundingClientRect();
+      const range = document.createRange();
+      let low = -Infinity;
+      const w = document.createTreeWalker(card, NodeFilter.SHOW_TEXT);
+      for (let t = w.nextNode(); t; t = w.nextNode()) {
+        const el = /** @type {HTMLElement} */ (t.parentElement);
+        if (!t.textContent?.trim() || !el.offsetParent) continue;
+        const cs = getComputedStyle(el);
+        cv.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+        const m = cv.measureText('gjpqy');
+        range.selectNodeContents(t);
+        for (const r of range.getClientRects()) low = Math.max(low, r.bottom - m.fontBoundingBoxDescent + m.actualBoundingBoxDescent);
+      }
+      if (b.bottom - low < 3) out.push(`${st.id}: ${(b.bottom - low).toFixed(1)}px`);
+    }
+    return out;
+  });
+  assert.deepEqual(close, [], `a descender would end on the ring: ${close.join(', ')}`);
+});
+
 // 2026-11-06: BMW's live block links every model's New and Pre-Owned
 // inventory, Porsche's cards Search New and Search Pre-Owned; a dealer
 // switched to ours lost the used one. Each preset now draws it, in its live

@@ -169,8 +169,8 @@
       // code's stages are scoped to themselves, in case its theme differs.
       if (mb.theme?.css) {
         const scope = m === id ? `#b-${id} .bb-stage` : `#b-${id} .bb-stage[data-brand="${m}"]`;
-        theme.push(
-          mb.theme.css
+        const scoped = (css) =>
+          css
             .split('}')
             .filter((r) => r.trim())
             .map((r) => {
@@ -180,8 +180,17 @@
                 .map((s) => `${scope} ${s.trim()}`)
                 .join(', ')} {${body}}`;
             })
-            .join('\n'),
-        );
+            .join('\n');
+        // An @media block is scoped inside, not split: split on "}" it lost
+        // its rule and took the next one with it (Maserati's tiles theme,
+        // 2026-11-06, the first theme with a media query). Media blocks go
+        // last, where a theme's tier rule sits after the rule it overrides.
+        const media = [];
+        const plain = mb.theme.css.replace(/@media([^{]+)\{((?:[^{}]*\{[^{}]*\})*)\s*\}/g, (_, q, inner) => {
+          media.push(`@media${q.trimEnd()} {\n${scoped(inner)}\n}`);
+          return '';
+        });
+        theme.push([scoped(plain), ...media].join('\n'));
       }
       sec.append(block);
     }

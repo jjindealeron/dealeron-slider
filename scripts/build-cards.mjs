@@ -121,7 +121,7 @@ for (const [name, bp] of TIERS) {
 // position: relative) hid it. Measured on the catalogue pages, focused: 29% of
 // Porsche's ring showed, 34% of INFINITI's photo bar's, 73-74% on the vehicle
 // card and the models pattern. The ::after comes last in the card, so it paints
-// over all of them. The tile and wordmark looks keep 4px under their name for
+// over all of them. The tile and wordmark looks keep 6px under their name for
 // it (looks.js); their names sat on the card's bottom edge, in the ring. A site
 // still recolours it through --dos-focus; the platform's buttons keep their own
 // rings.

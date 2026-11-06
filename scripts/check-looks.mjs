@@ -370,18 +370,29 @@ for (const [id, b] of brands) {
   if (b.theme != null) {
     const TOKENS = ['--cta-background-color', '--cta-font-color', '--cta-hover-color', '--main-color'];
     if (typeof b.theme.css === 'string') {
-      for (const sel of b.theme.css
+      // The classes the preset's own card button wears (ctaClass, 2026-11-06:
+      // Maserati's "Select" is the theme's btn btn-alt1 btn-lg ...) are named
+      // by its snippet too, so the theme may draw them.
+      const own = String(b.ctaClass ?? '')
+        .split(/\s+/)
+        .filter((c) => /^[\w-]+$/.test(c));
+      const names = ['h1', 'heading-lg', 'heading-xl', 'heading-bold', 'btn', 'btn-lg', 'btn-cta', 'bg-main', ...own];
+      // A theme's tier rule sits in an @media block; its rules are held to
+      // the same selectors, so the block is opened rather than skipped.
+      const flat = b.theme.css.replace(/@media[^{]+\{((?:[^{}]*\{[^{}]*\})*)\s*\}/g, '$1');
+      for (const sel of flat
         .split('}')
         .map((r) => r.split('{')[0].trim())
         .filter(Boolean)) {
         // One selector: a snippet class (.h1, .heading-lg, .heading-xl,
-        // .heading-bold, .btn, .btn-lg, .btn-cta, .bg-main), optionally under
-        // .bg-main the way a theme restyles its buttons on a band, optionally
-        // :hover/:focus. heading-xl and heading-bold joined on 2026-11-06 for
-        // Kia's centred bar, whose heading wears both.
-        const ONE = /(\.bg-main )?\.(h1|heading-lg|heading-xl|heading-bold|btn|btn-lg|btn-cta|bg-main)(:(hover|focus))?/.source;
+        // .heading-bold, .btn, .btn-lg, .btn-cta, .bg-main, and the preset's
+        // own button classes), optionally under .bg-main the way a theme
+        // restyles its buttons on a band, optionally :hover/:focus.
+        // heading-xl and heading-bold joined on 2026-11-06 for Kia's centred
+        // bar, whose heading wears both.
+        const ONE = `(\\.bg-main )?\\.(${names.join('|')})(:(hover|focus))?`;
         if (!new RegExp(`^${ONE}(,\\s*${ONE})*$`).test(sel)) {
-          console.error(`  ${id}: theme.css rule "${sel}" — theme rules may target .h1, .heading-lg, .heading-xl, .heading-bold, .btn, .btn-lg, .btn-cta and .bg-main only`);
+          console.error(`  ${id}: theme.css rule "${sel}" — theme rules may target ${names.map((n) => `.${n}`).join(', ')} only`);
           bad++;
         }
       }

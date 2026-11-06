@@ -326,7 +326,7 @@ batch — a tab row wired twice answers a key twice.
 - A card link (`.cargo-card`, `.cargo-model`, `.cargo-svc`) draws its own focus ring: a 2px
   `--dos-focus` border on a `::after` layer over the whole card, inside it so the track cannot clip
   it and last in it so the picture cannot cover it (an outline lost up to 71% of itself under a
-  positioned picture box). The tile and wordmark looks keep 4px under the name for it. The
+  positioned picture box). The tile and wordmark looks keep 6px under the name for it. The
   platform's `extend.css` pushes every link's ring 1px outside, where the track clips it, and
   template 740 removes link rings outright, both `!important`, so the card turns the link outline
   off with `!important` of its own; that is the only `!important` in it. Recolour it with
@@ -437,8 +437,9 @@ measures a slide's position from slide 0, so a percentage or `min()` peek centre
 tabbed bar's script marks the cards beside the current one. Later that day the CSS again: card links
 draw their own focus ring, and a tab's label no longer wraps inside it; then both files, a tab row
 gives up spacing before type; then the CSS, a focused tab and the play buttons keep their whole
-ring, and a card's ring is a layer over its picture with 4px under the tile and wordmark names; then
-the CSS, a tile can draw a second link under its card.
+ring, and a card's ring is a layer over its picture with 6px under the tile and wordmark names; then
+the CSS, a tile can draw a second link under its card; then the CSS, 6px under those names, and the
+tile's button can wear the platform's button classes.
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.

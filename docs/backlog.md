@@ -50,12 +50,6 @@ Later the same day NVDA settled the three contract entries — Firefox's track s
 
 The measurements are `docs/research/2026-11-05-measurements/` (`BRIEF-static.md`).
 
-- **Maserati's "Select" under every card.** Not a second link: live, it is a `span.btn` inside the
-  card's one link (the link reads "Grecale 2026 Maserati Grecale Folgore Select"). The tile draws
-  one only where a row has Button text, so the preset cannot put it under all eight, and the tile's
-  button has no size, case, tracking, padding or hover settings to match the live one
-  (`2026-11-05-measurements/maserati-tiles.md`, "Needs a knob"). BMW's and Porsche's used-inventory
-  links, the rest of what this entry was, shipped 2026-11-06 as a second link under the card.
 - **The platform's ring stands in for the engine's on its buttons, by decision.** Its shared
   `extend.css` sets
   `button:focus-visible { outline: 5px auto -webkit-focus-ring-color !important; outline-offset: 1px !important }`,

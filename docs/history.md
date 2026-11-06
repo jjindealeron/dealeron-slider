@@ -1133,3 +1133,28 @@ draws the card ring. With no words the snippet is byte for byte what it was, whi
 so no pasted bar changes. On brands.html at 1366 and 390 the links sit on one line per bar and
 nothing leaves its slide; Nissan's bar is untouched. `tests/builder.test.mjs` and
 `tests/brands.test.mjs` failed before (no setting, no link).
+
+## 2026-11-06 — Maserati's "Select" is the theme's button, and the ring gets 6px
+
+Maserati's tiles draw "Select" under every car. Read live, it is the platform's own button,
+`span.btn.btn-alt1.btn-lg.pad-horz-2x.margin-top-1x` inside the card's one link, and re-read with
+maseratidemo1's own Custom CSS block removed, its navy (#0c2340, hover #173c6b) is that demo's: the
+theme draws black on #dbdbdb (15.4:1), 14px, 400, uppercase, 1px tracking, square, 9px 15px 7px from
+768 to 1440 and 12px 25px outside it, 14px under the picture; the code's own hover is #f0f0f0 with a
+black border. The name's navy survives the same removal, so it is the code's. So the tile's button
+can now wear platform classes (Button classes in The card folder, a preset's `ctaClass`), and the
+card style's pill steps aside for a `.btn`. Eight new style knobs that hard-coded the demo's navy
+was the other way; it would have copied one site's customisation into every Maserati bar. The preset
+puts "Select" on every row (`cta`) and gets "Space between rows" (`rowGap`, 2.75em, live 50px button
+to name), a new setting beside Rows, because the tiles butt side by side and the rows shared that
+0.1px gap, which left the button 10px from the next name.
+
+Two shared fixes it turned up: brandbook.js scoped a theme's CSS by splitting on `}`, which broke an
+`@media` block and the rule after it (the first theme with one), and check-looks held a theme to a
+fixed class list, so a preset could not draw the classes its own button wears. The second link's
+words are escaped now too: they went into an `aria-label` raw from the panel.
+
+Steven took 6px under the tile and wordmark names over 4px: at 4 INFINITI's "QX60" Q tail touched
+the ring (its OEM's 1.1 line height). tests/brands.test.mjs now holds every brand stage's name, in
+that brand's font, with a descender, clear of the ring; at 4px it failed on INFINITI (2.1px) and
+Subaru (2.8px). tests/builder.test.mjs failed before on Maserati's tiles (0 buttons for 8 cards).

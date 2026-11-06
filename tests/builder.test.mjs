@@ -12,7 +12,7 @@
 // shipping. This is the fast one, for every commit.
 import { test } from '@playwright/test';
 import assert from 'node:assert/strict';
-import { openBuilder, pick, patternIds, copyParts, setField, setLength, hostHtml, engineFiles, readSlider, rowByLabel, ORIGIN } from './helpers.mjs';
+import { openBuilder, pick, patternIds, copyParts, setField, setLength, hostHtml, engineFiles, readSlider, rowByLabel, stageReady, ORIGIN } from './helpers.mjs';
 
 test.describe.configure({ mode: 'serial' });
 
@@ -490,6 +490,46 @@ test.describe('the pasted block on a hostile host page', () => {
     await setField(page, 'Second link under each card', '');
     assert.equal(await editorField(), 0, 'the slide editor keeps the second link address after the words are cleared');
     assert.equal((await copyParts(page)).html, before, 'clearing the second link left the snippet changed');
+  });
+
+  // 2026-11-06: Maserati's live "Select" under each car is the platform's own
+  // button, span.btn.btn-alt1.btn-lg inside the card's one link; its navy was
+  // maseratidemo1's own Custom CSS, not the code's (re-read with that block
+  // removed). The tile's button now wears a preset's platform classes so the
+  // site's theme draws it, the card style's pill stepping aside; the preset
+  // puts "Select" on every car; and the two rows stand apart by their own
+  // space (live 50px button to name) while the cards still butt. Before: no
+  // button on any card, no classes, and the rows 0.1px apart.
+  test("Maserati's tiles: the theme's button under every car, and the rows their own space", async () => {
+    await page.fill('#wb-oldcode-in', 'maserati-modelbar');
+    await page.press('#wb-oldcode-in', 'Enter');
+    await stageReady(page);
+    const p = await copyParts(page);
+    const cards = (p.html.match(/<a class="cargo-card"/g) ?? []).length;
+    const ctas = [...p.html.matchAll(/<span class="cargo-cta([^"]*)">([^<]+)<\/span>/g)];
+    assert.ok(cards >= 8 && ctas.length === cards, `${ctas.length} buttons for ${cards} cards`);
+    assert.deepEqual([...new Set(ctas.map((c) => `${c[1].trim()} | ${c[2]}`))], ['btn btn-alt1 btn-lg pad-horz-2x margin-top-1x | Select']);
+    assert.match(p.css, /\.cargo-col \{[^}]*gap: 2\.75em;/, 'the rows do not stand apart by their own space');
+    assert.equal(await rowByLabel(page, 'Space between rows').count(), 1, 'two rows and no Space between rows setting');
+
+    // On a host whose theme draws .btn (Bootstrap 3's .btn-lg, 10px 16px):
+    // the button is the theme's; a button with no classes keeps the pill.
+    const bare = p.html.replace(/cargo-cta [^"]+"/, 'cargo-cta"');
+    await host.setContent(hostHtml({ ...engine, css: p.css, html: bare, js: p.js }), { waitUntil: 'load' });
+    const got = await host.evaluate(() =>
+      [...document.querySelectorAll('.cargo-cta')].slice(0, 2).map((b) => `${getComputedStyle(b).paddingTop} ${getComputedStyle(b).paddingLeft} ${getComputedStyle(b).borderTopLeftRadius}`),
+    );
+    assert.notEqual(got[0], got[1], 'a button with the classes and one without draw alike');
+    assert.match(got[1], /^10px 16px /, `the classed button is not the theme's: ${got[1]}`);
+    assert.match(got[0], / 999px$/, `the plain button lost the card style's pill: ${got[0]}`);
+
+    // The Default chip hands every one of them back.
+    await page.click('#wb-variants button[data-brand=""]');
+    await stageReady(page);
+    const after = await copyParts(page);
+    assert.doesNotMatch(after.html, /cargo-cta btn/, 'Default kept the preset button classes');
+    assert.doesNotMatch(after.css, /\.cargo-col/, 'Default kept the preset rows');
+    assert.equal(await rowByLabel(page, 'Space between rows').count(), 0, 'one row and still a Space between rows setting');
   });
 
   // 2026-11-06: a focused tab's ring lost its top and bottom to its row, which

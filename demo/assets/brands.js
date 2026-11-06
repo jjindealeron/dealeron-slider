@@ -2699,10 +2699,21 @@
     // (docs/research/2026-11-05-measurements/maserati-tiles.md). A static grid
     // of eight front three-quarter cutouts, two rows of four on a laptop, the
     // name above each car in the theme's navy. Two rows here too, so all
-    // eight show at once from 768 (cards read down each column). Departures:
-    // no "Select" button under each car (the roster carries none), the name
-    // one size at every width (live 24 / 20px), and no 55% fade on the other
-    // cards on hover, which takes their text to 3.71:1.
+    // eight show at once from 768 (cards read down each column).
+    //
+    // "Select" under each car is the platform's own button,
+    // `span.btn.btn-alt1.btn-lg.pad-horz-2x.margin-top-1x` inside the card's
+    // one link, so it wears those classes here too (ctaClass) and the site's
+    // theme draws it. Re-read 2026-11-06 with maseratidemo1's own Custom CSS
+    // block removed: the navy fill (#0c2340, hover #173c6b) is that demo's,
+    // not the code's; the theme draws black on #dbdbdb (15.4:1), 14px / 400,
+    // uppercase, 1px tracking, square, 9px 15px 7px from 768 to 1440 and
+    // 12px 25px outside it, 14px under the picture, and the code's hover
+    // #f0f0f0 with a black border. The name's navy survives the same removal,
+    // so it is the code's and stays. Departures: the button changes on its
+    // own hover, not the card's; the name one size at every width (live 24 /
+    // 20px); and no 55% fade on the other cards on hover, which takes their
+    // text to 3.71:1.
     'maserati-tiles': {
       of: 'maserati',
       variant: 'Tiles',
@@ -2712,7 +2723,18 @@
         [0, 2],
         [768, 4],
       ],
-      note: 'Eight tiles in two rows of four, the name above each car.',
+      note: 'Eight tiles in two rows of four, the name above each car and the theme’s Select button under it.',
+      cta: 'Select',
+      ctaClass: 'btn btn-alt1 btn-lg pad-horz-2x margin-top-1x',
+      // Live, each tile is padded 25px top and bottom, so a row's buttons
+      // stand 50px above the next row's names; the cards still butt side by
+      // side (--dos-gap 0.1px below).
+      rowGap: '2.75em',
+      // PREVIEW ONLY: what the template and theme give those classes on
+      // maseratidemo1, measured computed (the snippet carries none of it).
+      theme: {
+        css: '.btn{font-weight:400;text-transform:uppercase;letter-spacing:1px;border-radius:0;transition:0.4s ease-in-out}.btn-lg{padding:12px 25px;font-size:14px;line-height:15px;border-radius:0}@media (min-width:768px) and (max-width:1440px){.btn-lg{padding:9px 15px 7px}}.margin-top-1x{margin-top:1em}.btn-alt1{color:#000;background-color:#dbdbdb;border-color:#dbdbdb}.btn-alt1:hover,.btn-alt1:focus{color:#000;background-color:#f0f0f0;border-color:#000}',
+      },
       styles: {
         looks: {
           tile: {
@@ -3357,6 +3379,10 @@
     // line under the name - with it, the Chevrolet card ran 17px taller than
     // chevroletdemo1's. A designer who wants a sub line types one in step 1.
     if (list && b.styles) for (const m of list) m.sub = '';
+    // A preset whose live bar draws a button under every car (Maserati's
+    // "Select") gives every row its words, which the slide editor then shows
+    // per slide as Button text.
+    if (list && b.cta) for (const m of list) m.cta = b.cta;
     if (list) b.models = list;
   }
 

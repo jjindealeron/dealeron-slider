@@ -117,16 +117,19 @@ const LOOKS = {
       '--cta-bg': 'transparent',
       '--cta-fg': '#16324f',
     },
-    // The card's 4px under the name is room for its keyboard focus ring, a 2px
+    // The card's 6px under the name is room for its keyboard focus ring, a 2px
     // border drawn inside the card (scripts/build-cards.mjs). Without it the
     // name's line box ended on the card's bottom edge and the ring crossed
     // "Rogue" and every other name (2026-11-06; the wordmark look the same).
+    // 6, not 4: at 4 INFINITI's "QX60" still touched it - an OEM's 1.1 line
+    // height hangs a Q's tail 1.9px below its line - and 6 clears a descender
+    // in every measured brand font by 2px (Steven, 2026-11-06).
     css: `%root% { padding-block-start: var(--strip-pad); padding-inline: var(--strip-pad-x); background: var(--strip-bg); }
 %root% .dos-track { padding-block-end: var(--strip-pad-end); }
 @media (max-width: 767.98px) { %root% { --dos-arrow-size: 36px; } }
 @media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }
 @media (max-width: 380px) { %root% { --dos-per-view: 1; } }
-.cargo-card { display: flex; flex-direction: column; block-size: 100%; padding-block-end: 4px; color: inherit; text-align: center; text-decoration: none; }
+.cargo-card { display: flex; flex-direction: column; block-size: 100%; padding-block-end: 6px; color: inherit; text-align: center; text-decoration: none; }
 .cargo-media { position: relative; display: block; overflow: hidden; }
 .cargo-badge { position: absolute; inset-block-start: 0.6em; inset-inline-start: 0.6em; padding: 0.25em 0.7em; font-size: 0.75em; font-weight: 700; line-height: 1.4; color: var(--badge-fg); background: var(--badge-bg); border-radius: 999px; }
 .cargo-card img { box-sizing: border-box; inline-size: 100%; block-size: auto; padding: var(--plate-pad); object-fit: contain; background: var(--plate-bg); filter: var(--img-filter); transition: filter 0.2s, transform var(--img-hover-speed) ease; }
@@ -134,11 +137,18 @@ const LOOKS = {
 @media (prefers-reduced-motion: reduce) { .cargo-card:hover img { transform: none; } }
 .cargo-name { order: var(--name-order); margin: var(--name-gap) 0 0; font-size: var(--name-size); font-weight: var(--name-weight); line-height: var(--name-leading); color: var(--name-color); text-transform: var(--name-case); letter-spacing: var(--name-tracking); }
 .cargo-sub { display: block; margin-block-start: 0.15em; font-size: 0.8em; line-height: 1.35; color: #5f6368; }
-.cargo-cta { display: inline-block; align-self: center; padding: 0.4em 1em; margin-block-start: 0.5em; font-size: 0.8em; font-weight: 600; line-height: 1.4; color: var(--cta-fg); background: var(--cta-bg); border-radius: 999px; }
+.cargo-cta { align-self: center; }
+.cargo-cta:not(:where(.btn)) { display: inline-block; padding: 0.4em 1em; margin-block-start: 0.5em; font-size: 0.8em; font-weight: 600; line-height: 1.4; color: var(--cta-fg); background: var(--cta-bg); border-radius: 999px; }
 .cargo-item { display: flex; flex-direction: column; block-size: 100%; }
 .cargo-item > .cargo-card { flex: 1 1 auto; block-size: auto; }
 .cargo-link { align-self: center; padding: 0.4em 1em; margin-block-start: 0.25em; font-size: 0.8em; font-weight: 600; line-height: 1.4; color: var(--cta-fg); text-decoration: none; background: var(--cta-bg); border-radius: 999px; }
 .cargo-link:hover { text-decoration: underline; }`,
+    // The button can wear the platform's own button classes (ctaClass,
+    // 2026-11-06): Maserati's live "Select" is the theme's `btn btn-alt1
+    // btn-lg`, so the site's theme draws it as it draws every other button,
+    // and the card style's pill steps aside (`:not(:where(.btn))`, which
+    // keeps the rule at the weight a designer's own rule beats).
+    //
     // A second link under the card (2026-11-06): BMW's live block links each
     // model's new AND used inventory, Porsche's cards both searches. The card
     // stays the one link it was, to new inventory, and the second link is its
@@ -152,7 +162,7 @@ const LOOKS = {
     markup: (m) => {
       const card = `<a class="cargo-card" href="${m.href}">
   <span class="cargo-media">${m.badge ? `<span class="cargo-badge">${m.badge}</span>` : ''}<img src="${m.img}" width="${m.w ?? 320}" height="${m.h ?? 240}" alt="${m.alt}" loading="lazy" decoding="async"></span>
-  <p class="cargo-name">${m.name}</p>${m.sub ? `\n  <small class="cargo-sub">${m.sub}</small>` : ''}${m.cta ? `\n  <span class="cargo-cta">${m.cta}</span>` : ''}
+  <p class="cargo-name">${m.name}</p>${m.sub ? `\n  <small class="cargo-sub">${m.sub}</small>` : ''}${m.cta ? `\n  <span class="cargo-cta${m.ctaClass ? ` ${m.ctaClass}` : ''}">${m.cta}</span>` : ''}
 </a>`;
       const to = m.link2 ? m.href2 || usedFor(m.href) : '';
       if (!to) return card;
@@ -253,12 +263,12 @@ const LOOKS = {
       '--name-size': '1em',
       '--name-case': 'uppercase',
     },
-    // 4px under the name for the focus ring, as on the tile.
+    // 6px under the name for the focus ring, as on the tile.
     css: `%root% { padding-block-start: var(--strip-pad); background: var(--strip-bg); }
 %root% .dos-track { padding-block-end: var(--strip-pad-end); }
 @media (max-width: 767.98px) { %root% { --dos-arrow-size: 36px; } }
 @media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }
-.cargo-card { display: block; padding-block-end: 4px; color: var(--name-color); text-align: center; text-decoration: none; }
+.cargo-card { display: block; padding-block-end: 6px; color: var(--name-color); text-align: center; text-decoration: none; }
 .cargo-mark { display: block; margin-block-end: 0.6em; font-size: var(--mark-size); font-style: italic; font-weight: 700; line-height: 1.2; letter-spacing: 0.06em; }
 .cargo-card img { inline-size: 100%; block-size: auto; object-fit: contain; transition: transform 0.25s ease; }
 .cargo-name { margin: 0.5em 0 0; font-size: var(--name-size); font-weight: 600; line-height: 1.35; text-transform: var(--name-case); letter-spacing: 0.1em; }`,
