@@ -795,22 +795,67 @@
           const to = t.getBoundingClientRect().left - row.getBoundingClientRect().left + row.scrollLeft - (row.clientWidth - t.offsetWidth) / 2;
           row.scrollTo({ left: Math.max(0, to), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth' });
         };
-        // Shrink the type to fit before the row gives up and scrolls. Everything
-        // across a tab is measured in its own em - the padding, the gap, the divider
-        // - so one multiplier on the font size takes the whole row in proportionally,
-        // which is why this converges in a pass or two. 12px is the floor: below that
-        // a tab label stops being readable and the tap target goes with it, and the
-        // row scrolls instead. A bar that already fits never gets the property at all.
+        // A row that does not fit gives way in order: its spacing, then its type,
+        // and only then does it scroll (2026-11-06). Whitespace is what a tab can
+        // spare; its label is what the reader came for, and type shrunk to fit puts
+        // a navigation label under the body text beside it. Wrapping is not on the
+        // list: a two-line label stood a centred row 83px tall (Mazda at 768).
+        //
+        // Spacing: the side padding comes down toward 0.5em (the squeeze the phone
+        // tier already makes) and the gap between tabs toward 0.25em (the pattern's
+        // own default), never below what a bar already uses, and only as far as the
+        // row needs - a bar 10px over gives up 10px of spacing, not all of it. The
+        // measured scrollWidth steers it, so it lands in a pass or two.
+        //
+        // Type: everything across a tab is measured in its own em - the padding,
+        // the gap, the divider - so one multiplier on the font size takes the whole
+        // row in proportionally. 12px is the floor: below that a tab label stops
+        // being readable and the tap target goes with it, and the row scrolls
+        // instead. A bar that already fits never gets either property at all.
+        const PAD = 0.5;
+        const GAP = 0.25;
         const FLOOR = 12;
+        // The tabs' own width, outer margins included. Not scrollWidth: a centred
+        // row that overflows spills both ways and only the end half scrolls, so
+        // scrollWidth reported half the overflow, the spacing gave up too little,
+        // and the type was trimmed for the rest (Nissan at 768, 2026-11-06).
+        const span = () => {
+          const a = tabs[0];
+          const z = tabs[tabs.length - 1];
+          return z.getBoundingClientRect().right - a.getBoundingClientRect().left + parseFloat(getComputedStyle(a).marginLeft) + parseFloat(getComputedStyle(z).marginRight);
+        };
         const fit = () => {
           row.style.removeProperty('--tab-fit');
-          const px = parseFloat(getComputedStyle(tabs[0]).fontSize) || 16;
-          for (let i = 0; i < 5 && row.scrollWidth > row.clientWidth; i++) {
+          row.removeAttribute('data-squeeze');
+          // Inside the row's own padding (Mazda's is 49.6px a side), and with half
+          // a pixel to spare: cells that grow to fill the row (Ford's 1 1 0%) span
+          // it exactly, give or take a rounding, and that is not an overflow.
+          const rs = getComputedStyle(row);
+          const inner = row.clientWidth - parseFloat(rs.paddingLeft) - parseFloat(rs.paddingRight);
+          const over = () => span() > inner + 0.5;
+          if (!over()) return;
+          // 2px under the room, not at it: the widths are fractional and the row's
+          // own overflow rounds, so aiming exactly at the edge left a 1px scroll
+          // that every cue reacts to and nobody can see.
+          const box = inner - 2;
+          const cs = getComputedStyle(tabs[0]);
+          const px = parseFloat(cs.fontSize) || 16;
+          const pad = parseFloat(cs.paddingLeft) / px;
+          const gap = (parseFloat(cs.marginLeft) * 2) / px;
+          const minPad = Math.min(pad, PAD);
+          const minGap = Math.min(gap, GAP);
+          // Pixels the row can spare: both sides of every tab, and its gap.
+          const spare = tabs.length * px * (2 * (pad - minPad) + (gap - minGap));
+          let keep = 1;
+          for (let i = 0; i < 3 && spare > 0 && keep > 0 && over(); i++) {
+            keep = Math.max(0, keep - (span() - box) / spare);
+            row.style.setProperty('--tab-squeeze-pad', minPad + (pad - minPad) * keep + 'em');
+            row.style.setProperty('--tab-squeeze-gap', minGap + (gap - minGap) * keep + 'em');
+            row.setAttribute('data-squeeze', '');
+          }
+          for (let i = 0; i < 5 && over(); i++) {
             const cur = parseFloat(row.style.getPropertyValue('--tab-fit')) || 1;
-            // clientWidth - 1, not clientWidth: scrollWidth is an integer rounding of
-            // fractional content, so aiming exactly at the box left 2-3px behind and
-            // the row scrolled by a distance nobody can see but every cue reacts to.
-            const next = Math.max(FLOOR / px, cur * ((row.clientWidth - 2) / row.scrollWidth));
+            const next = Math.max(FLOOR / px, cur * (box / span()));
             if (next >= cur) break;
             row.style.setProperty('--tab-fit', next);
           }

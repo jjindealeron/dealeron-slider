@@ -1376,6 +1376,13 @@
   opacity: var(--tab-dim);
   transform: translate(-50%, -50%);
 }
+:where([data-cargo=tabs]) .cargo-tabs[data-squeeze] [role=tab] {
+  padding-inline: var(--tab-squeeze-pad);
+  margin-inline: calc(var(--tab-squeeze-gap) / 2);
+}
+:where([data-cargo=tabs]) .cargo-tabs[data-squeeze] [role=tab] + [role=tab]::before {
+  inset-inline-start: calc(var(--tab-squeeze-gap) / -2 / var(--tab-divider-size));
+}
 :where([data-cargo=tabs]) .cargo-pane[hidden] {
   display: none;
 }

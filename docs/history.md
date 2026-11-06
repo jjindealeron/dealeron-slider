@@ -1049,3 +1049,27 @@ family, case and colour came out identical on all 52 headings checked (1366 and 
 
 Found on the way and left in the backlog: the platform's button ring replaces the engine's own on
 the arrows, dots and thumbs of every platform site.
+
+## 2026-11-06 — a tab row gives up spacing before type
+
+The label fix earlier in the day (`white-space: nowrap`) let the fit script take over where labels
+had wrapped, and it shrinks type and spacing together: Nissan's grid went to the 12px floor at 768,
+Toyota's to 13.3px, Mazda's to 14px. A side agent flagged it against Steven's rule to confirm before
+shrinking type, and Steven had it decided on design grounds. Spacing gives way first, then type,
+then the row scrolls: a navigation label shrunk below the body text beside it is the wrong trade
+while the row still has whitespace to spare, and Material's tab guidance says not to resize labels
+to fit at all. Wrapping stayed off: a two-line label stood Mazda's centred row 83px tall.
+
+The script now narrows the side padding toward 0.5em and the gap toward 0.25em (`data-squeeze`,
+values in the tab's em, the divider following the gap) before `--tab-fit` moves. Measured on
+brands.html against the first cut: Nissan's grid at 768/800, Toyota at 768 and Subaru at 576/768
+keep their full size; Mazda is 15.4/16.3px at 768/800 (from 14.0/14.8); Chevrolet, which already
+shrank before today, goes from 12/12/16.1px to 15.6/16.6/18.1px at 768/800/992, and Nissan at 320
+from 12 to 14px. Subaru at 390 stays at 12.2px: its phone spacing was already at the minimum.
+
+Building it found two measuring faults. `scrollWidth` reports half the overflow of a centred row
+(only the end half scrolls), so the spacing gave up too little and the type paid for the rest; and
+`clientWidth` includes the row's own padding (Mazda's 49.6px a side), so a squeezed row read as
+fitting while it scrolled 97px. Both steps now measure the tabs themselves inside that padding. The
+new layout test failed on 17 rows of the first cut; the phone-padding test now holds a bar to no
+more than its own measured phone padding, since the squeeze may take it lower.

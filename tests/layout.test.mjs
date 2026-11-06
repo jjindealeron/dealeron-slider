@@ -532,6 +532,56 @@ test('no tab row wraps, at any width', async ({ browser }) => {
   assert.deepEqual(bad, [], bad.join(' | '));
 });
 
+// A row that does not fit gives up its spacing before its type (2026-11-06).
+// The first cut shrank everything at once, so Nissan's grid sat at the 12px
+// floor at 768 with 0.92em of side padding to spare, and Toyota's type went to
+// 13.3px where squeezing the spacing alone fits it at 14. Type below full size
+// is only allowed once the spacing is at its minimum: 0.5em a side, 0.25em
+// between tabs, or less where a bar already uses less. The divider reads the
+// same squeezed gap, so it must still sit in the middle of it.
+test('a tab row gives up its spacing before its type, and its divider stays centred', async ({ browser }) => {
+  const bad = [];
+  let squeezed = 0;
+  for (const width of [320, 390, 576, 768, 800, 992]) {
+    const { ctx, page, errors } = await at(browser, 'brands.html', width);
+    const rows = await page.evaluate(() =>
+      [...document.querySelectorAll('[data-cargo="tabs"] [role="tablist"]')].flatMap((row) => {
+        const tabs = [...row.querySelectorAll('[role="tab"]')];
+        if (!tabs[0].textContent.trim()) return [];
+        const cs = getComputedStyle(tabs[0]);
+        const px = parseFloat(cs.fontSize);
+        let off = 0;
+        for (let i = 1; i < tabs.length; i++) {
+          const b = getComputedStyle(tabs[i], '::before');
+          if (b.content === 'none' || b.content === '""') continue;
+          const mid = (tabs[i - 1].getBoundingClientRect().right + tabs[i].getBoundingClientRect().left) / 2;
+          off = Math.max(off, Math.abs(tabs[i].getBoundingClientRect().left + parseFloat(b.left) - mid));
+        }
+        return [
+          {
+            id: row.closest('[id^="b-"]')?.id,
+            fit: parseFloat(/** @type {HTMLElement} */ (row).style.getPropertyValue('--tab-fit')) || 1,
+            squeezed: row.hasAttribute('data-squeeze'),
+            pad: parseFloat(cs.paddingLeft) / px,
+            gap: (parseFloat(cs.marginLeft) * 2) / px,
+            off,
+          },
+        ];
+      }),
+    );
+    for (const r of rows) {
+      if (r.squeezed) squeezed++;
+      if (r.fit < 1 && (r.pad > 0.505 || r.gap > 0.255))
+        bad.push(`${width}px ${r.id}: type at ${(r.fit * 100).toFixed(0)}% with ${r.pad.toFixed(2)}em sides and a ${r.gap.toFixed(2)}em gap still to give`);
+      if (r.off > 1) bad.push(`${width}px ${r.id}: a divider sits ${r.off.toFixed(1)}px off the middle of its gap`);
+    }
+    assert.deepEqual(errors, []);
+    await ctx.close();
+  }
+  assert.deepEqual(bad, [], bad.join(' | '));
+  assert.ok(squeezed >= 5, `only ${squeezed} rows squeezed their spacing — the step did not run`);
+});
+
 // "It looks like you never decreased the size of the text or spacing to fit
 // within the mobile viewport and there's overflow" (Steven, 2026-09-15). Two
 // things were true. The phone tier had handed the tabs their full desktop
@@ -591,7 +641,9 @@ test('the phone tier keeps the squeezed side padding, not the desktop value', as
   // short tabs keep their live 0.889em a side on a phone, a measured value in
   // its preset, not the desktop padding coming back. A bar is held to its
   // preset's own phone padding where it measured one, and to the squeeze
-  // otherwise, which still catches the pattern default regressing.
+  // otherwise, which still catches the pattern default regressing. No MORE
+  // than its own, not exactly it: a row that overflows squeezes its spacing
+  // before its type, so Nissan's 0.71em comes down to 0.55em at 320.
   const pads = await page.evaluate(() =>
     [...document.querySelectorAll('[data-cargo="tabs"] [role="tab"]:first-child')].map((t) => {
       const cs = getComputedStyle(t);
@@ -609,7 +661,7 @@ test('the phone tier keeps the squeezed side padding, not the desktop value', as
   );
   for (const p of pads) {
     if (Number.isFinite(p.ownX)) {
-      assert.ok(Math.abs(p.padX - p.ownX * p.px) < 0.5, `${p.id}: a phone tab pads ${p.padX}px, not its measured ${p.ownX}em of a ${p.px}px label`);
+      assert.ok(p.padX < p.ownX * p.px + 0.5, `${p.id}: a phone tab pads ${p.padX}px, more than its measured ${p.ownX}em of a ${p.px}px label`);
     } else {
       // 0.5em a side is the squeeze; anything near the 1.1em default means the
       // shorthand in the phone rule overrode it again.

@@ -180,15 +180,22 @@ inside each pane are never mistaken for tabs), applies every tab semantic at onc
 script lands before the first render, so nothing flashes. `tests/builder.test.mjs` holds both halves
 — the fallback and the no-flash.
 
-**The tab row shrinks to fit before it scrolls.** Everything across a tab is measured in its own em
-— padding, gap, divider — so one multiplier, `--tab-fit`, takes the whole row in proportionally, and
-the script converges on it in a pass or two against `clientWidth - 2` (aiming at the box exactly
-leaves 2–3px behind, because `scrollWidth` rounds). **12px is the floor**: below it a label stops
-being readable, and the row scrolls instead. A phone rule never sets the whole `padding` shorthand,
-which undoes the 768 tier's `padding-inline: 0.5em` squeeze. Type alone cannot save a bar whose
-WORDS are too long: those get phone-short names through the `[bracket]` / `hidden-xs` convention.
-The `ResizeObserver` watches the row **and every tab**: it reports an element's own box, the row is
-full width either way, and only the tabs feel a font landing or a preset repainting.
+**A tab row that does not fit gives way in order: spacing, then type, then it scrolls** (2026-11-06;
+Steven had the first cut, which shrank type and spacing together, decided on design grounds).
+Spacing first: the script sets `data-squeeze` and writes `--tab-squeeze-pad` and `--tab-squeeze-gap`
+in the tab's em, bringing the side padding toward 0.5em and the gap toward 0.25em, never below what
+the bar already uses and only as far as the row needs; the divider reads the same gap, so it stays
+centred. Then type: everything across a tab is measured in its own em, so one multiplier,
+`--tab-fit`, takes the whole row in proportionally. Both steps measure the tabs themselves (first
+tab's left edge to the last one's right, margins in) inside the row's own padding, aiming 2px under
+it: not `scrollWidth`, which a centred overflowing row reports at half the overflow, and not
+`clientWidth`, which includes the row's padding (Mazda's is 49.6px a side). **12px is the floor**:
+below it a label stops being readable, and the row scrolls instead. A phone rule never sets the
+whole `padding` shorthand, which undoes the 768 tier's `padding-inline: 0.5em` squeeze. Type alone
+cannot save a bar whose WORDS are too long: those get phone-short names through the `[bracket]` /
+`hidden-xs` convention. The `ResizeObserver` watches the row **and every tab**: it reports an
+element's own box, the row is full width either way, and only the tabs feel a font landing or a
+preset repainting.
 
 **The tab row never wraps, at any width** — `.cargo-tabs` is `nowrap` + `overflow-x: auto`, not a
 media query, because the divider glyph hangs off the tab that FOLLOWS it and a wrapped row starts
