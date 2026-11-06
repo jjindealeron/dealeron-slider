@@ -334,7 +334,11 @@
         ['tlx.png', 320, 240, 'TLX'],
         ['adx.png', 320, 240, 'ADX'],
         ['rdx.png', 320, 240, 'RDX'],
-        ['zdx.png', 480, 300, 'ZDX'],
+        // No ZDX since 2026-11-06: the only ZDX art on the platform is the
+        // 2024 folder's 480x300 (16:10, every other cutout here is 2026 and
+        // 4:3, and 2025/2026 zdx.png both 404), so its card ran shorter and
+        // its name rode 27px above the rest - on a dealer page too, since the
+        // snippet links that file. The live acurademo1 bar does not show it.
         ['mdx.png', 320, 240, 'MDX'],
       ],
     ],
@@ -680,6 +684,13 @@
     }));
   };
 
+  // A preset sets `--name-color` only where its live bar gives the name a
+  // colour of its own (Chevrolet, Genesis, Honda, Mazda, Maserati's tiles).
+  // Where the live name inherits the page's text, the preset leaves it to
+  // the tile's currentcolor, which draws that same colour on the brand's own
+  // light section and turns light with the text on a dark one; a measured
+  // body #333 pinned on the name drew dark-on-dark there (Steven, 2026-11-06;
+  // docs/research/2026-11-03-name-colour).
   const BRANDS = {
     acura: {
       label: 'Acura',
@@ -705,11 +716,10 @@
       // hole at the end, and BELOW 768 IT HIDES THE WHOLE SECTION - the 390
       // numbers were read by unhiding it. Ours shows the bar on a phone, one
       // card per view under 460, and keeps the engine's #262626 chevron over
-      // the live 3.16:1 grey. The roster's TLX and ZDX are not on the live bar.
+      // the live 3.16:1 grey. The roster's TLX is not on the live bar.
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.17em',
             '--name-weight': '400',
             '--name-leading': '1.4286',
@@ -779,7 +789,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#282828',
             '--name-size': '1em',
             '--name-weight': '700',
             '--name-leading': '1.4286',
@@ -834,7 +843,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#262626',
             '--name-size': '1.7143em',
             '--name-weight': '500',
             '--name-leading': '1.1',
@@ -874,7 +882,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.2em',
             '--name-weight': '400',
             '--name-leading': '1.4286',
@@ -1423,7 +1430,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.07em',
             '--name-weight': '700',
             '--name-leading': '1.4286',
@@ -1550,7 +1556,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.2em',
             '--name-weight': '400',
             '--name-leading': '1.4286',
@@ -1588,7 +1593,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.2em',
             '--name-weight': '400',
             '--name-leading': '1.4286',
@@ -2184,7 +2188,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.29em',
             // JaguarModernRegular has a Regular and a Bold face only; 500
             // draws the Regular, which is what the live name shows.
@@ -2256,7 +2259,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#05141f',
             '--name-size': '1.1429em',
             '--name-weight': '700',
             '--name-leading': '1.4286',
@@ -2314,7 +2316,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#05141f',
             '--name-weight': '400',
             '--name-leading': '1.4286',
             '--name-gap': '-0.7143em',
@@ -2350,7 +2351,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#05141f',
             '--name-size': '1.5714em',
             '--name-weight': '700',
             '--name-leading': '1.4286',
@@ -2442,7 +2442,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#000',
             '--name-size': '1.2857em',
             '--name-weight': '500',
             '--name-case': 'uppercase',
@@ -2507,7 +2506,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-weight': '700',
             '--name-case': 'uppercase',
             '--name-leading': '1.4286',
@@ -2590,7 +2588,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.2em',
             '--name-weight': '400',
             '--name-case': 'uppercase',
@@ -2642,7 +2639,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.0714em',
             '--name-weight': '700',
             '--name-case': 'uppercase',
@@ -2685,7 +2681,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.3125em',
             '--name-weight': '300',
             '--name-leading': '1.4',
@@ -2964,7 +2959,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-weight': '400',
             '--name-leading': '1.4286',
             '--name-gap': '0.1px',
@@ -3034,7 +3028,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-weight': '400',
             '--name-leading': '1.4286',
             '--name-gap': '0.1px',
@@ -3154,7 +3147,6 @@
       styles: {
         looks: {
           tile: {
-            '--name-color': '#333',
             '--name-size': '1.2857em',
             '--name-weight': '500',
             '--name-leading': '1.1',
@@ -3233,7 +3225,6 @@
       // Chevrolet's <b>). The rest of Toyota's values are still the
       // 2026-09-10 pass; a closer re-measure like Chevrolet's is its own task.
       styles: {
-        looks: { tile: { '--name-color': '#333' } },
         patterns: {
           tabs: {
             props: { '--tab-weight': '400', '--tab-dim': '1', '--tab-selected': '#bb162b', '--tab-rule': 'transparent', '--tab-divider': "'|'" },

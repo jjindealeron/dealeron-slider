@@ -14,8 +14,8 @@ one push. This is the step checklist, ticked as each step lands; the evidence go
 - [x] 2. **Corrections that need a live re-read.** Lincoln's art height and its 460/992 flips
       (lincolndemo2), Honda's name weight and ladder (hondademo2): re-measured into
       `docs/research/2026-11-06-rereads/`, then the presets corrected where they differ.
-- [ ] 3. **Acura's ZDX name riding 27px high.** Its cutout is 16:10 among 4:3 ones.
-- [ ] 4. **The name colour.** Twelve presets pin the name to a fixed dark hex measured off a light
+- [x] 3. **Acura's ZDX name riding 27px high.** Its cutout is 16:10 among 4:3 ones.
+- [x] 4. **The name colour.** Twelve presets pin the name to a fixed dark hex measured off a light
       page; Steven's call whether it follows the section instead.
 - [ ] 5. **The three codes that need a pattern:** Alfa Romeo's photo-and-cutout cards, Volkswagen's
       colour plates, Toyota's Tabs v3 split cards. Designed from their measurements first, built one

@@ -86,6 +86,8 @@ following the section draws it white there and `#10151c` on the demo. The engine
   bar whose name inherits it: Acura, Audi, Buick, Ford, Jaguar, Kia, Land Rover, Lexus, Lincoln,
   Nissan, Subaru and Toyota. On a dealer page with a dark section they draw dark-on-dark, the same
   trap. Whether to drop them is a decision, not a measurement. The four whose live bar sets its own
-  colour (Chevrolet, Genesis, Honda, Mazda) are a brand's choice and are not in question.
+  colour (Chevrolet, Genesis, Honda, Mazda) are a brand's choice and are not in question. Settled
+  2026-11-06 (Steven): dropped from the twenty presets whose live name inherits, the five that set
+  their own kept; `docs/history.md` has it.
 - Dealer themes beyond these 47 pages. Seven are live dealer sites; the rest are DealerOn's demos,
   one per OEM theme.

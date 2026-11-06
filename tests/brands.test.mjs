@@ -263,6 +263,33 @@ test("Cadillac's and Hyundai's names on the plain model bar take the stage's tex
   }
 });
 
+// 2026-11-06 (Steven): twenty presets pinned the model name to their page's
+// measured body colour (#333, Kia's #05141f, ...), which their live bars only
+// inherit, so on a dealer's dark section the name stayed dark on dark. They
+// leave it to the tile's currentcolor now; the five whose live bar sets the
+// name's own colour keep it. Every brand's stage turned to white text, the
+// way a dark section turns it: each name follows, except those five.
+test("a brand's model names follow a dark section, unless its live bar colours them itself", async () => {
+  const OWN = ['chevrolet', 'genesis', 'genesis-non-ev', 'honda', 'honda-tabbed', 'mazda', 'maserati-tiles'];
+  const got = await page.evaluate((own) => {
+    const out = { stuck: [], followed: [] };
+    for (const stage of /** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('.bb-stage'))) {
+      const name = stage.querySelector('.cargo-tile .cargo-name');
+      if (!name) continue;
+      const brand = stage.dataset.brand || stage.closest('[id^="b-"]').id.slice(2);
+      const was = stage.style.color;
+      stage.style.color = 'rgb(255, 255, 255)';
+      const white = getComputedStyle(name).color === 'rgb(255, 255, 255)';
+      stage.style.color = was;
+      if (!white && !own.includes(brand)) out.stuck.push(brand);
+      if (white && own.includes(brand)) out.followed.push(brand);
+    }
+    return out;
+  }, OWN);
+  assert.deepEqual(got.stuck, [], `names that stay dark on a dark section: ${got.stuck.join(', ')}`);
+  assert.deepEqual(got.followed, [], `a live bar's own name colour was dropped: ${got.followed.join(', ')}`);
+});
+
 // 2026-11-06: a focused card draws a 2px ring inside its edge, and the tile
 // and wordmark keep room under the name for it. 4px was not room enough for
 // every brand's own font: an OEM's 1.1 line height hangs a descender below its

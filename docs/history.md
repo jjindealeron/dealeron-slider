@@ -1172,3 +1172,21 @@ the ladder already carried; only the note's "flat light-gray band" (another demo
 plain bar carried the tabbed bar's ladder: hondademo2 is 5@768:3,460:2, now its own, and
 `honda-tabbed` gets hondademo1's 5@991:3,460:1 instead of inheriting. Its name's "400" was the
 `poppins-semibold` family drawn at 400, the SemiBold face, so the tile's 600 stays.
+
+## 2026-11-06 — names follow their section; Acura without the ZDX
+
+Steven's call on the name colour: where a preset's `--name-color` was only its page's body text,
+measured off a live bar whose name inherits it, it goes, and the tile's `currentcolor` draws the
+name. That is the same colour on the brand's own light section and light text on a dark one, where
+the pinned hex drew dark on dark. Twenty presets: Acura, Audi, BMW, Buick, the three Fords, Jaguar,
+the three Kias, Land Rover, Lexus, both Lincolns, Maserati's slick bar, both Nissans, Subaru, Toyota
+(the 2026-11-03 name-colour study for the first, each one's own measurement for the four built
+since). Kept, because the live bar colours the name itself: Chevrolet, both Genesis presets, both
+Hondas, Mazda, and Maserati's tiles, whose navy survived removing maseratidemo1's Custom CSS. On the
+catalogue pages a dropped name now draws the stage's text colour where it drew the brand's #333;
+tests/brands.test.mjs turns every stage's text white and failed on all twenty before.
+
+Acura's ZDX rode 27px above the rest because its only art on the platform is the 2024 folder's
+480x300 (16:10) among 2026 4:3 cutouts; 2025 and 2026 `zdx.png` both 404, and the live acurademo1
+bar does not show it. Refitting the repo's copy would have fixed the preview only, since the snippet
+links the platform's file, so the model is out of the roster, with its demo image and path.

@@ -71,18 +71,6 @@ The measurements are `docs/research/2026-11-05-measurements/` (`BRIEF-static.md`
 The measurements are `docs/research/2026-11-03-measurements/`; the plan for the day is
 `docs/specs/2026-11-03-coverage-push-and-lovable.md`.
 
-- **Acura's ZDX name rides 27px higher than the rest** at any preset: `zdx.png` is 480x300 (16:10)
-  among 320x240 cutouts, so its card is shorter. Fix the art, not the preset.
-- **Twelve presets set the name-colour knob to a fixed dark hex** (Acura, Audi, Buick, Ford, Jaguar,
-  Kia, Land Rover, Lexus, Lincoln, Nissan, Subaru, Toyota: `--name-color` `#333`, `#282828`, `#000`
-  or `#05141f`). It is a preset variable a designer can change, but the value it carries is their
-  page's body text, measured off a live bar whose name inherits it, so on a dealer page with a dark
-  section it stays dark unless someone changes the knob. Leaving it unset is the only way to follow
-  the theme: the themes expose no text-colour variable, only `--main-color` and
-  `--cta-background-color`, `--cta-font-color`, `--cta-hover-color` (read off acurademo1,
-  chevroletdemo1 and gmcdemo1, 2026-11-05). Dropping them is a decision, not a measurement;
-  Chevrolet, Genesis, Honda and Mazda set their own colour on the live bar and are not in question
-  (`docs/research/2026-11-03-name-colour`, "Not settled here").
 - **Cutouts the live bars show and this repo lacks** (each ledger row names its own): Audi 10 of 16,
   Mitsubishi 4 of 5, Jaguar 3 of 5, Land Rover 5 of 7 (and the live art is photos), Hyundai 11 of
   17, Genesis 4, Mazda 6 plus the whole Electrified filter, Lexus the Sedans pane, Nissan Leaf.

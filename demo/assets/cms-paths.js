@@ -72,7 +72,6 @@ globalThis.CARGO = Object.assign(globalThis.CARGO || {}, {
     'oem/acura/mdx.png': '/static/brand-acura/homepage/modelbar/2026/mdx.png',
     'oem/acura/rdx.png': '/static/brand-acura/homepage/modelbar/2026/rdx.png',
     'oem/acura/tlx.png': '/static/brand-acura/homepage/modelbar/2026/tlx.png',
-    'oem/acura/zdx.png': '/static/brand-acura/homepage/modelbar/2024/zdx.png',
     'oem/alfaromeo/giulia-quadrifoglio.jpg': '/static/brand-alfa-romeo/homepage/model-bar/2025/ar-giulia-qv.jpg',
     'oem/alfaromeo/mb-giulia-qv.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-giulia-qv.png',
     'oem/alfaromeo/mb-giulia-sprint.png': '/static/brand-alfa-romeo/homepage/model-bar/2025/mb-giulia-sprint.png',
