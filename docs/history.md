@@ -968,3 +968,25 @@ made up. The measurement's script was re-run first; only timing samples moved. 2
 The generated-CSS lint caught two things on the way: `--box-pad` takes one length, so "40px over and
 under" became 40px all round; and its roster scan expected five slots, so the CDJR rows read as
 untagged until it allowed the sixth.
+
+## 2026-11-06 — Kia's centred bar, and the engine's peek fixed for it
+
+`kia-model-bar-tabbed` (kiademo1) is a centre-mode tabbed bar: one car full size and named in the
+middle of each pane, its neighbours at 0.4 and unnamed, the change taking 0.35s. Like logo tabs it
+needed no new pattern: the tab script marks every card but each pane's current one from the engine's
+own `dos:change`, and `--side-scale`, `--side-name` and `--side-speed` draw them. The preset is
+`kia-centred` ("Kia · Centred"); 29 of 47 built. Its peek is a third of the bar either side, written
+`min(calc(33.333% + 0.238em), calc(50% - 5.8em))` so a phone's centre card stays at the tile's
+minimum.
+
+Looking at it found an engine bug. `goTo()` read the peek back off the track's scroll-padding, which
+a percentage or `min()` peek computes to as the expression itself, so `parseFloat` gave NaN and the
+first card landed 10px in rather than 410; and `_at()` measured offsets from the track's edge, which
+counts the peek in, so once a peek passed half a card it named the card before. Maserati's `23%`
+survived both by luck (the browser re-snapped, and its peek is under half a card). Both now measure
+from slide 0, which needs no peek at all and saved 33 bytes (6614 B). `tests/engine.test.mjs` holds
+a percentage and a `min()` peek on all three engines; the `min()` one failed before.
+
+At 390 the tab labels wrapped inside their tabs, because the default `--tab-flex` lets a tab shrink
+and the shrink-to-fit script only reacts to overflow; the preset sets `0 0 auto`, and the labels
+shrink to 12.8px on one line as live. Not drawn: the photo per tab (`docs/backlog.md`).

@@ -57,6 +57,29 @@ test.describe('what the page gets with no JavaScript', () => {
   });
 });
 
+// 2026-11-06, Kia's centred bar: goTo() read the snap offset off the track's
+// scroll-padding, which a percentage or min() peek computes to as the
+// expression itself ("min(33.333% + 3px, ...)"), so parseFloat gave NaN, the
+// offset 0, and a centred bar landed its card at the edge. Read off padding,
+// which the browser resolves to pixels and the engine sets to the same peek.
+test.describe('a peek written as a percentage', () => {
+  for (const peek of ['23%', 'min(calc(30% + 2px), calc(50% - 60px))']) {
+    test(`goTo() lands the card just inside a ${peek} peek`, async ({ page }) => {
+      await page.setContent(hostHtml({ ...engine, css: `.dos{--dos-per-view:1;--dos-peek:${peek}}`, html: slider(6), box: 1170 }), { waitUntil: 'load' });
+      await page.waitForTimeout(300);
+      await page.evaluate(() => /** @type {any} */ (document.querySelector('.dos'))._dos.goTo(3, { behavior: 'auto' }));
+      await page.waitForTimeout(400);
+      const got = await page.evaluate(() => {
+        const t = document.querySelector('.dos-track');
+        const s = document.querySelectorAll('.dos-slide')[3].getBoundingClientRect();
+        return { at: s.left - t.getBoundingClientRect().left, pad: parseFloat(getComputedStyle(t).paddingLeft), current: /** @type {any} */ (document.querySelector('.dos'))._dos.current };
+      });
+      assert.equal(got.current, 3);
+      assert.ok(Math.abs(got.at - got.pad) < 2, `card 4 sits ${Math.round(got.at)}px into the track, the peek is ${Math.round(got.pad)}px`);
+    });
+  }
+});
+
 test.describe('when every slide already fits', () => {
   // README checklist 7. Controls that cannot move anything must not be
   // focusable - a Tab stop that does nothing is worse than no control.

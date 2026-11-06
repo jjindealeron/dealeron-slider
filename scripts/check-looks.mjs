@@ -369,12 +369,14 @@ for (const [id, b] of brands) {
         .split('}')
         .map((r) => r.split('{')[0].trim())
         .filter(Boolean)) {
-        // One selector: a snippet class (.h1, .heading-lg, .btn, .btn-lg,
-        // .btn-cta, .bg-main), optionally under .bg-main the way a theme
-        // restyles its buttons on a band, optionally :hover/:focus.
-        const ONE = /(\.bg-main )?\.(h1|heading-lg|btn|btn-lg|btn-cta|bg-main)(:(hover|focus))?/.source;
+        // One selector: a snippet class (.h1, .heading-lg, .heading-xl,
+        // .heading-bold, .btn, .btn-lg, .btn-cta, .bg-main), optionally under
+        // .bg-main the way a theme restyles its buttons on a band, optionally
+        // :hover/:focus. heading-xl and heading-bold joined on 2026-11-06 for
+        // Kia's centred bar, whose heading wears both.
+        const ONE = /(\.bg-main )?\.(h1|heading-lg|heading-xl|heading-bold|btn|btn-lg|btn-cta|bg-main)(:(hover|focus))?/.source;
         if (!new RegExp(`^${ONE}(,\\s*${ONE})*$`).test(sel)) {
-          console.error(`  ${id}: theme.css rule "${sel}" — theme rules may target .h1, .heading-lg, .btn, .btn-lg, .btn-cta and .bg-main only`);
+          console.error(`  ${id}: theme.css rule "${sel}" — theme rules may target .h1, .heading-lg, .heading-xl, .heading-bold, .btn, .btn-lg, .btn-cta and .bg-main only`);
           bad++;
         }
       }

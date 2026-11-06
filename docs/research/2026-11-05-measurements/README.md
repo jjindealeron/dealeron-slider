@@ -19,6 +19,7 @@ slick), which the repo's typecheck cannot describe.
 | `lincoln-model-bar-slick2`        | [lincoln-slick2.md](lincoln-slick2.md) | Built as `lincoln-v2`                                                        |
 | `ford-model-bar-slick`            | [ford-slick.md](ford-slick.md)         | Built as `ford-plain`; `ford-slick-render.mjs` draws it through the real CSS |
 | `honda-model-bar-slick-tabbed`    | [honda-tabbed.md](honda-tabbed.md)     | Built as `honda-tabbed`                                                      |
+| `kia-model-bar-tabbed`            | [kia-tabs-v2.md](kia-tabs-v2.md)       | Built as `kia-centred` (2026-11-06): centre mode on the tabbed bar           |
 | `toyota-modelbar-slick-tabbed-v3` | [toyota-v3.md](toyota-v3.md)           | Not built: its card is a split photo card behind tabs, a pattern we lack     |
 | `maserati-modelbar-slick`         | [maserati.md](maserati.md)             | Built as `maserati`, with its nine cutouts and logo taken from the platform  |
 

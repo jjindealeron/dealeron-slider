@@ -422,10 +422,11 @@ against `cadillacdemo1.dealeron.com` and `www.karlchevrolet.com`: all four answe
 at `b3f745b` (`.min.css` is re-minified by the platform, see below, and begins
 `.dos{--dos-per-view`).
 
-**Behind since 2026-11-05:** three changes moved `do-slider.css` and `do-slider.min.css` (a model
+**Behind since 2026-11-05:** all four files need uploading again. The CSS moved three times (a model
 name takes its section's text colour, and so does the logo strip's bare arrow; the tabbed bar can
-draw a logo per tab and centre a short pane), so both need uploading again; the two `.js` files did
-not change.
+draw a logo per tab and centre a short pane; centre mode), and on 2026-11-06 the JS too: the engine
+measures a slide's position from slide 0, so a percentage or `min()` peek centres its card, and the
+tabbed bar's script marks the cards beside the current one.
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.

@@ -346,7 +346,9 @@ test('a brand with two codes draws each once, on its own pattern, and no id repe
   assert.ok(got.families.length > 0, 'no brand has a second code yet — this test has nothing to hold');
   for (const f of got.families) assert.equal(f.heads, f.codes, `${f.b}: ${f.heads} stages for ${f.codes} codes (${f.named.join(', ')})`);
   assert.deepEqual(got.dupes, [], 'an id appears more than once on the brands page');
-  assert.deepEqual(got.kia, ['Tabbed bar', 'Model bar']);
+  // Kia's three codes (2026-11-06): two are tabbed bars, so those two are
+  // named; the plain bar is the only one on its pattern.
+  assert.deepEqual(got.kia, ['Tabbed bar · Tabbed', 'Model bar', 'Tabbed bar · Centred']);
   // Two codes on one pattern are told apart by name.
   assert.deepEqual(got.lincoln, ['Model bar · Version 1', 'Model bar · Version 2']);
 });
@@ -392,6 +394,46 @@ test("CDJR's bar: logo tabs named by brand, the band behind the cars only, a sho
   assert.doesNotMatch(got.wrap, /\bbg-main\b/, 'the band is not behind the heading and logos');
   assert.equal(got.fits, true, "Chrysler's two cars fit");
   assert.ok(Math.abs(got.left - got.right) < 2, `a short pane is centred: ${Math.round(got.left)}px before, ${Math.round(got.right)}px after`);
+});
+
+// 2026-11-06, Kia's centred bar (kia-model-bar-tabbed): one car full size and
+// named in the middle, its neighbours at 0.4 and unnamed. Before: every card
+// alike, and - a percentage peek being misread by the engine - the first card
+// at the edge, not in the middle.
+test("Kia's centred bar: the current card full size and named, its neighbours shrunk, and centred", async () => {
+  await page.goto(`${ORIGIN}/demo/brands.html#kia-centred`, { waitUntil: 'load' });
+  await page.waitForSelector('#b-kia-centred [data-tabs-on] .dos-slide');
+  await page.waitForTimeout(800);
+  const read = () =>
+    page.evaluate(() => {
+      const pane = [.../** @type {NodeListOf<HTMLElement>} */ (document.querySelectorAll('#b-kia-centred .cargo-pane'))].find((p) => !p.hidden);
+      const track = pane.querySelector('.dos-track');
+      const root = /** @type {any} */ (pane.querySelector('.dos'));
+      const cards = [...pane.querySelectorAll('.dos-slide')].map((s) => ({
+        slide: s.getBoundingClientRect(),
+        car: s.querySelector('.cargo-media').getBoundingClientRect().width,
+        name: getComputedStyle(s.querySelector('.cargo-name')).opacity,
+      }));
+      const cur = root._dos.current;
+      return {
+        cur,
+        centreAt: cards[cur].slide.left - track.getBoundingClientRect().left,
+        peek: parseFloat(getComputedStyle(track).paddingLeft),
+        centre: { car: cards[cur].car / cards[cur].slide.width, name: cards[cur].name },
+        side: { car: cards[cur + 1].car / cards[cur + 1].slide.width, name: cards[cur + 1].name },
+      };
+    });
+  const rest = await read();
+  assert.equal(rest.cur, 0);
+  assert.ok(Math.abs(rest.centreAt - rest.peek) < 2, `the first card sits ${Math.round(rest.centreAt)}px in; the peek is ${Math.round(rest.peek)}px`);
+  assert.deepEqual(rest.centre, { car: 1, name: '1' }, 'the current card is full size and named');
+  assert.ok(Math.abs(rest.side.car - 0.4) < 0.01 && rest.side.name === '0', `a neighbour is ${rest.side.car.toFixed(2)} of its slide with name opacity ${rest.side.name}`);
+  await page.locator('#b-kia-centred .cargo-pane:not([hidden]) .dos-arrow--next').click();
+  await page.waitForTimeout(900);
+  const next = await read();
+  assert.equal(next.cur, 1, 'one click moves one card');
+  assert.ok(Math.abs(next.centreAt - next.peek) < 2, `after a click the current card sits ${Math.round(next.centreAt)}px in`);
+  assert.deepEqual(next.centre, { car: 1, name: '1' });
 });
 
 test('the deep link lands on the brand and nothing threw', async () => {

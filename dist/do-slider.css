@@ -1188,6 +1188,9 @@
   --tab-line-grow: 0s;
   --tab-flex: 0 1 auto;
   --pane-align: normal;
+  --side-scale: 1;
+  --side-name: 1;
+  --side-speed: 0.35s;
   --tab-leading: 1.55;
   --tab-case: none;
   --tab-color: currentcolor;
@@ -1306,6 +1309,24 @@
 }
 :where([data-cargo=tabs]) .cargo-pane .dos[data-dos-fits] .dos-track {
   justify-content: var(--pane-align);
+}
+:where([data-cargo=tabs]) .cargo-pane .cargo-media {
+  transition: scale var(--side-speed) ease-in-out;
+}
+:where([data-cargo=tabs]) .cargo-pane .cargo-name {
+  transition: opacity var(--side-speed) ease-in-out;
+}
+:where([data-cargo=tabs]) .cargo-pane .cargo-side .cargo-media {
+  scale: var(--side-scale);
+}
+:where([data-cargo=tabs]) .cargo-pane .cargo-side .cargo-name {
+  opacity: var(--side-name);
+}
+@media (prefers-reduced-motion: reduce) {
+  :where([data-cargo=tabs]) .cargo-pane .cargo-media,
+  :where([data-cargo=tabs]) .cargo-pane .cargo-name {
+    transition: none;
+  }
 }
 :where([data-cargo=tabs]) .cargo-tabs [role=tab][aria-selected=true] {
   color: var(--tab-selected);

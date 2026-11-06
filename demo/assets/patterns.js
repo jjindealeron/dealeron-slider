@@ -651,6 +651,13 @@ ${VIDEO_DIALOG_CSS}`,
         // centre a short pane (Chrysler's two of six). `safe` so a pane that
         // overflows still starts at its first card.
         '--pane-align': 'normal',
+        // Centre mode (2026-11-06, Kia's kia-model-bar-tabbed): the card a pane
+        // is on is drawn full size and named, and every other card shrinks to
+        // --side-scale and fades its name to --side-name, over --side-speed.
+        // 1 and 1 draw every card alike, as every other bar does.
+        '--side-scale': '1',
+        '--side-name': '1',
+        '--side-speed': '0.35s',
         '--tab-leading': '1.55',
         '--tab-case': 'none',
         '--tab-color': 'currentcolor',
@@ -826,6 +833,15 @@ ${VIDEO_DIALOG_CSS}`,
 .cargo-tabs button img { display: block; max-inline-size: 100%; block-size: auto; margin-inline: auto; }
 /* A pane whose cards all fit, placed by --pane-align (start unless set). */
 .cargo-pane .dos[data-dos-fits] .dos-track { justify-content: var(--pane-align); }
+/* Centre mode: the script marks every card but each pane's current one
+   (cargo-side). With no script nothing is marked, and every card is drawn
+   full size and named. The car shrinks, not its slide, so the cards keep
+   their places and the hover zoom on the image still works. */
+.cargo-pane .cargo-media { transition: scale var(--side-speed) ease-in-out; }
+.cargo-pane .cargo-name { transition: opacity var(--side-speed) ease-in-out; }
+.cargo-pane .cargo-side .cargo-media { scale: var(--side-scale); }
+.cargo-pane .cargo-side .cargo-name { opacity: var(--side-name); }
+@media (prefers-reduced-motion: reduce) { .cargo-pane .cargo-media, .cargo-pane .cargo-name { transition: none; } }
 .cargo-tabs [role="tab"][aria-selected="true"] { color: var(--tab-selected); background: var(--tab-selected-bg); border-block-end-color: transparent; opacity: 1; }
 /* The line under the selected tab is a box inside the tab's padding, not a
    border, so it can grow out from the centre the way the live bar's does.
@@ -988,6 +1004,13 @@ ${VIDEO_DIALOG_CSS}`,
     show(n, true);
     tabs[n].focus();
   });
+  // Centre mode (--side-scale): every card but the one each pane is on is a
+  // side card. Marked here, from the engine's own dos:change, because the
+  // engine marks its current slide only when it crossfades; a pane not yet
+  // started counts its first card as current, which is where it starts.
+  const sides = (root, n) => root.querySelectorAll('.dos-slide').forEach((s, i) => s.classList.toggle('cargo-side', i !== n));
+  panes.forEach((p) => p.querySelectorAll('.dos').forEach((root) => sides(root, root._dos ? root._dos.current : 0)));
+  wrap.addEventListener('dos:change', (e) => sides(e.target, e.detail.index));
   show(0);
   sync();
 });`,

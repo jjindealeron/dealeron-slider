@@ -116,6 +116,13 @@ its alt. `--pane-align` (`normal` or `safe center`) places a pane's cards when t
 family with no mark of its own (CDJR) names its brands' marks in `marks`, and `logosOf()` draws them
 two by two wherever a brand's logo appears; the platform has no CDJR logo, and none is made up.
 
+**Centre mode is three knobs on the tabbed bar** (2026-11-06, Kia's `kia-model-bar-tabbed`). The tab
+script marks every card but each pane's current one `cargo-side`, from the engine's own `dos:change`
+(the engine marks its current slide only in fade); `--side-scale` shrinks a side card's
+`.cargo-media`, `--side-name` fades its name, `--side-speed` times both. With no script nothing is
+marked and every card is drawn alike. One card per view and a percentage peek make it a centred bar;
+`min()` in the peek keeps the centre card at the tile's minimum on a phone.
+
 **Rows is a SETTING, not a pattern.** `state.rows` (1–3) wraps each slide's cards in `.cargo-col`
 and emits the matching `grid-template-rows` from the same place. `rowsApply()` is the one place that
 says where it applies — off for every `track: 'div'` pattern (the galleries and the lightbox), a

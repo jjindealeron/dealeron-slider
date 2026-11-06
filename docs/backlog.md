@@ -98,6 +98,12 @@ The measurements are `docs/research/2026-11-03-measurements/`; the plan for the 
   the picked logo (ours is the tab line), opening on Jeep (ours opens on the first tab), a 760px
   logo row (ours shares the full row), and a full-bleed band (ours is the bar's width).
 
+- **Kia's centred bar draws no photo** (`kia-centred`, 2026-11-06). The live bar sits over a photo
+  per tab (`/static/brand-kia/Homepage/model-bar/2025/bg-modelbar1|2|3.jpg`, 1920x675, and
+  `-mobile.jpg` below 768), cross-fading with the tab, with white tab labels on it. A photo per pane
+  is structure; until it exists the labels keep the section's dark text. Also not carried: a
+  neighbour car is a link here where live a click on it only centres it, the name is one size at
+  every width (live 22 / 18px), and live shows no neighbours on a phone.
 - **Fiat could draw its own 500e now** (`demo/img/oem/cdjr/fiat-500e.png`, 2026-11-05), and still
   falls back to the Chevrolet cutouts: two tests (`brands.test.mjs`, `content.test.mjs`) use Fiat as
   the one brand with no cutouts of its own, so giving it the car means giving those tests a

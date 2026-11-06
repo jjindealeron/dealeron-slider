@@ -75,6 +75,8 @@ CDJR codes, `ford-model-bar-slick`, `kia-model-bar-slick`, `honda-model-bar-slic
         logo, and Bruner's sixteen CDJR cutouts, from the platform's shared folders
   - [x] CDJR logo tabs, and a CDJR entry drawn by its brands' four marks: `cdjr`, `cdjr-fiat` and
         `cdjr-text` built (Steven: "yes please" to the missing layouts, logo tabs first)
+  - [x] Kia's centred bar (`kia-model-bar-tabbed`) built as `kia-centred` on 2026-11-06: centre mode
+        on the tabbed bar, and the engine's peek fixed for it
   - [ ] Toyota Tabs v3 (a tabbed split-card pattern): parked; in `docs/backlog.md`
   - [x] Lovable refreshed and published (2026-11-05): all 309 exported files hash-identical on the
         live site, the 26 new pictures included

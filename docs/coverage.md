@@ -14,13 +14,13 @@ The article lists 54 codes. Seven of them are GM multi-make combinations, which 
 does** (Steven, 2026-09-15) — they are listed at the bottom and counted nowhere. Two more were on it
 until October 2026; they are at the bottom too, under "Removed from the article".
 
-**47 codes in scope. 28 built.** The other 19 are the work.
+**47 codes in scope. 29 built.** The other 18 are the work.
 
 | Status                             |  N  | What it means                                                                                          |
 | ---------------------------------- | :-: | ------------------------------------------------------------------------------------------------------ |
-| **Replacement built**              | 28  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                      |
+| **Replacement built**              | 29  | A measured preset in `brands.js` draws this code's bar. Ready to hand a designer.                      |
 | **Pattern ready, not measured**    |  0  | The builder already has the right pattern; the preset is not built yet. The row says what it waits on. |
-| **Needs a pattern we do not have** |  4  | The live code is a carousel, but a shape this builder cannot draw yet.                                 |
+| **Needs a pattern we do not have** |  3  | The live code is a carousel, but a shape this builder cannot draw yet.                                 |
 | **Not a carousel**                 |  9  | The live code is a static grid or a tabbed list, not a slider. Replacing it is a decision, not a job.  |
 | **Example is dead**                |  3  | The article's example link 404s, so there is nothing left to measure from.                             |
 | **Article looks wrong**            |  2  | The example link does not draw the bar its row describes.                                              |
@@ -93,9 +93,9 @@ not enough to measure from. Measuring is the next step for those rows regardless
 | CDJR       | Tabs with Fiat (no colour background) | `cdjr-fiat-model-bar-no-back`                       | brunerchryslerdodgejeepram.com | `tabs`      | Replacement built              | `brands.js` cdjr-text, measured 2026-11-05; text tabs, and no Fiat despite the name                                                                        |
 | CDJR       | Tabs                                  | `cdjr-model-bar`                                    | cdjrdemo2                      | `tabs`      | Replacement built              | `brands.js` cdjr, measured 2026-11-05; logo tabs and the band behind the cars only (tabMarks, bodyClass)                                                   |
 | CDJR       | Tabs                                  | `cdjr-fiat-model-bar`                               | cdjrdemo1                      | `tabs`      | Replacement built              | `brands.js` cdjr-fiat, measured 2026-11-05; the same bar with a Fiat logo and its 500e                                                                     |
+| Kia        | Tabs v2                               | `kia-model-bar-tabbed`                              | kiademo1                       | `tabs`      | Replacement built              | `brands.js` kia-centred, measured 2026-11-06; centre mode (--side-*). The photo per tab is not drawn                                                       |
 | Volkswagen | Tabs                                  | `volkswagen-model-bar-slick2`                       | vwdemo1                        | —           | Needs a pattern we do not have | Measured 2026-11-03: the tab row fits `tabs`, but each card is a per-model colour plate with the car hanging below it                                      |
 | Alfa Romeo | Slick                                 | `alfa-romeo-model-bar-cards`                        | alfaromeo3                     | —           | Needs a pattern we do not have | Measured 2026-11-03 (now alfaromeodemo1): a 300x500 photo, a cutout laid across it, a full-width button. Structure, not values                             |
-| Kia        | Tabs v2                               | `kia-model-bar-tabbed`                              | kiademo1                       | —           | Needs a pattern we do not have | Centre-mode: one large focused card, small peeking neighbours, only the centre car named, over a photographic backdrop. Structure, not values              |
 | Toyota     | Tabs v3                               | `toyota-modelbar-slick-tabbed-v3`                   | toyotademo2                    | —           | Needs a pattern we do not have | Measured 2026-11-05: split photo cards (photo, year, name, tagline, pill) behind 4 tabs; `tabs` draws cutout tiles only                                    |
 | BMW        | Tabs                                  | `bmw-model-bar-desktop` (+ a second Model-Bar file) | bmw1                           | —           | Not a carousel                 | No slick after a full-page scroll. A 12-tab model selector (X1…X7, 2…7) over static panels                                                                 |
 | Ford       | General                               | `ford-model-bar-2.0-alt`                            | forddemo5                      | —           | Not a carousel                 | Static `.modelBar`, 11 children, no slick                                                                                                                  |

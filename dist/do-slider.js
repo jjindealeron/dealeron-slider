@@ -230,8 +230,11 @@
     // by however many share it, desyncing the dots and the announced count
     // from where the track actually is. goTo() already scrolls to the slide's
     // measured position; this reverse mapping was the only arithmetic left.
+    // Measured from slide 0, as goTo() is: from the track's edge it counted the
+    // peek into every offset, and once the peek passed half a card (Kia's
+    // centred bar, 410px against 400) it named the card before (2026-11-06).
     _at(x) {
-      const t = this.track, origin = t.getBoundingClientRect().left - t.scrollLeft;
+      const origin = this.slides[0].getBoundingClientRect().left;
       let idx = 0, best = Infinity;
       this.slides.forEach((s, i) => {
         const d = Math.abs(s.getBoundingClientRect().left - origin - x);
@@ -294,8 +297,7 @@
         return;
       }
       const t = this.track;
-      const pad = parseFloat(getComputedStyle(t).scrollPaddingLeft) || 0;
-      const left = Math.max(0, Math.min(this.slides[n].getBoundingClientRect().left - t.getBoundingClientRect().left - t.clientLeft + t.scrollLeft - pad, t.scrollWidth - t.clientWidth));
+      const left = Math.max(0, Math.min(this.slides[n].getBoundingClientRect().left - this.slides[0].getBoundingClientRect().left, t.scrollWidth - t.clientWidth));
       if (Math.abs(left - t.scrollLeft) < 1) {
         this._commit();
         return;
@@ -864,6 +866,13 @@
           show(n, true);
           tabs[n].focus();
         });
+        // Centre mode (--side-scale): every card but the one each pane is on is a
+        // side card. Marked here, from the engine's own dos:change, because the
+        // engine marks its current slide only when it crossfades; a pane not yet
+        // started counts its first card as current, which is where it starts.
+        const sides = (root, n) => root.querySelectorAll('.dos-slide').forEach((s, i) => s.classList.toggle('cargo-side', i !== n));
+        panes.forEach((p) => p.querySelectorAll('.dos').forEach((root) => sides(root, root._dos ? root._dos.current : 0)));
+        wrap.addEventListener('dos:change', (e) => sides(e.target, e.detail.index));
         show(0);
         sync();
       });

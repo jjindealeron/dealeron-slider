@@ -302,9 +302,11 @@ export class DealerOnSlider {
   // by however many share it, desyncing the dots and the announced count
   // from where the track actually is. goTo() already scrolls to the slide's
   // measured position; this reverse mapping was the only arithmetic left.
+  // Measured from slide 0, as goTo() is: from the track's edge it counted the
+  // peek into every offset, and once the peek passed half a card (Kia's
+  // centred bar, 410px against 400) it named the card before (2026-11-06).
   _at(x) {
-    const t = this.track,
-      origin = t.getBoundingClientRect().left - t.scrollLeft;
+    const origin = this.slides[0].getBoundingClientRect().left;
     let idx = 0,
       best = Infinity;
     this.slides.forEach((s, i) => {
@@ -389,8 +391,14 @@ export class DealerOnSlider {
     const t = this.track;
     // Compute the snap position ourselves — browsers (WebKit especially)
     // don't reliably re-snap after programmatic scrolls.
-    const pad = parseFloat(getComputedStyle(t).scrollPaddingLeft) || 0;
-    const left = Math.max(0, Math.min(this.slides[n].getBoundingClientRect().left - t.getBoundingClientRect().left - t.clientLeft + t.scrollLeft - pad, t.scrollWidth - t.clientWidth));
+    // Measured from slide 0, not from the track's edge: slide 0 sits one peek
+    // (the track's padding, which scroll-padding matches) in from the scroll
+    // origin, so slide n's snap position is simply how far it is from slide 0.
+    // This read the peek back off scroll-padding until 2026-11-06, which a
+    // percentage or min() peek computes to as the expression itself
+    // ("min(33.333% + 3px, ...)": parseFloat NaN, so 0), and Kia's centred
+    // bar landed its first card 10px in rather than 410.
+    const left = Math.max(0, Math.min(this.slides[n].getBoundingClientRect().left - this.slides[0].getBoundingClientRect().left, t.scrollWidth - t.clientWidth));
     if (Math.abs(left - t.scrollLeft) < 1) {
       this._commit(); // already there — scrollend won't fire, commit directly
       return;

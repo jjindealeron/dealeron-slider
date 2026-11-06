@@ -2021,6 +2021,88 @@
       },
       source: 'kiademo3.dealeron.com, 2026-11-05',
     },
+    // `kia-model-bar-tabbed` on kiademo1, measured 2026-11-06
+    // (docs/research/2026-11-05-measurements/kia-tabs-v2.md). Centre mode:
+    // three tabs (SUV / CUV / MPV first), and in each pane one car full size in
+    // the middle with its neighbours shrunk to 0.4 and unnamed on either side,
+    // the change taking 0.35s. Every slide is the same width; slick marks the
+    // centre one, and the tab script's cargo-side does here (--side-*).
+    // The peek is a third of the bar either side, as live, but never so much
+    // that the centre card drops under the tile's minimum: min() keeps a
+    // phone card at 162px (live shows no neighbours on a phone at all).
+    // Departures: the live bar sits over a photo per tab, which nothing here
+    // draws, so the tab labels keep the section's dark text where live is
+    // white on the photo; a neighbour car is a link to its inventory here,
+    // where live a click on it only centres it; the name is synthesised bold
+    // on KiaSignatureRegular (live: the KiaSignatureBold family) and one size
+    // at every width (live 22 / 18px). Arrows: the live #cfd1d4 disc with the
+    // #05141f chevron, 12.18:1, inverting on hover, 18.65:1.
+    'kia-centred': {
+      of: 'kia',
+      variant: 'Centred',
+      code: { name: 'kia-model-bar-tabbed', pattern: 'tabs' },
+      ladder: [[0, 1]],
+      styles: {
+        looks: {
+          tile: {
+            '--name-color': '#05141f',
+            '--name-size': '1.5714em',
+            '--name-weight': '700',
+            '--name-leading': '1.4286',
+            '--name-gap': '-7.5%',
+            '--plate-pad': '0.1px',
+            '--strip-pad-x': '0.1px',
+          },
+        },
+        patterns: {
+          tabs: {
+            props: {
+              '--dos-gap': '0.1px',
+              '--dos-peek': 'min(calc(33.333% + 0.238em), calc(50% - 5.8em))',
+              '--dos-arrow-bg': '#cfd1d4',
+              '--dos-arrow-fg': '#05141f',
+              '--dos-arrow-bg-hover': '#05141f',
+              '--dos-arrow-fg-hover': '#fff',
+              '--side-scale': '0.4',
+              '--side-name': '0',
+              '--side-speed': '0.35s',
+              '--tab-flex': '0 0 auto',
+              '--tab-size': '1.2857em',
+              '--tab-size-narrow': '1.3846em',
+              '--tab-size-phone': '0.923em',
+              '--tab-weight': '400',
+              '--tab-leading': '1.4286',
+              '--tab-dim': '1',
+              '--tab-rule': 'transparent',
+              '--tab-line-size': '0.167em',
+              '--tab-pad': '0.389em 0.833em 0.556em',
+              '--tab-pad-phone': '0.583em 0.417em 0.833em',
+              '--tab-gap': '1.764em',
+              '--tab-gap-phone': '1.137em',
+              '--tab-divider': "'|'",
+              '--tab-divider-size': '0.78',
+              '--tab-divider-phone': 'none',
+              '--tab-fade': '0.15s',
+              '--title-gap': '0.5em',
+              '--bar-pad': '5.357em',
+              '--bar-pad-narrow': '5.769em',
+            },
+            panes: ['SUV / CUV / MPV', 'Hybrid / Electric', 'Sedan'],
+            words: { title: 'Discover the new Kia', titleClass: 'heading-xl heading-bold', lead: '', moreText: 'Explore All New Inventory', moreHref: '/searchnew.aspx' },
+          },
+        },
+      },
+      // PREVIEW ONLY: kiademo1's tokens and the theme's rules for the two
+      // heading classes the snippet names.
+      theme: {
+        '--cta-background-color': '#05141f',
+        '--cta-font-color': '#fff',
+        '--cta-hover-color': '#1f2c35',
+        '--main-color': '#37434d',
+        css: '.heading-xl{font-size:clamp(28px,4.4vw,60px);line-height:1.1;text-transform:capitalize}.heading-bold{font-family:KiaSignatureBold,sans-serif;font-weight:400}',
+      },
+      source: 'kiademo1.dealeron.com, 2026-11-06',
+    },
     landrover: {
       label: 'Land Rover',
       code: { name: 'land-rover-model-bar-slick', pattern: 'modelbar' },
