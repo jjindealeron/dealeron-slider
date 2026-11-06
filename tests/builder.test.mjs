@@ -289,6 +289,8 @@ test.describe('the pasted block on a hostile host page', () => {
   // .cargo-card, .cargo-model and .cargo-svc computed to `outline: none 0px`
   // on a host carrying those two rules, copied from maseratidemo1. The
   // classes are read off each snippet, so a card link added later is held too.
+  // The ring is a layer over the card since the same day (the next test has
+  // why); the platform's own ring stays off, or a clipped second one shows.
   test('every card link keeps an inset focus ring on a host that takes link rings away', async () => {
     const PLATFORM =
       'a:focus{outline-offset:1px!important}a:focus-visible,.btn:focus-visible,button:focus-visible{outline:5px auto -webkit-focus-ring-color!important;outline-offset:1px!important}' +
@@ -309,14 +311,121 @@ test.describe('the pasted block on a hostile host page', () => {
           const e = document.activeElement;
           if (!e?.matches('.dos-slide a[class^="cargo-"]')) return null;
           const cs = getComputedStyle(e);
-          return `${e.className}: ${cs.outlineStyle} ${cs.outlineWidth} offset ${cs.outlineOffset}`;
+          const r = getComputedStyle(e, '::after');
+          const focus = document.createElement('i');
+          focus.style.color = cs.getPropertyValue('--dos-focus');
+          e.append(focus);
+          const want = getComputedStyle(focus).color;
+          focus.remove();
+          // inset: 0 on the card's padding box, so the layer is as wide and tall as it.
+          const fills = r.position === 'absolute' && Math.abs(parseFloat(r.width) - e.clientWidth) <= 1 && Math.abs(parseFloat(r.height) - e.clientHeight) <= 1;
+          return `${e.className}: outline ${cs.outlineStyle}, layer ${r.borderTopStyle} ${r.borderTopWidth} ${r.borderTopColor === want ? 'focus colour' : r.borderTopColor}${fills ? '' : ' (not over the card)'}`;
         });
       }
       held++;
       if (!ring) bad.push(`${id}: no card link took focus`);
-      else if (!/: solid 2px offset -2px$/.test(ring)) bad.push(`${id} ${ring}`);
+      else if (!/: outline none, layer solid 2px focus colour$/.test(ring)) bad.push(`${id} ${ring}`);
     }
     assert.ok(held >= 8, `only ${held} patterns emit a card link`);
+    assert.deepEqual(bad, [], bad.join(' | '));
+  });
+
+  // 2026-11-06: the card ring was an outline (2px, offset -2px), and Chrome
+  // paints a positioned child over its parent's outline - every picture box is
+  // position: relative for its badge. Measured focused: 74% of the vehicle
+  // card's ring showed and 73% of the models pattern's (29% on Porsche's bar).
+  // And on the tile and wordmark looks the name's line box ended on the card's
+  // bottom edge, so the ring crossed "Rogue". Now a layer drawn last in the
+  // card, and 4px under those names. Pixels, on the catalogue page where the
+  // pictures load: the ring's colour along the card's outer 4px, away from the
+  // corners; and the name's font with a descender (gjpqy) must end 2px clear of
+  // the ring's 2px.
+  test('a focused card shows its whole ring, over its picture and clear of its name', async () => {
+    const cat = await ctx.newPage();
+    await cat.setViewportSize({ width: 1366, height: 900 });
+    await cat.goto(`${ORIGIN}/demo/patterns.html`, { waitUntil: 'networkidle' });
+    await cat.addStyleTag({ content: '*,*::before,*::after{transition:none!important;animation:none!important}' });
+    await cat.evaluate(() => document.fonts.ready);
+    await cat.waitForTimeout(600);
+    await cat.keyboard.press('Shift');
+    const n = await cat.evaluate(() => {
+      let k = 0;
+      for (const s of document.querySelectorAll('[id^="p-"]')) {
+        const a = [...s.querySelectorAll('.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc)')].find((x) => /** @type {HTMLElement} */ (x).offsetParent);
+        if (a) /** @type {HTMLElement} */ (a).dataset.ringProbe = String(k++);
+      }
+      return k;
+    });
+    const bad = [];
+    for (let i = 0; i < n; i++) {
+      const a = cat.locator(`[data-ring-probe="${i}"]`);
+      await a.scrollIntoViewIfNeeded();
+      await a.evaluate((e) => /** @type {HTMLElement} */ (e).focus());
+      await cat.waitForTimeout(60);
+      const info = await a.evaluate((e) => {
+        // The focus colour itself, not the ring's: a ring drawn some other way still counts.
+        const probe = document.createElement('i');
+        probe.style.color = getComputedStyle(e).getPropertyValue('--dos-focus');
+        document.body.append(probe);
+        const col = getComputedStyle(probe).color.match(/\d+/g)?.map(Number) ?? [0, 0, 0];
+        probe.remove();
+        const b = e.getBoundingClientRect();
+        const cv = /** @type {CanvasRenderingContext2D} */ (document.createElement('canvas').getContext('2d'));
+        const range = document.createRange();
+        let low = -Infinity;
+        const w = document.createTreeWalker(e, NodeFilter.SHOW_TEXT);
+        for (let t = w.nextNode(); t; t = w.nextNode()) {
+          const el = /** @type {HTMLElement} */ (t.parentElement);
+          if (!t.textContent?.trim() || !el.offsetParent) continue;
+          const cs = getComputedStyle(el);
+          cv.font = `${cs.fontStyle} ${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+          const m = cv.measureText('gjpqy');
+          range.selectNodeContents(t);
+          // Chrome's text rect is the font's content area, baseline + its descent.
+          for (const r of range.getClientRects()) low = Math.max(low, r.bottom - m.fontBoundingBoxDescent + m.actualBoundingBoxDescent);
+        }
+        return { col, x: b.x, y: b.y, w: b.width, h: b.height, clear: b.bottom - low, id: e.closest('[id^="p-"]')?.id };
+      });
+      const png = (await cat.screenshot({ clip: { x: info.x, y: info.y, width: info.w, height: info.h } })).toString('base64');
+      const share = await cat.evaluate(
+        async ([png, col]) => {
+          const im = await new Promise((r) => {
+            const m = new Image();
+            m.onload = () => r(m);
+            m.src = `data:image/png;base64,${png}`;
+          });
+          const cv = document.createElement('canvas');
+          cv.width = im.width;
+          cv.height = im.height;
+          const g = /** @type {CanvasRenderingContext2D} */ (cv.getContext('2d'));
+          g.drawImage(im, 0, 0);
+          const d = g.getImageData(0, 0, im.width, im.height).data;
+          const W = im.width;
+          const H = im.height;
+          const near = (x, y) => {
+            const k = (y * W + x) * 4;
+            return Math.abs(d[k] - col[0]) + Math.abs(d[k + 1] - col[1]) + Math.abs(d[k + 2] - col[2]) < 60;
+          };
+          const band = (pts) => (pts.some(([x, y]) => near(x, y)) ? 1 : 0);
+          let on = 0;
+          let all = 0;
+          for (let x = 8; x < W - 8; x++) {
+            all += 2;
+            on += band([0, 1, 2, 3].map((k) => [x, k])) + band([0, 1, 2, 3].map((k) => [x, H - 1 - k]));
+          }
+          for (let y = 8; y < H - 8; y++) {
+            all += 2;
+            on += band([0, 1, 2, 3].map((k) => [k, y])) + band([0, 1, 2, 3].map((k) => [W - 1 - k, y]));
+          }
+          return on / all;
+        },
+        [png, info.col],
+      );
+      if (share < 0.98) bad.push(`${info.id}: ${(share * 100).toFixed(0)}% of the ring shows`);
+      if (info.clear < 4) bad.push(`${info.id}: a descender ends ${info.clear.toFixed(1)}px above the card's edge, inside the ring`);
+    }
+    await cat.close();
+    assert.ok(n >= 9, `only ${n} stages with a card link on patterns.html`);
     assert.deepEqual(bad, [], bad.join(' | '));
   });
 

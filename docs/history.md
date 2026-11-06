@@ -1091,3 +1091,26 @@ compared pixel for pixel, old CSS against new, at 320, 390, 768 and 1366: the la
 at most 1 in 255 (text antialiasing, which Chrome does differently in a scroller), and Ford's and
 Honda's bars now draw the measured 1px #ccc rule under each unpicked cell, which the scrolling row
 had clipped off since they were built. `tests/builder.test.mjs` failed on all three rings before.
+
+## 2026-11-06 — a card's focus ring is drawn over its picture, and clear of its name
+
+Steven had asked about the card ring touching the model names ("Rogue"). Measured on the first card
+of every stage on patterns.html and brands.html, focused at 1366, it was two faults. The ring was an
+outline (2px, offset -2px, from `05872e4`), and Chrome paints a positioned child over its parent's
+outline: every `.cargo-media` is `position: relative` for its badge, so the picture hid most of it.
+29% of the ring showed on Porsche's two bars, 34% on INFINITI's photo bar, 74% on the vehicle card,
+73% on the models pattern. And on the tile and wordmark looks the name's line box ended on the
+card's bottom edge: the name's own letters came within 4px of the edge on 14 of 56 stages, and a
+descender in the same font would have on 45.
+
+The ring is now a 2px `--dos-focus` border on a `::after` with `inset: 0` (the focused card is
+`position: relative`), which comes last in the card and paints over the picture. The `!important`
+stays only on turning the platform's link outline off. The tile and wordmark cards keep 4px under
+the name (Steven chose it over a ring round the picture alone): every tile and wordmark card is 4px
+taller (Nissan 190 to 194px, Porsche 239 to 243, the modelbar pattern 184.4 to 188.4). After: the
+ring shows whole on all 72 cards, and the name's letters clear it with 2px or more on 55 of 56
+stages. INFINITI's "QX60" is the one that does not: its OEM's measured 1.1 line height lets the Q's
+tail hang 1.9px below its line box, so it ends 2.1px up, against the ring's inside edge without
+crossing it. A descender would end that close on INFINITI, Subaru (2.8px), BMW (3.4) and Toyota
+(3.9), all on the same 1.1 leading. `tests/builder.test.mjs` failed before on both: three looks'
+descenders inside the ring, and 74% and 73% of the ring on the vehicle card and models.

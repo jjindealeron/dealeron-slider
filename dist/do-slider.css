@@ -440,8 +440,16 @@
   }
 }
 .dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {
-  outline: 2px solid var(--dos-focus) !important;
-  outline-offset: -2px !important;
+  position: relative;
+  outline: 0 !important;
+}
+.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible::after {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  border: 2px solid var(--dos-focus);
+  border-radius: inherit;
 }
 .cargo-tile {
   --strip-bg: transparent;
@@ -494,6 +502,7 @@
   display: flex;
   flex-direction: column;
   block-size: 100%;
+  padding-block-end: 4px;
   color: inherit;
   text-align: center;
   text-decoration: none;
@@ -706,6 +715,7 @@
 }
 :where(.cargo-wordmark) .cargo-card {
   display: block;
+  padding-block-end: 4px;
   color: var(--name-color);
   text-align: center;
   text-decoration: none;

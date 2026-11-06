@@ -110,15 +110,25 @@ for (const [name, bp] of TIERS) {
 // template 740's layout.css then removes it from every link
 // (`a:focus { outline: 0 none !important }`; maseratidemo1, 2026-11-06). Both
 // are !important at (0,1,1), so only an !important rule that weighs more can
-// draw one. --dos-focus, drawn inset so the scroll container cannot clip it:
-// 2px in the card's outer 2px, as Bootstrap 3's own link ring is
-// (outline-offset: -2px), because a card's name sits on its bottom edge and
-// the engine's 3px slide ring crossed the descenders. A site still recolours
-// it through --dos-focus; the platform's buttons keep their own rings.
+// take the platform's ring off; that is the one !important here, so a second,
+// clipped ring never shows beside ours on another DealerOn site.
+//
+// Ours is a 2px --dos-focus border on a layer over the whole card, inside it so
+// the scroll container cannot clip it. Not an outline: until 2026-11-06 it was
+// one (2px, offset -2px), and Chrome paints a positioned child over its
+// parent's outline, so every picture box with a badge slot (.cargo-media is
+// position: relative) hid it. Measured on the catalogue pages, focused: 29% of
+// Porsche's ring showed, 34% of INFINITI's photo bar's, 73-74% on the vehicle
+// card and the models pattern. The ::after comes last in the card, so it paints
+// over all of them. The tile and wordmark looks keep 4px under their name for
+// it (looks.js); their names sat on the card's bottom edge, in the ring. A site
+// still recolours it through --dos-focus; the platform's buttons keep their own
+// rings.
 out.push(
   '',
   '/* ---- keyboard focus on a card link ---- */',
-  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {\n  outline: 2px solid var(--dos-focus) !important;\n  outline-offset: -2px !important;\n}',
+  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible {\n  position: relative;\n  outline: 0 !important;\n}',
+  '.dos-slide :is(.cargo-card, .cargo-model, .cargo-svc):focus-visible::after {\n  position: absolute;\n  inset: 0;\n  pointer-events: none;\n  content: "";\n  border: 2px solid var(--dos-focus);\n  border-radius: inherit;\n}',
 );
 
 for (const [id, look] of Object.entries(LOOKS)) {

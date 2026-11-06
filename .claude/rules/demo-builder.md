@@ -36,11 +36,17 @@ inlined copy of the card styles — an inlined copy can never be fixed.
 
 **A card link draws its own focus ring, `!important`** (2026-11-06). The platform's `extend.css`
 pushes every link's ring 1px outside it, where the track clips it, and template 740's `layout.css`
-removes it; both are `!important` at (0,1,1). `build-cards.mjs` gives `.cargo-card`, `.cargo-model`
-and `.cargo-svc` 2px of `--dos-focus` drawn inset, at (0,3,0) `!important`. A new link class in a
-pattern joins that selector: `tests/builder.test.mjs` reads the classes off every snippet and fails
-until it does. `a11y.mjs` measures the ring against the card's own surface, so a dark card sets
-`--dos-focus` (split, portrait: `#4a90e2`).
+removes it; both are `!important` at (0,1,1). `build-cards.mjs` turns that outline off on
+`.cargo-card`, `.cargo-model` and `.cargo-svc` at (0,3,0) `!important` (the only `!important`) and
+draws its own: a 2px `--dos-focus` border on a `::after` with `inset: 0`, the focused card
+`position: relative`. Never an outline: Chrome paints a positioned child over its parent's outline,
+and every `.cargo-media` is positioned for its badge, so the vehicle card showed 74% of an outline
+ring and Porsche's bar 29% (2026-11-06). A look whose text ends on the card's bottom edge keeps 4px
+under it for the ring (tile, wordmark: `padding-block-end: 4px`). A new link class in a pattern
+joins that selector: `tests/builder.test.mjs` reads the classes off every snippet and fails until it
+does, and checks on patterns.html that the ring shows whole and a descender clears it. `a11y.mjs`
+measures the ring against the card's own surface, so a dark card sets `--dos-focus` (split,
+portrait: `#4a90e2`).
 
 **Pattern structure and pattern scripts are SHARED too, never pasted** (spec
 `2026-09-14-shared-pattern-structure-design.md`). `scripts/build-patterns.mjs` appends every

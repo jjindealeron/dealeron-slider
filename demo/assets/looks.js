@@ -111,12 +111,16 @@ const LOOKS = {
       '--cta-bg': 'transparent',
       '--cta-fg': '#16324f',
     },
+    // The card's 4px under the name is room for its keyboard focus ring, a 2px
+    // border drawn inside the card (scripts/build-cards.mjs). Without it the
+    // name's line box ended on the card's bottom edge and the ring crossed
+    // "Rogue" and every other name (2026-11-06; the wordmark look the same).
     css: `%root% { padding-block-start: var(--strip-pad); padding-inline: var(--strip-pad-x); background: var(--strip-bg); }
 %root% .dos-track { padding-block-end: var(--strip-pad-end); }
 @media (max-width: 767.98px) { %root% { --dos-arrow-size: 36px; } }
 @media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }
 @media (max-width: 380px) { %root% { --dos-per-view: 1; } }
-.cargo-card { display: flex; flex-direction: column; block-size: 100%; color: inherit; text-align: center; text-decoration: none; }
+.cargo-card { display: flex; flex-direction: column; block-size: 100%; padding-block-end: 4px; color: inherit; text-align: center; text-decoration: none; }
 .cargo-media { position: relative; display: block; overflow: hidden; }
 .cargo-badge { position: absolute; inset-block-start: 0.6em; inset-inline-start: 0.6em; padding: 0.25em 0.7em; font-size: 0.75em; font-weight: 700; line-height: 1.4; color: var(--badge-fg); background: var(--badge-bg); border-radius: 999px; }
 .cargo-card img { box-sizing: border-box; inline-size: 100%; block-size: auto; padding: var(--plate-pad); object-fit: contain; background: var(--plate-bg); filter: var(--img-filter); transition: filter 0.2s, transform var(--img-hover-speed) ease; }
@@ -224,11 +228,12 @@ const LOOKS = {
       '--name-size': '1em',
       '--name-case': 'uppercase',
     },
+    // 4px under the name for the focus ring, as on the tile.
     css: `%root% { padding-block-start: var(--strip-pad); background: var(--strip-bg); }
 %root% .dos-track { padding-block-end: var(--strip-pad-end); }
 @media (max-width: 767.98px) { %root% { --dos-arrow-size: 36px; } }
 @media (max-width: 575.98px) { %root% { --dos-arrow-size: 32px; } }
-.cargo-card { display: block; color: var(--name-color); text-align: center; text-decoration: none; }
+.cargo-card { display: block; padding-block-end: 4px; color: var(--name-color); text-align: center; text-decoration: none; }
 .cargo-mark { display: block; margin-block-end: 0.6em; font-size: var(--mark-size); font-style: italic; font-weight: 700; line-height: 1.2; letter-spacing: 0.06em; }
 .cargo-card img { inline-size: 100%; block-size: auto; object-fit: contain; transition: transform 0.25s ease; }
 .cargo-name { margin: 0.5em 0 0; font-size: var(--name-size); font-weight: 600; line-height: 1.35; text-transform: var(--name-case); letter-spacing: 0.1em; }`,

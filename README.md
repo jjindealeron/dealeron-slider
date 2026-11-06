@@ -323,11 +323,14 @@ batch — a tab row wired twice answers a key twice.
   would silently kill the "N of 6" count announcements in Safari/VoiceOver — don't remove either. A
   validator calls the attribute redundant; on a styled list it is not. In the markup it covers the
   moment before the script runs, and a page where the script never loads.
-- A card link (`.cargo-card`, `.cargo-model`, `.cargo-svc`) draws its own focus ring: 2px of
-  `--dos-focus` in the card's outer 2px, inset so the track cannot clip it, and `!important`. The
+- A card link (`.cargo-card`, `.cargo-model`, `.cargo-svc`) draws its own focus ring: a 2px
+  `--dos-focus` border on a `::after` layer over the whole card, inside it so the track cannot clip
+  it and last in it so the picture cannot cover it (an outline lost up to 71% of itself under a
+  positioned picture box). The tile and wordmark looks keep 4px under the name for it. The
   platform's `extend.css` pushes every link's ring 1px outside, where the track clips it, and
-  template 740 removes link rings outright, both `!important`, so nothing weaker can draw one.
-  Recolour it with `--dos-focus`; keep the `!important`.
+  template 740 removes link rings outright, both `!important`, so the card turns the link outline
+  off with `!important` of its own; that is the only `!important` in it. Recolour it with
+  `--dos-focus`.
 - Dots are one per PAGE of slides, plain buttons (not tabs); the current dot carries
   `aria-current="true"` and stays an enabled, focusable button. Not `aria-disabled`, which it was
   until 2026-10-27: NVDA reads that as "button, unavailable", which sounds broken, where
@@ -432,7 +435,9 @@ name takes its section's text colour, and so does the logo strip's bare arrow; t
 draw a logo per tab and centre a short pane; centre mode), and on 2026-11-06 the JS too: the engine
 measures a slide's position from slide 0, so a percentage or `min()` peek centres its card, and the
 tabbed bar's script marks the cards beside the current one. Later that day the CSS again: card links
-draw their own focus ring, and a tab's label no longer wraps inside it.
+draw their own focus ring, and a tab's label no longer wraps inside it; then both files, a tab row
+gives up spacing before type; then the CSS, a focused tab and the play buttons keep their whole
+ring, and a card's ring is a layer over its picture with 4px under the tile and wordmark names.
 
 The folder before it, `…/Apps/dealeronSlider/`, held the same build as `dealeron-slider.*` for about
 an hour on 2026-11-04; all four of its files answered 404 the same afternoon.
